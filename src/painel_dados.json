@@ -195,7 +195,10 @@
    "data": "2026-08-20"
   }
  ],
- "envios_sendgrid": {},
+ "envios_sendgrid": {
+  "ENVIADO": 29,
+  "OPTOUT": 1
+ },
  "pipeline": [
   {
    "cliente": "Câmara de Luz/MG",
