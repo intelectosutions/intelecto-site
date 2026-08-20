@@ -153,8 +153,18 @@ const servidor = http.createServer(async (req, res) => {
         return res.end(JSON.stringify({ erro: String(e.message || e) }));
       }
     }
-    return servirArquivo(res, path.join(PUBLIC, "painel", "index.html"),
-                         { "Cache-Control": "no-store" });
+    // injeta os dados na propria pagina, em vez de deixar o painel buscar por
+    // fetch: uma requisicao a menos e nenhum problema de credencial no browser
+    try {
+      const dados = await montarPainel();
+      const html = fs.readFileSync(path.join(PUBLIC, "painel", "index.html"), "utf8")
+        .replace("__DADOS__", JSON.stringify(dados).replace(/</g, "\\u003c"));
+      res.writeHead(200, { "Content-Type": TIPOS[".html"], "Cache-Control": "no-store" });
+      return res.end(html);
+    } catch (e) {
+      res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
+      return res.end("Falha ao montar o painel: " + (e.message || e) + "\n");
+    }
   }
 
   // conteudo publico
