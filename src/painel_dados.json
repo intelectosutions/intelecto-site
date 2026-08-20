@@ -633,6 +633,18 @@
   },
   {
    "uf": "MG",
+   "municipio": "Careaçu",
+   "dominio": "careacu.mg.leg.br",
+   "numero": "553534521212",
+   "formatado": "(35) 3452-1212",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@careacu.mg.leg.br",
+   "fonte": "https://linktr.ee/camaracareacu",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
    "municipio": "Carmo da Mata",
    "dominio": "carmodamata.mg.leg.br",
    "numero": "5537998111879",
@@ -657,6 +669,66 @@
   },
   {
    "uf": "MG",
+   "municipio": "Congonhas",
+   "dominio": "congonhas.mg.leg.br",
+   "numero": "553137320300",
+   "formatado": "(31) 3732-0300",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@congonhas.mg.leg.br",
+   "fonte": "https://www.congonhas.mg.leg.br/institucional/telefones-e-ramais",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Conselheiro Lafaiete",
+   "dominio": "conselheirolafaiete.mg.leg.br",
+   "numero": "5531988722370",
+   "formatado": "(31) 98872-2370",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@conselheirolafaiete.mg.leg.br",
+   "fonte": "https://www.conselheirolafaiete.mg.leg.br/institucional/noticias/voce-sabia-que-o-cac-2013-centro-de-apoio-e-atendimento-ao-cidadao-oferece-varios-servicos-atraves-do-aplicativo-whatsapp",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Divinópolis",
+   "dominio": "divinopolis.mg.leg.br",
+   "numero": "553721028200",
+   "formatado": "(37) 2102-8200",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@divinopolis.mg.leg.br",
+   "fonte": "https://www.divinopolis.mg.leg.br/institucional/fake-news",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Dom Bosco",
+   "dominio": "dombosco.mg.leg.br",
+   "numero": "553836757133",
+   "formatado": "(38) 3675-7133",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "administrativo@dombosco.mg.leg.br",
+   "fonte": "https://www.dombosco.mg.leg.br/transparencia/ouvidoria",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Indianópolis",
+   "dominio": "indianopolis.mg.leg.br",
+   "numero": "553432451367",
+   "formatado": "(34) 3245-1367",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@indianopolis.mg.leg.br",
+   "fonte": "https://www.indianopolis.mg.leg.br/transparencia/ouvidoria",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
    "municipio": "Ipanema",
    "dominio": "ipanema.mg.leg.br",
    "numero": "5533988322949",
@@ -665,6 +737,18 @@
    "confianca": "alta",
    "email": "secretaria@ipanema.mg.leg.br",
    "fonte": "",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Itaú de Minas",
+   "dominio": "itaudeminas.mg.leg.br",
+   "numero": "553535361664",
+   "formatado": "(35) 3536-1664",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "imprensa@itaudeminas.mg.leg.br",
+   "fonte": "https://www.itaudeminas.mg.leg.br/institucional/noticias/numero-de-atendimento-via-whatsapp",
    "abordado": true
   },
   {
@@ -681,6 +765,42 @@
   },
   {
    "uf": "MG",
+   "municipio": "Lima Duarte",
+   "dominio": "limaduarte.mg.leg.br",
+   "numero": "5532998634627",
+   "formatado": "(32) 99863-4627",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "cac@limaduarte.mg.leg.br",
+   "fonte": "https://www.limaduarte.mg.leg.br/institucional/contatos",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Manhuaçu",
+   "dominio": "manhuacu.mg.leg.br",
+   "numero": "553333311740",
+   "formatado": "(33) 3331-1740",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "secretaria@manhuacu.mg.leg.br",
+   "fonte": "https://www.manhuacu.mg.leg.br/institucional/noticias/camara-municipal-de-manhuacu-disponibiliza-atendimento-via-whatsapp",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Matias Barbosa",
+   "dominio": "matiasbarbosa.mg.leg.br",
+   "numero": "553237711401",
+   "formatado": "(32) 3771-1401",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "diretoria@matiasbarbosa.mg.leg.br",
+   "fonte": "https://www.matiasbarbosa.mg.leg.br/institucional/nucleo-de-atencao-ao-cidadao-nac",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
    "municipio": "Natalândia",
    "dominio": "natalandia.mg.leg.br",
    "numero": "553836758020",
@@ -693,6 +813,18 @@
   },
   {
    "uf": "MG",
+   "municipio": "Natércia",
+   "dominio": "natercia.mg.leg.br",
+   "numero": "5535999242583",
+   "formatado": "(35) 99924-2583",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@natercia.mg.leg.br",
+   "fonte": "https://www.natercia.mg.leg.br/",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
    "municipio": "Olaria",
    "dominio": "olaria.mg.leg.br",
    "numero": "553232881138",
@@ -701,6 +833,42 @@
    "confianca": "alta",
    "email": "camaramunicipaldeolaria@yahoo.com.br",
    "fonte": "",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Pedralva",
+   "dominio": "pedralva.mg.leg.br",
+   "numero": "553536631464",
+   "formatado": "(35) 3663-1464",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "secretariacmp@pedralva.mg.leg.br",
+   "fonte": "https://www.pedralva.mg.leg.br/",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Pedrinópolis",
+   "dominio": "pedrinopolis.mg.leg.br",
+   "numero": "553433551224",
+   "formatado": "(34) 3355-1224",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@pedrinopolis.mg.leg.br",
+   "fonte": "https://www.pedrinopolis.mg.leg.br/",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Rio Doce",
+   "dominio": "riodoce.mg.leg.br",
+   "numero": "553138835284",
+   "formatado": "(31) 3883-5284",
+   "origem": "busca web",
+   "confianca": "alta",
+   "email": "camara@riodoce.mg.leg.br",
+   "fonte": "https://www.riodoce.mg.leg.br/transparencia/acesso-a-informacao",
    "abordado": true
   },
   {
@@ -930,6 +1098,42 @@
    "email": "contato@piedade.sp.leg.br",
    "fonte": "",
    "abordado": false
+  },
+  {
+   "uf": "MG",
+   "municipio": "Buritis",
+   "dominio": "buritis.mg.leg.br",
+   "numero": "5538998924642",
+   "formatado": "(38) 99892-4642",
+   "origem": "busca web",
+   "confianca": "media",
+   "email": "camara@buritis.mg.leg.br",
+   "fonte": "https://www.buritis.mg.leg.br/ouvidoria",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Limeira do Oeste",
+   "dominio": "limeiradooeste.mg.leg.br",
+   "numero": "5534999946736",
+   "formatado": "(34) 99994-6736",
+   "origem": "busca web",
+   "confianca": "media",
+   "email": "comicacao@limeiradooeste.mg.leg.br",
+   "fonte": "https://www.limeiradooeste.mg.leg.br/institucional/acesso",
+   "abordado": true
+  },
+  {
+   "uf": "MG",
+   "municipio": "Papagaios",
+   "dominio": "papagaios.mg.leg.br",
+   "numero": "553732742055",
+   "formatado": "(37) 3274-2055",
+   "origem": "busca web",
+   "confianca": "media",
+   "email": "cmpapagaiosmg@gmail.com",
+   "fonte": "https://www.papagaios.mg.leg.br/ouvidoria",
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1173,10 +1377,10 @@
   }
  ],
  "whatsapp_resumo": {
-  "total": 47,
-  "alta": 27,
-  "conferir": 20,
-  "ja_abordadas": 15
+  "total": 64,
+  "alta": 41,
+  "conferir": 23,
+  "ja_abordadas": 32
  },
  "pipeline": [
   {

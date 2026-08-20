@@ -340,6 +340,8 @@ function desenhar(d){
     var chip = w.confianca === "alta"
       ? "<span class='chip feito'>confirmado</span>"
       : "<span class='chip aguarda'>a conferir</span>";
+    if (w.fonte) chip += " <a href='" + w.fonte + "' target='_blank' rel='noopener' " +
+      "class='label' style='color:var(--azure);text-decoration:underline'>fonte</a>";
     var tr = document.createElement("tr");
     tr.innerHTML = "<td class='mono'>" + w.uf + "</td><td>" + w.municipio +
       (w.abordado ? " <span class='label' style='color:var(--green)'>e-mail enviado</span>" : "") +
