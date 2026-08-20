@@ -92,6 +92,15 @@ strong{font-weight:700;color:var(--ink)}
   min-height:60px;
 }
 .topbar img{height:26px;width:auto;display:block}
+/* o logo tem fundo branco: no tema escuro vira um selo, para não flutuar solto */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .topbar img{
+    background:#fff;padding:5px 9px;border-radius:4px;height:36px;box-sizing:content-box;
+  }
+}
+:root[data-theme="dark"] .topbar img{
+  background:#fff;padding:5px 9px;border-radius:4px;height:36px;box-sizing:content-box;
+}
 
 /* ---------- hero ---------- */
 .hero{
