@@ -503,7 +503,12 @@ footer p{font-size:13.5px;color:var(--muted)}
   // CTA do WhatsApp: texto pré-preenchido já pede cidade e nº de contas
   var msg = "Olá, Luiz! Sou da Câmara Municipal de ______ e gostaria de um orçamento do "
           + "e-mail institucional no domínio .leg.br. Usamos cerca de ___ contas hoje.";
-  var href = "https://wa.me/5519971077038?text=" + encodeURIComponent(msg);
+  // api.whatsapp.com/send abre a conversa direto; wa.me passa por uma pagina
+  // intermediaria antes. encodeURIComponent + troca de %20 por + para casar
+  // com o formato que o proprio WhatsApp gera.
+  var href = "https://api.whatsapp.com/send/?phone=5519971077038&text="
+           + encodeURIComponent(msg).replace(/%20/g, "+")
+           + "&type=phone_number&app_absent=0";
   ["cta-topo","cta-fim","cta-fixo"].forEach(function(id){
     var el = document.getElementById(id);
     if (el) el.href = href;
