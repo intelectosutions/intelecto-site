@@ -240,7 +240,7 @@ summary::after{
   content:"+";font-family:"IBM Plex Mono",monospace;color:var(--navy-soft);
   font-size:19px;flex:none;
 }
-details[open] summary::after{content:"–"}
+details[open] summary::after{content:"\2212"}
 details p{color:var(--muted);font-size:16px}
 summary:focus-visible{outline:3px solid var(--azure);outline-offset:2px;border-radius:3px}
 
@@ -299,10 +299,10 @@ footer p{font-size:13.5px;color:var(--muted)}
     <h1>O e-mail da sua Câmara tem <em>prazo para acabar</em>.</h1>
     <p class="lead">O Senado Federal descontinuou o E-mail Legislativo do Interlegis. Toda Casa que
       usa contas <strong>@suacidade.uf.leg.br</strong> precisa migrar para um provedor próprio antes
-      do desligamento — sem perder o Portal Modelo, o SAPL nem uma única mensagem.</p>
+      do desligamento, sem perder o Portal Modelo, o SAPL nem uma única mensagem.</p>
 
     <div class="counter">
-      <span class="n" id="dias">—</span>
+      <span class="n" id="dias">,</span>
       <span class="t">dias até a desativação prevista</span>
       <span class="d">Prazo anunciado: <strong>maio de 2027</strong>. Contas novas já não são criadas.</span>
     </div>
@@ -328,9 +328,9 @@ footer p{font-size:13.5px;color:var(--muted)}
   <div class="official">
     <p>O Interlegis não cria mais contas novas no serviço, e o desligamento total está previsto para
       <strong>maio de 2027</strong>. O próprio programa orienta as Casas Legislativas a migrarem o
-      e-mail para um provedor externo o quanto antes — quem deixar para a última hora disputa
+      e-mail para um provedor externo o quanto antes, quem deixar para a última hora disputa
       agenda com centenas de outras câmaras no mesmo prazo.</p>
-    <p class="src">Fonte: Interlegis — Perguntas Frequentes, capítulo “Produtos descontinuados”, e
+    <p class="src">Fonte: Interlegis, Perguntas Frequentes, capítulo “Produtos descontinuados”, e
       orientações sobre domínio .leg.br (www12.senado.leg.br/interlegis).</p>
   </div>
 </section>
@@ -338,7 +338,7 @@ footer p{font-size:13.5px;color:var(--muted)}
 <section>
   <div class="sec-head">
     <span class="label">Consequências</span>
-    <h2>O que muda — e o que continua exatamente como está.</h2>
+    <h2>O que muda e o que continua exatamente como está.</h2>
   </div>
   <div class="grid2">
     <div class="card bad">
@@ -366,7 +366,7 @@ footer p{font-size:13.5px;color:var(--muted)}
   <div class="sec-head">
     <span class="label">O ponto técnico que mais gera erro</span>
     <h2>Reapontamento não é delegação de domínio.</h2>
-    <p>Muita Casa confunde os dois termos ao abrir o chamado — e derruba o próprio portal.</p>
+    <p>Muita Casa confunde os dois termos ao abrir o chamado e derruba o próprio portal.</p>
   </div>
   <div class="keypoint">
     <h3>O procedimento correto chama-se reapontamento</h3>
@@ -374,12 +374,12 @@ footer p{font-size:13.5px;color:var(--muted)}
       (registros A, MX, SPF e DKIM) para o novo provedor. Tudo o mais permanece com o Senado.</p>
     <div class="compare">
       <div class="yes">
-        <span class="k">Reapontamento — correto</span>
+        <span class="k">Reapontamento: correto</span>
         <p>Só o e-mail muda de servidor. Portal Modelo, SAPL e e-Democracia continuam no ar,
           sem qualquer interrupção.</p>
       </div>
       <div class="no">
-        <span class="k">Delegação — nunca peça</span>
+        <span class="k">Delegação: nunca peça</span>
         <p>Transfere os servidores de nome do domínio inteiro e desativa o Portal Modelo, o SAPL
           e o e-Democracia da Câmara.</p>
       </div>
@@ -390,16 +390,16 @@ footer p{font-size:13.5px;color:var(--muted)}
 <section>
   <div class="sec-head">
     <span class="label">Como a migração acontece</span>
-    <h2>Quatro etapas, na ordem — sem a Câmara ficar um dia sem e-mail.</h2>
+    <h2>Quatro etapas, na ordem, sem a Câmara ficar um dia sem e-mail.</h2>
   </div>
   <ol class="steps">
     <li><b>Criação das contas</b> no domínio atual da Câmara, no servidor novo, com os mesmos
       endereços que a Casa já usa.</li>
-    <li><b>Cópia integral das caixas</b> — mensagens, pastas e contatos são migrados antes de
+    <li><b>Cópia integral das caixas</b>: mensagens, pastas e contatos são migrados antes de
       qualquer mudança, com o e-mail antigo ainda funcionando.</li>
     <li><b>Ofício do Presidente e chamado no Interlegis</b> solicitando o reapontamento. Nós
       preparamos o ofício pronto para assinatura e acompanhamos o chamado até a conclusão.</li>
-    <li><b>Virada</b> — os endereços passam a responder no servidor novo. Ninguém fica sem e-mail
+    <li><b>Virada</b>: os endereços passam a responder no servidor novo. Ninguém fica sem e-mail
       e nenhuma mensagem se perde.</li>
   </ol>
 </section>
@@ -410,16 +410,16 @@ footer p{font-size:13.5px;color:var(--muted)}
     <h2>E-mail institucional gerenciado, no domínio oficial da Casa.</h2>
   </div>
   <div class="included">
-    <div><span>—</span> Contas no domínio oficial .leg.br da Câmara</div>
-    <div><span>—</span> Armazenamento ilimitado por caixa</div>
-    <div><span>—</span> Migração completa das caixas atuais</div>
-    <div><span>—</span> Webmail moderno e sincronia com celular</div>
-    <div><span>—</span> Antispam, antivírus, SPF, DKIM e DMARC</div>
-    <div><span>—</span> Backup diário automático</div>
-    <div><span>—</span> Ofício e chamado no Interlegis por nossa conta</div>
-    <div><span>—</span> Suporte por WhatsApp e telefone, com gente de verdade</div>
-    <div><span>—</span> Configuração no aparelho de cada vereador e servidor</div>
-    <div><span>—</span> Conformidade com a LGPD, por empresa especializada</div>
+    <div><span>,</span> Contas no domínio oficial .leg.br da Câmara</div>
+    <div><span>,</span> Armazenamento ilimitado por caixa</div>
+    <div><span>,</span> Migração completa das caixas atuais</div>
+    <div><span>,</span> Webmail moderno e sincronia com celular</div>
+    <div><span>,</span> Antispam, antivírus, SPF, DKIM e DMARC</div>
+    <div><span>,</span> Backup diário automático</div>
+    <div><span>,</span> Ofício e chamado no Interlegis por nossa conta</div>
+    <div><span>,</span> Suporte por WhatsApp e telefone, com gente de verdade</div>
+    <div><span>,</span> Configuração no aparelho de cada vereador e servidor</div>
+    <div><span>,</span> Conformidade com a LGPD, por empresa especializada</div>
   </div>
 </section>
 
@@ -431,14 +431,14 @@ footer p{font-size:13.5px;color:var(--muted)}
 
   <details>
     <summary>Podemos simplesmente continuar com o Interlegis?</summary>
-    <p>O Portal Modelo e o SAPL continuam com eles, sim — apenas o serviço de e-mail é que será
+    <p>O Portal Modelo e o SAPL continuam com eles, sim, apenas o serviço de e-mail é que será
       encerrado. O próprio Interlegis orienta as Casas a migrarem o e-mail para provedor externo.</p>
   </details>
 
   <details>
     <summary>Precisa de licitação?</summary>
     <p>Pelo valor, normalmente se enquadra como dispensa (art. 75 da Lei 14.133). De todo modo, a
-      proposta serve tanto para instruir a dispensa quanto para compor o processo — várias câmaras
+      proposta serve tanto para instruir a dispensa quanto para compor o processo, várias câmaras
       já utilizaram dessa forma.</p>
   </details>
 
@@ -451,20 +451,20 @@ footer p{font-size:13.5px;color:var(--muted)}
   <details>
     <summary>Não dá para usar Gmail gratuito?</summary>
     <p>Dá, mas o endereço fica @gmail.com. Ofício de câmara saindo de e-mail pessoal compromete a
-      imagem da Casa, e não há como reaver a conta quando o servidor deixa o cargo — ela vai junto.</p>
+      imagem da Casa, e não há como reaver a conta quando o servidor deixa o cargo, ela vai junto.</p>
   </details>
 
   <details>
     <summary>Quanto custa?</summary>
     <p>Depende de quantas contas a Câmara usa. Uma Casa com cerca de 10 contas fica na faixa de
-      R$ 500 por mês, com a implantação cobrada uma única vez. O orçamento exato sai no mesmo dia —
+      R$ 500 por mês, com a implantação cobrada uma única vez. O orçamento exato sai no mesmo dia ,
       basta nos dizer o número de contas.</p>
   </details>
 
   <details>
     <summary>Quanto tempo leva o processo?</summary>
     <p>A parte técnica leva poucos dias. O que exige antecedência é o chamado de reapontamento no
-      Interlegis, cujo prazo de resposta não é imediato — por isso vale começar bem antes de 2027.</p>
+      Interlegis, cujo prazo de resposta não é imediato, por isso vale começar bem antes de 2027.</p>
   </details>
 </section>
 
