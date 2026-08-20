@@ -1,0 +1,229 @@
+{
+ "atualizado": "20/08/2026",
+ "radar": {
+  "ativos": 3138,
+  "quentes": 482,
+  "sem_email": 1250,
+  "por_uf": [
+   [
+    "MG",
+    95
+   ],
+   [
+    "PR",
+    65
+   ],
+   [
+    "SP",
+    44
+   ],
+   [
+    "RS",
+    32
+   ],
+   [
+    "RJ",
+    26
+   ],
+   [
+    "MT",
+    23
+   ],
+   [
+    "RO",
+    23
+   ],
+   [
+    "ES",
+    19
+   ],
+   [
+    "PE",
+    19
+   ],
+   [
+    "PI",
+    17
+   ]
+  ]
+ },
+ "cobertura": {
+  "camaras_com_contato": 236,
+  "leads_email_pessoal": 40,
+  "abordadas": 20,
+  "restantes": 462
+ },
+ "abordagens": [
+  {
+   "municipio": "Alpinópolis",
+   "uf": "MG",
+   "dominio": "alpinopolis.mg.leg.br",
+   "email": "camara_alpinopolis@yahoo.com.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Andradas",
+   "uf": "MG",
+   "dominio": "andradas.mg.leg.br",
+   "email": "camara@andradas.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Araguari",
+   "uf": "MG",
+   "dominio": "araguari.mg.leg.br",
+   "email": "ouvidoria@araguari.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Araporã",
+   "uf": "MG",
+   "dominio": "arapora.mg.leg.br",
+   "email": "assessoriacamaraarapora@gmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Arapuá",
+   "uf": "MG",
+   "dominio": "arapua.mg.leg.br",
+   "email": "camara.arapua@hotmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Bonfinópolis de Minas",
+   "uf": "MG",
+   "dominio": "bonfinopolisdeminas.mg.leg.br",
+   "email": "camara.bonfin@outlook.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Botelhos",
+   "uf": "MG",
+   "dominio": "botelhos.mg.leg.br",
+   "email": "assessoriacam@botelhos.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Brasília de Minas",
+   "uf": "MG",
+   "dominio": "brasiliademinas.mg.leg.br",
+   "email": "camarabrasiliademinas@yahoo.com.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Buritis",
+   "uf": "MG",
+   "dominio": "buritis.mg.leg.br",
+   "email": "camaraburitismg@gmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Campina Verde",
+   "uf": "MG",
+   "dominio": "campinaverde.mg.leg.br",
+   "email": "camaramunicipalcv@yahoo.com.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Campos Altos",
+   "uf": "MG",
+   "dominio": "camposaltos.mg.leg.br",
+   "email": "camara@camposaltos.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Capitólio",
+   "uf": "MG",
+   "dominio": "capitolio.mg.leg.br",
+   "email": "camara@capitolio.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Caputira",
+   "uf": "MG",
+   "dominio": "caputira.mg.leg.br",
+   "email": "camaracaputira@gmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Carmo do Paranaíba",
+   "uf": "MG",
+   "dominio": "carmodoparanaiba.mg.leg.br",
+   "email": "camaracarmodoparanaiba@hotmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Chapada Gaúcha",
+   "uf": "MG",
+   "dominio": "chapadagaucha.mg.leg.br",
+   "email": "camaracmcg@gmail.com",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Congonhas",
+   "uf": "MG",
+   "dominio": "congonhas.mg.leg.br",
+   "email": "camara@congonhas.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Conselheiro Lafaiete",
+   "uf": "MG",
+   "dominio": "conselheirolafaiete.mg.leg.br",
+   "email": "camara@conselheirolafaiete.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Coromandel",
+   "uf": "MG",
+   "dominio": "coromandel.mg.leg.br",
+   "email": "camara@coromandel.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "Divinópolis",
+   "uf": "MG",
+   "dominio": "divinopolis.mg.leg.br",
+   "email": "camara@divinopolis.mg.leg.br",
+   "data": "2026-08-20"
+  },
+  {
+   "municipio": "João Pinheiro",
+   "uf": "MG",
+   "dominio": "joaopinheiro.mg.leg.br",
+   "email": "camaramjp@gmail.com",
+   "data": "2026-08-20"
+  }
+ ],
+ "envios_sendgrid": {},
+ "pipeline": [
+  {
+   "cliente": "Câmara de Luz/MG",
+   "oferta": "10 contas",
+   "valor": 6900,
+   "enviada": "19/08",
+   "status": "Follow-up D+3 em 24/08"
+  },
+  {
+   "cliente": "Câmara de Conceição do Coité/BA",
+   "oferta": "30 contas com migração",
+   "valor": 11700,
+   "enviada": "19/08",
+   "status": "Follow-up D+3 em 24/08"
+  }
+ ],
+ "agenda": [
+  {
+   "data": "24/08 (seg)",
+   "acao": "Follow-up D+3 dos pilotos e das câmaras abordadas"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Toque 2 de quem não respondeu"
+  },
+  {
+   "data": "28/08 (sex)",
+   "acao": "Toque 3, ligações e atualização do tracker"
+  }
+ ]
+}

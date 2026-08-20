@@ -1,0 +1,313 @@
+<title>Painel da Prospecção</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ink:#0E1F35; --navy:#16365C; --navy-soft:#2A4E7A; --azure:#2563EB;
+  --amber:#B45309; --amber-bg:#FDF6EC; --green:#15803D; --green-bg:#EDF7F0;
+  --paper:#F4F6F9; --surface:#FFFFFF; --surface-2:#EDF1F6; --rule:#DCE2EA; --muted:#5A6B80;
+  --shadow:0 1px 2px rgba(14,31,53,.05), 0 10px 26px rgba(14,31,53,.055);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E8EEF6; --navy:#9EC1EE; --navy-soft:#7FA8DC; --azure:#6FA4F5;
+    --amber:#E9A94A; --amber-bg:#241B0F; --green:#4ADE80; --green-bg:#10261A;
+    --paper:#0B1725; --surface:#111F31; --surface-2:#16273C; --rule:#25384F; --muted:#9DAFC4;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E8EEF6; --navy:#9EC1EE; --navy-soft:#7FA8DC; --azure:#6FA4F5;
+  --amber:#E9A94A; --amber-bg:#241B0F; --green:#4ADE80; --green-bg:#10261A;
+  --paper:#0B1725; --surface:#111F31; --surface-2:#16273C; --rule:#25384F; --muted:#9DAFC4;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55}
+h1,h2{font-family:"Source Serif 4",Georgia,serif;margin:0;line-height:1.2;font-weight:600;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.label{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+header{background:var(--surface);border-bottom:1px solid var(--rule);padding:18px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:21px}
+header .quando{font-size:13.5px;color:var(--muted)}
+
+section{padding:26px 0}
+section + section{border-top:1px solid var(--rule)}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sec-h h2{font-size:19px}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:6px;
+  padding:15px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:3px}
+.kpi .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-size:28px;font-weight:600;line-height:1.05;color:var(--navy)}
+.kpi .t{font-size:13.5px;color:var(--muted)}
+.kpi.destaque .n{color:var(--amber)}
+.kpi.ok .n{color:var(--green)}
+
+.barra{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-top:6px}
+.barra i{display:block;height:100%;background:var(--navy-soft);border-radius:99px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  padding:8px 10px;border-bottom:1px solid var(--navy-soft)}
+td{padding:9px 10px;border-bottom:1px solid var(--rule)}
+tr:hover td{background:var(--surface-2)}
+.tabela{background:var(--surface);border:1px solid var(--rule);border-radius:6px;
+  overflow-x:auto;box-shadow:var(--shadow)}
+td.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;
+  border:1px solid transparent}
+.chip.aguarda{background:var(--amber-bg);color:var(--amber);border-color:var(--amber)}
+.chip.feito{background:var(--green-bg);color:var(--green);border-color:var(--green)}
+
+.linhas{display:flex;flex-direction:column;gap:9px}
+.linha{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--navy-soft);
+  border-radius:5px;padding:12px 15px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.linha .quando{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--navy);
+  font-weight:600;min-width:96px}
+
+.uf{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.uf div{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:10px 12px}
+.uf b{display:block;font-family:"IBM Plex Mono",monospace;font-size:19px;color:var(--navy)}
+.uf span{font-size:12.5px;color:var(--muted)}
+
+footer{border-top:1px solid var(--rule);padding:20px 0 40px;color:var(--muted);font-size:13px}
+footer a{color:var(--azure)}
+
+@media (max-width:860px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .uf{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:520px){
+  .uf{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+
+<header>
+  <div class="wrap">
+    <div>
+      <span class="label">Intelecto Solutions</span>
+      <h1>Painel da Prospecção .leg.br</h1>
+    </div>
+    <div class="quando">Dados de <span class="mono" id="atualizado">—</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-h"><h2>Onde a operação está</h2></div>
+  <div class="kpis">
+    <div class="kpi ok"><span class="n" id="k-abordadas">—</span>
+      <span class="t">Câmaras abordadas</span></div>
+    <div class="kpi destaque"><span class="n" id="k-quentes">—</span>
+      <span class="t">Leads quentes no radar</span></div>
+    <div class="kpi"><span class="n" id="k-contato">—</span>
+      <span class="t">Com contato levantado</span></div>
+    <div class="kpi"><span class="n" id="k-pipeline">—</span>
+      <span class="t">Pipeline em 12 meses</span></div>
+  </div>
+  <div style="margin-top:14px">
+    <div class="label">Cobertura dos leads quentes</div>
+    <div class="barra"><i id="barra" style="width:0%"></i></div>
+    <p style="font-size:13.5px;color:var(--muted);margin-top:5px" id="cobertura-txt"></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Propostas na rua</h2></div>
+  <div class="tabela">
+    <table>
+      <thead><tr><th>Cliente</th><th>Oferta</th><th>Enviada</th><th>Situação</th><th style="text-align:right">12 meses</th></tr></thead>
+      <tbody id="pipeline"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Próximos passos</h2></div>
+  <div class="linhas" id="agenda"></div>
+</section>
+
+<section id="sec-envios">
+  <div class="sec-h">
+    <h2>Envios pelo SendGrid</h2>
+    <span class="label" id="envios-estado">carregando</span>
+  </div>
+  <div class="kpis" id="envios-kpis"></div>
+  <div class="tabela" style="margin-top:14px" id="envios-tabela-wrap" hidden>
+    <table>
+      <thead><tr><th>Destinatário</th><th>Situação</th><th style="text-align:right">Aberturas</th><th style="text-align:right">Cliques</th><th>Último evento</th></tr></thead>
+      <tbody id="envios"></tbody>
+    </table>
+  </div>
+  <p class="label" id="envios-nota" style="margin-top:10px"></p>
+</section>
+
+<section id="sec-serie" hidden>
+  <div class="sec-h"><h2>Últimos 14 dias</h2></div>
+  <div class="tabela">
+    <table>
+      <thead><tr><th>Dia</th><th style="text-align:right">Entregues</th><th style="text-align:right">Aberturas</th><th style="text-align:right">Cliques</th><th style="text-align:right">Bounces</th><th style="text-align:right">Spam</th></tr></thead>
+      <tbody id="serie"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h">
+    <h2>Câmaras já abordadas</h2>
+    <span class="label" id="cont-abord"></span>
+  </div>
+  <div class="tabela">
+    <table>
+      <thead><tr><th>UF</th><th>Município</th><th>Endereço usado</th><th>Toque 1</th></tr></thead>
+      <tbody id="abordagens"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>Leads quentes por estado</h2></div>
+  <div class="uf" id="uf"></div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Painel interno da Intelecto Solutions. Atualiza a cada publicação do site.
+    A landing pública fica em <a href="https://camaras.intelecto.solutions">camaras.intelecto.solutions</a>.
+  </div>
+</footer>
+
+<script>
+fetch("/api/painel", {cache:"no-store"})
+  .then(function(r){ if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); })
+  .then(desenhar)
+  .catch(function(e){
+    document.getElementById("envios-estado").textContent = "falha ao carregar: " + e.message;
+  });
+
+function desenhar(d){
+  var brl = function(v){ return "R$ " + v.toLocaleString("pt-BR"); };
+  var txt = function(id, v){ document.getElementById(id).textContent = v; };
+
+  txt("atualizado", d.atualizado);
+  txt("k-abordadas", d.cobertura.abordadas);
+  txt("k-quentes", d.radar.quentes.toLocaleString("pt-BR"));
+  txt("k-contato", d.cobertura.camaras_com_contato);
+
+  var total = d.pipeline.reduce(function(s, p){ return s + p.valor; }, 0);
+  txt("k-pipeline", brl(total));
+
+  var pct = (d.cobertura.abordadas / d.radar.quentes) * 100;
+  document.getElementById("barra").style.width = Math.max(pct, 0.6) + "%";
+  txt("cobertura-txt", d.cobertura.abordadas + " de " + d.radar.quentes +
+      " leads quentes contatados (" + pct.toFixed(1) + "%). " +
+      d.cobertura.leads_email_pessoal + " câmaras publicam e-mail pessoal no portal, " +
+      "que são as de dor dupla.");
+
+  var tp = document.getElementById("pipeline");
+  d.pipeline.forEach(function(p){
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td><strong>" + p.cliente + "</strong></td><td>" + p.oferta +
+      "</td><td class='mono'>" + p.enviada + "</td><td><span class='chip aguarda'>" +
+      p.status + "</span></td><td class='num'>" + brl(p.valor) + "</td>";
+    tp.appendChild(tr);
+  });
+
+  var ag = document.getElementById("agenda");
+  d.agenda.forEach(function(a){
+    var el = document.createElement("div");
+    el.className = "linha";
+    el.innerHTML = "<span class='quando'>" + a.data + "</span><span>" + a.acao + "</span>";
+    ag.appendChild(el);
+  });
+
+  var tb = document.getElementById("abordagens");
+  d.abordagens.forEach(function(a){
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td class='mono'>" + a.uf + "</td><td>" + a.municipio +
+      "</td><td class='mono' style='font-size:13px'>" + a.email +
+      "</td><td><span class='chip feito'>" + a.data.split("-").reverse().join("/") + "</span></td>";
+    tb.appendChild(tr);
+  });
+  txt("cont-abord", d.abordagens.length + " registradas");
+
+  var uf = document.getElementById("uf");
+  d.radar.por_uf.forEach(function(p){
+    var el = document.createElement("div");
+    el.innerHTML = "<b>" + p[1] + "</b><span>" + p[0] + "</span>";
+    uf.appendChild(el);
+  });
+
+  // ---- dados vivos do SendGrid ----
+  var sg = d.sendgrid;
+  var kp = document.getElementById("envios-kpis");
+  if (!sg) {
+    txt("envios-estado", "indisponível");
+    txt("envios-nota", d.erro_sendgrid || "sem dados do SendGrid");
+    return;
+  }
+  txt("envios-estado", "ao vivo");
+  var r = sg.resumo;
+  var taxa = function(n){ return r.enviados ? Math.round(n / r.enviados * 100) + "%" : "0%"; };
+  [["enviados", r.enviados, ""], ["abriram", r.abriram, taxa(r.abriram)],
+   ["clicaram", r.clicaram, taxa(r.clicaram)], ["falharam", r.falharam, taxa(r.falharam)]]
+   .forEach(function(k, i){
+    var el = document.createElement("div");
+    el.className = "kpi" + (i === 1 ? " ok" : (i === 3 && k[1] > 0 ? " destaque" : ""));
+    el.innerHTML = "<span class='n'>" + k[1] + "</span><span class='t'>" +
+      k[0].charAt(0).toUpperCase() + k[0].slice(1) +
+      (k[2] ? " <span class='mono'>(" + k[2] + ")</span>" : "") + "</span>";
+    kp.appendChild(el);
+  });
+
+  if (sg.mensagens.length) {
+    document.getElementById("envios-tabela-wrap").hidden = false;
+    var tb = document.getElementById("envios");
+    sg.mensagens.slice(0, 60).forEach(function(m){
+      var cls = m.aberturas > 0 ? "feito" : "aguarda";
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td class='mono' style='font-size:13px'>" + m.para +
+        "</td><td><span class='chip " + cls + "'>" + m.status +
+        "</span></td><td class='num'>" + m.aberturas + "</td><td class='num'>" + m.cliques +
+        "</td><td class='mono' style='font-size:12.5px'>" +
+        (m.quando || "").replace("T", " ").slice(0, 16) + "</td>";
+      tb.appendChild(tr);
+    });
+    txt("envios-nota", "Mostrando " + Math.min(sg.mensagens.length, 60) + " de " +
+        sg.mensagens.length + " mensagens do remetente da prospecção.");
+  } else {
+    txt("envios-nota", "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
+        "sairam pelo Gmail e por isso nao aparecem aqui.");
+  }
+
+  if (sg.series && sg.series.length) {
+    document.getElementById("sec-serie").hidden = false;
+    var ts = document.getElementById("serie");
+    sg.series.slice().reverse().forEach(function(s){
+      if (!s.entregues && !s.aberturas && !s.bounces) return;
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td class='mono'>" + s.data.split("-").reverse().join("/") +
+        "</td><td class='num'>" + s.entregues + "</td><td class='num'>" + s.aberturas +
+        "</td><td class='num'>" + s.cliques + "</td><td class='num'>" + s.bounces +
+        "</td><td class='num'>" + s.spam + "</td>";
+      ts.appendChild(tr);
+    });
+  }
+}
+</script>

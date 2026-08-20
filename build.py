@@ -15,6 +15,7 @@ LOGO = os.path.join(SRC, "logo_intelecto.jpg")
 # template → caminho de saída dentro de public/
 PAGINAS = {
     "camaras.template.html": "index.html",
+    "painel.template.html": "painel/index.html",   # area restrita (Basic Auth no server.js)
 }
 
 CABECA = """<!DOCTYPE html>
