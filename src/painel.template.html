@@ -173,7 +173,7 @@ footer a{color:var(--azure)}
   </div>
   <div class="tabela">
     <table>
-      <thead><tr><th>UF</th><th>Município</th><th>Endereço usado</th><th>Toque 1</th></tr></thead>
+      <thead><tr><th>UF</th><th>Município</th><th>Endereço usado</th><th>Canal</th><th>Toque 1</th></tr></thead>
       <tbody id="abordagens"></tbody>
     </table>
   </div>
@@ -246,6 +246,7 @@ function desenhar(d){
     var tr = document.createElement("tr");
     tr.innerHTML = "<td class='mono'>" + a.uf + "</td><td>" + a.municipio +
       "</td><td class='mono' style='font-size:13px'>" + a.email +
+      "</td><td class='mono' style='font-size:12.5px'>" + (a.canal || "") +
       "</td><td><span class='chip feito'>" + a.data.split("-").reverse().join("/") + "</span></td>";
     tb.appendChild(tr);
   });

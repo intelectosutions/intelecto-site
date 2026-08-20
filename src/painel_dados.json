@@ -50,8 +50,8 @@
  "cobertura": {
   "camaras_com_contato": 236,
   "leads_email_pessoal": 40,
-  "abordadas": 20,
-  "restantes": 462
+  "abordadas": 68,
+  "restantes": 414
  },
  "abordagens": [
   {
@@ -59,140 +59,544 @@
    "uf": "MG",
    "dominio": "alpinopolis.mg.leg.br",
    "email": "camara_alpinopolis@yahoo.com.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Alto Rio Doce",
+   "uf": "MG",
+   "dominio": "altoriodoce.mg.leg.br",
+   "email": "camaramunicipal@altoriodoce.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Andradas",
    "uf": "MG",
    "dominio": "andradas.mg.leg.br",
    "email": "camara@andradas.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Araguari",
    "uf": "MG",
    "dominio": "araguari.mg.leg.br",
    "email": "ouvidoria@araguari.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Araporã",
    "uf": "MG",
    "dominio": "arapora.mg.leg.br",
    "email": "assessoriacamaraarapora@gmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Arapuá",
    "uf": "MG",
    "dominio": "arapua.mg.leg.br",
    "email": "camara.arapua@hotmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Bicas",
+   "uf": "MG",
+   "dominio": "bicas.mg.leg.br",
+   "email": "camara@bicas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Bom Jardim de Minas",
+   "uf": "MG",
+   "dominio": "bomjardimdeminas.mg.leg.br",
+   "email": "camara@bomjardimdeminas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Bonfinópolis de Minas",
    "uf": "MG",
    "dominio": "bonfinopolisdeminas.mg.leg.br",
    "email": "camara.bonfin@outlook.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Botelhos",
    "uf": "MG",
    "dominio": "botelhos.mg.leg.br",
    "email": "assessoriacam@botelhos.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Brasilândia de Minas",
+   "uf": "MG",
+   "dominio": "brasilandiademinas.mg.leg.br",
+   "email": "contato@brasilandiademinas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Brasília de Minas",
    "uf": "MG",
    "dominio": "brasiliademinas.mg.leg.br",
    "email": "camarabrasiliademinas@yahoo.com.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Brazópolis",
+   "uf": "MG",
+   "dominio": "brazopolis.mg.leg.br",
+   "email": "sec.executivo@brazopolis.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Buritis",
    "uf": "MG",
    "dominio": "buritis.mg.leg.br",
    "email": "camaraburitismg@gmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Cabeceira Grande",
+   "uf": "MG",
+   "dominio": "cabeceiragrande.mg.leg.br",
+   "email": "camara@cabeceiragrande.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Campina Verde",
    "uf": "MG",
    "dominio": "campinaverde.mg.leg.br",
    "email": "camaramunicipalcv@yahoo.com.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Campos Altos",
    "uf": "MG",
    "dominio": "camposaltos.mg.leg.br",
    "email": "camara@camposaltos.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Cana Verde",
+   "uf": "MG",
+   "dominio": "canaverde.mg.leg.br",
+   "email": "contato@canaverde.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Capitólio",
    "uf": "MG",
    "dominio": "capitolio.mg.leg.br",
    "email": "camara@capitolio.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Caputira",
    "uf": "MG",
    "dominio": "caputira.mg.leg.br",
    "email": "camaracaputira@gmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Careaçu",
+   "uf": "MG",
+   "dominio": "careacu.mg.leg.br",
+   "email": "camara@careacu.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Carmo da Mata",
+   "uf": "MG",
+   "dominio": "carmodamata.mg.leg.br",
+   "email": "camara@carmodamata.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Carmo do Paranaíba",
    "uf": "MG",
    "dominio": "carmodoparanaiba.mg.leg.br",
    "email": "camaracarmodoparanaiba@hotmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Carneirinho",
+   "uf": "MG",
+   "dominio": "carneirinho.mg.leg.br",
+   "email": "secretaria@carneirinho.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Chapada Gaúcha",
    "uf": "MG",
    "dominio": "chapadagaucha.mg.leg.br",
    "email": "camaracmcg@gmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Congonhas",
    "uf": "MG",
    "dominio": "congonhas.mg.leg.br",
    "email": "camara@congonhas.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Conselheiro Lafaiete",
    "uf": "MG",
    "dominio": "conselheirolafaiete.mg.leg.br",
    "email": "camara@conselheirolafaiete.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
   },
   {
    "municipio": "Coromandel",
    "uf": "MG",
    "dominio": "coromandel.mg.leg.br",
    "email": "camara@coromandel.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Coronel Fabriciano",
+   "uf": "MG",
+   "dominio": "coronelfabriciano.mg.leg.br",
+   "email": "secretaria@coronelfabriciano.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Delfim Moreira",
+   "uf": "MG",
+   "dominio": "delfimmoreira.mg.leg.br",
+   "email": "camara@delfimmoreira.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "Divinópolis",
    "uf": "MG",
    "dominio": "divinopolis.mg.leg.br",
    "email": "camara@divinopolis.mg.leg.br",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Dom Bosco",
+   "uf": "MG",
+   "dominio": "dombosco.mg.leg.br",
+   "email": "administrativo@dombosco.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Entre Rios de Minas",
+   "uf": "MG",
+   "dominio": "entreriosdeminas.mg.leg.br",
+   "email": "camara@entreriosdeminas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Espera Feliz",
+   "uf": "MG",
+   "dominio": "esperafeliz.mg.leg.br",
+   "email": "camara@esperafeliz.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Goianá",
+   "uf": "MG",
+   "dominio": "goiana.mg.leg.br",
+   "email": "camara@goiana.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ibiá",
+   "uf": "MG",
+   "dominio": "ibia.mg.leg.br",
+   "email": "camara@ibia.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Indianópolis",
+   "uf": "MG",
+   "dominio": "indianopolis.mg.leg.br",
+   "email": "camara@indianopolis.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ipanema",
+   "uf": "MG",
+   "dominio": "ipanema.mg.leg.br",
+   "email": "secretaria@ipanema.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itabirito",
+   "uf": "MG",
+   "dominio": "itabirito.mg.leg.br",
+   "email": "camara@itabirito.cam.mg.gov.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itapeva",
+   "uf": "MG",
+   "dominio": "itapeva.mg.leg.br",
+   "email": "camara@camaraitapeva.mg.gov.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itaú de Minas",
+   "uf": "MG",
+   "dominio": "itaudeminas.mg.leg.br",
+   "email": "imprensa@itaudeminas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itueta",
+   "uf": "MG",
+   "dominio": "itueta.mg.leg.br",
+   "email": "camara@itueta.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Iturama",
+   "uf": "MG",
+   "dominio": "iturama.mg.leg.br",
+   "email": "secretaria@iturama.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jacuí",
+   "uf": "MG",
+   "dominio": "jacui.mg.leg.br",
+   "email": "camara@jacui.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Januária",
+   "uf": "MG",
+   "dominio": "januaria.mg.leg.br",
+   "email": "secretaria@januaria.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Japaraíba",
+   "uf": "MG",
+   "dominio": "japaraiba.mg.leg.br",
+   "email": "camaramunicipal@japaraiba.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "João Monlevade",
+   "uf": "MG",
+   "dominio": "joaomonlevade.mg.leg.br",
+   "email": "comunicacao@joaomonlevade.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   },
   {
    "municipio": "João Pinheiro",
    "uf": "MG",
    "dominio": "joaopinheiro.mg.leg.br",
    "email": "camaramjp@gmail.com",
-   "data": "2026-08-20"
+   "data": "2026-08-20",
+   "canal": "Gmail"
+  },
+  {
+   "municipio": "Lagoa da Prata",
+   "uf": "MG",
+   "dominio": "lagoadaprata.mg.leg.br",
+   "email": "cidadao@lagoadaprata.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Lima Duarte",
+   "uf": "MG",
+   "dominio": "limaduarte.mg.leg.br",
+   "email": "cac@limaduarte.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Limeira do Oeste",
+   "uf": "MG",
+   "dominio": "limeiradooeste.mg.leg.br",
+   "email": "comunicacao@limeiradooeste.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Manhuaçu",
+   "uf": "MG",
+   "dominio": "manhuacu.mg.leg.br",
+   "email": "secretaria@manhuacu.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Manhumirim",
+   "uf": "MG",
+   "dominio": "manhumirim.mg.leg.br",
+   "email": "camara@manhumirim.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Matias Barbosa",
+   "uf": "MG",
+   "dominio": "matiasbarbosa.mg.leg.br",
+   "email": "diretoria@matiasbarbosa.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Matozinhos",
+   "uf": "MG",
+   "dominio": "matozinhos.mg.leg.br",
+   "email": "camara@matozinhos.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Monte Azul",
+   "uf": "MG",
+   "dominio": "monteazul.mg.leg.br",
+   "email": "alex@monteazul.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mário Campos",
+   "uf": "MG",
+   "dominio": "mariocampos.mg.leg.br",
+   "email": "faleconosco@mariocampos.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Natalândia",
+   "uf": "MG",
+   "dominio": "natalandia.mg.leg.br",
+   "email": "camaranatalandialeg@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Natércia",
+   "uf": "MG",
+   "dominio": "natercia.mg.leg.br",
+   "email": "camara@natercia.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Olaria",
+   "uf": "MG",
+   "dominio": "olaria.mg.leg.br",
+   "email": "camaramunicipaldeolaria@yahoo.com.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pains",
+   "uf": "MG",
+   "dominio": "pains.mg.leg.br",
+   "email": "camara@pains.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Papagaios",
+   "uf": "MG",
+   "dominio": "papagaios.mg.leg.br",
+   "email": "cmpapagaiosmg@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pedralva",
+   "uf": "MG",
+   "dominio": "pedralva.mg.leg.br",
+   "email": "secretariacmp@pedralva.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pedrinópolis",
+   "uf": "MG",
+   "dominio": "pedrinopolis.mg.leg.br",
+   "email": "camara@pedrinopolis.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pedro Leopoldo",
+   "uf": "MG",
+   "dominio": "pedroleopoldo.mg.leg.br",
+   "email": "camarapl@pedroleopoldo.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Prata",
+   "uf": "MG",
+   "dominio": "prata.mg.leg.br",
+   "email": "ouvidoria@prata.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Doce",
+   "uf": "MG",
+   "dominio": "riodoce.mg.leg.br",
+   "email": "camara@riodoce.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Pardo de Minas",
+   "uf": "MG",
+   "dominio": "riopardodeminas.mg.leg.br",
+   "email": "atendimento@riopardodeminas.mg.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
   }
  ],
  "envios_sendgrid": {
