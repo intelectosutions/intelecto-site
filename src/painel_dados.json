@@ -196,8 +196,11 @@
   }
  ],
  "envios_sendgrid": {
-  "ENVIADO": 29,
-  "OPTOUT": 1
+  "ENVIADO": 48,
+  "BLOQUEADO": 500,
+  "OPTOUT": 1,
+  "BOUNCE": 500,
+  "SPAM": 122
  },
  "pipeline": [
   {
