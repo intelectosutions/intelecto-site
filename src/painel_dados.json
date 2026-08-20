@@ -50,8 +50,8 @@
  "cobertura": {
   "camaras_com_contato": 236,
   "leads_email_pessoal": 40,
-  "abordadas": 88,
-  "restantes": 394
+  "abordadas": 120,
+  "restantes": 362
  },
  "abordagens": [
   {
@@ -751,6 +751,262 @@
    "canal": "SendGrid"
   },
   {
+   "municipio": "Araucária",
+   "uf": "PR",
+   "dominio": "araucaria.pr.leg.br",
+   "email": "protocolo@araucaria.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Bela Vista da Caroba",
+   "uf": "PR",
+   "dominio": "belavistadacaroba.pr.leg.br",
+   "email": "camara@belavistadacaroba.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Califórnia",
+   "uf": "PR",
+   "dominio": "california.pr.leg.br",
+   "email": "ouvidoria@california.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cambira",
+   "uf": "PR",
+   "dominio": "cambira.pr.leg.br",
+   "email": "cambiracamara@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Campina Grande do Sul",
+   "uf": "PR",
+   "dominio": "campinagrandedosul.pr.leg.br",
+   "email": "3676-1077contato@campinagrandedosul.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Campo Magro",
+   "uf": "PR",
+   "dominio": "campomagro.pr.leg.br",
+   "email": "camaramunicipaldecampomagro@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Capanema",
+   "uf": "PR",
+   "dominio": "capanema.pr.leg.br",
+   "email": "secretarialegislativa@capanema.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Carambeí",
+   "uf": "PR",
+   "dominio": "carambei.pr.leg.br",
+   "email": "camara@carambei.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Corbélia",
+   "uf": "PR",
+   "dominio": "corbelia.pr.leg.br",
+   "email": "camara@corbelia.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cruzmaltina",
+   "uf": "PR",
+   "dominio": "cruzmaltina.pr.leg.br",
+   "email": "camaracruzmaltina@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Entre Rios do Oeste",
+   "uf": "PR",
+   "dominio": "entreriosdooeste.pr.leg.br",
+   "email": "camaramunicipal@entreriosdooeste.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Fazenda Rio Grande",
+   "uf": "PR",
+   "dominio": "fazendariogrande.pr.leg.br",
+   "email": "contato@fazendariogrande.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Formosa do Oeste",
+   "uf": "PR",
+   "dominio": "formosadooeste.pr.leg.br",
+   "email": "camara@formosadooeste.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Francisco Beltrão",
+   "uf": "PR",
+   "dominio": "franciscobeltrao.pr.leg.br",
+   "email": "cmfb@franciscobeltrao.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Fênix",
+   "uf": "PR",
+   "dominio": "fenix.pr.leg.br",
+   "email": "secretariacamara@fenix.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Guaíra",
+   "uf": "PR",
+   "dominio": "guaira.pr.leg.br",
+   "email": "camara@guaira.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Icaraíma",
+   "uf": "PR",
+   "dominio": "icaraima.pr.leg.br",
+   "email": "camara@icaraima.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Imbaú",
+   "uf": "PR",
+   "dominio": "imbau.pr.leg.br",
+   "email": "imbau@imbau.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Irati",
+   "uf": "PR",
+   "dominio": "irati.pr.leg.br",
+   "email": "protocolo@irati.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itaúna do Sul",
+   "uf": "PR",
+   "dominio": "itaunadosul.pr.leg.br",
+   "email": "contato@itaunadosul.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jaguapitã",
+   "uf": "PR",
+   "dominio": "jaguapita.pr.leg.br",
+   "email": "secretaria@jaguapita.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jardim Alegre",
+   "uf": "PR",
+   "dominio": "jardimalegre.pr.leg.br",
+   "email": "cmja@jardimalegre.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jataizinho",
+   "uf": "PR",
+   "dominio": "jataizinho.pr.leg.br",
+   "email": "camara@jataizinho.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Lapa",
+   "uf": "PR",
+   "dominio": "lapa.pr.leg.br",
+   "email": "camara@lapa.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Leópolis",
+   "uf": "PR",
+   "dominio": "leopolis.pr.leg.br",
+   "email": "camara@leopolis.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mandaguaçu",
+   "uf": "PR",
+   "dominio": "mandaguacu.pr.leg.br",
+   "email": "contato@mandaguacu.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Manfrinópolis",
+   "uf": "PR",
+   "dominio": "manfrinopolis.pr.leg.br",
+   "email": "secretaria@manfrinopolis.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Marechal Cândido Rondon",
+   "uf": "PR",
+   "dominio": "marechalcandidorondon.pr.leg.br",
+   "email": "secretaria@marechalcandidorondon.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Marilândia do Sul",
+   "uf": "PR",
+   "dominio": "marilandiadosul.pr.leg.br",
+   "email": "ouvidoria@marilandiadosul.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mariópolis",
+   "uf": "PR",
+   "dominio": "mariopolis.pr.leg.br",
+   "email": "camara@mariopolis.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Matelândia",
+   "uf": "PR",
+   "dominio": "matelandia.pr.leg.br",
+   "email": "camaramatelandia@gmail.com",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mato Rico",
+   "uf": "PR",
+   "dominio": "matorico.pr.leg.br",
+   "email": "camara@matorico.pr.leg.br",
+   "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
    "municipio": "Ângulo",
    "uf": "PR",
    "dominio": "angulo.pr.leg.br",
@@ -760,7 +1016,7 @@
   }
  ],
  "envios_sendgrid": {
-  "ENVIADO": 68,
+  "ENVIADO": 100,
   "BLOQUEADO": 500,
   "OPTOUT": 1,
   "BOUNCE": 500,
@@ -1077,7 +1333,7 @@
    "confianca": "alta",
    "email": "camaracruzmaltina@gmail.com",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1089,7 +1345,7 @@
    "confianca": "alta",
    "email": "camara@guaira.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1101,7 +1357,7 @@
    "confianca": "alta",
    "email": "secretaria@manfrinopolis.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1113,7 +1369,7 @@
    "confianca": "alta",
    "email": "secretaria@marechalcandidorondon.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1437,7 +1693,7 @@
    "confianca": "baixa",
    "email": "imbau@imbau.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1449,7 +1705,7 @@
    "confianca": "baixa",
    "email": "camara@leopolis.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1540,7 +1796,7 @@
   "total": 64,
   "alta": 41,
   "conferir": 23,
-  "ja_abordadas": 38
+  "ja_abordadas": 44
  },
  "pipeline": [
   {
