@@ -362,8 +362,13 @@ function desenhar(d){
   var wr = d.whatsapp_resumo || {total:0, alta:0, conferir:0, ja_abordadas:0};
   txt("wa-estado", wr.total + " câmaras");
   var wk = document.getElementById("wa-kpis");
+  var jaProposta = wa.filter(function(w){
+    var sa = function(x){ return (x||"").toLowerCase().normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, ""); };
+    return (d.municipios_com_proposta || []).map(sa).indexOf(sa(w.municipio)) !== -1;
+  }).length;
   [["Com WhatsApp", wr.total, ""], ["Confirmados", wr.alta, "ok"],
-   ["A conferir", wr.conferir, "destaque"], ["Já receberam e-mail", wr.ja_abordadas, ""]]
+   ["A conferir", wr.conferir, "destaque"], ["Já viraram proposta", jaProposta, "ok"]]
    .forEach(function(k){
     var el = document.createElement("div");
     el.className = "kpi" + (k[2] ? " " + k[2] : "");
@@ -380,14 +385,20 @@ function desenhar(d){
       "nem o SAPL: https://camaras.intelecto.solutions";
     var href = "https://api.whatsapp.com/send/?phone=" + w.numero + "&text=" +
       encodeURIComponent(msg).replace(/%20/g, "+") + "&type=phone_number&app_absent=0";
+    var semAcento = function(x){ return (x||"").toLowerCase().normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, ""); };
+    var virouProposta = (d.municipios_com_proposta || [])
+      .map(semAcento).indexOf(semAcento(w.municipio)) !== -1;
     var chip = w.confianca === "alta"
       ? "<span class='chip feito'>confirmado</span>"
       : "<span class='chip aguarda'>a conferir</span>";
     if (w.fonte) chip += " <a href='" + w.fonte + "' target='_blank' rel='noopener' " +
       "class='label' style='color:var(--azure);text-decoration:underline'>fonte</a>";
     var tr = document.createElement("tr");
+    if (virouProposta) tr.className = "convertida";
     tr.innerHTML = "<td class='mono'>" + w.uf + "</td><td>" + w.municipio +
-      (w.abordado ? " <span class='label' style='color:var(--green)'>e-mail enviado</span>" : "") +
+      (virouProposta ? "" :
+        (w.abordado ? " <span class='label' style='color:var(--green)'>e-mail enviado</span>" : "")) +
       "</td><td class='mono'>" + w.formatado + "</td><td>" + chip +
       "</td><td class='mono' style='font-size:12.5px'>" + (w.email || "") +
       "</td><td><a class='wa-btn' target='_blank' rel='noopener' href='" + href +
@@ -434,9 +445,12 @@ function desenhar(d){
                  .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
       var tr = document.createElement("tr");
       if (dom && convertidos.indexOf(dom) !== -1) tr.className = "convertida";
+      var situacao = "<span class='chip " + cls + "'>" + m.status + "</span>";
+      if (m.motivo) situacao += "<br><span class='label' style='color:var(--amber);" +
+        "text-transform:none;letter-spacing:0'>" + m.motivo + "</span>";
       tr.innerHTML = "<td class='mono' style='font-size:13px'>" + m.para +
-        "</td><td><span class='chip " + cls + "'>" + m.status +
-        "</span></td><td class='num'>" + m.aberturas + "</td><td class='num'>" + m.cliques +
+        "</td><td>" + situacao +
+        "</td><td class='num'>" + m.aberturas + "</td><td class='num'>" + m.cliques +
         "</td><td class='mono' style='font-size:12.5px'>" + hora(m.quando) + "</td>";
       tb.appendChild(tr);
     });

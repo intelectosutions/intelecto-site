@@ -61,10 +61,27 @@ function diaISO(offset) {
   return d.toISOString().slice(0, 10);
 }
 
+async function motivosDeFalha() {
+  // um request por mensagem seria caro; as listas de supressao ja trazem o motivo
+  const motivos = {};
+  for (const rota of ["/suppression/bounces", "/suppression/blocks"]) {
+    try {
+      const lista = await sendgrid(rota + "?limit=500");
+      for (const b of lista || []) {
+        if (b.email) motivos[b.email.toLowerCase()] = (b.reason || "").slice(0, 120);
+      }
+    } catch (e) { /* motivo é complementar: sem ele o painel segue funcionando */ }
+  }
+  return motivos;
+}
+
 async function atividade() {
   // Email Activity: detalhe por destinatario, so do remetente da prospeccao
   const q = encodeURIComponent(`from_email="${REMETENTE}"`);
-  const d = await sendgrid(`/messages?limit=200&query=${q}`);
+  const [d, motivos] = await Promise.all([
+    sendgrid(`/messages?limit=200&query=${q}`),
+    motivosDeFalha(),
+  ]);
   const msgs = (d.messages || []).map((m) => ({
     para: m.to_email,
     assunto: m.subject,
@@ -72,6 +89,7 @@ async function atividade() {
     quando: m.last_event_time,
     aberturas: m.opens_count || 0,
     cliques: m.clicks_count || 0,
+    motivo: motivos[(m.to_email || "").toLowerCase()] || "",
   }));
   const resumo = { enviados: msgs.length, abriram: 0, clicaram: 0, falharam: 0 };
   for (const m of msgs) {
