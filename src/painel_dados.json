@@ -48,7 +48,7 @@
   ]
  },
  "cobertura": {
-  "camaras_com_contato": 236,
+  "camaras_com_contato": 482,
   "leads_email_pessoal": 40,
   "abordadas": 204,
   "restantes": 278
@@ -2469,6 +2469,13 @@
  },
  "pipeline": [
   {
+   "cliente": "Câmara de Carambeí/PR",
+   "oferta": "50 contas com migração",
+   "valor": 14700,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
    "cliente": "Câmara de Esteio/RS",
    "oferta": "35 contas com migração",
    "valor": 14700,
@@ -2476,18 +2483,11 @@
    "status": "Em tramitação interna"
   },
   {
-   "cliente": "Câmara de Ipanema/MG",
-   "oferta": "10 contas com migração",
-   "valor": 7500,
+   "cliente": "Câmara de Pradópolis/SP",
+   "oferta": "30 contas com migração",
+   "valor": 11700,
    "enviada": "21/08",
-   "status": "Respondeu por WhatsApp"
-  },
-  {
-   "cliente": "Câmara de Santa Margarida/MG",
-   "oferta": "20 contas com migração",
-   "valor": 9300,
-   "enviada": "21/08",
-   "status": "Respondeu por WhatsApp"
+   "status": "Proposta enviada"
   },
   {
    "cliente": "Câmara de Conceição do Coité/BA",
@@ -2497,29 +2497,78 @@
    "status": "Follow-up atrasado"
   },
   {
+   "cliente": "Câmara de Salmourão/SP",
+   "oferta": "20 contas com migração",
+   "valor": 9300,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
+   "cliente": "Câmara de Careaçu/MG",
+   "oferta": "20 contas com migração",
+   "valor": 9300,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
+   "cliente": "Câmara de Santa Margarida/MG",
+   "oferta": "20 contas com migração",
+   "valor": 9300,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
+   "cliente": "Câmara de Ipanema/MG",
+   "oferta": "10 contas com migração",
+   "valor": 7500,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
+   "cliente": "Câmara de Ribeirão Grande/SP",
+   "oferta": "7 contas com migração",
+   "valor": 7500,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
+   "cliente": "Câmara de Igrejinha/RS",
+   "oferta": "7 contas com migração",
+   "valor": 7500,
+   "enviada": "21/08",
+   "status": "Proposta enviada"
+  },
+  {
    "cliente": "Câmara de Luz/MG",
    "oferta": "10 contas",
    "valor": 6900,
    "enviada": "19/08",
    "status": "Follow-up atrasado"
+  },
+  {
+   "cliente": "Câmara de Heliodora/MG",
+   "oferta": "1 conta, implantação do zero",
+   "valor": 4100,
+   "enviada": "21/08",
+   "status": "Prazo do TCEMG correndo"
   }
  ],
  "agenda": [
   {
    "data": "25/08 (seg)",
-   "acao": "Follow-up das propostas de Ipanema e Santa Margarida (D+3)"
+   "acao": "Cobrar Luz e Coité, sem retorno desde 19/08"
   },
   {
    "data": "25/08 (seg)",
-   "acao": "Cobrar Luz e Coité, enviadas em 19/08 e ainda sem retorno"
+   "acao": "Follow-up das 10 propostas enviadas em 21/08 (D+3)"
   },
   {
    "data": "26/08 (ter)",
-   "acao": "Toque 2 nas câmaras abordadas que não responderam"
+   "acao": "Ligar para Varginha, que abriu o e-mail 7 vezes sem clicar"
   },
   {
-   "data": "28/08 (qui)",
-   "acao": "Ligações para os leads que abriram o e-mail mais de uma vez"
+   "data": "27/08 (qua)",
+   "acao": "Disparar a fila nacional: 207 câmaras em 27 UFs"
   }
  ]
 }
