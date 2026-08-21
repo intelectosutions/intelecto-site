@@ -50,8 +50,8 @@
  "cobertura": {
   "camaras_com_contato": 236,
   "leads_email_pessoal": 40,
-  "abordadas": 118,
-  "restantes": 364
+  "abordadas": 204,
+  "restantes": 278
  },
  "abordagens": [
   {
@@ -775,6 +775,14 @@
    "canal": "SendGrid"
   },
   {
+   "municipio": "Campina Grande do Sul",
+   "uf": "PR",
+   "dominio": "campinagrandedosul.pr.leg.br",
+   "email": "contato@campinagrandedosul.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
    "municipio": "Campo Magro",
    "uf": "PR",
    "dominio": "campomagro.pr.leg.br",
@@ -991,16 +999,696 @@
    "canal": "SendGrid"
   },
   {
+   "municipio": "Novo Itacolomi",
+   "uf": "PR",
+   "dominio": "novoitacolomi.pr.leg.br",
+   "email": "camara@novoitacolomi.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Palmeira",
+   "uf": "PR",
+   "dominio": "palmeira.pr.leg.br",
+   "email": "camaramunicipal@palmeira.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pato Branco",
+   "uf": "PR",
+   "dominio": "patobranco.pr.leg.br",
+   "email": "ouvidoria@patobranco.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Paula Freitas",
+   "uf": "PR",
+   "dominio": "paulafreitas.pr.leg.br",
+   "email": "cm@paulafreitas.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pinhão",
+   "uf": "PR",
+   "dominio": "pinhao.pr.leg.br",
+   "email": "camarapho@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Piraquara",
+   "uf": "PR",
+   "dominio": "piraquara.pr.leg.br",
+   "email": "sic@piraquara.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pitanga",
+   "uf": "PR",
+   "dominio": "pitanga.pr.leg.br",
+   "email": "camara@pitanga.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ponta Grossa",
+   "uf": "PR",
+   "dominio": "pontagrossa.pr.leg.br",
+   "email": "cerimonial@pontagrossa.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pontal do Paraná",
+   "uf": "PR",
+   "dominio": "pontaldoparana.pr.leg.br",
+   "email": "administrativo@pontaldoparana.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Bom",
+   "uf": "PR",
+   "dominio": "riobom.pr.leg.br",
+   "email": "riobom@riobom.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Branco do Sul",
+   "uf": "PR",
+   "dominio": "riobrancodosul.pr.leg.br",
+   "email": "camara@riobrancodosul.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Negro",
+   "uf": "PR",
+   "dominio": "rionegro.pr.leg.br",
+   "email": "cmrn@rionegro.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Roncador",
+   "uf": "PR",
+   "dominio": "roncador.pr.leg.br",
+   "email": "camara@roncador.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santa Lúcia",
+   "uf": "PR",
+   "dominio": "santalucia.pr.leg.br",
+   "email": "camsalu@yahoo.com.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santa Mônica",
+   "uf": "PR",
+   "dominio": "santamonica.pr.leg.br",
+   "email": "camara.procuradoriajuridica@santamonica.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santana do Itararé",
+   "uf": "PR",
+   "dominio": "santanadoitarare.pr.leg.br",
+   "email": "contato@santanadoitarare.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santo Antônio da Platina",
+   "uf": "PR",
+   "dominio": "santoantoniodaplatina.pr.leg.br",
+   "email": "protocolo@santoantoniodaplatina.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santo Antônio do Paraíso",
+   "uf": "PR",
+   "dominio": "santoantoniodoparaiso.pr.leg.br",
+   "email": "cmsap@santoantoniodoparaiso.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santo Antônio do Sudoeste",
+   "uf": "PR",
+   "dominio": "santoantoniodosudoeste.pr.leg.br",
+   "email": "assessoria@santoantoniodosudoeste.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Saudade do Iguaçu",
+   "uf": "PR",
+   "dominio": "saudadedoiguacu.pr.leg.br",
+   "email": "legislativo@saudadedoiguacu.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Tamarana",
+   "uf": "PR",
+   "dominio": "tamarana.pr.leg.br",
+   "email": "cmtamarana@tamarana.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Telêmaco Borba",
+   "uf": "PR",
+   "dominio": "telemacoborba.pr.leg.br",
+   "email": "camara@telemacoborba.pr.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Terra Boa",
+   "uf": "PR",
+   "dominio": "terraboa.pr.leg.br",
+   "email": "camaratb@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ventania",
+   "uf": "PR",
+   "dominio": "ventania.pr.leg.br",
+   "email": "cmventania@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
    "municipio": "Ângulo",
    "uf": "PR",
    "dominio": "angulo.pr.leg.br",
    "email": "administrativo@angulo.pr.leg.br",
    "data": "2026-08-20",
    "canal": "SendGrid"
+  },
+  {
+   "municipio": "Aceguá",
+   "uf": "RS",
+   "dominio": "acegua.rs.leg.br",
+   "email": "camaraacegua@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Agudo",
+   "uf": "RS",
+   "dominio": "agudo.rs.leg.br",
+   "email": "camara@agudo.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Arroio dos Ratos",
+   "uf": "RS",
+   "dominio": "arroiodosratos.rs.leg.br",
+   "email": "secretaria@arroiodosratos.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barra do Quaraí",
+   "uf": "RS",
+   "dominio": "barradoquarai.rs.leg.br",
+   "email": "camara@barradoquarai.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barra do Ribeiro",
+   "uf": "RS",
+   "dominio": "barradoribeiro.rs.leg.br",
+   "email": "atendimento@barradoribeiro.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barão",
+   "uf": "RS",
+   "dominio": "barao.rs.leg.br",
+   "email": "atendimento@barao.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cachoeira do Sul",
+   "uf": "RS",
+   "dominio": "cachoeiradosul.rs.leg.br",
+   "email": "camaradevereadores@cachoeiradosul.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cambará do Sul",
+   "uf": "RS",
+   "dominio": "cambaradosul.rs.leg.br",
+   "email": "camara@cambaradosul.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Crissiumal",
+   "uf": "RS",
+   "dominio": "crissiumal.rs.leg.br",
+   "email": "camara@crissiumal.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Encruzilhada do Sul",
+   "uf": "RS",
+   "dominio": "encruzilhadadosul.rs.leg.br",
+   "email": "assessoriaadmin@encruzilhadadosul.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Erechim",
+   "uf": "RS",
+   "dominio": "erechim.rs.leg.br",
+   "email": "camara@erechim.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Esteio",
+   "uf": "RS",
+   "dominio": "esteio.rs.leg.br",
+   "email": "camara.esteio@esteio.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Igrejinha",
+   "uf": "RS",
+   "dominio": "igrejinha.rs.leg.br",
+   "email": "secretaria@igrejinha.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Liberato Salzano",
+   "uf": "RS",
+   "dominio": "liberatosalzano.rs.leg.br",
+   "email": "secretaria@liberatosalzano.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mampituba",
+   "uf": "RS",
+   "dominio": "mampituba.rs.leg.br",
+   "email": "cm@mampituba.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Montenegro",
+   "uf": "RS",
+   "dominio": "montenegro.rs.leg.br",
+   "email": "camara@montenegro.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mostardas",
+   "uf": "RS",
+   "dominio": "mostardas.rs.leg.br",
+   "email": "atendimento@mostardas.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Palmeira das Missões",
+   "uf": "RS",
+   "dominio": "palmeiradasmissoes.rs.leg.br",
+   "email": "presidencia@palmeiradasmissoes.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pareci Novo",
+   "uf": "RS",
+   "dominio": "parecinovo.rs.leg.br",
+   "email": "camara@parecinovo.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Quatro Irmãos",
+   "uf": "RS",
+   "dominio": "quatroirmaos.rs.leg.br",
+   "email": "ouvidoria@quatroirmaos.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ronda Alta",
+   "uf": "RS",
+   "dominio": "rondaalta.rs.leg.br",
+   "email": "camara@rondaalta.rs.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Sant'Ana do Livramento",
+   "uf": "RS",
+   "dominio": "santanadolivramento.rs.leg.br",
+   "email": "secretariacamaralivramento@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São Jerônimo",
+   "uf": "RS",
+   "dominio": "saojeronimo.rs.leg.br",
+   "email": "ouvidoria@saojeronimo.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "dominio": "saosebastiaodocai.rs.leg.br",
+   "email": "camara@saosebastiaodocai.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Uruguaiana",
+   "uf": "RS",
+   "dominio": "uruguaiana.rs.leg.br",
+   "email": "contato@uruguaiana.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Xangri-lá",
+   "uf": "RS",
+   "dominio": "xangrila.rs.leg.br",
+   "email": "atendimento@xangrila.rs.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Adamantina",
+   "uf": "SP",
+   "dominio": "adamantina.sp.leg.br",
+   "email": "cmadamantina@camaraadamantina.sp.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Araçatuba",
+   "uf": "SP",
+   "dominio": "aracatuba.sp.leg.br",
+   "email": "administrativo@camaraaracatuba.sp.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Bananal",
+   "uf": "SP",
+   "dominio": "bananal.sp.leg.br",
+   "email": "camarabananal@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barrinha",
+   "uf": "SP",
+   "dominio": "barrinha.sp.leg.br",
+   "email": "camara@barrinha.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Caconde",
+   "uf": "SP",
+   "dominio": "caconde.sp.leg.br",
+   "email": "camara@caconde.sp.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cunha",
+   "uf": "SP",
+   "dominio": "cunha.sp.leg.br",
+   "email": "gabinete@cunha.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Espírito Santo do Turvo",
+   "uf": "SP",
+   "dominio": "espiritosantodoturvo.sp.leg.br",
+   "email": "secretaria@espiritosantodoturvo.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Fernão",
+   "uf": "SP",
+   "dominio": "fernao.sp.leg.br",
+   "email": "camara@fernao.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Garça",
+   "uf": "SP",
+   "dominio": "garca.sp.leg.br",
+   "email": "camara@garca.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Gália",
+   "uf": "SP",
+   "dominio": "galia.sp.leg.br",
+   "email": "camara@galia.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Iaras",
+   "uf": "SP",
+   "dominio": "iaras.sp.leg.br",
+   "email": "contato@iaras.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Igarapava",
+   "uf": "SP",
+   "dominio": "igarapava.sp.leg.br",
+   "email": "atendimento@igarapava.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Iguape",
+   "uf": "SP",
+   "dominio": "iguape.sp.leg.br",
+   "email": "camara@iguape.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ilha Comprida",
+   "uf": "SP",
+   "dominio": "ilhacomprida.sp.leg.br",
+   "email": "camara@ilhacomprida.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Indiaporã",
+   "uf": "SP",
+   "dominio": "indiapora.sp.leg.br",
+   "email": "camaraindiapora@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ipiguá",
+   "uf": "SP",
+   "dominio": "ipigua.sp.leg.br",
+   "email": "contato@ipigua.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itapuí",
+   "uf": "SP",
+   "dominio": "itapui.sp.leg.br",
+   "email": "secretaria@itapui.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Juquitiba",
+   "uf": "SP",
+   "dominio": "juquitiba.sp.leg.br",
+   "email": "cmj@juquitiba.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Laranjal Paulista",
+   "uf": "SP",
+   "dominio": "laranjalpaulista.sp.leg.br",
+   "email": "ouvidoria@laranjalpaulista.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Lourdes",
+   "uf": "SP",
+   "dominio": "lourdes.sp.leg.br",
+   "email": "lourdes@lourdes.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Miguelópolis",
+   "uf": "SP",
+   "dominio": "miguelopolis.sp.leg.br",
+   "email": "camara@miguelopolis.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Parisi",
+   "uf": "SP",
+   "dominio": "parisi.sp.leg.br",
+   "email": "camara@parisi.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Piedade",
+   "uf": "SP",
+   "dominio": "piedade.sp.leg.br",
+   "email": "contato@piedade.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pirapora do Bom Jesus",
+   "uf": "SP",
+   "dominio": "piraporadobomjesus.sp.leg.br",
+   "email": "contato@piraporadobomjesus.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Planalto",
+   "uf": "SP",
+   "dominio": "planalto.sp.leg.br",
+   "email": "administrativanelmachaves@planalto.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pradópolis",
+   "uf": "SP",
+   "dominio": "pradopolis.sp.leg.br",
+   "email": "camara@pradopolis.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Registro",
+   "uf": "SP",
+   "dominio": "registro.sp.leg.br",
+   "email": "ouvidoria@registro.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ribeirão Grande",
+   "uf": "SP",
+   "dominio": "ribeiraogrande.sp.leg.br",
+   "email": "ouvidoria@ribeiraogrande.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Salmourão",
+   "uf": "SP",
+   "dominio": "salmourao.sp.leg.br",
+   "email": "camara@salmourao.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santo Antônio da Alegria",
+   "uf": "SP",
+   "dominio": "santoantoniodaalegria.sp.leg.br",
+   "email": "contato@santoantoniodaalegria.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Serrana",
+   "uf": "SP",
+   "dominio": "serrana.sp.leg.br",
+   "email": "camara@serrana.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Taguaí",
+   "uf": "SP",
+   "dominio": "taguai.sp.leg.br",
+   "email": "contato@taguai.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Tietê",
+   "uf": "SP",
+   "dominio": "tiete.sp.leg.br",
+   "email": "adriano@tiete.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Votorantim",
+   "uf": "SP",
+   "dominio": "votorantim.sp.leg.br",
+   "email": "imprensa@votorantim.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Álvares Machado",
+   "uf": "SP",
+   "dominio": "alvaresmachado.sp.leg.br",
+   "email": "camara@alvaresmachado.sp.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
   }
  ],
  "envios_sendgrid": {
-  "ENVIADO": 98,
+  "ENVIADO": 184,
   "BLOQUEADO": 2
  },
  "whatsapp": [
@@ -1362,7 +2050,7 @@
    "confianca": "alta",
    "email": "ouvidoria@patobranco.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1374,7 +2062,7 @@
    "confianca": "alta",
    "email": "sic@piraquara.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1386,7 +2074,7 @@
    "confianca": "alta",
    "email": "alex.albergoni@santanadoitarare.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1398,7 +2086,7 @@
    "confianca": "alta",
    "email": "cmventania@gmail.com",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1410,7 +2098,7 @@
    "confianca": "alta",
    "email": "secretaria@arroiodosratos.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1422,7 +2110,7 @@
    "confianca": "alta",
    "email": "camara@crissiumal.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1434,7 +2122,7 @@
    "confianca": "alta",
    "email": "secretaria@igrejinha.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1446,7 +2134,7 @@
    "confianca": "alta",
    "email": "camara@saosebastiaodocai.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1458,7 +2146,7 @@
    "confianca": "alta",
    "email": "contato@uruguaiana.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "SP",
@@ -1470,7 +2158,7 @@
    "confianca": "alta",
    "email": "secretaria@itapui.sp.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "SP",
@@ -1482,7 +2170,7 @@
    "confianca": "alta",
    "email": "cmj@juquitiba.sp.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "SP",
@@ -1494,7 +2182,7 @@
    "confianca": "alta",
    "email": "contato@piedade.sp.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "MG",
@@ -1542,7 +2230,7 @@
    "confianca": "media",
    "email": "administrativo@pontaldoparana.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "MG",
@@ -1698,7 +2386,7 @@
    "confianca": "baixa",
    "email": "camara@roncador.pr.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "PR",
@@ -1710,7 +2398,7 @@
    "confianca": "baixa",
    "email": "camsalu@yahoo.com.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1722,7 +2410,7 @@
    "confianca": "baixa",
    "email": "camaraacegua@gmail.com",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1734,7 +2422,7 @@
    "confianca": "baixa",
    "email": "camara@montenegro.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "RS",
@@ -1746,7 +2434,7 @@
    "confianca": "baixa",
    "email": "atendimento@mostardas.rs.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "SP",
@@ -1758,7 +2446,7 @@
    "confianca": "baixa",
    "email": "administrativo@camaraaracatuba.sp.gov.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   },
   {
    "uf": "SP",
@@ -1770,14 +2458,14 @@
    "confianca": "baixa",
    "email": "ouvidoria@registro.sp.leg.br",
    "fonte": "",
-   "abordado": false
+   "abordado": true
   }
  ],
  "whatsapp_resumo": {
   "total": 64,
   "alta": 41,
   "conferir": 23,
-  "ja_abordadas": 43
+  "ja_abordadas": 63
  },
  "pipeline": [
   {
