@@ -1,5 +1,5 @@
 {
- "atualizado": "20/08/2026",
+ "atualizado": "21/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -50,8 +50,8 @@
  "cobertura": {
   "camaras_com_contato": 236,
   "leads_email_pessoal": 40,
-  "abordadas": 120,
-  "restantes": 362
+  "abordadas": 118,
+  "restantes": 364
  },
  "abordagens": [
   {
@@ -663,14 +663,6 @@
    "canal": "SendGrid"
   },
   {
-   "municipio": "São João Nepomuceno",
-   "uf": "MG",
-   "dominio": "saojoaonepomuceno.mg.leg.br",
-   "email": "contato@camarasjn.mg.gov.br",
-   "data": "2026-08-20",
-   "canal": "SendGrid"
-  },
-  {
    "municipio": "São João da Mata",
    "uf": "MG",
    "dominio": "saojoaodamata.mg.leg.br",
@@ -779,14 +771,6 @@
    "uf": "PR",
    "dominio": "cambira.pr.leg.br",
    "email": "cambiracamara@gmail.com",
-   "data": "2026-08-20",
-   "canal": "SendGrid"
-  },
-  {
-   "municipio": "Campina Grande do Sul",
-   "uf": "PR",
-   "dominio": "campinagrandedosul.pr.leg.br",
-   "email": "3676-1077contato@campinagrandedosul.pr.leg.br",
    "data": "2026-08-20",
    "canal": "SendGrid"
   },
@@ -1016,11 +1000,8 @@
   }
  ],
  "envios_sendgrid": {
-  "ENVIADO": 100,
-  "BLOQUEADO": 500,
-  "OPTOUT": 1,
-  "BOUNCE": 500,
-  "SPAM": 122
+  "ENVIADO": 98,
+  "BLOQUEADO": 2
  },
  "whatsapp": [
   {
@@ -1669,7 +1650,7 @@
    "confianca": "baixa",
    "email": "contato@camarasjn.mg.gov.br",
    "fonte": "",
-   "abordado": true
+   "abordado": false
   },
   {
    "uf": "MG",
@@ -1796,36 +1777,54 @@
   "total": 64,
   "alta": 41,
   "conferir": 23,
-  "ja_abordadas": 44
+  "ja_abordadas": 43
  },
  "pipeline": [
   {
-   "cliente": "Câmara de Luz/MG",
-   "oferta": "10 contas",
-   "valor": 6900,
-   "enviada": "19/08",
-   "status": "Follow-up D+3 em 24/08"
+   "cliente": "Câmara de Ipanema/MG",
+   "oferta": "10 contas com migração",
+   "valor": 7500,
+   "enviada": "21/08",
+   "status": "Respondeu por WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Santa Margarida/MG",
+   "oferta": "20 contas com migração",
+   "valor": 9300,
+   "enviada": "21/08",
+   "status": "Respondeu por WhatsApp"
   },
   {
    "cliente": "Câmara de Conceição do Coité/BA",
    "oferta": "30 contas com migração",
    "valor": 11700,
    "enviada": "19/08",
-   "status": "Follow-up D+3 em 24/08"
+   "status": "Follow-up atrasado"
+  },
+  {
+   "cliente": "Câmara de Luz/MG",
+   "oferta": "10 contas",
+   "valor": 6900,
+   "enviada": "19/08",
+   "status": "Follow-up atrasado"
   }
  ],
  "agenda": [
   {
-   "data": "24/08 (seg)",
-   "acao": "Follow-up D+3 dos pilotos e das câmaras abordadas"
+   "data": "25/08 (seg)",
+   "acao": "Follow-up das propostas de Ipanema e Santa Margarida (D+3)"
   },
   {
-   "data": "26/08 (qua)",
-   "acao": "Toque 2 de quem não respondeu"
+   "data": "25/08 (seg)",
+   "acao": "Cobrar Luz e Coité, enviadas em 19/08 e ainda sem retorno"
   },
   {
-   "data": "28/08 (sex)",
-   "acao": "Toque 3, ligações e atualização do tracker"
+   "data": "26/08 (ter)",
+   "acao": "Toque 2 nas câmaras abordadas que não responderam"
+  },
+  {
+   "data": "28/08 (qui)",
+   "acao": "Ligações para os leads que abriram o e-mail mais de uma vez"
   }
  ]
 }
