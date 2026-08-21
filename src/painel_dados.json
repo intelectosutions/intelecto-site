@@ -50,10 +50,514 @@
  "cobertura": {
   "camaras_com_contato": 482,
   "leads_email_pessoal": 40,
-  "abordadas": 204,
-  "restantes": 278
+  "abordadas": 304,
+  "restantes": 178
  },
  "abordagens": [
+  {
+   "municipio": "Cruzeiro do Sul",
+   "uf": "AC",
+   "dominio": "cruzeirodosul.ac.leg.br",
+   "email": "camaraczs_ac@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Marechal Thaumaturgo",
+   "uf": "AC",
+   "dominio": "marechalthaumaturgo.ac.leg.br",
+   "email": "camarathau@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Branco",
+   "uf": "AC",
+   "dominio": "riobranco.ac.leg.br",
+   "email": "camara@riobranco.ac.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Japaratinga",
+   "uf": "AL",
+   "dominio": "japaratinga.al.leg.br",
+   "email": "camara@japaratinga.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Marechal Deodoro",
+   "uf": "AL",
+   "dominio": "marechaldeodoro.al.leg.br",
+   "email": "cmmdal@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Matriz de Camaragibe",
+   "uf": "AL",
+   "dominio": "matrizdecamaragibe.al.leg.br",
+   "email": "faleconosco@matrizdecamaragibe.al.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santa Luzia do Norte",
+   "uf": "AL",
+   "dominio": "santaluziadonorte.al.leg.br",
+   "email": "camara@santaluziadonorte.al.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Apuí",
+   "uf": "AM",
+   "dominio": "apui.am.leg.br",
+   "email": "camara.municipal@apui.am.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Boca do Acre",
+   "uf": "AM",
+   "dominio": "bocadoacre.am.leg.br",
+   "email": "camara.municipal@bocadoacre.am.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ipixuna",
+   "uf": "AM",
+   "dominio": "ipixuna.am.leg.br",
+   "email": "camara@ipixuna.am.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Iranduba",
+   "uf": "AM",
+   "dominio": "iranduba.am.leg.br",
+   "email": "manager@iranduba.am.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itacoatiara",
+   "uf": "AM",
+   "dominio": "itacoatiara.am.leg.br",
+   "email": "cmi.itacoatiara@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Manacapuru",
+   "uf": "AM",
+   "dominio": "manacapuru.am.leg.br",
+   "email": "camara@manacapuru.am.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Amapá",
+   "uf": "AP",
+   "dominio": "amapa.ap.leg.br",
+   "email": "cma@amapa.ap.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Calçoene",
+   "uf": "AP",
+   "dominio": "calcoene.ap.leg.br",
+   "email": "camara@calcoene.ap.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Laranjal do Jari",
+   "uf": "AP",
+   "dominio": "laranjaldojari.ap.leg.br",
+   "email": "cmlaranjaldojari@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Macapá",
+   "uf": "AP",
+   "dominio": "macapa.ap.leg.br",
+   "email": "ouvidoriacamaramunicipaldemaca@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Porto Grande",
+   "uf": "AP",
+   "dominio": "portogrande.ap.leg.br",
+   "email": "protocolo@portogrande.ap.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santana",
+   "uf": "AP",
+   "dominio": "santana.ap.leg.br",
+   "email": "presidencia@santana.ap.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Tartarugalzinho",
+   "uf": "AP",
+   "dominio": "tartarugalzinho.ap.leg.br",
+   "email": "camaratartarugalzinho@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Banzaê",
+   "uf": "BA",
+   "dominio": "banzae.ba.leg.br",
+   "email": "camara@banzae.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barra da Estiva",
+   "uf": "BA",
+   "dominio": "barradaestiva.ba.leg.br",
+   "email": "cmbe@barradaestiva.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cachoeira",
+   "uf": "BA",
+   "dominio": "cachoeira.ba.leg.br",
+   "email": "camaradacachoeira@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Caculé",
+   "uf": "BA",
+   "dominio": "cacule.ba.leg.br",
+   "email": "camaradecacule@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Conceição do Coité",
+   "uf": "BA",
+   "dominio": "conceicaodocoite.ba.leg.br",
+   "email": "administracao@conceicaodocoite.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Dário Meira",
+   "uf": "BA",
+   "dominio": "dariomeira.ba.leg.br",
+   "email": "camara@dariomeira.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Glória",
+   "uf": "BA",
+   "dominio": "gloria.ba.leg.br",
+   "email": "atendimento@camaradegloria.ba.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Igrapiúna",
+   "uf": "BA",
+   "dominio": "igrapiuna.ba.leg.br",
+   "email": "camara@igrapiuna.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itabuna",
+   "uf": "BA",
+   "dominio": "itabuna.ba.leg.br",
+   "email": "diretoria@itabuna.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itagibá",
+   "uf": "BA",
+   "dominio": "itagiba.ba.leg.br",
+   "email": "camaramunicipaldeitagiba@itagiba.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jequié",
+   "uf": "BA",
+   "dominio": "jequie.ba.leg.br",
+   "email": "camaramunicipaldejequie@jequie.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Valença",
+   "uf": "BA",
+   "dominio": "valenca.ba.leg.br",
+   "email": "camara@valenca.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Xique-Xique",
+   "uf": "BA",
+   "dominio": "xiquexique.ba.leg.br",
+   "email": "legislativo@xiquexique.ba.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Horizonte",
+   "uf": "CE",
+   "dominio": "horizonte.ce.leg.br",
+   "email": "contatos@horizonte.ce.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itaiçaba",
+   "uf": "CE",
+   "dominio": "itaicaba.ce.leg.br",
+   "email": "camaramunicipal@itaicaba.ce.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Itapiúna",
+   "uf": "CE",
+   "dominio": "itapiuna.ce.leg.br",
+   "email": "contato@itapiuna.ce.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Alegre",
+   "uf": "ES",
+   "dominio": "alegre.es.leg.br",
+   "email": "transparencia@alegre.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Aracruz",
+   "uf": "ES",
+   "dominio": "aracruz.es.leg.br",
+   "email": "ouvidoria@aracruz.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Baixo Guandu",
+   "uf": "ES",
+   "dominio": "baixoguandu.es.leg.br",
+   "email": "ouvidoria@baixoguandu.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cachoeiro de Itapemirim",
+   "uf": "ES",
+   "dominio": "cachoeirodeitapemirim.es.leg.br",
+   "email": "presidenciacmci@cachoeirodeitapemirim.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Conceição da Barra",
+   "uf": "ES",
+   "dominio": "conceicaodabarra.es.leg.br",
+   "email": "camara@conceicaodabarra.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Domingos Martins",
+   "uf": "ES",
+   "dominio": "domingosmartins.es.leg.br",
+   "email": "comunicacao@domingosmartins.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ibatiba",
+   "uf": "ES",
+   "dominio": "ibatiba.es.leg.br",
+   "email": "horascontato0800-000-4509e-mailadministrativo@ibatiba.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ibitirama",
+   "uf": "ES",
+   "dominio": "ibitirama.es.leg.br",
+   "email": "emailcamaramunicipaldeibitirama@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "João Neiva",
+   "uf": "ES",
+   "dominio": "joaoneiva.es.leg.br",
+   "email": "victor.tecnoes@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Marilândia",
+   "uf": "ES",
+   "dominio": "marilandia.es.leg.br",
+   "email": "administrativo@marilandia.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Mucurici",
+   "uf": "ES",
+   "dominio": "mucurici.es.leg.br",
+   "email": "presidencia@mucurici.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pedro Canário",
+   "uf": "ES",
+   "dominio": "pedrocanario.es.leg.br",
+   "email": "camara@pedrocanario.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rio Novo do Sul",
+   "uf": "ES",
+   "dominio": "rionovodosul.es.leg.br",
+   "email": "camararns@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santa Leopoldina",
+   "uf": "ES",
+   "dominio": "santaleopoldina.es.leg.br",
+   "email": "camara@santaleopoldina.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santa Maria de Jetibá",
+   "uf": "ES",
+   "dominio": "santamariadejetiba.es.leg.br",
+   "email": "contato@santamariadejetiba.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São José do Calçado",
+   "uf": "ES",
+   "dominio": "saojosedocalcado.es.leg.br",
+   "email": "camarasjc@yahoo.com.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Viana",
+   "uf": "ES",
+   "dominio": "viana.es.leg.br",
+   "email": "contato@viana.es.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Vila Velha",
+   "uf": "ES",
+   "dominio": "vilavelha.es.leg.br",
+   "email": "hoffmandev@outlook.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Anápolis",
+   "uf": "GO",
+   "dominio": "anapolis.go.leg.br",
+   "email": "ouvidoria@camaraanapolis.go.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Campinorte",
+   "uf": "GO",
+   "dominio": "campinorte.go.leg.br",
+   "email": "camaramunicipalcmp@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ipameri",
+   "uf": "GO",
+   "dominio": "ipameri.go.leg.br",
+   "email": "lgpd@www.ipameri.go.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Matrinchã",
+   "uf": "GO",
+   "dominio": "matrincha.go.leg.br",
+   "email": "camaradematrincha@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Moiporá",
+   "uf": "GO",
+   "dominio": "moipora.go.leg.br",
+   "email": "contato@camaramunicipal.gov.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pontalina",
+   "uf": "GO",
+   "dominio": "pontalina.go.leg.br",
+   "email": "contato@pontalina.go.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São Simão",
+   "uf": "GO",
+   "dominio": "saosimao.go.leg.br",
+   "email": "ouvidoria@saosimao.go.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Timon",
+   "uf": "MA",
+   "dominio": "timon.ma.leg.br",
+   "email": "camara@timon.ma.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Vitória do Mearim",
+   "uf": "MA",
+   "dominio": "vitoriadomearim.ma.leg.br",
+   "email": "cmvitoriama@outlook.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
   {
    "municipio": "Alpinópolis",
    "uf": "MG",
@@ -732,6 +1236,302 @@
    "dominio": "voltagrande.mg.leg.br",
    "email": "cmvoltagrande@hotmail.com",
    "data": "2026-08-20",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cassilândia",
+   "uf": "MS",
+   "dominio": "cassilandia.ms.leg.br",
+   "email": "camaracassilandia@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Nova Andradina",
+   "uf": "MS",
+   "dominio": "novaandradina.ms.leg.br",
+   "email": "atendimento@novaandradina.ms.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Porto Murtinho",
+   "uf": "MS",
+   "dominio": "portomurtinho.ms.leg.br",
+   "email": "camaraportomurtinhoms@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Alta Floresta",
+   "uf": "MT",
+   "dominio": "altafloresta.mt.leg.br",
+   "email": "contato@altafloresta.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Alto Araguaia",
+   "uf": "MT",
+   "dominio": "altoaraguaia.mt.leg.br",
+   "email": "camara.imprensaaia@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Barra do Garças",
+   "uf": "MT",
+   "dominio": "barradogarcas.mt.leg.br",
+   "email": "camara@barradogarcas.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Canarana",
+   "uf": "MT",
+   "dominio": "canarana.mt.leg.br",
+   "email": "adm@canarana.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Comodoro",
+   "uf": "MT",
+   "dominio": "comodoro.mt.leg.br",
+   "email": "camara@comodoro.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Cáceres",
+   "uf": "MT",
+   "dominio": "caceres.mt.leg.br",
+   "email": "contato@caceres.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Diamantino",
+   "uf": "MT",
+   "dominio": "diamantino.mt.leg.br",
+   "email": "atendimento@diamantino.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Ipiranga do Norte",
+   "uf": "MT",
+   "dominio": "ipirangadonorte.mt.leg.br",
+   "email": "camararecep@ipirangadonorte.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Juara",
+   "uf": "MT",
+   "dominio": "juara.mt.leg.br",
+   "email": "camara@juara.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Juína",
+   "uf": "MT",
+   "dominio": "juina.mt.leg.br",
+   "email": "diretoriageral@juina.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Nortelândia",
+   "uf": "MT",
+   "dominio": "nortelandia.mt.leg.br",
+   "email": "ouvidoria@nortelandia.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Nova Guarita",
+   "uf": "MT",
+   "dominio": "novaguarita.mt.leg.br",
+   "email": "administrativo@novaguarita.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Nova Maringá",
+   "uf": "MT",
+   "dominio": "novamaringa.mt.leg.br",
+   "email": "camaramunicipal_novamaringa@yahoo.com.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Nova Monte Verde",
+   "uf": "MT",
+   "dominio": "novamonteverde.mt.leg.br",
+   "email": "legislativo@novamonteverde.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Paranatinga",
+   "uf": "MT",
+   "dominio": "paranatinga.mt.leg.br",
+   "email": "ouvidoria@paranatinga.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Poconé",
+   "uf": "MT",
+   "dominio": "pocone.mt.leg.br",
+   "email": "camarapoconemt@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pontal do Araguaia",
+   "uf": "MT",
+   "dominio": "pontaldoaraguaia.mt.leg.br",
+   "email": "campontaldoaraguaia@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Poxoréu",
+   "uf": "MT",
+   "dominio": "poxoreu.mt.leg.br",
+   "email": "ouvidoria@poxoreu.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Rondolândia",
+   "uf": "MT",
+   "dominio": "rondolandia.mt.leg.br",
+   "email": "diretorialegislativa@rondolandia.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Sapezal",
+   "uf": "MT",
+   "dominio": "sapezal.mt.leg.br",
+   "email": "recepcao@sapezal.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Tapurah",
+   "uf": "MT",
+   "dominio": "tapurah.mt.leg.br",
+   "email": "administrativo@tapurah.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Terra Nova do Norte",
+   "uf": "MT",
+   "dominio": "terranovadonorte.mt.leg.br",
+   "email": "legislativo@terranovadonorte.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Vera",
+   "uf": "MT",
+   "dominio": "vera.mt.leg.br",
+   "email": "ouvidoria@vera.mt.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Benevides",
+   "uf": "PA",
+   "dominio": "benevides.pa.leg.br",
+   "email": "cmb.poderlegislativo@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Brejo Grande do Araguaia",
+   "uf": "PA",
+   "dominio": "brejograndedoaraguaia.pa.leg.br",
+   "email": "camara@brejograndedoaraguaia.pa.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Eldorado do Carajás",
+   "uf": "PA",
+   "dominio": "eldoradodocarajas.pa.leg.br",
+   "email": "secretaria@eldoradodocarajas.pa.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Goianésia do Pará",
+   "uf": "PA",
+   "dominio": "goianesiadopara.pa.leg.br",
+   "email": "camara.goi@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Pacajá",
+   "uf": "PA",
+   "dominio": "pacaja.pa.leg.br",
+   "email": "camarapacaja2019@gmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Peixe-Boi",
+   "uf": "PA",
+   "dominio": "peixeboi.pa.leg.br",
+   "email": "camarapb@hotmail.com",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Santarém",
+   "uf": "PA",
+   "dominio": "santarem.pa.leg.br",
+   "email": "ouvidoria@santarem.pa.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São Domingos do Araguaia",
+   "uf": "PA",
+   "dominio": "saodomingosdoaraguaia.pa.leg.br",
+   "email": "ouvidoria@saodomingosdoaraguaia.pa.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "São Sebastião da Boa Vista",
+   "uf": "PA",
+   "dominio": "saosebastiaodaboavista.pa.leg.br",
+   "email": "secretaria@saosebastiaodaboavista.pa.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Bernardino Batista",
+   "uf": "PB",
+   "dominio": "bernardinobatista.pb.leg.br",
+   "email": "atendimento@bernardinobatista.pb.leg.br",
+   "data": "2026-08-21",
+   "canal": "SendGrid"
+  },
+  {
+   "municipio": "Jericó",
+   "uf": "PB",
+   "dominio": "jerico.pb.leg.br",
+   "email": "camara@jerico.pb.leg.br",
+   "data": "2026-08-21",
    "canal": "SendGrid"
   },
   {
@@ -1688,7 +2488,7 @@
   }
  ],
  "envios_sendgrid": {
-  "ENVIADO": 184,
+  "ENVIADO": 284,
   "BLOQUEADO": 2
  },
  "whatsapp": [
