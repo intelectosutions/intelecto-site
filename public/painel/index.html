@@ -91,6 +91,17 @@ td.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numer
 .uf b{display:block;font-family:"IBM Plex Mono",monospace;font-size:19px;color:var(--navy)}
 .uf span{font-size:12.5px;color:var(--muted)}
 
+.funil{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
+.funil .etapa{flex:1;min-width:132px;background:var(--surface);border:1px solid var(--rule);
+  border-right:none;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.funil .etapa:last-child{border-right:1px solid var(--rule)}
+.funil .etapa b{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;color:var(--navy);line-height:1.1}
+.funil .etapa span{font-size:12.5px;color:var(--muted)}
+.funil .etapa i{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--amber)}
+.funil .etapa.fim b{color:var(--green)}
+tr.convertida td{background:var(--green-bg)}
+tr.convertida td:first-child::after{content:" ✓ proposta";font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;color:var(--green);letter-spacing:.06em}
 nav.abas{display:flex;gap:4px;border-bottom:1px solid var(--rule);background:var(--surface)}
 nav.abas button{font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);
   background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer}
@@ -151,6 +162,11 @@ footer a{color:var(--azure)}
     <div class="label">Cobertura dos leads quentes</div>
     <div class="barra"><i id="barra" style="width:0%"></i></div>
     <p style="font-size:13.5px;color:var(--muted);margin-top:5px" id="cobertura-txt"></p>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="label" style="margin-bottom:8px">Funil da operação</div>
+    <div class="funil" id="funil"></div>
   </div>
 </section>
 
@@ -262,6 +278,7 @@ function mostrarAba(qual){
 
 function desenhar(d){
   var brl = function(v){ return "R$ " + v.toLocaleString("pt-BR"); };
+  var pctDe = function(a, b){ return b ? Math.round(a / b * 100) + "% da etapa anterior" : ""; };
   // o SendGrid devolve UTC; o painel e operado no Brasil
   var hora = function(iso){
     if (!iso) return "";
@@ -321,6 +338,23 @@ function desenhar(d){
     var el = document.createElement("div");
     el.innerHTML = "<b>" + p[1] + "</b><span>" + p[0] + "</span>";
     uf.appendChild(el);
+  });
+
+  // ---- funil ----
+  var f = d.funil || {};
+  var fu = document.getElementById("funil");
+  var etapas = [
+    ["Leads quentes", f.quentes, ""],
+    ["Com contato", f.com_contato, pctDe(f.com_contato, f.quentes)],
+    ["Abordadas", f.abordadas, pctDe(f.abordadas, f.com_contato)],
+    ["Propostas", f.propostas, pctDe(f.propostas, f.abordadas)],
+  ];
+  etapas.forEach(function(e, i){
+    var el = document.createElement("div");
+    el.className = "etapa" + (i === etapas.length - 1 ? " fim" : "");
+    el.innerHTML = "<b>" + (e[1] || 0) + "</b><span>" + e[0] + "</span>" +
+      (e[2] ? "<i>" + e[2] + "</i>" : "");
+    fu.appendChild(el);
   });
 
   // ---- aba de WhatsApp ----
@@ -386,17 +420,29 @@ function desenhar(d){
   if (sg.mensagens.length) {
     document.getElementById("envios-tabela-wrap").hidden = false;
     var tb = document.getElementById("envios");
-    sg.mensagens.slice(0, 60).forEach(function(m){
+    var convertidos = (d.municipios_com_proposta || []).map(function(x){
+      return x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
+    });
+    // quem interagiu primeiro: e essa a fila de follow-up, nao a ordem de envio
+    var ordenadas = sg.mensagens.slice().sort(function(a, b){
+      return (b.cliques - a.cliques) || (b.aberturas - a.aberturas) ||
+             String(b.quando).localeCompare(String(a.quando));
+    });
+    ordenadas.slice(0, 60).forEach(function(m){
       var cls = m.aberturas > 0 ? "feito" : "aguarda";
+      var dom = (m.para.split("@")[1] || "").split(".")[0]
+                 .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
       var tr = document.createElement("tr");
+      if (dom && convertidos.indexOf(dom) !== -1) tr.className = "convertida";
       tr.innerHTML = "<td class='mono' style='font-size:13px'>" + m.para +
         "</td><td><span class='chip " + cls + "'>" + m.status +
         "</span></td><td class='num'>" + m.aberturas + "</td><td class='num'>" + m.cliques +
         "</td><td class='mono' style='font-size:12.5px'>" + hora(m.quando) + "</td>";
       tb.appendChild(tr);
     });
-    txt("envios-nota", "Mostrando " + Math.min(sg.mensagens.length, 60) + " de " +
-        sg.mensagens.length + " mensagens do remetente da prospecção.");
+    txt("envios-nota", "Ordenado por engajamento: quem clicou aparece primeiro, depois quem abriu. " +
+        "Mostrando " + Math.min(sg.mensagens.length, 60) + " de " + sg.mensagens.length +
+        " mensagens. Linhas em verde já viraram proposta.");
   } else {
     txt("envios-nota", "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
         "sairam pelo Gmail e por isso nao aparecem aqui.");

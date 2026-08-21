@@ -48,7 +48,7 @@
   ]
  },
  "cobertura": {
-  "camaras_com_contato": 482,
+  "camaras_com_contato": 416,
   "leads_email_pessoal": 40,
   "abordadas": 304,
   "restantes": 178
@@ -2491,6 +2491,29 @@
   "ENVIADO": 284,
   "BLOQUEADO": 2
  },
+ "funil": {
+  "quentes": 482,
+  "com_contato": 416,
+  "abordadas": 304,
+  "propostas": 13,
+  "valor": 123500
+ },
+ "sem_contato": 66,
+ "municipios_com_proposta": [
+  "Carambeí",
+  "Esteio",
+  "Pradópolis",
+  "Conceição do Coité",
+  "Serrana",
+  "Salmourão",
+  "Careaçu",
+  "Santa Margarida",
+  "Ipanema",
+  "Ribeirão Grande",
+  "Igrejinha",
+  "Luz",
+  "Heliodora"
+ ],
  "whatsapp": [
   {
    "uf": "MG",
