@@ -2469,6 +2469,13 @@
  },
  "pipeline": [
   {
+   "cliente": "Câmara de Esteio/RS",
+   "oferta": "35 contas com migração",
+   "valor": 15000,
+   "enviada": "21/08",
+   "status": "Direção já ciente do prazo"
+  },
+  {
    "cliente": "Câmara de Ipanema/MG",
    "oferta": "10 contas com migração",
    "valor": 7500,
