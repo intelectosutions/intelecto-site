@@ -456,7 +456,9 @@ function desenhar(d){
     });
     txt("envios-nota", "Ordenado por engajamento: quem clicou aparece primeiro, depois quem abriu. " +
         "Mostrando " + Math.min(sg.mensagens.length, 60) + " de " + sg.mensagens.length +
-        " mensagens. Linhas em verde já viraram proposta.");
+        " mensagens. Linhas em verde já viraram proposta. Atenção: cliques no botão " +
+        "do WhatsApp não são contados, porque o rastreio está desligado nele para o " +
+        "link abrir a conversa direto. Boa parte das respostas veio por lá.");
   } else {
     txt("envios-nota", "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
         "sairam pelo Gmail e por isso nao aparecem aqui.");

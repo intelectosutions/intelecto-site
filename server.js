@@ -79,7 +79,9 @@ async function atividade() {
   // Email Activity: detalhe por destinatario, so do remetente da prospeccao
   const q = encodeURIComponent(`from_email="${REMETENTE}"`);
   const [d, motivos] = await Promise.all([
-    sendgrid(`/messages?limit=200&query=${q}`),
+    // limite alto de proposito: com 200 o painel via so metade dos envios e
+    // subcontava abertura e clique. A API aceita ate 1000 por consulta.
+    sendgrid(`/messages?limit=1000&query=${q}`),
     motivosDeFalha(),
   ]);
   const msgs = (d.messages || []).map((m) => ({
@@ -95,7 +97,7 @@ async function atividade() {
   for (const m of msgs) {
     if (m.aberturas > 0) resumo.abriram++;
     if (m.cliques > 0) resumo.clicaram++;
-    if (["bounce", "blocked", "dropped"].includes(m.status)) resumo.falharam++;
+    if (["bounce", "blocked", "dropped", "not_delivered"].includes(m.status)) resumo.falharam++;
   }
   return { resumo, mensagens: msgs };
 }
