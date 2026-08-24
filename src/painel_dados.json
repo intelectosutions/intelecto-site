@@ -4342,7 +4342,7 @@
    "valor": 0,
    "enviada": "",
    "status": "Proposta gerada (R$ 9.300), falta enviar",
-   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)",
+   "proxima_acao": "Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje",
    "prazo": "2026-08-24",
    "contato": "Rosângela (66) 9699-9172",
    "canal": "WhatsApp"
@@ -4353,7 +4353,7 @@
    "valor": 0,
    "enviada": "",
    "status": "Proposta gerada (R$ 7.500), falta enviar",
-   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)",
+   "proxima_acao": "Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje",
    "prazo": "2026-08-24",
    "contato": "Izac Brito",
    "canal": "WhatsApp"
@@ -4375,7 +4375,7 @@
    "valor": 0,
    "enviada": "",
    "status": "Proposta gerada (R$ 7.500 + domínio novo de cortesia), falta enviar",
-   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp do Ivan",
+   "proxima_acao": "Enviar WhatsApp ao Ivan + rascunho no Gmail (anexar PDF)",
    "prazo": "2026-08-24",
    "contato": "Ivan",
    "canal": "WhatsApp"
@@ -4400,15 +4400,15 @@
   },
   {
    "data": "24/08 (seg) · hoje",
-   "acao": "Nova Guarita/MT: Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)"
+   "acao": "Nova Guarita/MT: Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje"
   },
   {
    "data": "24/08 (seg) · hoje",
-   "acao": "Dário Meira/BA: Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)"
+   "acao": "Dário Meira/BA: Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje"
   },
   {
    "data": "24/08 (seg) · hoje",
-   "acao": "João Pinheiro/MG: Enviar mensagem pronta + PDF no WhatsApp do Ivan"
+   "acao": "João Pinheiro/MG: Enviar WhatsApp ao Ivan + rascunho no Gmail (anexar PDF)"
   },
   {
    "data": "25/08 (ter)",
