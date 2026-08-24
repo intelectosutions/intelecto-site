@@ -4384,6 +4384,17 @@
    "prazo": "2026-08-25",
    "contato": "Klaiton Santos",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Monte Carlo/SC",
+   "oferta": "a definir",
+   "valor": 0,
+   "enviada": "",
+   "status": "Aguardando nº de contas",
+   "proxima_acao": "Gerar proposta assim que informar as contas (migração: MX Interlegis ativo)",
+   "prazo": "2026-08-25",
+   "contato": "Angelita",
+   "canal": "WhatsApp"
   }
  ],
  "agenda": [
@@ -4416,6 +4427,10 @@
    "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
   },
   {
+   "data": "25/08 (ter)",
+   "acao": "Monte Carlo/SC: Gerar proposta assim que informar as contas (migração: MX Interlegis ativo)"
+  },
+  {
    "data": "26/08 (qua)",
    "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
   },
@@ -4430,10 +4445,6 @@
   {
    "data": "26/08 (qua)",
    "acao": "Salmourão/SP: Follow-up D+3"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   }
  ]
 }
