@@ -4159,9 +4159,9 @@
    "oferta": "50 contas",
    "valor": 14700,
    "enviada": "21/08",
-   "status": "Instruindo dispensa",
-   "proxima_acao": "Enviar proposta revisada com 50 GB e o conjunto de habilitação",
-   "prazo": "2026-08-25",
+   "status": "Dispensa em instrução; respondido 24/08 com proposta revisada (50 GB) e habilitação completa",
+   "proxima_acao": "Follow-up se a contabilidade não retornar",
+   "prazo": "2026-08-27",
    "contato": "Contabilidade / Íris",
    "canal": "E-mail"
   },
@@ -4408,10 +4408,6 @@
   },
   {
    "data": "25/08 (ter)",
-   "acao": "Carambeí/PR: Enviar proposta revisada com 50 GB e o conjunto de habilitação"
-  },
-  {
-   "data": "25/08 (ter)",
    "acao": "Heliodora/MG: Prazo do TCEMG correndo: confirmar recebimento"
   },
   {
@@ -4445,6 +4441,10 @@
   {
    "data": "26/08 (qua)",
    "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Santa Margarida/MG: Follow-up D+3"
   }
  ]
 }
