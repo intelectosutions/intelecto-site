@@ -4390,8 +4390,8 @@
    "oferta": "a definir",
    "valor": 0,
    "enviada": "",
-   "status": "Aguardando nº de contas",
-   "proxima_acao": "Gerar proposta assim que informar as contas (migração: MX Interlegis ativo)",
+   "status": "Angelita confirma o nº de contas em 25/08 (servidores ausentes hoje)",
+   "proxima_acao": "Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08",
    "prazo": "2026-08-25",
    "contato": "Angelita",
    "canal": "WhatsApp"
@@ -4420,7 +4420,7 @@
   },
   {
    "data": "25/08 (ter)",
-   "acao": "Monte Carlo/SC: Gerar proposta assim que informar as contas (migração: MX Interlegis ativo)"
+   "acao": "Monte Carlo/SC: Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08"
   },
   {
    "data": "26/08 (qua)",
