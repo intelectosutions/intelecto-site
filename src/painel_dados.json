@@ -3353,8 +3353,8 @@
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 13,
-  "valor": 123500
+  "propostas": 16,
+  "valor": 147800
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3366,9 +3366,12 @@
   "Salmourão",
   "Careaçu",
   "Santa Margarida",
+  "Nova Guarita",
   "Ipanema",
   "Ribeirão Grande",
   "Igrejinha",
+  "Dário Meira",
+  "João Pinheiro",
   "Luz",
   "Heliodora"
  ],
@@ -4238,6 +4241,17 @@
    "canal": "WhatsApp"
   },
   {
+   "cliente": "Câmara de Nova Guarita/MT",
+   "oferta": "15 contas",
+   "valor": 9300,
+   "enviada": "24/08",
+   "status": "Proposta enviada",
+   "proxima_acao": "Avisar no WhatsApp + follow-up D+3",
+   "prazo": "2026-08-27",
+   "contato": "Rosângela (66) 9699-9172",
+   "canal": "E-mail"
+  },
+  {
    "cliente": "Câmara de Ipanema/MG",
    "oferta": "10 contas",
    "valor": 7500,
@@ -4269,6 +4283,28 @@
    "prazo": "2026-08-26",
    "contato": "Sandro Klein",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Dário Meira/BA",
+   "oferta": "5 contas",
+   "valor": 7500,
+   "enviada": "24/08",
+   "status": "Proposta enviada",
+   "proxima_acao": "Avisar no WhatsApp + follow-up D+3",
+   "prazo": "2026-08-27",
+   "contato": "Izac Brito",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de João Pinheiro/MG",
+   "oferta": "6 contas",
+   "valor": 7500,
+   "enviada": "24/08",
+   "status": "Proposta enviada (domínio novo de cortesia)",
+   "proxima_acao": "Avisar no WhatsApp + follow-up D+3",
+   "prazo": "2026-08-27",
+   "contato": "Ivan",
+   "canal": "E-mail"
   },
   {
    "cliente": "Câmara de Luz/MG",
@@ -4337,28 +4373,6 @@
    "canal": "E-mail"
   },
   {
-   "cliente": "Câmara de Nova Guarita/MT",
-   "oferta": "15 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 9.300), falta enviar",
-   "proxima_acao": "Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje",
-   "prazo": "2026-08-24",
-   "contato": "Rosângela (66) 9699-9172",
-   "canal": "WhatsApp"
-  },
-  {
-   "cliente": "Câmara de Dário Meira/BA",
-   "oferta": "5 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 7.500), falta enviar",
-   "proxima_acao": "Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje",
-   "prazo": "2026-08-24",
-   "contato": "Izac Brito",
-   "canal": "WhatsApp"
-  },
-  {
    "cliente": "Câmara de Nova Mamoré/RO",
    "oferta": "a definir",
    "valor": 0,
@@ -4367,17 +4381,6 @@
    "proxima_acao": "Cobrar quantas contas a Câmara precisa",
    "prazo": "2026-08-25",
    "contato": "Klaiton Santos",
-   "canal": "WhatsApp"
-  },
-  {
-   "cliente": "Câmara de João Pinheiro/MG",
-   "oferta": "6 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 7.500 + domínio novo de cortesia), falta enviar",
-   "proxima_acao": "Enviar WhatsApp ao Ivan + rascunho no Gmail (anexar PDF)",
-   "prazo": "2026-08-24",
-   "contato": "Ivan",
    "canal": "WhatsApp"
   }
  ],
@@ -4399,18 +4402,6 @@
    "acao": "Imbaú/PR: Luiz responde o e-mail anexando o PDF (nota da conta adicional incluída)"
   },
   {
-   "data": "24/08 (seg) · hoje",
-   "acao": "Nova Guarita/MT: Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje"
-  },
-  {
-   "data": "24/08 (seg) · hoje",
-   "acao": "Dário Meira/BA: Enviar WhatsApp + rascunho no Gmail (anexar PDF); prometido hoje"
-  },
-  {
-   "data": "24/08 (seg) · hoje",
-   "acao": "João Pinheiro/MG: Enviar WhatsApp ao Ivan + rascunho no Gmail (anexar PDF)"
-  },
-  {
    "data": "25/08 (ter)",
    "acao": "Carambeí/PR: Enviar proposta revisada com 50 GB e o conjunto de habilitação"
   },
@@ -4429,6 +4420,18 @@
   {
    "data": "25/08 (ter)",
    "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Pradópolis/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Serrana/SP: Follow-up D+3"
   }
  ]
 }
