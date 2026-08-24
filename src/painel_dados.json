@@ -4395,6 +4395,17 @@
    "prazo": "2026-08-25",
    "contato": "Angelita",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Matias Barbosa/MG",
+   "oferta": "35 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Proposta gerada (R$ 14.700), falta enviar",
+   "proxima_acao": "Enviar rascunho do Gmail (diretoria@ + informatica@) com o PDF anexo; prometido até o fim da tarde",
+   "prazo": "2026-08-24",
+   "contato": "Rafael (32) 8814-5634",
+   "canal": "E-mail"
   }
  ],
  "agenda": [
@@ -4405,6 +4416,10 @@
   {
    "data": "24/08 (seg) · hoje",
    "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Matias Barbosa/MG: Enviar rascunho do Gmail (diretoria@ + informatica@) com o PDF anexo; prometido até o fim da tarde"
   },
   {
    "data": "25/08 (ter)",
@@ -4441,10 +4456,6 @@
   {
    "data": "26/08 (qua)",
    "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Santa Margarida/MG: Follow-up D+3"
   }
  ]
 }
