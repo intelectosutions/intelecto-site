@@ -4357,9 +4357,9 @@
    "oferta": "a definir",
    "valor": 0,
    "enviada": "",
-   "status": "Aguardando nº de contas",
-   "proxima_acao": "Cobrar quantas contas a Câmara usa",
-   "prazo": "2026-08-25",
+   "status": "Aguardando nº de contas (cobrada 2x: 21/08 e 24/08 14h55)",
+   "proxima_acao": "Se não responder: ligar para a Câmara",
+   "prazo": "2026-08-26",
    "contato": "Elayne",
    "canal": "WhatsApp"
   },
@@ -4416,10 +4416,6 @@
   },
   {
    "data": "25/08 (ter)",
-   "acao": "Tamarana/PR: Cobrar quantas contas a Câmara usa"
-  },
-  {
-   "data": "25/08 (ter)",
    "acao": "Varginha/MG: Ligar: maior cidade que engajou e não respondeu"
   },
   {
@@ -4445,6 +4441,10 @@
   {
    "data": "26/08 (qua)",
    "acao": "Salmourão/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   }
  ]
 }
