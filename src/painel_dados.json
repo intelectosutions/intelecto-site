@@ -4319,9 +4319,9 @@
    "oferta": "25 contas",
    "valor": 0,
    "enviada": "",
-   "status": "Orçamento solicitado por e-mail",
-   "proxima_acao": "Gerar proposta (25 contas, migração, mínimo 4 GB atendido pelos 50 GB); Luiz responde o e-mail",
-   "prazo": "2026-08-25",
+   "status": "Proposta gerada (R$ 11.700), falta enviar",
+   "proxima_acao": "Luiz responde o e-mail anexando o PDF da pasta",
+   "prazo": "2026-08-24",
    "contato": "José Igor Rutkoski (TI) (51) 99768-0544",
    "canal": "E-mail"
   },
@@ -4330,9 +4330,9 @@
    "oferta": "11 contas",
    "valor": 0,
    "enviada": "",
-   "status": "Orçamento solicitado por e-mail",
-   "proxima_acao": "Gerar proposta (11 contas, migração) e responder valor de conta adicional (mesma faixa até 20)",
-   "prazo": "2026-08-25",
+   "status": "Proposta gerada (R$ 9.300), falta enviar",
+   "proxima_acao": "Luiz responde o e-mail anexando o PDF (nota da conta adicional incluída)",
+   "prazo": "2026-08-24",
    "contato": "Secretaria (e-mail oficial)",
    "canal": "E-mail"
   },
@@ -4341,8 +4341,8 @@
    "oferta": "15 contas",
    "valor": 0,
    "enviada": "",
-   "status": "Orçamento prometido para hoje",
-   "proxima_acao": "Gerar proposta (15 contas, migração) e enviar no WhatsApp",
+   "status": "Proposta gerada (R$ 9.300), falta enviar",
+   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)",
    "prazo": "2026-08-24",
    "contato": "Rosângela (66) 9699-9172",
    "canal": "WhatsApp"
@@ -4352,8 +4352,8 @@
    "oferta": "5 contas",
    "valor": 0,
    "enviada": "",
-   "status": "Orçamento prometido para hoje",
-   "proxima_acao": "Gerar proposta (5 contas, migração) e enviar no WhatsApp",
+   "status": "Proposta gerada (R$ 7.500), falta enviar",
+   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)",
    "prazo": "2026-08-24",
    "contato": "Izac Brito",
    "canal": "WhatsApp"
@@ -4374,9 +4374,9 @@
    "oferta": "6 contas",
    "valor": 0,
    "enviada": "",
-   "status": "Orçamento a montar (2 domínios)",
-   "proxima_acao": "Montar proposta: 5 contas no domínio atual + 1 conta e suporte à criação do domínio novo camaradejoaopinheiro.mg.leg.br",
-   "prazo": "2026-08-25",
+   "status": "Proposta gerada (R$ 7.500 + domínio novo de cortesia), falta enviar",
+   "proxima_acao": "Enviar mensagem pronta + PDF no WhatsApp do Ivan",
+   "prazo": "2026-08-24",
    "contato": "Ivan",
    "canal": "WhatsApp"
   }
@@ -4392,11 +4392,23 @@
   },
   {
    "data": "24/08 (seg) · hoje",
-   "acao": "Nova Guarita/MT: Gerar proposta (15 contas, migração) e enviar no WhatsApp"
+   "acao": "Barra do Ribeiro/RS: Luiz responde o e-mail anexando o PDF da pasta"
   },
   {
    "data": "24/08 (seg) · hoje",
-   "acao": "Dário Meira/BA: Gerar proposta (5 contas, migração) e enviar no WhatsApp"
+   "acao": "Imbaú/PR: Luiz responde o e-mail anexando o PDF (nota da conta adicional incluída)"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Nova Guarita/MT: Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Dário Meira/BA: Enviar mensagem pronta + PDF no WhatsApp (prometido para hoje)"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "João Pinheiro/MG: Enviar mensagem pronta + PDF no WhatsApp do Ivan"
   },
   {
    "data": "25/08 (ter)",
@@ -4416,19 +4428,7 @@
   },
   {
    "data": "25/08 (ter)",
-   "acao": "Barra do Ribeiro/RS: Gerar proposta (25 contas, migração, mínimo 4 GB atendido pelos 50 GB); Luiz responde o e-mail"
-  },
-  {
-   "data": "25/08 (ter)",
-   "acao": "Imbaú/PR: Gerar proposta (11 contas, migração) e responder valor de conta adicional (mesma faixa até 20)"
-  },
-  {
-   "data": "25/08 (ter)",
    "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
-  },
-  {
-   "data": "25/08 (ter)",
-   "acao": "João Pinheiro/MG: Montar proposta: 5 contas no domínio atual + 1 conta e suporte à criação do domínio novo camaradejoaopinheiro.mg.leg.br"
   }
  ]
 }
