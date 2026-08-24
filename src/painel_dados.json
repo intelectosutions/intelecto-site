@@ -3353,8 +3353,8 @@
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 16,
-  "valor": 147800
+  "propostas": 18,
+  "valor": 168800
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3362,10 +3362,12 @@
   "Esteio",
   "Pradópolis",
   "Conceição do Coité",
+  "Barra do Ribeiro",
   "Serrana",
   "Salmourão",
   "Careaçu",
   "Santa Margarida",
+  "Imbaú",
   "Nova Guarita",
   "Ipanema",
   "Ribeirão Grande",
@@ -4197,6 +4199,17 @@
    "canal": "WhatsApp"
   },
   {
+   "cliente": "Câmara de Barra do Ribeiro/RS",
+   "oferta": "25 contas",
+   "valor": 11700,
+   "enviada": "24/08",
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-27",
+   "contato": "José Igor Rutkoski (TI) (51) 99768-0544",
+   "canal": "E-mail"
+  },
+  {
    "cliente": "Câmara de Serrana/SP",
    "oferta": "20 contas",
    "valor": 9300,
@@ -4239,6 +4252,17 @@
    "prazo": "2026-08-26",
    "contato": "Julimar Pimentel",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Imbaú/PR",
+   "oferta": "11 contas",
+   "valor": 9300,
+   "enviada": "24/08",
+   "status": "Proposta enviada (cortesia até 15 contas)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-27",
+   "contato": "Secretaria (e-mail oficial)",
+   "canal": "E-mail"
   },
   {
    "cliente": "Câmara de Nova Guarita/MT",
@@ -4351,28 +4375,6 @@
    "canal": "E-mail"
   },
   {
-   "cliente": "Câmara de Barra do Ribeiro/RS",
-   "oferta": "25 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 11.700), falta enviar",
-   "proxima_acao": "Luiz responde o e-mail anexando o PDF da pasta",
-   "prazo": "2026-08-24",
-   "contato": "José Igor Rutkoski (TI) (51) 99768-0544",
-   "canal": "E-mail"
-  },
-  {
-   "cliente": "Câmara de Imbaú/PR",
-   "oferta": "11 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 9.300), falta enviar",
-   "proxima_acao": "Luiz responde o e-mail anexando o PDF (nota da conta adicional incluída)",
-   "prazo": "2026-08-24",
-   "contato": "Secretaria (e-mail oficial)",
-   "canal": "E-mail"
-  },
-  {
    "cliente": "Câmara de Nova Mamoré/RO",
    "oferta": "a definir",
    "valor": 0,
@@ -4392,14 +4394,6 @@
   {
    "data": "24/08 (seg) · hoje",
    "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
-  },
-  {
-   "data": "24/08 (seg) · hoje",
-   "acao": "Barra do Ribeiro/RS: Luiz responde o e-mail anexando o PDF da pasta"
-  },
-  {
-   "data": "24/08 (seg) · hoje",
-   "acao": "Imbaú/PR: Luiz responde o e-mail anexando o PDF (nota da conta adicional incluída)"
   },
   {
    "data": "25/08 (ter)",
@@ -4432,6 +4426,14 @@
   {
    "data": "26/08 (qua)",
    "acao": "Serrana/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Salmourão/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   }
  ]
 }
