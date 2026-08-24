@@ -1,5 +1,5 @@
 {
- "atualizado": "21/08/2026",
+ "atualizado": "24/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -4149,104 +4149,218 @@
  "pipeline": [
   {
    "cliente": "Câmara de Carambeí/PR",
-   "oferta": "50 contas com migração",
+   "oferta": "50 contas",
    "valor": 14700,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Instruindo dispensa",
+   "proxima_acao": "Enviar proposta revisada com 50 GB e o conjunto de habilitação",
+   "prazo": "2026-08-25",
+   "contato": "Contabilidade / Íris",
+   "canal": "E-mail"
   },
   {
    "cliente": "Câmara de Esteio/RS",
-   "oferta": "35 contas com migração",
+   "oferta": "35 contas",
    "valor": 14700,
    "enviada": "21/08",
-   "status": "Em tramitação interna"
+   "status": "Em tramitação interna",
+   "proxima_acao": "Perguntar se o setor de compras precisa de documentação",
+   "prazo": "2026-08-26",
+   "contato": "Natália Ostjen (Tesouraria)",
+   "canal": "E-mail"
   },
   {
    "cliente": "Câmara de Pradópolis/SP",
-   "oferta": "30 contas com migração",
+   "oferta": "30 contas",
    "valor": 11700,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Jean Coleti",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Conceição do Coité/BA",
-   "oferta": "30 contas com migração",
+   "oferta": "30 contas",
    "valor": 11700,
    "enviada": "19/08",
-   "status": "Follow-up atrasado"
+   "status": "Sem retorno",
+   "proxima_acao": "Cobrar por WhatsApp (75) 99969-3000",
+   "prazo": "2026-08-24",
+   "contato": "Ednézio Santiago",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Serrana/SP",
-   "oferta": "20 contas com migração",
+   "oferta": "20 contas",
    "valor": 9300,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Mariana Arantes Alberto",
+   "canal": "E-mail"
   },
   {
    "cliente": "Câmara de Salmourão/SP",
-   "oferta": "20 contas com migração",
+   "oferta": "20 contas",
    "valor": 9300,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Paulo Sérgio",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Careaçu/MG",
-   "oferta": "20 contas com migração",
+   "oferta": "20 contas",
    "valor": 9300,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3; ofereceu-se documentação",
+   "prazo": "2026-08-26",
+   "contato": "Adriano (Controle Interno)",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Santa Margarida/MG",
-   "oferta": "20 contas com migração",
+   "oferta": "20 contas",
    "valor": 9300,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Julimar Pimentel",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Ipanema/MG",
-   "oferta": "10 contas com migração",
+   "oferta": "10 contas",
    "valor": 7500,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Diego",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Ribeirão Grande/SP",
-   "oferta": "7 contas com migração",
+   "oferta": "7 contas",
    "valor": 7500,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Elton Vieira",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Igrejinha/RS",
-   "oferta": "7 contas com migração",
+   "oferta": "7 contas",
    "valor": 7500,
    "enviada": "21/08",
-   "status": "Proposta enviada"
+   "status": "Proposta enviada",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-26",
+   "contato": "Sandro Klein",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Luz/MG",
    "oferta": "10 contas",
    "valor": 6900,
    "enviada": "19/08",
-   "status": "Follow-up atrasado"
+   "status": "Sem retorno",
+   "proxima_acao": "Cobrar por WhatsApp; ofício de reapontamento já pronto",
+   "prazo": "2026-08-24",
+   "contato": "Adriana",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Heliodora/MG",
-   "oferta": "1 conta, implantação do zero",
+   "oferta": "1 contas",
    "valor": 4100,
    "enviada": "21/08",
-   "status": "Prazo do TCEMG correndo"
+   "status": "Proposta enviada",
+   "proxima_acao": "Prazo do TCEMG correndo: confirmar recebimento",
+   "prazo": "2026-08-25",
+   "contato": "Claudia",
+   "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Tamarana/PR",
+   "oferta": "a definir",
+   "valor": 0,
+   "enviada": "",
+   "status": "Aguardando nº de contas",
+   "proxima_acao": "Cobrar quantas contas a Câmara usa",
+   "prazo": "2026-08-25",
+   "contato": "Elayne",
+   "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Varginha/MG",
+   "oferta": "a definir",
+   "valor": 0,
+   "enviada": "",
+   "status": "Abriu 7 vezes sem responder",
+   "proxima_acao": "Ligar: maior cidade que engajou e não respondeu",
+   "prazo": "2026-08-25",
+   "contato": "",
+   "canal": "E-mail"
   }
  ],
  "agenda": [
   {
-   "data": "24/08 (seg)",
-   "acao": "Follow-up: Conceição do Coité/BA, Luz/MG"
+   "data": "24/08 (seg) · hoje",
+   "acao": "Conceição do Coité/BA: Cobrar por WhatsApp (75) 99969-3000"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
+  },
+  {
+   "data": "25/08 (ter)",
+   "acao": "Carambeí/PR: Enviar proposta revisada com 50 GB e o conjunto de habilitação"
+  },
+  {
+   "data": "25/08 (ter)",
+   "acao": "Heliodora/MG: Prazo do TCEMG correndo: confirmar recebimento"
+  },
+  {
+   "data": "25/08 (ter)",
+   "acao": "Tamarana/PR: Cobrar quantas contas a Câmara usa"
+  },
+  {
+   "data": "25/08 (ter)",
+   "acao": "Varginha/MG: Ligar: maior cidade que engajou e não respondeu"
   },
   {
    "data": "26/08 (qua)",
-   "acao": "Follow-up: Carambeí/PR, Esteio/RS, Pradópolis/SP, Serrana/SP e mais 7"
+   "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Pradópolis/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Serrana/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Salmourão/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Santa Margarida/MG: Follow-up D+3"
   }
  ]
 }

@@ -1,0 +1,2270 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRELO</title>
+<meta name="color-scheme" content="light dark">
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem("prelo-tema");
+    if (t === "dark" || t === "light") {
+      document.documentElement.setAttribute("data-theme", t);
+    }
+  } catch (e) { /* sem localStorage: segue o tema do sistema */ }
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   PRELO
+   Direção de arte: a página como edição impressa em duas tintas.
+   Tema nativo: claro (folha PAPEL). Escuro: folha PROVA.
+   Zero sombra. Zero raio. Zero backdrop-filter. Fio sempre horizontal.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PALETA NATIVA COMPLETA (folha PAPEL)
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* superfícies */
+  --paper:        #F6F1E8;
+  --paper-2:      #EDE6D9;
+  --paper-3:      #FFFCF6;
+
+  /* tintas de texto */
+  --ink:          #17140F;
+  --ink-2:        #453F35;
+  --muted:        #695F52;
+
+  /* fios */
+  --rule:         #DCD3C2;
+  --rule-strong:  #17140F;
+  --dot:          #C3B9A5;
+
+  /* segunda tinta */
+  --accent:       #C0341A;
+  --accent-deep:  #A02A12;
+  --accent-ink:   #FFF8F2;
+  --accent-wash:  #F1DED4;
+
+  /* estado */
+  --ok:           #2E6B3E;
+
+  /* folha TINTA (caderno escuro no tema claro, caderno claro no tema escuro) */
+  --sheet-ink-bg:     #17140F;
+  --sheet-ink-fg:     #F3EDE2;
+  --sheet-ink-2:      #CFC6B6;
+  --sheet-ink-muted:  #A79D8D;
+  --sheet-ink-rule:   #332E26;
+  --sheet-ink-dot:    #453F35;
+  --sheet-ink-accent: #F2603C;
+
+  /* folha VERMELHÃO (idêntica nos dois temas: é a assinatura) */
+  --red-bg:     #C0341A;
+  --red-fg:     #FFF3EC;
+  --red-muted:  #FFE6DB;
+  --red-rule:   #D9705C;
+  --red-deep:   #8E1F0A;
+
+  /* registro */
+  --reg-color:      var(--accent);
+  --reg-blend:      multiply;
+  --reg-blend-inv:  screen;
+  --reg-x:          3px;
+  --reg-y:          2px;
+
+  /* grão */
+  --grain-op:    .052;
+  --grain-blend: multiply;
+  --grain-tile:  220px;
+
+  /* movimento */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --dur:  180ms;
+  --dur-cor: 320ms;
+
+  /* métrica */
+  --gutter: clamp(20px, 4vw, 56px);
+  --max:    1240px;
+
+  /* escala tipográfica por salto */
+  --fs-mega: clamp(3.5rem, 11.2vw, 10.5rem);
+  --fs-alta: clamp(2.25rem, 5.2vw, 4.5rem);
+  --fs-olho: clamp(1.125rem, 1.5vw, 1.375rem);
+  --fs-corpo: 1.0625rem;
+  --fs-mono: .8125rem;
+  --fs-rotulo: .6875rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. FOLHA PROVA (tema escuro): só tokens, nada de componente
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --paper:        #100E0A;
+    --paper-2:      #17140F;
+    --paper-3:      #211D16;
+
+    --ink:          #F3EDE2;
+    --ink-2:        #C4BBAB;
+    --muted:        #948B7A;
+
+    --rule:         #2E2820;
+    --rule-strong:  #F3EDE2;
+    --dot:          #3A332A;
+
+    --accent:       #F2603C;
+    --accent-deep:  #FF7A57;
+    --accent-ink:   #17110C;
+    --accent-wash:  #2A1710;
+
+    --ok:           #62C98A;
+
+    --sheet-ink-bg:     #EDE6D9;
+    --sheet-ink-fg:     #17140F;
+    --sheet-ink-2:      #453F35;
+    --sheet-ink-muted:  #695F52;
+    --sheet-ink-rule:   #DCD3C2;
+    --sheet-ink-dot:    #C3B9A5;
+    --sheet-ink-accent: #A02A12;
+
+    --red-bg:     #C0341A;
+    --red-fg:     #FFF3EC;
+    --red-muted:  #FFE6DB;
+    --red-rule:   #D9705C;
+    --red-deep:   #8E1F0A;
+
+    --reg-blend:     screen;
+    --reg-blend-inv: multiply;
+
+    --grain-op:    .045;
+    --grain-blend: soft-light;
+    --grain-tile:  260px;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper:        #100E0A;
+  --paper-2:      #17140F;
+  --paper-3:      #211D16;
+
+  --ink:          #F3EDE2;
+  --ink-2:        #C4BBAB;
+  --muted:        #948B7A;
+
+  --rule:         #2E2820;
+  --rule-strong:  #F3EDE2;
+  --dot:          #3A332A;
+
+  --accent:       #F2603C;
+  --accent-deep:  #FF7A57;
+  --accent-ink:   #17110C;
+  --accent-wash:  #2A1710;
+
+  --ok:           #62C98A;
+
+  --sheet-ink-bg:     #EDE6D9;
+  --sheet-ink-fg:     #17140F;
+  --sheet-ink-2:      #453F35;
+  --sheet-ink-muted:  #695F52;
+  --sheet-ink-rule:   #DCD3C2;
+  --sheet-ink-dot:    #C3B9A5;
+  --sheet-ink-accent: #A02A12;
+
+  --red-bg:     #C0341A;
+  --red-fg:     #FFF3EC;
+  --red-muted:  #FFE6DB;
+  --red-rule:   #D9705C;
+  --red-deep:   #8E1F0A;
+
+  --reg-blend:     screen;
+  --reg-blend-inv: multiply;
+
+  --grain-op:    .045;
+  --grain-blend: soft-light;
+  --grain-tile:  260px;
+}
+
+/* --------------------------------------------------------------------------
+   3. BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; border-radius: 0; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding-bottom: 88px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--fs-corpo);
+  line-height: 1.62;
+  font-variation-settings: "wdth" 100, "wght" 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent-wash); color: var(--ink); }
+
+img, svg { max-width: 100%; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: Fraunces, Georgia, "Times New Roman", serif;
+  font-optical-sizing: none;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.05em; max-width: 66ch; }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   4. TIPOGRAFIA DE SERVIÇO
+   -------------------------------------------------------------------------- */
+.mono {
+  font-family: "Martian Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-variation-settings: "wdth" 100, "wght" 400;
+  font-size: var(--fs-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+
+.rotulo {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-variation-settings: "wdth" 75, "wght" 500;
+  font-size: var(--fs-rotulo);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  display: block;
+}
+
+.olho {
+  font-size: var(--fs-olho);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+.h-alta {
+  font-size: var(--fs-alta);
+  font-weight: 420;
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  line-height: .94;
+  letter-spacing: -.018em;
+}
+
+.h-media {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  font-weight: 460;
+  font-variation-settings: "opsz" 48, "SOFT" 0, "WONK" 0;
+  line-height: 1.12;
+  letter-spacing: -.012em;
+}
+
+.h-baixa {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 560;
+  font-variation-settings: "opsz" 18, "SOFT" 0, "WONK" 0;
+  line-height: 1.3;
+}
+
+.ponto-ok {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: var(--ok);
+  vertical-align: .08em;
+  margin-right: .5em;
+}
+
+/* --------------------------------------------------------------------------
+   5. FOLHAS, FIOS E MARCAS DE REGISTRO
+   -------------------------------------------------------------------------- */
+.folha {
+  position: relative;
+  isolation: isolate;
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(56px, 7vw, 104px) 0;
+}
+
+.folha--rebaixada { background: var(--paper-2); }
+
+.folha--tinta {
+  --paper:  var(--sheet-ink-bg);
+  --paper-2: var(--sheet-ink-bg);
+  --ink:    var(--sheet-ink-fg);
+  --ink-2:  var(--sheet-ink-2);
+  --muted:  var(--sheet-ink-muted);
+  --rule:   var(--sheet-ink-rule);
+  --rule-strong: var(--sheet-ink-fg);
+  --dot:    var(--sheet-ink-dot);
+  --accent: var(--sheet-ink-accent);
+  --reg-color: var(--sheet-ink-accent);
+  --reg-blend: var(--reg-blend-inv);
+  background: var(--sheet-ink-bg);
+  color: var(--sheet-ink-fg);
+}
+
+.folha--vermelhao {
+  --paper:  var(--red-bg);
+  --paper-2: var(--red-bg);
+  --ink:    var(--red-fg);
+  --ink-2:  var(--red-muted);
+  --muted:  var(--red-muted);
+  --rule:   var(--red-rule);
+  --rule-strong: var(--red-fg);
+  --dot:    var(--red-rule);
+  --accent: var(--red-fg);
+  --accent-ink: var(--red-bg);
+  --accent-wash: var(--red-deep);
+  --reg-color: var(--red-deep);
+  --reg-blend: multiply;
+  background: var(--red-bg);
+  color: var(--red-fg);
+}
+
+/* cruzes de registro de 14px nos quatro cantos de cada folha */
+.marcas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-color: var(--muted);
+  opacity: .55;
+  --xm: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cg fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M7 0v14M0 7h14'/%3E%3Ccircle cx='7' cy='7' r='3.5'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-image: var(--xm), var(--xm), var(--xm), var(--xm);
+  mask-image: var(--xm), var(--xm), var(--xm), var(--xm);
+  -webkit-mask-size: 14px 14px;
+  mask-size: 14px 14px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 14px 14px, calc(100% - 14px) 14px, 14px calc(100% - 14px), calc(100% - 14px) calc(100% - 14px);
+  mask-position: 14px 14px, calc(100% - 14px) 14px, 14px calc(100% - 14px), calc(100% - 14px) calc(100% - 14px);
+}
+
+/* fios: sempre horizontais, sempre sangrados de borda a borda */
+.fio-3 { height: 3px; background: var(--rule-strong); width: 100%; }
+.fio-1 { height: 1px; background: var(--rule); width: 100%; }
+.fio-2 { height: 2px; background: var(--rule-strong); width: 100%; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 clamp(16px, 2.4vw, 34px);
+}
+
+/* --------------------------------------------------------------------------
+   6. O REGISTRO (assinatura desta direção)
+   -------------------------------------------------------------------------- */
+.reg { position: relative; display: block; }
+
+.reg__red {
+  position: absolute;
+  inset: 0;
+  color: var(--reg-color);
+  mix-blend-mode: var(--reg-blend);
+  transform: translate(var(--reg-x), var(--reg-y));
+  pointer-events: none;
+  transition: transform var(--dur-cor) var(--ease);
+}
+
+.reg__ink { position: relative; display: block; color: var(--ink); }
+
+.reg:hover .reg__red,
+.reg:focus-within .reg__red { --reg-x: 7px; --reg-y: 5px; }
+
+/* --------------------------------------------------------------------------
+   7. GRÃO
+   -------------------------------------------------------------------------- */
+.grao {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-op);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: var(--grain-tile) var(--grain-tile);
+}
+
+/* --------------------------------------------------------------------------
+   8. CABEÇALHO CORRENTE
+   -------------------------------------------------------------------------- */
+.corrente {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--dur-cor) linear, color var(--dur-cor) linear, border-color var(--dur-cor) linear;
+}
+
+.corrente[data-tinta="escura"] {
+  background: var(--sheet-ink-bg);
+  color: var(--sheet-ink-fg);
+  border-bottom-color: var(--sheet-ink-rule);
+  --ink: var(--sheet-ink-fg);
+  --muted: var(--sheet-ink-muted);
+  --accent: var(--sheet-ink-accent);
+}
+
+.corrente[data-tinta="vermelha"] {
+  background: var(--red-bg);
+  color: var(--red-fg);
+  border-bottom-color: var(--red-rule);
+  --ink: var(--red-fg);
+  --muted: var(--red-muted);
+  --accent: var(--red-fg);
+}
+
+.corrente__linha {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 56px;
+  flex-wrap: wrap;
+}
+
+.marca {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 620;
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 12px 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.marca em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.corrente__folio {
+  margin-left: auto;
+  color: var(--muted);
+  white-space: nowrap;
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-variation-settings: "wdth" 75, "wght" 500;
+  font-size: var(--fs-rotulo);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.nav-corrente {
+  display: flex;
+  gap: clamp(10px, 1.6vw, 22px);
+  flex-wrap: wrap;
+}
+
+.nav-corrente a {
+  text-decoration: none;
+  color: var(--ink);
+  font-variation-settings: "wdth" 88, "wght" 500;
+  font-size: .9375rem;
+  padding: 12px 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 10px);
+  background-size: 0% 1px;
+  transition: background-size var(--dur) var(--ease), color var(--dur) linear;
+}
+.nav-corrente a:hover { background-size: 100% 1px; color: var(--accent); }
+
+@media (max-width: 860px) {
+  .nav-corrente { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   9. CAPA
+   -------------------------------------------------------------------------- */
+.capa { padding-top: clamp(28px, 3.5vw, 44px); padding-bottom: 0; }
+
+.cabeca-edicao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 6px clamp(18px, 3vw, 48px);
+  padding: 14px 0 18px;
+}
+.cabeca-edicao span {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-variation-settings: "wdth" 75, "wght" 500;
+  font-size: var(--fs-rotulo);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+.cabeca-edicao span strong {
+  color: var(--ink);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  font-weight: 400;
+}
+
+.capa__miolo { padding-block: clamp(22px, 3vw, 40px) clamp(40px, 5vw, 68px); }
+
+.capa__texto { grid-column: 1 / span 9; }
+.capa__margem { grid-column: 10 / span 3; }
+
+.titulo-capa {
+  font-size: var(--fs-mega);
+  font-weight: 340;
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 1;
+  line-height: .86;
+  letter-spacing: -.026em;
+  margin-left: 0;
+  margin-bottom: clamp(22px, 3vw, 38px);
+}
+
+.titulo-capa .l3 {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+}
+.titulo-capa .reg__ink .l3 { color: var(--accent); }
+.titulo-capa .reg__red { color: var(--reg-color); }
+.titulo-capa .reg__red .l3 { color: var(--ink); }
+
+.kicker-capa {
+  margin-bottom: clamp(20px, 2.6vw, 34px);
+  color: var(--muted);
+}
+
+.capa__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-family: "Instrument Sans", Arial, sans-serif;
+  font-variation-settings: "wdth" 88, "wght" 500;
+  font-size: .9375rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  transition: background-color var(--dur-cor) linear, color var(--dur-cor) linear;
+}
+
+.btn--tinta {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn--tinta:hover { background: var(--accent-deep); }
+
+.btn--fio {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--rule-strong);
+}
+.btn--fio:hover { background: var(--accent-wash); }
+
+.margem-lista { margin: 0; padding: 0; list-style: none; }
+.margem-lista li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+.margem-lista li b {
+  color: var(--ink);
+  font-weight: 400;
+  font-variation-settings: "wdth" 100, "wght" 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  font-size: var(--fs-mono);
+}
+.capa__margem-cabeca {
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--rule-strong);
+  margin-bottom: 4px;
+}
+.capa__margem { border-left: 1px solid var(--rule); padding-left: clamp(14px, 1.6vw, 24px); }
+
+/* pontilhado leader */
+.leader {
+  flex: 1 1 auto;
+  min-width: 12px;
+  align-self: flex-end;
+  height: 1em;
+  background-image: radial-gradient(circle at 1px 50%, var(--dot) 1px, transparent 1.2px);
+  background-size: 6px 100%;
+  background-repeat: repeat-x;
+  background-position: 0 60%;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 100%);
+  mask-image: linear-gradient(90deg, #000 0, #000 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* --------------------------------------------------------------------------
+   10. TICKER
+   -------------------------------------------------------------------------- */
+.ticker {
+  position: relative;
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.ticker__pista {
+  display: flex;
+  width: max-content;
+  height: 44px;
+  align-items: center;
+  animation: correr 110s linear infinite;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+}
+.ticker__grupo { display: flex; align-items: center; }
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  white-space: nowrap;
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-mono);
+  font-variation-settings: "wdth" 87, "wght" 400;
+  color: var(--ink-2);
+}
+.ticker__item::after {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--accent);
+  margin-left: 12px;
+}
+.ticker__nota {
+  padding: 10px 0 12px;
+  color: var(--muted);
+}
+@keyframes correr {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   11. CABEÇA DE SEÇÃO
+   -------------------------------------------------------------------------- */
+.secao-cabeca { margin-bottom: clamp(28px, 3.4vw, 48px); }
+.secao-cabeca .fio-3 { margin-bottom: 14px; }
+.secao-cabeca__linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 20px;
+  margin-bottom: 18px;
+}
+.secao-num {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-variation-settings: "wdth" 75, "wght" 700;
+  font-size: var(--fs-rotulo);
+  letter-spacing: .12em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.secao-cabeca .olho { margin-top: 16px; }
+
+/* --------------------------------------------------------------------------
+   12. SUMÁRIO
+   -------------------------------------------------------------------------- */
+.sumario { margin: 0; padding: 0; list-style: none; }
+.sumario > li { border-bottom: 1px solid var(--rule); }
+.sumario a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 18px 0;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: color var(--dur) linear;
+}
+.sumario a:hover { color: var(--accent); }
+.sumario a:hover .leader { background-image: radial-gradient(circle at 1px 50%, var(--accent) 1px, transparent 1.2px); }
+.sumario__num {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-mono);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  color: var(--muted);
+  min-width: 3.6em;
+}
+.sumario__nome {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 420;
+  font-variation-settings: "opsz" 40, "SOFT" 0, "WONK" 0;
+  line-height: 1.15;
+}
+.sumario__desc {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 400;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .sumario__desc { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   13. FICHA TÉCNICA (folha tinta)
+   -------------------------------------------------------------------------- */
+.maquina__grade { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 4vw, 64px); }
+@media (max-width: 940px) { .maquina__grade { grid-template-columns: 1fr; } }
+
+.ficha { margin: 0; }
+.ficha__par {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ficha__par dt {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  min-width: 13ch;
+}
+.ficha__par dd {
+  margin: 0;
+  flex: 1 1 18ch;
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-mono);
+  font-variation-settings: "wdth" 100, "wght" 400;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.ficha__par--negativo dd { color: var(--accent); }
+
+/* ilustração em duotone com máscara de dez paradas */
+.duotone {
+  position: relative;
+  isolation: isolate;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.12) 6%, rgba(0,0,0,.35) 14%, rgba(0,0,0,.62) 22%, rgba(0,0,0,.86) 32%, #000 44%, #000 62%, rgba(0,0,0,.78) 76%, rgba(0,0,0,.38) 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.12) 6%, rgba(0,0,0,.35) 14%, rgba(0,0,0,.62) 22%, rgba(0,0,0,.86) 32%, #000 44%, #000 62%, rgba(0,0,0,.78) 76%, rgba(0,0,0,.38) 88%, transparent 100%);
+}
+.duotone__tinta {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  mix-blend-mode: multiply;
+  opacity: .18;
+  pointer-events: none;
+}
+.duotone svg { display: block; width: 100%; height: auto; }
+.legenda {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-variation-settings: "wdth" 75, "wght" 400;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   14. COLUNAS DE SERVIÇO
+   -------------------------------------------------------------------------- */
+.colunas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(20px, 2.6vw, 40px);
+  border-top: 2px solid var(--rule-strong);
+}
+.colunas--espelhada { direction: rtl; }
+.colunas--espelhada > * { direction: ltr; }
+@media (max-width: 940px) { .colunas { grid-template-columns: 1fr; } .colunas--espelhada { direction: ltr; } }
+
+.verbete { padding: 26px 0 30px; border-bottom: 1px solid var(--rule); }
+.verbete__topo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.verbete__num {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  letter-spacing: .12em;
+  color: var(--accent);
+}
+.verbete p { font-size: 1rem; color: var(--ink-2); max-width: 42ch; margin-bottom: .8em; }
+.verbete__dado {
+  display: block;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   15. ENCARTE (prazo de 2027)
+   -------------------------------------------------------------------------- */
+.encarte { margin-top: clamp(48px, 6vw, 84px); }
+.encarte__cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+  padding: 12px 0 16px;
+}
+.encarte__selo {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 6px 10px;
+}
+.encarte__grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 34px);
+  padding: 22px 0 8px;
+}
+@media (max-width: 760px) { .encarte__grade { grid-template-columns: 1fr; } }
+.numeral {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.5rem, 5.4vw, 3.9rem);
+  font-weight: 300;
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  line-height: 1;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+.numeral--tinta { color: var(--accent); }
+
+.rolagem { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.quadro {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+table.quadro th, table.quadro td {
+  text-align: left;
+  padding: 14px 18px 14px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+table.quadro thead th {
+  border-bottom: 2px solid var(--rule-strong);
+  color: var(--ink);
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 400;
+}
+table.quadro tbody th {
+  color: var(--ink);
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-mono);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  font-weight: 400;
+  width: 22%;
+}
+table.quadro caption {
+  display: table-caption;
+  text-align: left;
+  padding-bottom: 12px;
+}
+table.quadro td.sim { color: var(--ok); }
+table.quadro td.nao { color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   16. EXPEDIENTE
+   -------------------------------------------------------------------------- */
+.expediente { display: grid; grid-template-columns: 300px 1fr; gap: clamp(28px, 4vw, 68px); }
+@media (max-width: 940px) { .expediente { grid-template-columns: 1fr; } }
+
+.numeros { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; align-content: start; }
+.numeros > div { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+
+.grupo { margin-bottom: 30px; }
+.grupo__titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rule-strong);
+  margin-bottom: 2px;
+}
+.grupo__titulo .rotulo { color: var(--ink); }
+.grupo__cont {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 400;
+  color: var(--muted);
+  margin-left: auto;
+}
+.lista-cliente { margin: 0; padding: 0; list-style: none; }
+.lista-cliente li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.lista-cliente li.ancora { border-bottom: 2px solid var(--rule-strong); }
+.lista-cliente .nome {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 480;
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  line-height: 1.25;
+}
+.lista-cliente .meta {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 400;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  white-space: nowrap;
+  text-align: right;
+}
+.lista-cliente li.ancora .meta { color: var(--accent); font-variation-settings: "wdth" 75, "wght" 700; }
+@media (max-width: 520px) {
+  .lista-cliente li { flex-wrap: wrap; }
+  .lista-cliente .leader { display: none; }
+  .lista-cliente .meta { text-align: left; width: 100%; white-space: normal; }
+}
+
+/* --------------------------------------------------------------------------
+   17. FOLHA VERMELHÃ (divisa e lugar reservado da citação)
+   -------------------------------------------------------------------------- */
+.divisa {
+  font-family: Fraunces, Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.75rem, 4.4vw, 3.4rem);
+  font-weight: 320;
+  font-variation-settings: "opsz" 72, "SOFT" 60, "WONK" 1;
+  line-height: 1.08;
+  letter-spacing: -.018em;
+  max-width: 22ch;
+  margin: 0 0 clamp(22px, 3vw, 36px);
+}
+.pendente {
+  margin-top: clamp(34px, 4.4vw, 56px);
+  padding-top: 16px;
+  border-top: 2px solid var(--rule-strong);
+}
+.pendente__selo {
+  display: inline-block;
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: var(--accent-ink);
+  color: var(--accent);
+  padding: 6px 10px;
+  margin-bottom: 12px;
+}
+.pendente__linhas { display: grid; gap: 10px; max-width: 52ch; }
+.pendente__linhas i {
+  display: block;
+  height: 12px;
+  background: repeating-linear-gradient(90deg, var(--red-rule) 0 14px, transparent 14px 22px);
+}
+.pendente__linhas i:nth-child(2) { width: 88%; }
+.pendente__linhas i:nth-child(3) { width: 64%; }
+
+/* --------------------------------------------------------------------------
+   18. REGISTRO DE EDIÇÃO
+   -------------------------------------------------------------------------- */
+.log { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--rule-strong); }
+.log li {
+  display: grid;
+  grid-template-columns: 9ch 1fr;
+  gap: 6px clamp(16px, 2.2vw, 32px);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.log time {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-mono);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.log p { margin: 0; color: var(--ink-2); max-width: 72ch; }
+.log strong { color: var(--ink); font-weight: 400; font-variation-settings: "wdth" 100, "wght" 600; }
+@media (max-width: 560px) { .log li { grid-template-columns: 1fr; } }
+
+/* --------------------------------------------------------------------------
+   19. CONTATO
+   -------------------------------------------------------------------------- */
+.contato { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: start; }
+@media (max-width: 940px) { .contato { grid-template-columns: 1fr; } }
+
+.cartao {
+  background: var(--paper-3);
+  padding: clamp(24px, 3vw, 40px);
+  border-top: 3px solid var(--rule-strong);
+}
+.campo { display: block; margin-bottom: 20px; }
+.campo > .rotulo { margin-bottom: 6px; }
+.campo input, .campo select, .campo textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 0;
+  font-family: "Instrument Sans", Arial, sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule-strong);
+  transition: border-color var(--dur) linear;
+}
+.campo textarea { min-height: 96px; resize: vertical; line-height: 1.55; }
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+  border-bottom-width: 2px;
+}
+.campo input:focus-visible, .campo select:focus-visible, .campo textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.duplo { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+@media (max-width: 520px) { .duplo { grid-template-columns: 1fr; } }
+
+.contato__dados { margin: 0; }
+.contato__dados dt {
+  font-family: "Martian Mono", ui-monospace, Consolas, monospace;
+  font-size: var(--fs-rotulo);
+  font-variation-settings: "wdth" 75, "wght" 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  padding-top: 16px;
+}
+.contato__dados dd {
+  margin: 4px 0 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1.0625rem;
+}
+.contato__dados dd a {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size var(--dur) var(--ease);
+}
+.contato__dados dd a:hover { background-size: 100% 1px; }
+
+/* --------------------------------------------------------------------------
+   20. COLOFÃO E MARQUEE DE NOMES
+   -------------------------------------------------------------------------- */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.marquee__pista {
+  display: flex;
+  width: max-content;
+  height: 40px;
+  align-items: center;
+  animation: correr 96s linear infinite;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+}
+.marquee__item {
+  padding: 0 22px;
+  white-space: nowrap;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
+  color: var(--muted);
+  letter-spacing: .01em;
+}
+
+.colofao { padding-block: clamp(40px, 5vw, 68px) clamp(30px, 4vw, 48px); }
+.colofao__grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 34px); }
+@media (max-width: 860px) { .colofao__grade { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .colofao__grade { grid-template-columns: 1fr; } }
+.colofao p { font-size: .9375rem; color: var(--ink-2); max-width: 34ch; }
+.colofao__fim {
+  margin-top: clamp(28px, 3.4vw, 44px);
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   21. REVELAÇÃO SÓBRIA
+   -------------------------------------------------------------------------- */
+.revela { opacity: 1; transform: none; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .revela {
+      animation: subir linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 34%;
+    }
+    .leader {
+      animation: compor linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 38%;
+    }
+    .deriva .reg__red {
+      animation: derivar linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+@keyframes subir {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes compor {
+  from { -webkit-mask-size: 0% 100%; mask-size: 0% 100%; }
+  to   { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+}
+@keyframes derivar {
+  from { transform: translate(1px, 1px); }
+  to   { transform: translate(6px, 4px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .capa .reg__red {
+    animation: registrar 760ms cubic-bezier(.16, 1, .3, 1) both;
+  }
+}
+@keyframes registrar {
+  from { transform: translate(22px, 15px); opacity: .35; }
+  60%  { transform: translate(1px, 1px); opacity: 1; }
+  to   { transform: translate(var(--reg-x), var(--reg-y)); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   22. BARRA DE MOCKUP (fora da estética do site)
+   -------------------------------------------------------------------------- */
+.mockbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 200;
+  background: #14120E;
+  color: #EDE8DC;
+  border-top: 2px solid #F2C14E;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+  padding: 8px clamp(12px, 2vw, 24px);
+  display: flex;
+  align-items: center;
+  gap: 10px 16px;
+  flex-wrap: wrap;
+}
+.mockbar__tag {
+  background: #F2C14E;
+  color: #14120E;
+  font-weight: 700;
+  letter-spacing: .14em;
+  padding: 6px 10px;
+}
+.mockbar__nome { letter-spacing: .18em; color: #F2C14E; font-weight: 700; }
+.mockbar__sep { color: #6E6656; }
+.mockbar__botoes { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.mockbar button {
+  min-height: 44px;
+  padding: 8px 14px;
+  background: transparent;
+  color: #EDE8DC;
+  border: 1px solid #4A4436;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: .06em;
+  cursor: pointer;
+}
+.mockbar button:hover { border-color: #F2C14E; color: #F2C14E; }
+.mockbar button[aria-pressed="true"] { background: #F2C14E; color: #14120E; border-color: #F2C14E; }
+.mockbar button:focus-visible { outline: 2px solid #F2C14E; outline-offset: 2px; }
+@media (max-width: 640px) { .mockbar__meta, .mockbar__sep { display: none; } }
+
+/* modo mobile do mockup */
+body.modo-mobile .lamina { max-width: 390px; margin-inline: auto; }
+body.modo-mobile { background: var(--paper-2); }
+
+.pular {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 12px 18px;
+  z-index: 300;
+}
+.pular:focus { left: 0; }
+
+/* --------------------------------------------------------------------------
+   23. RESPONSIVO DA CAPA
+   -------------------------------------------------------------------------- */
+@media (min-width: 941px) {
+  .titulo-capa { margin-left: -.055em; }
+}
+
+@media (max-width: 940px) {
+  .capa__texto { grid-column: 1 / -1; }
+  .capa__margem {
+    grid-column: 1 / -1;
+    border-left: 0;
+    padding-left: 0;
+    margin-top: 36px;
+    border-top: 2px solid var(--rule-strong);
+    padding-top: 8px;
+  }
+  .capa__margem-cabeca { border-bottom: 1px solid var(--rule); }
+}
+
+/* --------------------------------------------------------------------------
+   24. REDUÇÃO DE MOVIMENTO (fim da folha de estilo)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .ticker__pista, .marquee__pista { animation: none; transform: none; }
+  .revela { opacity: 1; transform: none; }
+  .leader { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+  .reg__red { transform: translate(var(--reg-x), var(--reg-y)); }
+}
+
+/* alvo de toque minimo, WCAG 2.5.8 (AA): link em lista de navegacao */
+li > a{display:inline-block;min-height:24px;padding-block:3px}
+</style>
+
+<a class="pular" href="#sumario">Pular para o sumário</a>
+<div class="grao" aria-hidden="true"></div>
+
+<div class="lamina">
+
+  <!-- ===================== §00 CABEÇALHO CORRENTE ===================== -->
+  <header class="corrente" id="corrente">
+    <div class="wrap">
+      <div class="corrente__linha">
+        <a class="marca" href="#capa">Intelecto <em>Solutions</em></a>
+        <nav class="nav-corrente" aria-label="Seções desta edição">
+          <a href="#sumario">Sumário</a>
+          <a href="#maquina">A máquina</a>
+          <a href="#publico">Poder público</a>
+          <a href="#privado">Empresa privada</a>
+          <a href="#expediente">Expediente</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <span class="corrente__folio" id="folio" aria-live="polite">§01 · Capa</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== §01 CAPA ===================== -->
+  <section class="folha capa" id="capa" data-secao="§01 · Capa" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="fio-3"></div>
+    <div class="wrap">
+      <div class="cabeca-edicao">
+        <span>Edição <strong>2026</strong></span>
+        <span>Campinas, <strong>SP</strong></span>
+        <span>CNPJ <strong>12.286.292/0001-50</strong></span>
+        <span>Em produção <strong>31 domínios</strong></span>
+      </div>
+    </div>
+    <div class="fio-1"></div>
+
+    <div class="wrap capa__miolo">
+      <div class="grade">
+        <div class="capa__texto">
+          <span class="rotulo kicker-capa">Intelecto Solutions · Campinas/SP · Tecnologia para quem publica o que é público</span>
+
+          <h1 class="titulo-capa reg">
+            <span class="reg__red" aria-hidden="true">Para quem<br>não pode<br><span class="l3">sair do ar.</span></span>
+            <span class="reg__ink">Para quem<br>não pode<br><span class="l3">sair do ar.</span></span>
+          </h1>
+
+          <p class="olho">Há mais de dez anos a Intelecto mantém portal de transparência, e-mail institucional e sistema crítico no ar para 22 organizações públicas e privadas, em máquina própria no Brasil, operada por gente com nome, telefone e hora marcada.</p>
+
+          <div class="capa__acoes">
+            <a class="btn btn--tinta" href="#contato">Falar com o responsável técnico</a>
+            <a class="btn btn--fio" href="#encarte">Ver o que muda em maio de 2027</a>
+          </div>
+        </div>
+
+        <aside class="capa__margem" aria-label="Nota de margem">
+          <div class="capa__margem-cabeca">
+            <span class="rotulo">Nota de margem</span>
+          </div>
+          <ul class="margem-lista">
+            <li><span>Organizações</span><span class="leader" aria-hidden="true"></span><b>22</b></li>
+            <li><span>Domínios</span><span class="leader" aria-hidden="true"></span><b>31</b></li>
+            <li><span>Câmaras municipais</span><span class="leader" aria-hidden="true"></span><b>08</b></li>
+            <li><span>Prefeituras</span><span class="leader" aria-hidden="true"></span><b>02</b></li>
+            <li><span>Autarquias de saneamento</span><span class="leader" aria-hidden="true"></span><b>03</b></li>
+            <li><span>Consórcio intermunicipal</span><span class="leader" aria-hidden="true"></span><b>01</b></li>
+            <li><span>Instituto de previdência</span><span class="leader" aria-hidden="true"></span><b>01</b></li>
+            <li><span>Empresas privadas</span><span class="leader" aria-hidden="true"></span><b>07</b></li>
+          </ul>
+          <p class="mono" style="margin-top:16px;color:var(--muted);max-width:30ch">Carteira conferida em agosto de 2026. Nenhum número desta página é arredondado.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §02 TICKER ===================== -->
+  <section class="ticker" id="ticker" aria-label="Domínios em produção">
+    <div class="ticker__pista">
+      <div class="ticker__grupo">
+        <span class="ticker__item">jaguariuna.sp.leg.br</span>
+        <span class="ticker__item">capivari.sp.leg.br</span>
+        <span class="ticker__item">americodecampos.sp.leg.br</span>
+        <span class="ticker__item">dolcinopolis.sp.leg.br</span>
+        <span class="ticker__item">camarageneralsalgado.sp.gov.br</span>
+        <span class="ticker__item">camaramagda.sp.gov.br</span>
+        <span class="ticker__item">orindiuva.sp.gov.br</span>
+        <span class="ticker__item">riolandia.sp.gov.br</span>
+        <span class="ticker__item">consisp.sp.gov.br</span>
+        <span class="ticker__item">sae.com.br</span>
+        <span class="ticker__item">saeituiutaba.com.br</span>
+        <span class="ticker__item">sgbs.com.br</span>
+        <span class="ticker__item">siappa.com.br</span>
+        <span class="ticker__item">delarco.agr.br</span>
+        <span class="ticker__item">intelecto.solutions</span>
+        <span class="ticker__item">intelecto.cloud</span>
+      </div>
+      <div class="ticker__grupo" aria-hidden="true">
+        <span class="ticker__item">jaguariuna.sp.leg.br</span>
+        <span class="ticker__item">capivari.sp.leg.br</span>
+        <span class="ticker__item">americodecampos.sp.leg.br</span>
+        <span class="ticker__item">dolcinopolis.sp.leg.br</span>
+        <span class="ticker__item">camarageneralsalgado.sp.gov.br</span>
+        <span class="ticker__item">camaramagda.sp.gov.br</span>
+        <span class="ticker__item">orindiuva.sp.gov.br</span>
+        <span class="ticker__item">riolandia.sp.gov.br</span>
+        <span class="ticker__item">consisp.sp.gov.br</span>
+        <span class="ticker__item">sae.com.br</span>
+        <span class="ticker__item">saeituiutaba.com.br</span>
+        <span class="ticker__item">sgbs.com.br</span>
+        <span class="ticker__item">siappa.com.br</span>
+        <span class="ticker__item">delarco.agr.br</span>
+        <span class="ticker__item">intelecto.solutions</span>
+        <span class="ticker__item">intelecto.cloud</span>
+      </div>
+    </div>
+  </section>
+  <div class="folha folha--rebaixada" style="padding:0">
+    <div class="wrap">
+      <p class="rotulo ticker__nota">Amostra de 16 zonas de um total de 31 em produção · exibição de domínio sujeita a autorização do titular</p>
+    </div>
+  </div>
+
+  <!-- ===================== §03 NESTA EDIÇÃO ===================== -->
+  <section class="folha" id="sumario" data-secao="§03 · Nesta edição" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§03</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Nesta edição</span>
+            <span class="reg__ink">Nesta edição</span>
+          </h2>
+        </div>
+        <p class="olho">Uma página só, composta como caderno. Cada folha responde a uma pergunta que o comprador público faz antes de assinar contrato.</p>
+      </div>
+
+      <ol class="sumario">
+        <li>
+          <a href="#maquina">
+            <span class="sumario__num">§04</span>
+            <span class="sumario__nome">A máquina</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Ferro próprio, não revenda</span>
+          </a>
+        </li>
+        <li>
+          <a href="#publico">
+            <span class="sumario__num">§05</span>
+            <span class="sumario__nome">Para o poder público</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Transparência, correio, plenário</span>
+          </a>
+        </li>
+        <li>
+          <a href="#encarte">
+            <span class="sumario__num">§05a</span>
+            <span class="sumario__nome">Encarte: maio de 2027</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Fim do e-mail do Interlegis</span>
+          </a>
+        </li>
+        <li>
+          <a href="#privado">
+            <span class="sumario__num">§06</span>
+            <span class="sumario__nome">Para a empresa privada</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Sistema sob medida e LGPD</span>
+          </a>
+        </li>
+        <li>
+          <a href="#expediente">
+            <span class="sumario__num">§07</span>
+            <span class="sumario__nome">Expediente</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">A carteira inteira, nominal</span>
+          </a>
+        </li>
+        <li>
+          <a href="#divisa">
+            <span class="sumario__num">§08</span>
+            <span class="sumario__nome">Divisa da casa</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Folha vermelhã</span>
+          </a>
+        </li>
+        <li>
+          <a href="#registro">
+            <span class="sumario__num">§09</span>
+            <span class="sumario__nome">Últimas atualizações</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Registro datado</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contato">
+            <span class="sumario__num">§10</span>
+            <span class="sumario__nome">Contato</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Fala direto com quem faz</span>
+          </a>
+        </li>
+        <li>
+          <a href="#colofao">
+            <span class="sumario__num">§11</span>
+            <span class="sumario__nome">Colofão</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="sumario__desc">Como esta página foi composta</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== §04 A MÁQUINA (folha tinta) ===================== -->
+  <section class="folha folha--tinta" id="maquina" data-secao="§04 · A máquina" data-tinta="escura">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§04</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">A máquina</span>
+            <span class="reg__ink">A máquina</span>
+          </h2>
+        </div>
+        <p class="olho">Quem imprime tem prensa. A Intelecto opera servidor bare metal próprio em datacenter no Brasil: o portal, o e-mail e os sistemas da sua organização não moram em conta compartilhada de revenda.</p>
+      </div>
+
+      <div class="maquina__grade">
+        <div>
+          <dl class="ficha">
+            <div class="ficha__par"><dt>Hospedagem</dt><dd>Servidor bare metal próprio, datacenter no Brasil</dd></div>
+            <div class="ficha__par"><dt>Virtualização</dt><dd>Proxmox, máquinas virtuais separadas por finalidade</dd></div>
+            <div class="ficha__par"><dt>Orquestração</dt><dd>Coolify, containers por aplicação</dd></div>
+            <div class="ficha__par"><dt>Backup</dt><dd>Diário, em object storage de provedor separado</dd></div>
+            <div class="ficha__par"><dt>Correio</dt><dd>SPF, DKIM e DMARC configurados domínio a domínio</dd></div>
+            <div class="ficha__par"><dt>Acesso</dt><dd>Somente por chave SSH, com fail2ban ativo</dd></div>
+            <div class="ficha__par"><dt>Certificado</dt><dd>TLS emitido e renovado automaticamente</dd></div>
+            <div class="ficha__par"><dt>Vigilância</dt><dd>Sonda própria de disponibilidade, sem terceiro no meio</dd></div>
+            <div class="ficha__par"><dt>Em produção</dt><dd>31 domínios, 22 organizações</dd></div>
+            <div class="ficha__par ficha__par--negativo"><dt>O que não é</dt><dd>Revenda de painel de hospedagem</dd></div>
+          </dl>
+
+          <p style="margin-top:26px;color:var(--ink-2);max-width:56ch">A mesma pessoa que escreve o sistema sobe o container, ajusta o registro de DNS e atende o telefone. Não existe camada de suporte que devolve número de protocolo e some. Responsável técnico: Luiz Aguiar.</p>
+        </div>
+
+        <figure style="margin:0">
+          <div class="duotone">
+            <svg viewBox="0 0 640 340" role="img" aria-label="Escala de densidade de tinta com marcas de prova de registro nos cantos">
+              <defs>
+                <pattern id="h1" width="12" height="12" patternUnits="userSpaceOnUse">
+                  <path d="M0 0v12" stroke="currentColor" stroke-width="1" fill="none"/>
+                </pattern>
+                <pattern id="h2" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 0v7" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                </pattern>
+                <pattern id="h3" width="4" height="4" patternUnits="userSpaceOnUse">
+                  <path d="M0 0v4" stroke="currentColor" stroke-width="1.4" fill="none"/>
+                </pattern>
+                <pattern id="h4" width="4" height="4" patternUnits="userSpaceOnUse">
+                  <path d="M0 0h4M0 0v4" stroke="currentColor" stroke-width="1.6" fill="none"/>
+                </pattern>
+              </defs>
+              <g style="color:var(--ink)">
+                <rect x="24" y="34" width="140" height="58" fill="url(#h1)"/>
+                <rect x="172" y="34" width="140" height="58" fill="url(#h2)"/>
+                <rect x="320" y="34" width="140" height="58" fill="url(#h3)"/>
+                <rect x="468" y="34" width="148" height="58" fill="url(#h4)"/>
+
+                <path d="M24 108h592" stroke="currentColor" stroke-width="1" opacity=".5"/>
+                <path d="M24 104v9M172 104v9M320 104v9M468 104v9M616 104v9" stroke="currentColor" stroke-width="1" opacity=".5"/>
+
+                <rect x="24" y="140" width="278" height="120" fill="url(#h2)" opacity=".85"/>
+                <rect x="338" y="140" width="278" height="120" fill="url(#h1)" opacity=".85"/>
+
+                <path d="M24 286h592" stroke="currentColor" stroke-width="3"/>
+                <path d="M24 300h180" stroke="currentColor" stroke-width="1"/>
+                <path d="M240 300h376" stroke="currentColor" stroke-width="1"/>
+
+                <g fill="none" stroke="currentColor" stroke-width="1">
+                  <path d="M56 14v28M42 28h28"/><circle cx="56" cy="28" r="7"/>
+                  <path d="M584 14v28M570 28h28"/><circle cx="584" cy="28" r="7"/>
+                  <path d="M56 300v28M42 314h28"/><circle cx="56" cy="314" r="7"/>
+                  <path d="M584 300v28M570 314h28"/><circle cx="584" cy="314" r="7"/>
+                </g>
+              </g>
+            </svg>
+            <span class="duotone__tinta" aria-hidden="true"></span>
+          </div>
+          <figcaption class="legenda">Escala de densidade de tinta · prova de registro em duas cores. Composta em vetor, sem fotografia. Foto de estúdio do equipamento: pendente de produção.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §05 PARA O PODER PÚBLICO ===================== -->
+  <section class="folha" id="publico" data-secao="§05 · Para o poder público" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§05</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Para o poder público</span>
+            <span class="reg__ink">Para o poder público</span>
+          </h2>
+        </div>
+        <p class="olho">Câmara, prefeitura, consórcio, autarquia de saneamento e instituto de previdência. Oito câmaras municipais, duas prefeituras, um consórcio intermunicipal e três autarquias em operação contínua.</p>
+      </div>
+
+      <div class="colunas">
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">01</span><h3 class="h-media">Mirante</h3></div>
+          <p>Portal de transparência multi-tenant desenvolvido pela Intelecto, hoje com sete tenants em produção. Estrutura de menu e de conteúdo aderente à cartilha do Programa Nacional de Transparência Pública.</p>
+          <span class="verbete__dado">Produto próprio · 07 tenants no ar</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">02</span><h3 class="h-media">E-mail no domínio oficial</h3></div>
+          <p>Caixas no próprio domínio da casa legislativa, com SPF, DKIM e DMARC configurados por domínio, em servidor que a Intelecto administra. A migração preserva a mensagem antiga.</p>
+          <span class="verbete__dado">Reapontamento de MX, sem trocar de NS</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">03</span><h3 class="h-media">Votação eletrônica de plenário</h3></div>
+          <p>Painel de votação, registro nominal e apuração em tempo real para sessão ordinária e extraordinária. Em Orindiuva a solução roda desde 2016, o que faz dela o sistema mais antigo em operação da casa.</p>
+          <span class="verbete__dado">Orindiuva/SP · desde 2016</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">04</span><h3 class="h-media">Ouvidoria e e-SIC</h3></div>
+          <p>Recebimento, prazo e resposta de pedido de informação e de manifestação de ouvidoria, com trilha auditável. A Câmara de Dolcinópolis carrega o Selo Ouvidoria Cidadã.</p>
+          <span class="verbete__dado">Dolcinópolis/SP · Selo Ouvidoria Cidadã</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">05</span><h3 class="h-media">Conformis</h3></div>
+          <p>Plataforma própria de LGPD com o encargo de DPO prestado como serviço: inventário de tratamento, atendimento ao titular, aviso de incidente e evidência para auditoria.</p>
+          <span class="verbete__dado">Produto próprio · DPO como serviço</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">06</span><h3 class="h-media">Prefeitura por inteiro</h3></div>
+          <p>Em Riolândia a Intelecto mantém portal, e-SUS, carta de serviços, transparência e ouvidoria no mesmo ambiente. Em Orindiúva, o portal e os serviços ao cidadão.</p>
+          <span class="verbete__dado">Riolândia/SP e Orindiúva/SP</span>
+        </article>
+      </div>
+
+      <!-- ---------- ENCARTE: maio de 2027 ---------- -->
+      <div class="encarte" id="encarte">
+        <div class="fio-3"></div>
+        <div class="encarte__cabeca">
+          <span class="encarte__selo">Encarte</span>
+          <h3 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Maio de 2027</span>
+            <span class="reg__ink">Maio de 2027</span>
+          </h3>
+        </div>
+        <p class="olho" style="max-width:62ch">O Senado encerra o E-mail Legislativo do Interlegis em maio de 2027. Uma varredura de DNS feita pela própria Intelecto mediu o tamanho do problema no país inteiro.</p>
+
+        <div class="encarte__grade">
+          <div>
+            <span class="numeral">3.138</span>
+            <span class="rotulo" style="margin-top:8px">Domínios .leg.br ativos no Brasil</span>
+          </div>
+          <div>
+            <span class="numeral numeral--tinta">482</span>
+            <span class="rotulo" style="margin-top:8px">Câmaras que perdem o e-mail no prazo</span>
+          </div>
+          <div>
+            <span class="numeral">05/2027</span>
+            <span class="rotulo" style="margin-top:8px">Data limite anunciada pelo Senado</span>
+          </div>
+        </div>
+
+        <div class="fio-1" style="margin-top:26px"></div>
+        <p style="margin-top:22px;max-width:64ch">A casa que erra a manobra nessa hora derruba o próprio site. Existem dois caminhos com nomes parecidos e efeitos opostos, e essa diferença é conhecimento acumulado de quem já fez a operação mais de uma vez:</p>
+
+        <div class="rolagem" style="margin-top:8px">
+          <table class="quadro">
+            <caption class="rotulo">Reapontamento contra delegação de NS</caption>
+            <thead>
+              <tr>
+                <th scope="col">O que muda</th>
+                <th scope="col">Reapontamento (MX, SPF, DKIM, DMARC)</th>
+                <th scope="col">Delegação de NS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Portal Modelo</th>
+                <td class="sim">Continua no ar</td>
+                <td class="nao">Sai do ar</td>
+              </tr>
+              <tr>
+                <th scope="row">SAPL</th>
+                <td class="sim">Continua no ar</td>
+                <td class="nao">Sai do ar</td>
+              </tr>
+              <tr>
+                <th scope="row">E-mail institucional</th>
+                <td class="sim">Passa para o servidor da Intelecto</td>
+                <td class="sim">Passa para o servidor da Intelecto</td>
+              </tr>
+              <tr>
+                <th scope="row">Controle da zona</th>
+                <td>Segue com o Interlegis</td>
+                <td>Sai do Interlegis por inteiro</td>
+              </tr>
+              <tr>
+                <th scope="row">Risco para a casa</th>
+                <td>Baixo, reversível registro a registro</td>
+                <td class="nao">Alto, derruba dois serviços de uma vez</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:24px;max-width:64ch">A Intelecto conduz o pedido junto ao Interlegis, prepara o ofício para o presidente assinar e só mexe no registro de correio. O Portal Modelo e o SAPL continuam exatamente onde estão.</p>
+        <a class="btn btn--tinta" href="#contato" style="margin-top:22px">Pedir a análise do domínio da minha casa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §06 PARA A EMPRESA PRIVADA ===================== -->
+  <section class="folha folha--rebaixada" id="privado" data-secao="§06 · Para a empresa privada" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§06</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Para a empresa privada</span>
+            <span class="reg__ink">Para a empresa privada</span>
+          </h2>
+        </div>
+        <p class="olho">Sete empresas na carteira, da farmacêutica ao agronegócio. A mesma grade da folha anterior, espelhada: o rigor que o setor público exige por lei, a empresa privada exige por contrato.</p>
+      </div>
+
+      <div class="colunas colunas--espelhada">
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">01</span><h3 class="h-media">Sistema sob medida</h3></div>
+          <p>Nove sistemas em produção na TRB Pharma, do grupo suíço TRB Chemedica, incluindo ITSM, LMS e BI construído sobre a base do Protheus. É o cliente âncora da casa.</p>
+          <span class="verbete__dado">TRB Pharma · 09 sistemas</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">02</span><h3 class="h-media">Servidor dedicado</h3></div>
+          <p>Máquina reservada para uma única empresa dentro da infraestrutura própria, com backup diário em armazenamento separado e acesso somente por chave.</p>
+          <span class="verbete__dado">Del Arco · agronegócio</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">03</span><h3 class="h-media">DPO como serviço</h3></div>
+          <p>Encarregado de dados nomeado, canal do titular, inventário de tratamento e plano de resposta a incidente, sustentados pelo Conformis. Contrato ativo com a LOGCARD desde 2024.</p>
+          <span class="verbete__dado">LOGCARD · desde 2024</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">04</span><h3 class="h-media">ITSM e chamado</h3></div>
+          <p>Abertura, fila, prazo e histórico de atendimento interno, com relatório que o gestor consegue ler sem intermediário. Em uso na operação da TRB Pharma.</p>
+          <span class="verbete__dado">Módulo em produção</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">05</span><h3 class="h-media">BI e indicador</h3></div>
+          <p>Leitura direta da base do ERP e entrega em painel próprio, sem exportar planilha na mão toda segunda-feira. Construído caso a caso, com o dado que a diretoria realmente usa.</p>
+          <span class="verbete__dado">Sobre base Protheus</span>
+        </article>
+
+        <article class="verbete">
+          <div class="verbete__topo"><span class="verbete__num">06</span><h3 class="h-media">Site, correio e domínio</h3></div>
+          <p>Presença institucional, e-mail no domínio da empresa e gestão da zona de DNS na mesma casa. Fracttal, OniMusic em Ribeirão Preto, Zambianco em Tietê e Pieralisi em Valinhos.</p>
+          <span class="verbete__dado">04 empresas atendidas</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §07 EXPEDIENTE ===================== -->
+  <section class="folha" id="expediente" data-secao="§07 · Expediente" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§07</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Expediente</span>
+            <span class="reg__ink">Expediente</span>
+          </h2>
+        </div>
+        <p class="olho">A carteira inteira, com nome, praça e o que cada organização usa. Sem "diversos órgãos", sem número redondo, sem parede de brasão.</p>
+      </div>
+
+      <div class="expediente">
+        <aside class="numeros" aria-label="Números da carteira">
+          <div>
+            <span class="numeral">22</span>
+            <span class="rotulo" style="margin-top:6px">Organizações</span>
+          </div>
+          <div>
+            <span class="numeral">31</span>
+            <span class="rotulo" style="margin-top:6px">Domínios</span>
+          </div>
+          <div>
+            <span class="numeral">12</span>
+            <span class="rotulo" style="margin-top:6px">Municípios</span>
+          </div>
+          <div>
+            <span class="numeral">10+</span>
+            <span class="rotulo" style="margin-top:6px">Anos de casa</span>
+          </div>
+          <div style="grid-column:1 / -1;border-bottom:0">
+            <p class="mono" style="color:var(--muted);margin-top:10px;max-width:32ch">Contagem de municípios levantada a partir do mapa próprio de zonas de DNS, ainda em conferência.</p>
+          </div>
+        </aside>
+
+        <div>
+          <div class="grupo">
+            <div class="grupo__titulo"><span class="rotulo">Câmaras municipais</span><span class="grupo__cont">08</span></div>
+            <ul class="lista-cliente">
+              <li><span class="nome">Câmara de Jaguariúna</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · desde 2018</span></li>
+              <li><span class="nome">Câmara de Capivari</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · desde 2021</span></li>
+              <li><span class="nome">Câmara de General Salgado</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · desde 2020</span></li>
+              <li><span class="nome">Câmara de Orindiúva</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · plenário desde 2016</span></li>
+              <li><span class="nome">Câmara de Dolcinópolis</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · selo ouvidoria</span></li>
+              <li><span class="nome">Câmara de Américo de Campos</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e correio</span></li>
+              <li><span class="nome">Câmara de Magda</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e correio</span></li>
+              <li><span class="nome">Câmara de Riolândia</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e correio</span></li>
+            </ul>
+          </div>
+
+          <div class="grupo">
+            <div class="grupo__titulo"><span class="rotulo">Prefeituras</span><span class="grupo__cont">02</span></div>
+            <ul class="lista-cliente">
+              <li><span class="nome">Prefeitura de Riolândia</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal, e-SUS, serviços</span></li>
+              <li><span class="nome">Prefeitura de Orindiúva</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e serviços</span></li>
+            </ul>
+          </div>
+
+          <div class="grupo">
+            <div class="grupo__titulo"><span class="rotulo">Consórcio intermunicipal</span><span class="grupo__cont">01</span></div>
+            <ul class="lista-cliente">
+              <li><span class="nome">CONSISP</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e correio</span></li>
+            </ul>
+          </div>
+
+          <div class="grupo">
+            <div class="grupo__titulo"><span class="rotulo">Autarquias de saneamento</span><span class="grupo__cont">03</span></div>
+            <ul class="lista-cliente">
+              <li><span class="nome">SAE Ituiutaba</span><span class="leader" aria-hidden="true"></span><span class="meta">MG · 03 domínios, com intranet</span></li>
+              <li><span class="nome">SAAE Pedreira</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e correio</span></li>
+              <li><span class="nome">DMAAE Ouro Fino</span><span class="leader" aria-hidden="true"></span><span class="meta">MG · portal e correio</span></li>
+            </ul>
+          </div>
+
+          <div class="grupo">
+            <div class="grupo__titulo"><span class="rotulo">Instituto de previdência</span><span class="grupo__cont">01</span></div>
+            <ul class="lista-cliente">
+              <li><span class="nome">CAPIVARIPREV</span><span class="leader" aria-hidden="true"></span><span class="meta">SP · portal e transparência</span></li>
+            </ul>
+          </div>
+
+          <div class="grupo" style="margin-bottom:0">
+            <div class="grupo__titulo"><span class="rotulo">Empresas privadas</span><span class="grupo__cont">07</span></div>
+            <ul class="lista-cliente">
+              <li class="ancora"><span class="nome">TRB Pharma</span><span class="leader" aria-hidden="true"></span><span class="meta">Grupo TRB Chemedica · 09 sistemas</span></li>
+              <li><span class="nome">Del Arco</span><span class="leader" aria-hidden="true"></span><span class="meta">Agro · servidor dedicado</span></li>
+              <li><span class="nome">LOGCARD</span><span class="leader" aria-hidden="true"></span><span class="meta">DPO desde 2024</span></li>
+              <li><span class="nome">Fracttal</span><span class="leader" aria-hidden="true"></span><span class="meta">Site e correio</span></li>
+              <li><span class="nome">OniMusic</span><span class="leader" aria-hidden="true"></span><span class="meta">Ribeirão Preto/SP</span></li>
+              <li><span class="nome">Zambianco</span><span class="leader" aria-hidden="true"></span><span class="meta">Tietê/SP</span></li>
+              <li><span class="nome">Pieralisi</span><span class="leader" aria-hidden="true"></span><span class="meta">Valinhos/SP</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §08 FOLHA VERMELHÃ ===================== -->
+  <section class="folha folha--vermelhao" id="divisa" data-secao="§08 · Divisa da casa" data-tinta="vermelha">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="fio-3"></div>
+      <div style="padding-top:clamp(30px,4vw,52px)">
+        <span class="rotulo" style="margin-bottom:22px">§08 · Divisa da casa</span>
+        <p class="divisa">Publicar o que é público é obrigação. Publicar certo, no prazo e sem cair, é serviço.</p>
+        <p class="mono" style="max-width:46ch;color:var(--ink-2)">Intelecto Solutions, Campinas/SP. Sede fiscal em Riolândia/SP. Responsável técnico: Luiz Aguiar.</p>
+
+        <div class="pendente">
+          <span class="pendente__selo">Pendente · não publicar</span>
+          <p class="mono" style="max-width:54ch;margin-bottom:16px">Lugar reservado a uma citação nominal de cliente, com cargo e órgão. Ainda sem autorização por escrito. Enquanto não houver assinatura do titular, esta folha não recebe depoimento inventado.</p>
+          <div class="pendente__linhas" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §09 ÚLTIMAS ATUALIZAÇÕES ===================== -->
+  <section class="folha" id="registro" data-secao="§09 · Últimas atualizações" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§09</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Últimas atualizações</span>
+            <span class="reg__ink">Últimas atualizações</span>
+          </h2>
+        </div>
+        <p class="olho">Registro datado da operação. Entra aqui o que aconteceu de verdade, não o que ficaria bem na página.</p>
+      </div>
+
+      <ul class="log">
+        <li>
+          <time datetime="2026-08">2026.08</time>
+          <p><strong>Varredura de DNS nacional concluída.</strong> Mapeados 3.138 domínios .leg.br ativos no país, dos quais 482 câmaras municipais perdem o e-mail institucional no prazo de maio de 2027.</p>
+        </li>
+        <li>
+          <time datetime="2026">2026</time>
+          <p><strong>Conformis entra em operação.</strong> A plataforma própria de LGPD passa a sustentar o encargo de DPO prestado como serviço, com inventário de tratamento e canal do titular.</p>
+        </li>
+        <li>
+          <time datetime="2026">2026</time>
+          <p><strong>Mirante chega a sete tenants.</strong> O portal de transparência multi-tenant atinge sete organizações em produção, com estrutura aderente à cartilha do PNTP.</p>
+        </li>
+        <li>
+          <time datetime="2024">2024</time>
+          <p><strong>LOGCARD inicia contrato de DPO.</strong> Primeiro contrato de encarregado de dados na carteira privada.</p>
+        </li>
+        <li>
+          <time datetime="2021">2021</time>
+          <p><strong>Câmara de Capivari entra em produção.</strong> Portal e correio institucional na infraestrutura própria.</p>
+        </li>
+        <li>
+          <time datetime="2020">2020</time>
+          <p><strong>Câmara de General Salgado entra em produção.</strong> Mais uma casa legislativa da região noroeste do estado migra para a Intelecto.</p>
+        </li>
+        <li>
+          <time datetime="2018">2018</time>
+          <p><strong>Câmara de Jaguariúna.</strong> Cliente legislativo mais antigo em operação contínua na Intelecto.</p>
+        </li>
+        <li>
+          <time datetime="2016">2016</time>
+          <p><strong>Votação eletrônica de plenário em Orindiúva.</strong> Painel de votação e registro nominal de sessão, no ar desde então.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== §10 CONTATO ===================== -->
+  <section class="folha folha--rebaixada" id="contato" data-secao="§10 · Contato" data-tinta="clara">
+    <span class="marcas" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="secao-cabeca revela">
+        <div class="fio-3"></div>
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§10</span>
+          <h2 class="h-alta reg deriva">
+            <span class="reg__red" aria-hidden="true">Contato</span>
+            <span class="reg__ink">Contato</span>
+          </h2>
+        </div>
+        <p class="olho">A mensagem chega em quem desenvolve, não em fila de atendimento. Se preferir, escreva direto ou marque hora.</p>
+      </div>
+
+      <div class="contato">
+        <form class="cartao" id="form-contato" novalidate>
+          <span class="rotulo" style="margin-bottom:18px">Pedido de contato</span>
+
+          <div class="duplo">
+            <label class="campo">
+              <span class="rotulo">Nome</span>
+              <input type="text" name="nome" autocomplete="name" placeholder="Como devemos chamar">
+            </label>
+            <label class="campo">
+              <span class="rotulo">Organização</span>
+              <input type="text" name="org" autocomplete="organization" placeholder="Câmara, prefeitura ou empresa">
+            </label>
+          </div>
+
+          <div class="duplo">
+            <label class="campo">
+              <span class="rotulo">E-mail</span>
+              <input type="email" name="email" autocomplete="email" placeholder="nome@dominio">
+            </label>
+            <label class="campo">
+              <span class="rotulo">Telefone</span>
+              <input type="tel" name="tel" autocomplete="tel" placeholder="Com DDD">
+            </label>
+          </div>
+
+          <label class="campo">
+            <span class="rotulo">Assunto</span>
+            <select name="assunto">
+              <option>E-mail institucional no domínio oficial</option>
+              <option>Prazo de maio de 2027 do Interlegis</option>
+              <option>Portal de transparência (Mirante)</option>
+              <option>LGPD e encarregado de dados (Conformis)</option>
+              <option>Votação eletrônica de plenário</option>
+              <option>Sistema sob medida para empresa</option>
+              <option>Outro assunto</option>
+            </select>
+          </label>
+
+          <label class="campo">
+            <span class="rotulo">Mensagem</span>
+            <textarea name="msg" placeholder="Quantas caixas de e-mail a casa usa hoje? Qual é o domínio?"></textarea>
+          </label>
+
+          <button class="btn btn--tinta" type="submit" style="width:100%">Enviar pedido de contato</button>
+          <p class="mono" id="aviso-form" style="margin-top:14px;color:var(--muted)" aria-live="polite">Mockup: nenhum dado sai desta página.</p>
+        </form>
+
+        <div>
+          <dl class="contato__dados">
+            <dt>Responsável técnico</dt>
+            <dd>Luiz Aguiar</dd>
+            <dt>E-mail</dt>
+            <dd><a href="mailto:contato@intelecto.solutions">contato@intelecto.solutions</a></dd>
+            <dt>Operação</dt>
+            <dd>Campinas, São Paulo</dd>
+            <dt>Sede fiscal</dt>
+            <dd>Riolândia, São Paulo</dd>
+            <dt>CNPJ</dt>
+            <dd class="mono" style="font-size:1rem">12.286.292/0001-50</dd>
+          </dl>
+
+          <div class="fio-1" style="margin:28px 0 20px"></div>
+          <p style="max-width:46ch"><span class="ponto-ok" aria-hidden="true"></span>Atendimento direto, sem camada de suporte. Quem responde a mensagem é a mesma pessoa que administra o servidor onde o seu domínio está hospedado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== §11 COLOFÃO ===================== -->
+  <footer class="folha" id="colofao" data-secao="§11 · Colofão" data-tinta="clara" style="padding-top:0">
+    <span class="marcas" aria-hidden="true"></span>
+
+    <div class="marquee" aria-label="Organizações atendidas">
+      <div class="marquee__pista">
+        <div class="ticker__grupo">
+          <span class="marquee__item">Câmara de Jaguariúna</span>
+          <span class="marquee__item">Câmara de Capivari</span>
+          <span class="marquee__item">Câmara de General Salgado</span>
+          <span class="marquee__item">Câmara de Orindiúva</span>
+          <span class="marquee__item">Câmara de Dolcinópolis</span>
+          <span class="marquee__item">Câmara de Américo de Campos</span>
+          <span class="marquee__item">Câmara de Magda</span>
+          <span class="marquee__item">Câmara de Riolândia</span>
+          <span class="marquee__item">Prefeitura de Riolândia</span>
+          <span class="marquee__item">Prefeitura de Orindiúva</span>
+          <span class="marquee__item">CONSISP</span>
+          <span class="marquee__item">SAE Ituiutaba</span>
+          <span class="marquee__item">SAAE Pedreira</span>
+          <span class="marquee__item">DMAAE Ouro Fino</span>
+          <span class="marquee__item">CAPIVARIPREV</span>
+          <span class="marquee__item">TRB Pharma</span>
+          <span class="marquee__item">Del Arco</span>
+          <span class="marquee__item">LOGCARD</span>
+          <span class="marquee__item">Fracttal</span>
+          <span class="marquee__item">OniMusic</span>
+          <span class="marquee__item">Zambianco</span>
+          <span class="marquee__item">Pieralisi</span>
+        </div>
+        <div class="ticker__grupo" aria-hidden="true">
+          <span class="marquee__item">Câmara de Jaguariúna</span>
+          <span class="marquee__item">Câmara de Capivari</span>
+          <span class="marquee__item">Câmara de General Salgado</span>
+          <span class="marquee__item">Câmara de Orindiúva</span>
+          <span class="marquee__item">Câmara de Dolcinópolis</span>
+          <span class="marquee__item">Câmara de Américo de Campos</span>
+          <span class="marquee__item">Câmara de Magda</span>
+          <span class="marquee__item">Câmara de Riolândia</span>
+          <span class="marquee__item">Prefeitura de Riolândia</span>
+          <span class="marquee__item">Prefeitura de Orindiúva</span>
+          <span class="marquee__item">CONSISP</span>
+          <span class="marquee__item">SAE Ituiutaba</span>
+          <span class="marquee__item">SAAE Pedreira</span>
+          <span class="marquee__item">DMAAE Ouro Fino</span>
+          <span class="marquee__item">CAPIVARIPREV</span>
+          <span class="marquee__item">TRB Pharma</span>
+          <span class="marquee__item">Del Arco</span>
+          <span class="marquee__item">LOGCARD</span>
+          <span class="marquee__item">Fracttal</span>
+          <span class="marquee__item">OniMusic</span>
+          <span class="marquee__item">Zambianco</span>
+          <span class="marquee__item">Pieralisi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap colofao">
+      <div class="secao-cabeca" style="margin-bottom:34px">
+        <div class="secao-cabeca__linha">
+          <span class="secao-num">§11</span>
+          <h2 class="h-media">Colofão</h2>
+        </div>
+      </div>
+
+      <div class="colofao__grade">
+        <div>
+          <span class="rotulo" style="margin-bottom:10px">Composição</span>
+          <p>Títulos em Fraunces, texto em Instrument Sans, ficha técnica em Martian Mono. Duas tintas: preta e vermelhão.</p>
+        </div>
+        <div>
+          <span class="rotulo" style="margin-bottom:10px">Impressão</span>
+          <p>Servidor bare metal próprio, Proxmox e Coolify, em datacenter no Brasil. Backup diário em armazenamento separado.</p>
+        </div>
+        <div>
+          <span class="rotulo" style="margin-bottom:10px">Fontes de dado</span>
+          <p>Carteira conferida em agosto de 2026. Varredura de DNS executada pela própria Intelecto sobre os 5.571 municípios do país.</p>
+        </div>
+        <div>
+          <span class="rotulo" style="margin-bottom:10px">Pendências desta edição</span>
+          <p>Ano exato de fundação, autorização nominal de citação e de exibição de domínio, e conferência final da contagem de municípios.</p>
+        </div>
+      </div>
+
+      <div class="colofao__fim">
+        <span class="mono">Intelecto Solutions</span>
+        <span class="mono">CNPJ 12.286.292/0001-50</span>
+        <span class="mono">Campinas/SP</span>
+        <span class="mono"><span class="ponto-ok" aria-hidden="true"></span>31 domínios em produção</span>
+        <span class="mono" style="margin-left:auto;color:var(--accent)">Edição 2026 · folha PAPEL</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ===================== BARRA DE MOCKUP ===================== -->
+<div class="mockbar" role="region" aria-label="Barra de controle do mockup">
+  <span class="mockbar__tag">MOCKUP</span>
+  <span class="mockbar__nome">PRELO</span>
+  <span class="mockbar__sep">|</span>
+  <span class="mockbar__meta" id="mock-info">folha PAPEL (claro, nativo)</span>
+  <div class="mockbar__botoes">
+    <button type="button" id="btn-tema" aria-pressed="false">Alternar tema</button>
+    <button type="button" id="btn-mobile" aria-pressed="false">Ver em mobile</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var raiz = document.documentElement;
+
+  function temaAtual() {
+    var attr = raiz.getAttribute("data-theme");
+    if (attr === "dark" || attr === "light") return attr;
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+    } catch (e) { /* segue no claro */ }
+    return "light";
+  }
+
+  function pintaInfo() {
+    var info = document.getElementById("mock-info");
+    if (!info) return;
+    info.textContent = temaAtual() === "dark"
+      ? "folha PROVA (escuro)"
+      : "folha PAPEL (claro, nativo)";
+  }
+
+  /* alternar tema */
+  var btnTema = document.getElementById("btn-tema");
+  if (btnTema) {
+    btnTema.setAttribute("aria-pressed", temaAtual() === "dark" ? "true" : "false");
+    btnTema.addEventListener("click", function () {
+      var novo = temaAtual() === "dark" ? "light" : "dark";
+      raiz.setAttribute("data-theme", novo);
+      btnTema.setAttribute("aria-pressed", novo === "dark" ? "true" : "false");
+      try { localStorage.setItem("prelo-tema", novo); } catch (e) { /* sem persistencia */ }
+      pintaInfo();
+    });
+  }
+  pintaInfo();
+
+  /* ver em mobile */
+  var btnMobile = document.getElementById("btn-mobile");
+  if (btnMobile) {
+    btnMobile.addEventListener("click", function () {
+      var ligado = document.body.classList.toggle("modo-mobile");
+      btnMobile.setAttribute("aria-pressed", ligado ? "true" : "false");
+      btnMobile.textContent = ligado ? "Ver em desktop" : "Ver em mobile";
+    });
+  }
+
+  /* cabecalho corrente: folio e troca de tinta ao cruzar cada folha */
+  var folio = document.getElementById("folio");
+  var corrente = document.getElementById("corrente");
+  var folhas = Array.prototype.slice.call(document.querySelectorAll("[data-secao]"));
+
+  if (folio && corrente && folhas.length && "IntersectionObserver" in window) {
+    var visiveis = [];
+
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        var i = visiveis.indexOf(e.target);
+        if (e.isIntersecting) { if (i === -1) visiveis.push(e.target); }
+        else if (i !== -1) { visiveis.splice(i, 1); }
+      });
+
+      if (!visiveis.length) return;
+
+      visiveis.sort(function (a, b) {
+        return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      });
+
+      var atual = visiveis[0];
+      for (var k = 0; k < visiveis.length; k++) {
+        if (visiveis[k].getBoundingClientRect().top <= 72) atual = visiveis[k];
+      }
+
+      var rotulo = atual.getAttribute("data-secao");
+      if (rotulo && folio.textContent !== rotulo) folio.textContent = rotulo;
+
+      var tinta = atual.getAttribute("data-tinta") || "clara";
+      if (corrente.getAttribute("data-tinta") !== tinta) corrente.setAttribute("data-tinta", tinta);
+    }, { threshold: [0, 0.01, 0.5], rootMargin: "-56px 0px -60% 0px" });
+
+    folhas.forEach(function (f) { obs.observe(f); });
+  }
+
+  /* formulario: o mockup nao envia nada */
+  var form = document.getElementById("form-contato");
+  if (form) {
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var aviso = document.getElementById("aviso-form");
+      if (aviso) aviso.textContent = "Mockup: envio desativado. Nenhum dado saiu desta página.";
+    });
+  }
+})();
+</script>

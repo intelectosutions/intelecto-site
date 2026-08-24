@@ -1,0 +1,1258 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intelecto Solutions</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<script>(function(){try{var t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t;var f=localStorage.getItem('fonte');if(f)document.documentElement.style.setProperty('--step-0',f);var c=localStorage.getItem('contraste');if(c==='1')document.documentElement.dataset.contraste='alto'}catch(e){}})()</script>
+
+<style>
+/* ============================================================
+   INTELECTO SOLUTIONS  ·  direcao "Anexo I"
+   Tokens completos no :root claro. No escuro, SO redefinicao.
+   ============================================================ */
+:root{
+  color-scheme: light;
+
+  --bg:#FFFFFF;
+  --surface:#F5F8FB;
+  --surface-2:#E9EEF5;
+  --line:#D6DEE9;
+  --line-strong:#B7C3D2;
+  --title:#16283F;
+  --text:#333B45;
+  --mute:#4B5563;
+  --acao:#1351B4;
+  --acao-ink:#FFFFFF;
+  --acao-hover:#0E3F8C;
+  --acao-sutil:#E7EFFC;
+  --accent:#2563EB;
+  --alerta-bg:#FDF6EC;
+  --alerta-line:#B45309;
+  --alerta-text:#92400E;
+  --ok:#14663F;
+  --ok-ink:#FFFFFF;
+  --foco-bg:#FFDD00;
+  --foco-ink:#0B0C0C;
+  --placa-logo:transparent;
+  --escuro-bg:#0E1621;
+  --escuro-surface:#16202D;
+  --escuro-line:#35465A;
+  --escuro-title:#E8EDF4;
+  --escuro-text:#D3DCE6;
+  --escuro-mute:#9FB0C4;
+  --escuro-acao:#6FA0FF;
+
+  --step--1:.8rem;
+  --step-0:1rem;
+  --step-1:1.25rem;
+  --step-2:1.5625rem;
+  --step-3:1.953rem;
+  --step-4:2.441rem;
+  --step-5:3.052rem;
+  --medida:65ch;
+  --header-h:108px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E1621; --surface:#16202D; --surface-2:#1D2A3A;
+    --line:#24313F; --line-strong:#35465A;
+    --title:#E8EDF4; --text:#D3DCE6; --mute:#9FB0C4;
+    --acao:#6FA0FF; --acao-ink:#0B121C; --acao-hover:#A6C2FA; --acao-sutil:#16294A;
+    --accent:#8FB4FF;
+    --alerta-bg:#241B0F; --alerta-line:#B4762A; --alerta-text:#F0B463;
+    --ok:#3DBF74; --ok-ink:#06120C;
+    --placa-logo:rgba(255,255,255,.94);
+    --escuro-bg:#08101A; --escuro-surface:#101A26;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E1621; --surface:#16202D; --surface-2:#1D2A3A;
+  --line:#24313F; --line-strong:#35465A;
+  --title:#E8EDF4; --text:#D3DCE6; --mute:#9FB0C4;
+  --acao:#6FA0FF; --acao-ink:#0B121C; --acao-hover:#A6C2FA; --acao-sutil:#16294A;
+  --accent:#8FB4FF;
+  --alerta-bg:#241B0F; --alerta-line:#B4762A; --alerta-text:#F0B463;
+  --ok:#3DBF74; --ok-ink:#06120C;
+  --placa-logo:rgba(255,255,255,.94);
+  --escuro-bg:#08101A; --escuro-surface:#101A26;
+}
+:root[data-contraste="alto"]{
+  --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#FFFFFF;
+  --line:#000000; --line-strong:#000000;
+  --title:#000000; --text:#000000; --mute:#000000;
+  --acao:#0000CC; --acao-ink:#FFFFFF; --acao-sutil:#FFFFFF;
+}
+
+*{box-sizing:border-box}
+html{font-size:17px;-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:"Public Sans",system-ui,"Segoe UI",Arial,sans-serif;
+  font-size:var(--step-0); line-height:1.65;
+  font-synthesis-weight:none;
+}
+h1,h2,h3,h4{color:var(--title);font-weight:600;line-height:1.18;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,1.2rem + 3.2vw,3.25rem);line-height:1.12;letter-spacing:-.02em}
+h2{font-size:var(--step-3);letter-spacing:-.015em}
+h3{font-size:var(--step-2);letter-spacing:-.01em}
+h4{font-size:var(--step-1)}
+p{margin:0;max-width:var(--medida);text-wrap:pretty}
+li{max-width:var(--medida)}
+a{color:var(--acao);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--acao-hover);text-decoration-thickness:2px}
+:focus-visible{background:var(--foco-bg);color:var(--foco-ink);box-shadow:0 -2px var(--foco-bg),0 4px var(--foco-ink);outline:none;text-decoration:none}
+:focus-visible *{color:var(--foco-ink)}
+img{max-width:100%;height:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+[hidden]{display:none !important}
+
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:500}
+.wrap{width:min(1180px,100% - 3rem);margin-inline:auto}
+.over{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;font-size:var(--step--1);
+  text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin:0 0 .75rem;max-width:none}
+.sec{padding-block:4.5rem;border-top:1px solid var(--line)}
+.sec--flat{border-top:0}
+.lead{font-size:var(--step-1);color:var(--text)}
+.fig{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;font-size:var(--step--1);
+  text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-top:.85rem;display:block}
+
+/* botoes */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:44px;padding:.7rem 1.35rem;border-radius:4px;font-weight:600;font-size:var(--step-0);
+  text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:background-color 140ms ease-out,border-color 140ms ease-out,color 140ms ease-out}
+.btn--p{background:var(--acao);color:var(--acao-ink);border-color:var(--acao)}
+.btn--p:hover{background:var(--acao-hover);border-color:var(--acao-hover);color:var(--acao-ink)}
+.btn--s{background:transparent;color:var(--acao);border-color:var(--line-strong)}
+.btn--s:hover{border-color:var(--acao);background:var(--acao-sutil)}
+.btn--ok{background:var(--ok);color:var(--ok-ink);border-color:var(--ok)}
+.btn--ok:hover{color:var(--ok-ink);filter:brightness(1.08)}
+
+/* ---------- barra eMAG ---------- */
+.emag{background:var(--surface);border-bottom:1px solid var(--line);font-size:var(--step--1)}
+.emag__in{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1.1rem;min-height:36px;padding-block:.25rem}
+.emag a{color:var(--text);text-decoration:none;padding:.25rem .1rem}
+.emag a:hover{text-decoration:underline}
+.emag__sp{margin-left:auto;display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
+.emag__b{background:transparent;border:1px solid var(--line-strong);color:var(--text);
+  border-radius:3px;min-height:26px;min-width:28px;padding:.1rem .5rem;font:inherit;cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-weight:500;
+  transition:background-color 140ms ease-out,border-color 140ms ease-out}
+.emag__b:hover{background:var(--acao-sutil);border-color:var(--acao)}
+.emag__b[aria-pressed="true"]{background:var(--acao);color:var(--acao-ink);border-color:var(--acao)}
+.pula{position:absolute;left:-9999px}
+.pula:focus{position:static;left:auto}
+
+/* ---------- faixa de identidade ---------- */
+.ident{background:var(--surface-2);border-bottom:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.72rem;color:var(--mute);
+  letter-spacing:.02em}
+.ident__in{min-height:26px;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;padding-block:.3rem}
+
+/* ---------- header ---------- */
+.hd{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+.hd__in{display:flex;align-items:center;gap:1.5rem;min-height:72px}
+.marca{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--title);flex-shrink:0}
+.marca__m{width:34px;height:34px;flex-shrink:0}
+.marca__t{font-weight:700;letter-spacing:-.02em;font-size:1.06rem;line-height:1.1}
+.marca__s{display:block;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.62rem;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--mute)}
+.nav{display:flex;gap:1.4rem;margin-left:1rem}
+.nav a{color:var(--text);text-decoration:none;font-size:.94rem;padding:.4rem 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--acao);border-bottom-color:var(--acao)}
+.hd__cta{margin-left:auto;display:flex;align-items:center;gap:1rem}
+.tel{color:var(--text);text-decoration:none;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.85rem}
+.tel:hover{color:var(--acao)}
+@media (max-width:1080px){.nav,.tel{display:none}}
+
+/* ---------- comunicado ---------- */
+.com{background:var(--alerta-bg);border-bottom:1px solid var(--line);
+  border-left:3px solid var(--alerta-line);color:var(--alerta-text)}
+.com__in{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;padding-block:.85rem;min-height:56px}
+.com__n{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.07em;opacity:.85;flex-shrink:0}
+.com__t{font-size:.95rem;font-weight:600;max-width:none}
+.com a{color:var(--alerta-text)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:3.5rem 4rem}
+.hero__g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.hero h1{margin-bottom:1.25rem}
+.hero h1 .q{color:var(--mute);display:block;font-size:.62em;font-weight:400;letter-spacing:-.01em;margin-bottom:.35rem}
+.hero__sub{font-size:var(--step-1);color:var(--text);margin-bottom:1.75rem}
+.hero__ct{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.5rem}
+.hero__meta{font-size:var(--step--1);color:var(--mute);display:flex;flex-wrap:wrap;gap:.3rem .9rem;
+  font-family:"IBM Plex Mono",monospace;font-weight:500;max-width:none}
+@media (max-width:900px){.hero__g{grid-template-columns:1fr;gap:2.5rem}}
+
+/* moldura de produto */
+.mold{border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--surface)}
+.mold__bar{background:var(--surface-2);border-bottom:1px solid var(--line);height:34px;
+  display:flex;align-items:center;gap:.5rem;padding-inline:.7rem}
+.mold__dots{display:flex;gap:.3rem;flex-shrink:0}
+.mold__dots i{width:9px;height:9px;border-radius:50%;background:var(--line-strong);display:block}
+.mold__url{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.68rem;color:var(--mute);
+  background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:.1rem .55rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mold__body{background:var(--bg)}
+
+/* wireframe do portal dentro da moldura */
+.pv{font-size:.62rem;line-height:1.4}
+.pv__top{background:var(--title);color:#fff;padding:.5rem .7rem;display:flex;align-items:center;gap:.5rem}
+.pv__br{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.22);flex-shrink:0}
+.pv__nm{font-weight:700;font-size:.66rem;letter-spacing:.01em}
+.pv__nm small{display:block;font-weight:400;opacity:.72;font-size:.56rem}
+.pv__nav{background:var(--accent);display:flex;gap:.9rem;padding:.35rem .7rem;color:#fff;font-size:.56rem;flex-wrap:wrap}
+.pv__hero{padding:.8rem .7rem;background:var(--surface-2)}
+.pv__h{height:8px;background:var(--line-strong);border-radius:2px;margin-bottom:.4rem;width:78%}
+.pv__h2{height:6px;background:var(--line);border-radius:2px;margin-bottom:.3rem}
+.pv__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;padding:.7rem}
+.pv__c{border:1px solid var(--line);border-radius:4px;padding:.45rem .4rem;text-align:center;background:var(--bg)}
+.pv__ci{width:14px;height:14px;margin:0 auto .3rem;border-radius:3px;background:var(--acao-sutil);border:1px solid var(--acao)}
+.pv__ct{font-size:.5rem;color:var(--mute);line-height:1.25}
+.pv__list{padding:.2rem .7rem .8rem}
+.pv__row{display:flex;gap:.5rem;align-items:center;padding:.3rem 0;border-bottom:1px solid var(--line)}
+.pv__tag{font-family:"IBM Plex Mono",monospace;font-size:.48rem;color:var(--acao);border:1px solid var(--acao-sutil);
+  background:var(--acao-sutil);border-radius:2px;padding:.05rem .25rem;flex-shrink:0}
+.pv__ln{height:5px;background:var(--line);border-radius:2px;flex:1}
+
+/* ---------- numeros ---------- */
+.nums{background:var(--surface);border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+.nums__g{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:2.75rem}
+.num__p{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--mute);display:block;margin-bottom:.35rem}
+.num__v{font-size:var(--step-5);font-weight:700;color:var(--title);line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;display:block;margin-bottom:.5rem}
+.num__l{font-size:.9rem;color:var(--text);max-width:26ch}
+@media (max-width:820px){.nums__g{grid-template-columns:1fr 1fr;gap:1.75rem}}
+
+/* ---------- portas por perfil ---------- */
+.portas{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding-block:2rem}
+.porta{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.25rem;text-decoration:none;
+  color:var(--title);font-weight:600;background:var(--bg);
+  transition:border-color 140ms ease-out,background-color 140ms ease-out,transform 140ms ease-out}
+@media (hover:hover){.porta:hover{transform:translateY(-2px);border-color:var(--acao);background:var(--acao-sutil)}}
+.porta span{font-size:.98rem}
+.porta i{color:var(--acao);font-style:normal;flex-shrink:0}
+@media (max-width:820px){.portas{grid-template-columns:1fr}}
+
+/* ---------- diagnostico ---------- */
+.diag{background:var(--surface)}
+.diag__box{border:1px solid var(--line-strong);border-radius:8px;background:var(--bg);padding:1.75rem;max-width:760px}
+.diag__f{display:flex;gap:.6rem;flex-wrap:wrap;margin-block:1.1rem}
+.diag__f input{flex:1;min-width:220px;min-height:46px;padding:.6rem .9rem;font:inherit;
+  border:1px solid var(--line-strong);border-radius:4px;background:var(--bg);color:var(--text)}
+.diag__f input:focus-visible{box-shadow:0 0 0 3px var(--foco-bg);border-color:var(--foco-ink);background:var(--bg);color:var(--text)}
+.ver{border-left:3px solid var(--acao);background:var(--surface);padding:1.1rem 1.25rem;border-radius:0 6px 6px 0;margin-top:1.25rem}
+.ver__t{font-weight:600;color:var(--title);margin-bottom:.4rem;font-size:var(--step-1)}
+.ver__d{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.7rem;color:var(--mute);
+  text-transform:uppercase;letter-spacing:.06em;margin-top:.75rem;display:block}
+.ver--al{border-left-color:var(--alerta-line)}
+.ver--ok{border-left-color:var(--ok)}
+.dns{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.8rem;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:3px;padding:.15rem .45rem;display:inline-block}
+
+/* ---------- clientes ---------- */
+.abas{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem;border-bottom:1px solid var(--line);padding-bottom:0}
+.aba{background:transparent;border:1px solid transparent;border-bottom:2px solid transparent;
+  color:var(--mute);font:inherit;font-size:.92rem;font-weight:600;cursor:pointer;
+  padding:.6rem .95rem;min-height:44px;margin-bottom:-1px;
+  transition:color 140ms ease-out,border-color 140ms ease-out}
+.aba:hover{color:var(--acao)}
+.aba[aria-selected="true"]{color:var(--acao);border-bottom-color:var(--acao)}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem 1.5rem}
+.cli{display:block;text-decoration:none;color:inherit;padding:.5rem;border-radius:6px;
+  transition:background-color 140ms ease-out,transform 140ms ease-out}
+@media (hover:hover){.cli:hover{background:var(--surface);transform:translateY(-2px)}}
+.cli__br{height:56px;display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;
+  background:var(--placa-logo);border-radius:.5rem}
+.cli__ph{width:52px;height:52px;border-radius:50%;border:1.5px dashed var(--line-strong);
+  display:flex;align-items:center;justify-content:center;color:var(--mute);
+  font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.62rem;letter-spacing:.04em;background:var(--surface)}
+.cli__n{font-size:.94rem;font-weight:600;color:var(--title);line-height:1.3}
+.cli__uf{font-size:.82rem;color:var(--mute)}
+.cli__r{font-size:var(--step--1);color:var(--mute);margin-top:.35rem;line-height:1.45}
+@media (hover:hover){.cli:hover .cli__n{color:var(--acao)}}
+
+/* ---------- tabela carteira ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+.tb{font-size:.92rem;min-width:720px}
+.tb caption{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:var(--step--1);
+  text-transform:uppercase;letter-spacing:.08em;color:var(--mute);padding:.9rem 1rem;background:var(--surface)}
+.tb th{text-align:left;font-weight:600;color:var(--title);background:var(--surface-2);
+  padding:.7rem 1rem;border-bottom:1px solid var(--line-strong);white-space:nowrap}
+.tb td{padding:.7rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+.tb tbody tr:nth-child(even) td{background:var(--surface)}
+.tb tbody tr:last-child td{border-bottom:0}
+
+/* ---------- bento servicos ---------- */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+.bl{border:1px solid var(--line);border-radius:8px;padding:1.6rem;background:var(--bg);
+  display:flex;flex-direction:column;
+  transition:border-color 140ms ease-out,transform 140ms ease-out}
+@media (hover:hover){.bl:hover{transform:translateY(-2px);border-color:var(--acao)}}
+.bl--big{grid-column:span 6;grid-row:span 2}
+.bl--sm{grid-column:span 6}
+.bl h3{margin-bottom:.5rem}
+.bl__def{color:var(--mute);font-size:.94rem;margin-bottom:1rem}
+.bl ul{margin:0 0 1.1rem;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem;font-size:.94rem}
+.bl__lei{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.7rem;color:var(--mute);
+  text-transform:uppercase;letter-spacing:.05em;padding-top:.9rem;border-top:1px solid var(--line);margin-top:auto}
+.bl__go{margin-top:.9rem;font-weight:600;font-size:.92rem}
+@media (max-width:900px){.bl--big,.bl--sm{grid-column:span 12;grid-row:auto}}
+
+/* ---------- diagrama ---------- */
+.dgm{border:1px solid var(--line);border-radius:8px;padding:1.75rem;background:var(--surface);overflow-x:auto}
+.aviso{background:var(--alerta-bg);border-left:3px solid var(--alerta-line);color:var(--alerta-text);
+  padding:1rem 1.25rem;border-radius:0 6px 6px 0;margin-top:1.5rem;font-weight:600;max-width:var(--medida)}
+
+/* ---------- bloco escuro infra ---------- */
+.escuro{background:var(--escuro-bg);color:var(--escuro-text);border-top:1px solid var(--escuro-line);
+  border-bottom:1px solid var(--escuro-line)}
+.escuro h2{color:var(--escuro-title)}
+.escuro .over{color:var(--escuro-mute)}
+.escuro p{color:var(--escuro-text)}
+.escuro a{color:var(--escuro-acao)}
+.espec{width:100%;font-size:.92rem;margin-top:1.75rem}
+.espec th{text-align:left;padding:.75rem 1rem .75rem 0;border-bottom:1px solid var(--escuro-line);
+  color:var(--escuro-mute);font-weight:500;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;vertical-align:top;width:34%}
+.espec td{padding:.75rem 0;border-bottom:1px solid var(--escuro-line);color:var(--escuro-text)}
+
+/* ---------- contratar ---------- */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{border:1px solid var(--line);border-radius:8px;padding:1.5rem;background:var(--bg);display:flex;flex-direction:column}
+.card__ind{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--ok);margin-bottom:.6rem}
+.card h4{margin-bottom:.7rem}
+.card ul{margin:0;padding-left:1.1rem;font-size:.92rem;display:flex;flex-direction:column;gap:.3rem}
+@media (max-width:900px){.cards3{grid-template-columns:1fr}}
+
+/* ---------- perguntas ---------- */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem}
+.faq__i{padding-block:1rem;border-bottom:1px solid var(--line)}
+.faq__q{font-weight:600;color:var(--title);margin-bottom:.2rem}
+.faq__a{font-size:.94rem;color:var(--mute)}
+@media (max-width:820px){.faq{grid-template-columns:1fr}}
+
+/* ---------- quem responde ---------- */
+.quem{display:grid;grid-template-columns:200px 1fr;gap:2.5rem;align-items:start}
+.quem__f{width:200px;height:200px;border-radius:6px;border:1px dashed var(--line-strong);background:var(--surface);
+  display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mute);
+  font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.7rem;padding:1rem;line-height:1.5}
+@media (max-width:820px){.quem{grid-template-columns:1fr}.quem__f{width:140px;height:140px}}
+
+/* ---------- marquee ---------- */
+.marquee{--gap:4rem;--items:21;--seg:4s;display:flex;gap:var(--gap);overflow:hidden;
+  mask-image:linear-gradient(to right,transparent,#000 6rem,#000 calc(100% - 6rem),transparent);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 6rem,#000 calc(100% - 6rem),transparent)}
+.marquee__track{display:flex;gap:var(--gap);align-items:center;flex-shrink:0;min-width:100%;
+  margin:0;padding:0;list-style:none;
+  animation:marquee calc(var(--items) * var(--seg)) linear infinite;
+  animation-play-state:var(--animps,running)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-100% - var(--gap)))}}
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track,
+[data-motion="paused"] .marquee__track{--animps:paused}
+.mq__i{white-space:nowrap;font-weight:600;color:var(--mute);font-size:.95rem;display:flex;align-items:center;gap:.6rem}
+.mq__i b{width:34px;height:34px;border-radius:50%;border:1.5px dashed var(--line-strong);background:var(--surface);flex-shrink:0}
+.mq__pause{margin-top:1.25rem}
+@media (prefers-reduced-motion: reduce){
+  .marquee{overflow:visible;mask-image:none;-webkit-mask-image:none}
+  .marquee__track{animation:none;flex-wrap:wrap;justify-content:center;gap:1.5rem 2.5rem}
+  .marquee__track[aria-hidden="true"]{display:none}
+}
+
+/* ---------- rodape ---------- */
+.rod{background:var(--surface);border-top:1px solid var(--line-strong);padding-block:3rem 2rem;font-size:.9rem}
+.rod__g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.rod h4{font-size:.95rem;margin-bottom:.9rem}
+.rod ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.rod__b{border-top:1px solid var(--line);padding-top:1.5rem;color:var(--mute);font-size:.82rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:820px){.rod__g{grid-template-columns:1fr;gap:2rem}}
+
+/* ---------- pagina de servico ---------- */
+.pg{display:grid;grid-template-columns:240px 1fr;gap:3.5rem;align-items:start;padding-block:3rem}
+.sum{position:sticky;top:var(--header-h);font-size:.9rem}
+.sum h4{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--mute);margin-bottom:.9rem}
+.sum ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.15rem;
+  border-left:1px solid var(--line)}
+.sum a{display:block;padding:.35rem .9rem;color:var(--text);text-decoration:none;
+  border-left:2px solid transparent;margin-left:-1px}
+.sum a:hover{color:var(--acao);border-left-color:var(--acao)}
+.sum a[aria-current="true"]{color:var(--acao);border-left-color:var(--acao);font-weight:600}
+.doc h2{margin-top:3rem;margin-bottom:1rem;scroll-margin-top:var(--header-h)}
+.doc h2:first-of-type{margin-top:0}
+.doc p+p{margin-top:1rem}
+.doc ol,.doc ul{margin:1rem 0;padding-left:1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem}
+.duas>div{border:1px solid var(--line);border-radius:8px;padding:1.35rem;background:var(--bg)}
+.duas h4{margin-bottom:.7rem;font-size:var(--step-0)}
+.etapas{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem}
+.et__n{font-size:var(--step-4);font-weight:700;color:var(--acao);line-height:1;
+  font-variant-numeric:tabular-nums;display:block;margin-bottom:.4rem}
+.et h4{font-size:var(--step-1);margin-bottom:.3rem}
+.et p{font-size:.92rem;color:var(--mute)}
+@media (max-width:1000px){.pg{grid-template-columns:1fr;gap:2rem}.sum{position:static}
+  .etapas{grid-template-columns:1fr 1fr}.duas{grid-template-columns:1fr}}
+@media (max-width:640px){.etapas{grid-template-columns:1fr}}
+
+/* ---------- barra de revisao do mockup ---------- */
+.rev{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#0B121C;color:#E8EDF4;
+  border-top:2px solid #FFDD00;font-size:.82rem;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500}
+.rev__in{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.55rem 1rem}
+.rev__tag{background:#FFDD00;color:#0B0C0C;padding:.1rem .5rem;border-radius:3px;font-weight:500;flex-shrink:0}
+.rev__b{background:transparent;border:1px solid #35465A;color:#E8EDF4;border-radius:3px;
+  padding:.3rem .7rem;min-height:32px;font:inherit;cursor:pointer;
+  transition:background-color 140ms ease-out,border-color 140ms ease-out}
+.rev__b:hover{background:#1D2A3A;border-color:#6FA0FF}
+.rev__b[aria-pressed="true"]{background:#6FA0FF;color:#0B121C;border-color:#6FA0FF}
+.rev__sp{margin-left:auto;display:flex;gap:.4rem;flex-wrap:wrap}
+body{padding-bottom:60px}
+[data-notas="on"] .nota{outline:2px dashed #B45309;outline-offset:4px;position:relative}
+[data-notas="on"] .nota::after{content:attr(data-nota);position:absolute;top:-.6rem;left:0;
+  transform:translateY(-100%);background:#B45309;color:#fff;font-family:"IBM Plex Mono",monospace;
+  font-weight:500;font-size:.68rem;padding:.2rem .5rem;border-radius:3px;white-space:nowrap;z-index:5;
+  max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+}
+</style>
+
+<a class="pula" href="#conteudo" accesskey="1">Ir para o conteúdo [1]</a>
+
+<!-- ================= BARRA eMAG ================= -->
+<div class="emag">
+  <div class="wrap emag__in">
+    <a href="#conteudo" accesskey="1">Ir para o conteúdo [1]</a>
+    <a href="#menu" accesskey="2">Ir para o menu [2]</a>
+    <a href="#busca" accesskey="3">Ir para a busca [3]</a>
+    <div class="emag__sp">
+      <button class="emag__b" id="fMenos" title="Diminuir a fonte">A-</button>
+      <button class="emag__b" id="fNormal" title="Fonte padrão">A</button>
+      <button class="emag__b" id="fMais" title="Aumentar a fonte">A+</button>
+      <button class="emag__b" id="btContraste" aria-pressed="false">Alto contraste</button>
+      <button class="emag__b" id="btTema" aria-live="polite">Tema: sistema</button>
+      <a href="#" data-ir="acessibilidade">Acessibilidade</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FAIXA DE IDENTIDADE ================= -->
+<div class="ident">
+  <div class="wrap ident__in">
+    <span>INTELECTO SOLUTIONS</span><span>·</span>
+    <span>CNPJ 12.286.292/0001-50</span><span>·</span>
+    <span>10+ ANOS</span><span>·</span>
+    <span class="nota" data-nota="confirmar telefone comercial">(19) 9XXXX-XXXX</span><span>·</span>
+    <span>SEG A SEX, 9H ÀS 18H</span>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="hd" id="menu">
+  <div class="wrap hd__in">
+    <a class="marca" href="#" data-ir="home">
+      <svg class="marca__m" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M11 28V15.5l9-5.5 9 5.5V28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M15.5 28v-7.5h9V28" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="20" cy="17.6" r="1.7" fill="currentColor"/>
+      </svg>
+      <span class="marca__t">Intelecto<span class="marca__s">Solutions</span></span>
+    </a>
+    <nav class="nav" aria-label="Serviços">
+      <a href="#" data-ir="email">E-mail .leg.br</a>
+      <a href="#" data-ir="home">Transparência</a>
+      <a href="#" data-ir="home">LGPD</a>
+      <a href="#" data-ir="home">Sistemas</a>
+    </nav>
+    <div class="hd__cta">
+      <a class="tel" href="#">(19) 9XXXX-XXXX</a>
+      <a class="btn btn--s" href="#" data-ir="home">Documentos para licitação</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= COMUNICADO ================= -->
+<div class="com">
+  <div class="wrap com__in">
+    <span class="com__n">Comunicado 01/2026 · atualizado em 21/08/2026</span>
+    <p class="com__t">O Senado encerra o E-mail Legislativo do Interlegis em maio de 2027.
+      <a href="#" data-ir="email">Ver o que muda para a sua Câmara</a></p>
+  </div>
+</div>
+
+<main id="conteudo">
+<!-- ============================================================
+     PÁGINA: HOME
+     ============================================================ -->
+<div id="pg-home">
+
+  <!-- HERO -->
+  <section class="wrap hero">
+    <div class="hero__g">
+      <div>
+        <p class="over">Portal, e-mail e LGPD para câmaras e prefeituras</p>
+        <h1><span class="q">A sua Câmara já tem portal.</span>O e-mail institucional dela deixa de existir em maio de 2027.</h1>
+        <p class="hero__sub">Migramos o e-mail da Câmara para o domínio oficial <span class="mono">.leg.br</span>
+          sem derrubar o Portal Modelo nem o SAPL, em infraestrutura própria no Brasil.
+          O portal e a adequação à LGPD vêm depois, se e quando fizer sentido.</p>
+        <div class="hero__ct">
+          <a class="btn btn--p" href="#busca">Consultar a situação da minha Câmara</a>
+          <a class="btn btn--s" href="#">Falar com o Luiz no WhatsApp</a>
+        </div>
+        <p class="hero__meta">
+          <span>CNPJ 12.286.292/0001-50</span><span>10+ anos</span>
+          <span>14 órgãos públicos</span><span>SP e MG</span>
+        </p>
+      </div>
+      <div>
+        <figure style="margin:0" class="nota" data-nota="substituir por captura real, após auditar a tela">
+          <div class="mold">
+            <div class="mold__bar">
+              <span class="mold__dots"><i></i><i></i><i></i></span>
+              <span class="mold__url">https://jaguariuna.sp.leg.br</span>
+            </div>
+            <div class="mold__body pv">
+              <div class="pv__top">
+                <span class="pv__br"></span>
+                <span class="pv__nm">Câmara Municipal de Jaguariúna<small>Estado de São Paulo</small></span>
+              </div>
+              <div class="pv__nav"><span>Institucional</span><span>Vereadores</span><span>Legislação</span><span>Transparência</span><span>e-SIC</span><span>Ouvidoria</span></div>
+              <div class="pv__hero"><div class="pv__h"></div><div class="pv__h2" style="width:92%"></div><div class="pv__h2" style="width:64%"></div></div>
+              <div class="pv__cards">
+                <div class="pv__c"><span class="pv__ci"></span><span class="pv__ct">Sessões</span></div>
+                <div class="pv__c"><span class="pv__ci"></span><span class="pv__ct">Licitações</span></div>
+                <div class="pv__c"><span class="pv__ci"></span><span class="pv__ct">Despesas</span></div>
+                <div class="pv__c"><span class="pv__ci"></span><span class="pv__ct">Ouvidoria</span></div>
+              </div>
+              <div class="pv__list">
+                <div class="pv__row"><span class="pv__tag">LEI</span><span class="pv__ln"></span></div>
+                <div class="pv__row"><span class="pv__tag">ATA</span><span class="pv__ln" style="width:70%"></span></div>
+                <div class="pv__row"><span class="pv__tag">EDITAL</span><span class="pv__ln" style="width:84%"></span></div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="fig">Fig. 1 · Portal da Câmara de Jaguariúna, em produção</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="nums" aria-label="A operação em números">
+    <div class="wrap nums__g">
+      <div><span class="num__p">Radar DNS</span><span class="num__v">3.138</span><span class="num__l">domínios <span class="mono">.leg.br</span> ativos, mapeados em ago/2026</span></div>
+      <div><span class="num__p">Prazo</span><span class="num__v">482</span><span class="num__l">câmaras que perdem o e-mail em maio de 2027</span></div>
+      <div><span class="num__p">Carteira</span><span class="num__v">14</span><span class="num__l">órgãos públicos atendidos em SP e MG</span></div>
+      <div><span class="num__p">Operação</span><span class="num__v">10+</span><span class="num__l">anos operando infraestrutura própria no Brasil</span></div>
+    </div>
+  </section>
+
+  <!-- PORTAS -->
+  <section class="wrap" aria-label="Escolha o seu caso">
+    <div class="portas">
+      <a class="porta" href="#busca"><span>Sou de uma Câmara Municipal</span><i>→</i></a>
+      <a class="porta" href="#servicos"><span>Sou de Prefeitura, autarquia ou consórcio</span><i>→</i></a>
+      <a class="porta" href="#servicos"><span>Sou empresa privada e preciso de DPO</span><i>→</i></a>
+    </div>
+  </section>
+
+  <!-- DIAGNÓSTICO -->
+  <section class="sec diag" id="busca">
+    <div class="wrap">
+      <p class="over">Diagnóstico gratuito, sem cadastro</p>
+      <h2>Descubra em que situação está o domínio da sua Câmara</h2>
+      <div class="diag__box" style="margin-top:1.5rem">
+        <p>Consultamos por DNS os 5.571 municípios brasileiros. Digite o nome do município
+          e veja o que está configurado hoje no domínio oficial dele.</p>
+        <div class="diag__f">
+          <label class="pula" for="mun">Nome do município</label>
+          <input id="mun" type="text" placeholder="Ex.: Jaguariúna, Luz, Conceição do Coité" autocomplete="off">
+          <button class="btn btn--p" id="btDiag">Consultar</button>
+        </div>
+        <div id="resDiag" aria-live="polite"></div>
+        <p style="font-size:var(--step--1);color:var(--mute);margin-top:1rem">
+          No mockup, experimente: <b>Jaguariúna</b>, <b>Luz</b>, <b>Serrana</b> ou <b>Pindorama</b>.
+          Cada uma cai num dos quatro vereditos possíveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Atendemos 8 câmaras municipais, 2 prefeituras, 1 consórcio intermunicipal, 3 autarquias de saneamento, 1 instituto de previdência e 7 empresas privadas</p>
+      <h2>Quem já é atendido</h2>
+      <p class="lead" style="margin-top:.75rem;margin-bottom:2rem">Cada nome abaixo leva ao que está no ar agora.
+        Ligue para qualquer um deles e pergunte como somos.</p>
+
+      <div class="abas" role="tablist" aria-label="Filtrar clientes por tipo">
+        <button class="aba" role="tab" aria-selected="true" data-f="todos">Todos (22)</button>
+        <button class="aba" role="tab" aria-selected="false" data-f="camara">Câmaras (8)</button>
+        <button class="aba" role="tab" aria-selected="false" data-f="publico">Prefeituras e autarquias (7)</button>
+        <button class="aba" role="tab" aria-selected="false" data-f="privado">Privado (7)</button>
+      </div>
+
+      <div class="grade nota" id="gradeCli" data-nota="brasões entram após autorização escrita, órgão por órgão">
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Jaguariúna</span><span class="cli__uf">SP</span><span class="cli__r">Cliente desde 2018, quatro sistemas no ar</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Capivari</span><span class="cli__uf">SP</span><span class="cli__r">Portal Mirante, e-mail no domínio oficial</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Dolcinópolis</span><span class="cli__uf">SP</span><span class="cli__r">Selo Ouvidoria Cidadã com a nossa ouvidoria</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Orindiúva</span><span class="cli__uf">SP</span><span class="cli__r">Votação eletrônica de plenário desde 2016</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de General Salgado</span><span class="cli__uf">SP</span><span class="cli__r">Contrato renovado por cinco exercícios</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Riolândia</span><span class="cli__uf">SP</span><span class="cli__r">Portal, transparência e ouvidoria</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Américo de Campos</span><span class="cli__uf">SP</span><span class="cli__r">Portal Mirante e hospedagem</span></a>
+        <a class="cli" data-t="camara" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Câmara de Magda</span><span class="cli__uf">SP</span><span class="cli__r">Portal e hospedagem gerenciada</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Prefeitura de Riolândia</span><span class="cli__uf">SP</span><span class="cli__r">Portal, e-SUS, serviços e transparência</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">Prefeitura de Orindiúva</span><span class="cli__uf">SP</span><span class="cli__r">Portal e e-SIC</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">CONSISP</span><span class="cli__uf">SP</span><span class="cli__r">Consórcio intermunicipal</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">SAE Ituiutaba</span><span class="cli__uf">MG</span><span class="cli__r">Três domínios, incluindo a intranet</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">SAAE Pedreira</span><span class="cli__uf">SP</span><span class="cli__r">Sistema de água e esgoto</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">DMAAE Ouro Fino</span><span class="cli__uf">MG</span><span class="cli__r">Site e sistema de atendimento</span></a>
+        <a class="cli" data-t="publico" href="#"><span class="cli__br"><span class="cli__ph">brasão</span></span><span class="cli__n">CAPIVARIPREV</span><span class="cli__uf">SP</span><span class="cli__r">Instituto de previdência municipal</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">TRB Pharma</span><span class="cli__uf">Campinas, SP</span><span class="cli__r">Nove sistemas sob medida, ITSM e BI</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">Del Arco</span><span class="cli__uf">SP</span><span class="cli__r">Servidor dedicado e site institucional</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">Fracttal</span><span class="cli__uf">Brasil</span><span class="cli__r">Programa de adequação à LGPD</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">OniMusic</span><span class="cli__uf">Ribeirão Preto, SP</span><span class="cli__r">Adequação à LGPD e encarregado</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">LOGCARD</span><span class="cli__uf">SP</span><span class="cli__r">DPO desde 2024</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">Zambianco</span><span class="cli__uf">Tietê, SP</span><span class="cli__r">Adequação à LGPD</span></a>
+        <a class="cli" data-t="privado" href="#"><span class="cli__br"><span class="cli__ph">logo</span></span><span class="cli__n">Pieralisi</span><span class="cli__uf">Valinhos, SP</span><span class="cli__r">Adequação à LGPD</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABELA CARTEIRA -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Para anexar ao processo</p>
+      <h2>Carteira de órgãos públicos</h2>
+      <p class="lead" style="margin-top:.75rem;margin-bottom:1.75rem">Esta tabela existe para ser copiada
+        para o seu processo administrativo. A última coluna é um link para o serviço em produção,
+        conferível agora.</p>
+      <div class="tw">
+        <table class="tb">
+          <caption>Tabela 1 · Órgãos públicos atendidos, posição de agosto de 2026</caption>
+          <thead><tr><th scope="col">Órgão</th><th scope="col">UF</th><th scope="col">Serviços</th><th scope="col">Cliente desde</th><th scope="col">No ar</th></tr></thead>
+          <tbody class="nota" data-nota="conferir ano de início de cada contrato antes de publicar">
+            <tr><td>Câmara Municipal de Jaguariúna</td><td>SP</td><td>Portal, transparência, ouvidoria, sistemas, hospedagem, e-mail</td><td>2018</td><td><a href="#">jaguariuna.sp.leg.br</a></td></tr>
+            <tr><td>Câmara Municipal de Capivari</td><td>SP</td><td>Portal, hospedagem, e-mail, treinamento</td><td>2021</td><td><a href="#">capivari.sp.leg.br</a></td></tr>
+            <tr><td>Câmara Municipal de General Salgado</td><td>SP</td><td>Portal, hospedagem</td><td>2020</td><td><a href="#">camarageneralsalgado.sp.gov.br</a></td></tr>
+            <tr><td>Câmara Municipal de Dolcinópolis</td><td>SP</td><td>Portal, ouvidoria</td><td>2022</td><td><a href="#">dolcinopolis.sp.leg.br</a></td></tr>
+            <tr><td>Câmara Municipal de Orindiúva</td><td>SP</td><td>Portal, e-SIC, ouvidoria, votação eletrônica</td><td>2016</td><td><a href="#">orindiuva.sp.gov.br</a></td></tr>
+            <tr><td>Câmara Municipal de Américo de Campos</td><td>SP</td><td>Portal, hospedagem</td><td>2022</td><td><a href="#">americodecampos.sp.leg.br</a></td></tr>
+            <tr><td>Câmara Municipal de Magda</td><td>SP</td><td>Portal, hospedagem</td><td>2020</td><td><a href="#">camaramagda.sp.gov.br</a></td></tr>
+            <tr><td>Câmara Municipal de Riolândia</td><td>SP</td><td>Portal, transparência, ouvidoria</td><td>2022</td><td><a href="#">riolandia.sp.gov.br</a></td></tr>
+            <tr><td>Prefeitura Municipal de Riolândia</td><td>SP</td><td>Portal, e-SUS, serviços, transparência, ouvidoria</td><td>2017</td><td><a href="#">riolandia.sp.gov.br</a></td></tr>
+            <tr><td>CONSISP, consórcio intermunicipal</td><td>SP</td><td>Portal, hospedagem, e-mail</td><td>2021</td><td><a href="#">consisp.sp.gov.br</a></td></tr>
+            <tr><td>SAE Ituiutaba, água e esgoto</td><td>MG</td><td>Portal, intranet, sistemas</td><td>2019</td><td><a href="#">saeituiutaba.com.br</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fig">No privado: TRB Pharma, Del Arco, Fracttal, OniMusic, LOGCARD, Zambianco e Pieralisi.</p>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="sec" id="servicos">
+    <div class="wrap">
+      <p class="over">Quatro serviços, uma infraestrutura</p>
+      <h2>O que contratamos com a sua Câmara</h2>
+      <div class="bento" style="margin-top:2rem">
+        <article class="bl bl--big">
+          <h3>E-mail institucional em domínio <span class="mono">.leg.br</span></h3>
+          <p class="bl__def">Caixas no domínio oficial da Câmara, hospedadas na nossa infraestrutura,
+            com o Portal Modelo e o SAPL continuando exatamente onde estão.</p>
+          <ul>
+            <li>Migração das caixas atuais sem perda de histórico, em janela combinada</li>
+            <li>SPF, DKIM e DMARC configurados por domínio, que é o que tira o e-mail do spam</li>
+            <li>Ofício pronto para o Presidente assinar e chamado aberto por nós no Interlegis</li>
+            <li>Webmail, IMAP e configuração assistida em cada aparelho do gabinete</li>
+          </ul>
+          <p class="bl__lei">Reapontamento, não delegação · procedimento oficial do Interlegis</p>
+          <p class="bl__go"><a href="#" data-ir="email">Ver como funciona a migração →</a></p>
+        </article>
+        <article class="bl bl--sm">
+          <h3>Mirante, portal da transparência</h3>
+          <p class="bl__def">Portal legislativo aderente à cartilha PNTP, com transparência, e-SIC e ouvidoria no mesmo lugar.</p>
+          <p class="bl__lei">Lei 12.527/2011 · LC 131/2009 · cartilha PNTP 2026</p>
+          <p class="bl__go"><a href="#" data-ir="home">Conhecer o Mirante →</a></p>
+        </article>
+        <article class="bl bl--sm">
+          <h3>Conformis, LGPD e Encarregado</h3>
+          <p class="bl__def">Mapeamento, nomeação do Encarregado, publicação do aviso e monitoramento contínuo.</p>
+          <p class="bl__lei">Lei 13.709/2018, art. 41</p>
+          <p class="bl__go"><a href="#" data-ir="home">Ver o programa →</a></p>
+        </article>
+        <article class="bl bl--sm">
+          <h3>Sistemas sob medida</h3>
+          <p class="bl__def">Votação eletrônica de plenário, e-SIC, ouvidoria e integrações, construídos para o seu regimento.</p>
+          <p class="bl__lei">Lei 13.460/2017 · Lei 12.527/2011</p>
+          <p class="bl__go"><a href="#" data-ir="home">Ver os sistemas →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGRAMA -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Como a migração acontece</p>
+      <h2>O domínio continua no Interlegis. Só o e-mail muda de endereço.</h2>
+      <p class="lead" style="margin-top:.75rem;margin-bottom:1.75rem">É a diferença entre reapontamento e delegação,
+        e é onde a maioria das câmaras se perde.</p>
+      <div class="dgm">
+        <svg viewBox="0 0 900 300" width="100%" style="min-width:660px;color:var(--text)" role="img"
+             aria-label="Diagrama: o domínio permanece no Interlegis com os servidores de nomes intactos. Apenas os registros MX, SPF, DKIM e DMARC passam a apontar para a Intelecto. Portal Modelo e SAPL seguem funcionando.">
+          <defs>
+            <marker id="sa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="12" y="60" width="240" height="180" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="132" y="46" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="500" fill="currentColor" letter-spacing="1">INTERLEGIS / SENADO</text>
+          <text x="132" y="96" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">camara.sp.leg.br</text>
+          <text x="132" y="122" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="currentColor" opacity=".72">NS: infra.leg.br</text>
+          <text x="132" y="140" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="currentColor" opacity=".72">(permanece intacto)</text>
+          <line x1="42" y1="160" x2="222" y2="160" stroke="currentColor" stroke-width="1" opacity=".35"/>
+          <text x="132" y="184" text-anchor="middle" font-size="13" fill="currentColor">Portal Modelo</text>
+          <text x="132" y="206" text-anchor="middle" font-size="13" fill="currentColor">SAPL</text>
+          <text x="132" y="228" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity=".65">SEGUEM NO AR</text>
+
+          <line x1="256" y1="150" x2="356" y2="150" stroke="currentColor" stroke-width="1.5" marker-end="url(#sa)"/>
+          <text x="306" y="138" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity=".7">OFÍCIO +</text>
+          <text x="306" y="152" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity=".7">CHAMADO</text>
+
+          <rect x="360" y="60" width="200" height="180" rx="8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text x="460" y="46" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="500" fill="currentColor" letter-spacing="1">SÓ ESTES 4 REGISTROS</text>
+          <text x="460" y="98" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="500" fill="currentColor">MX</text>
+          <text x="460" y="128" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="500" fill="currentColor">SPF</text>
+          <text x="460" y="158" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="500" fill="currentColor">DKIM</text>
+          <text x="460" y="188" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="500" fill="currentColor">DMARC</text>
+          <text x="460" y="220" text-anchor="middle" font-size="12" fill="currentColor" opacity=".72">alterados pelo Interlegis</text>
+
+          <line x1="564" y1="150" x2="664" y2="150" stroke="currentColor" stroke-width="1.5" marker-end="url(#sa)"/>
+
+          <rect x="668" y="60" width="220" height="180" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="778" y="46" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="500" fill="currentColor" letter-spacing="1">INTELECTO</text>
+          <text x="778" y="100" text-anchor="middle" font-size="15" font-weight="600" fill="currentColor">Servidor de e-mail</text>
+          <text x="778" y="126" text-anchor="middle" font-size="13" fill="currentColor">no Brasil, infra própria</text>
+          <line x1="698" y1="146" x2="858" y2="146" stroke="currentColor" stroke-width="1" opacity=".35"/>
+          <text x="778" y="172" text-anchor="middle" font-size="13" fill="currentColor">presidente@camara.sp.leg.br</text>
+          <text x="778" y="196" text-anchor="middle" font-size="13" fill="currentColor">Webmail, IMAP, antispam</text>
+          <text x="778" y="222" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity=".65">BACKUP DIÁRIO</text>
+        </svg>
+        <p class="fig">Fig. 2 · Reapontamento de e-mail, sem delegação de domínio</p>
+      </div>
+      <p class="aviso">Delegação de NS derruba o Portal Modelo e o SAPL.
+        Nunca peça isso ao Interlegis, e desconfie de quem pedir.</p>
+    </div>
+  </section>
+
+  <!-- INFRA (bloco escuro) -->
+  <section class="sec escuro">
+    <div class="wrap">
+      <p class="over">Onde ficam os dados da sua Câmara</p>
+      <h2>Infraestrutura própria, no Brasil, com endereço</h2>
+      <p class="lead" style="margin-top:.75rem;max-width:60ch">Não somos revendedores de painel.
+        O servidor é nosso, o backup é nosso e quem atende o chamado é quem administra a máquina.</p>
+      <table class="espec">
+        <tbody>
+          <tr><th scope="row">Servidor</th><td>Bare metal dedicado em datacenter no Brasil, virtualizado com Proxmox</td></tr>
+          <tr><th scope="row">Aplicações</th><td>Containers orquestrados por Coolify, deploy versionado em Git</td></tr>
+          <tr><th scope="row">Backup</th><td>Diário, em object storage independente do servidor de produção</td></tr>
+          <tr><th scope="row">E-mail</th><td>SPF, DKIM e DMARC configurados por domínio, com monitoramento de reputação</td></tr>
+          <tr><th scope="row">Acesso</th><td>Somente por chave SSH, com fail2ban e porta não padrão</td></tr>
+          <tr><th scope="row">Certificados</th><td>TLS emitido e renovado automaticamente, por domínio e subdomínio</td></tr>
+          <tr><th scope="row">Monitoramento</th><td>Sonda própria de disponibilidade, com alerta em tempo real</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTRATAR -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Lei 14.133/2021</p>
+      <h2>Como a sua Câmara pode contratar</h2>
+      <p class="lead" style="margin-top:.75rem;margin-bottom:2rem">Três caminhos legais, e o que cada um exige.
+        Se preferir, montamos a minuta do termo de referência para a sua assessoria revisar.</p>
+      <div class="cards3">
+        <div class="card">
+          <p class="card__ind">Indicado para contratos menores</p>
+          <h4>Dispensa por valor</h4>
+          <ul><li>Art. 75, inciso II, da Lei 14.133/2021</li><li>Três cotações e justificativa de preço</li><li>Prazo típico: 15 a 30 dias</li><li>Fornecemos proposta, cartão CNPJ e certidões</li></ul>
+        </div>
+        <div class="card">
+          <p class="card__ind">Indicado para contratos plurianuais</p>
+          <h4>Pregão eletrônico</h4>
+          <ul><li>Termo de referência com objeto bem descrito</li><li>Minuta pronta para a assessoria revisar</li><li>Prazo típico: 45 a 90 dias</li><li>Participamos e prestamos esclarecimentos</li></ul>
+        </div>
+        <div class="card">
+          <p class="card__ind">Indicado quando já existe ata</p>
+          <h4>Adesão a ata de registro de preços</h4>
+          <ul><li>Carona em ata vigente de outro órgão</li><li>Depende de anuência do gerenciador</li><li>Prazo típico: 20 a 40 dias</li><li>Verificamos a compatibilidade do objeto</li></ul>
+        </div>
+      </div>
+      <p style="margin-top:1.75rem"><a class="btn btn--s nota" data-nota="montar o pacote em PDF antes de publicar o botão" href="#">Baixar o pacote de habilitação</a></p>
+    </div>
+  </section>
+
+  <!-- PREÇO -->
+  <section class="sec" style="background:var(--surface)">
+    <div class="wrap">
+      <p class="over">Sem tabela genérica</p>
+      <h2>Como o preço é formado</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1.5rem" class="duas">
+        <div>
+          <h4>O que define o valor</h4>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem">
+            <li>Quantas contas de e-mail a Câmara usa de fato</li>
+            <li>Se existe migração de caixas ou se é implantação do zero</li>
+            <li>Se entra portal, ouvidoria ou apenas o e-mail</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Como funciona na prática</h4>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem">
+            <li>Diagnóstico do domínio, gratuito e sem compromisso</li>
+            <li>Proposta fechada em até 24 horas depois do diagnóstico</li>
+            <li>Contrato de 12 meses, com valor mensal fixo e sem reajuste no período</li>
+          </ul>
+        </div>
+      </div>
+      <p class="nota" data-nota="Luiz: publicar âncora a partir de R$ X? contraria a decisão de precificar caso a caso"
+         style="margin-top:1.75rem;font-weight:600;color:var(--title)">
+        Âncora de preço a definir com o Luiz.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Respostas de uma linha</p>
+      <h2>Perguntas rápidas</h2>
+      <div class="faq" style="margin-top:1.5rem">
+        <div class="faq__i"><p class="faq__q">O Portal Modelo continua funcionando?</p><p class="faq__a">Sim. O reapontamento não toca no portal nem no SAPL.</p></div>
+        <div class="faq__i"><p class="faq__q">Perdemos os e-mails antigos?</p><p class="faq__a">Não. A migração copia o histórico antes de virar a chave.</p></div>
+        <div class="faq__i"><p class="faq__q">Quanto tempo demora?</p><p class="faq__a">De 15 a 30 dias, quase tudo aguardando o Interlegis.</p></div>
+        <div class="faq__i"><p class="faq__q">Quem abre o chamado no Interlegis?</p><p class="faq__a">Nós. O Presidente só assina o ofício.</p></div>
+        <div class="faq__i"><p class="faq__q">Dá para contratar por dispensa?</p><p class="faq__a">Depende do valor. Veja o enquadramento acima.</p></div>
+        <div class="faq__i"><p class="faq__q">Vocês atendem fora de São Paulo?</p><p class="faq__a">Sim. O atendimento é remoto e já temos cliente em Minas.</p></div>
+        <div class="faq__i"><p class="faq__q">Tem limite de armazenamento por caixa?</p><p class="faq__a">Não trabalhamos com cota apertada por caixa.</p></div>
+        <div class="faq__i"><p class="faq__q">E se a Câmara quiser sair?</p><p class="faq__a">Devolvemos as caixas em formato aberto e liberamos o domínio.</p></div>
+        <div class="faq__i"><p class="faq__q">Precisa trocar o site junto?</p><p class="faq__a">Não. O e-mail é contratado sozinho.</p></div>
+        <div class="faq__i"><p class="faq__q">Quem responde quando dá problema?</p><p class="faq__a">O responsável técnico, no WhatsApp, em horário comercial.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIMITES -->
+  <section class="sec" style="background:var(--surface)">
+    <div class="wrap">
+      <p class="over">Antes de assinar</p>
+      <h2>O que você precisa saber</h2>
+      <p class="lead" style="margin-top:.75rem;margin-bottom:1.5rem">Preferimos dizer isto agora, e não depois da assinatura.</p>
+      <ul style="display:flex;flex-direction:column;gap:.85rem;padding-left:1.2rem;max-width:var(--medida)">
+        <li>O prazo do Interlegis para executar o reapontamento <b>não está sob o nosso controle</b>. Já vimos levar de 5 a 20 dias úteis.</li>
+        <li>O ofício precisa da assinatura do Presidente da Câmara. Sem ele, o chamado não anda.</li>
+        <li>A virada das caixas acontece em janela combinada, normalmente fora do horário de expediente.</li>
+        <li>Não fazemos recuperação de e-mails que já foram apagados do servidor de origem.</li>
+        <li>Impressora, rede interna e computador do gabinete não entram no contrato de e-mail.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- QUEM RESPONDE -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="over">Quem responde</p>
+      <div class="quem" style="margin-top:1.5rem">
+        <div class="quem__f nota" data-nota="foto real do Luiz entra aqui">FOTO<br>200 × 200</div>
+        <div>
+          <h2 style="margin-bottom:1rem">Luiz Aguiar</h2>
+          <p style="margin-bottom:1rem">Sou eu quem atende o seu chamado. Administro a infraestrutura onde o e-mail
+            da sua Câmara vai rodar, escrevo o ofício que o Presidente assina e acompanho o chamado no Interlegis
+            até a última caixa estar funcionando no celular do vereador.</p>
+          <p style="margin-bottom:1.25rem">Trabalho com câmaras e prefeituras há mais de dez anos, sou certificado
+            em proteção de dados e atendo pessoalmente, sem camada de suporte no meio.</p>
+          <p class="hero__meta" style="margin-bottom:1.25rem">
+            <span>WHATSAPP DIRETO</span><span>SEG A SEX, 9H ÀS 18H</span><span>RESPOSTA EM ATÉ 4H ÚTEIS</span>
+          </p>
+          <a class="btn btn--ok" href="#">Falar com o Luiz no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="sec" style="background:var(--surface);text-align:left">
+    <div class="wrap">
+      <h2 style="font-size:var(--step-4);max-width:20ch">A sua Câmara já tem plano para maio de 2027?</h2>
+      <p class="lead" style="margin-top:1rem;margin-bottom:1.75rem">O diagnóstico é gratuito e leva menos de um minuto.</p>
+      <div class="hero__ct">
+        <a class="btn btn--p" href="#busca">Consultar a situação da minha Câmara</a>
+        <a class="btn btn--s" href="#">Falar com o Luiz no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</div><!-- /pg-home -->
+
+<!-- ============================================================
+     PÁGINA: /email-leg-br
+     ============================================================ -->
+<div id="pg-email" hidden>
+  <div class="wrap pg">
+    <aside class="sum" aria-label="Nesta página">
+      <h4>Nesta página</h4>
+      <ol>
+        <li><a href="#e1" aria-current="true">O problema</a></li>
+        <li><a href="#e2">Como está hoje, como fica</a></li>
+        <li><a href="#e3">O que está incluído</a></li>
+        <li><a href="#e4">Como funciona tecnicamente</a></li>
+        <li><a href="#e5">As seis etapas</a></li>
+        <li><a href="#e6">Enquadramento jurídico</a></li>
+        <li><a href="#e7">Quem já migrou</a></li>
+        <li><a href="#e8">Preço e limites</a></li>
+        <li><a href="#e9">Como contratar</a></li>
+      </ol>
+    </aside>
+
+    <div class="doc">
+      <p class="over">E-mail institucional · Câmaras municipais</p>
+      <h1 style="font-size:var(--step-4);margin-bottom:1rem">E-mail no domínio <span class="mono" style="font-size:.9em">.leg.br</span> da sua Câmara,
+        antes que o do Interlegis seja desligado</h1>
+      <p class="lead" style="margin-bottom:2.5rem">Restam <b>21 meses</b> até maio de 2027.
+        <span class="mono" style="font-size:.8rem;color:var(--mute)">AFERIDO EM 21/08/2026</span></p>
+
+      <h2 id="e1">O problema</h2>
+      <p>A sua Câmara usa hoje endereços que terminam no domínio oficial, e eles chegam pela estrutura
+        do E-mail Legislativo do Interlegis. Esse serviço foi descontinuado e será desligado por completo.</p>
+      <p>Quando isso acontecer, três coisas param ao mesmo tempo: o e-mail do gabinete, o endereço publicado
+        no Portal da Transparência e o canal por onde chegam os ofícios da Prefeitura e do Tribunal de Contas.</p>
+      <p>A saída que muita câmara toma é a pior possível: voltar para o Gmail pessoal. Além de não identificar
+        a instituição, isso quebra a cadeia de custódia do que é comunicação oficial.</p>
+
+      <h2 id="e2">Como está hoje, como fica</h2>
+      <div class="duas">
+        <div>
+          <h4>Hoje</h4>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.4rem">
+            <li>Caixas no E-mail Legislativo, com data para acabar</li>
+            <li>Sem controle sobre SPF, DKIM e DMARC</li>
+            <li>Mensagens da Câmara caindo no spam do cidadão</li>
+            <li>Suporte por fila, sem prazo definido</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Depois da migração</h4>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.4rem">
+            <li>Caixas no mesmo domínio oficial, em servidor nosso</li>
+            <li>Autenticação de e-mail configurada e monitorada</li>
+            <li>Entrega verificada nos principais provedores</li>
+            <li>Atendimento direto com o responsável técnico</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="e3">O que está incluído</h2>
+      <ol>
+        <li>Levantamento das caixas em uso e do volume de cada uma</li>
+        <li>Redação do ofício de reapontamento para a assinatura do Presidente</li>
+        <li>Abertura e acompanhamento do chamado no suporte do Interlegis</li>
+        <li>Criação das caixas no domínio oficial, com senha entregue individualmente</li>
+        <li>Migração do histórico, com conferência de contagem antes e depois</li>
+        <li>Configuração de SPF, DKIM e DMARC no domínio</li>
+        <li>Configuração assistida em cada computador e celular do gabinete</li>
+        <li>Treinamento de uma hora com os servidores da Casa</li>
+      </ol>
+
+      <h2 id="e4">Como funciona tecnicamente</h2>
+      <p>O domínio permanece integralmente no Interlegis. Os servidores de nomes não mudam,
+        e por isso o Portal Modelo e o SAPL continuam funcionando sem interrupção.</p>
+      <p>O que muda são quatro registros dentro da zona, alterados pelo próprio Interlegis a pedido da Câmara:</p>
+      <p style="margin-top:1rem">
+        <span class="dns">MX</span> <span class="dns">SPF</span> <span class="dns">DKIM</span> <span class="dns">DMARC</span>
+      </p>
+      <p class="aviso" style="margin-top:1.5rem">Delegação de NS derruba o Portal Modelo e o SAPL.
+        Nunca peça isso ao Interlegis, e desconfie de quem pedir.</p>
+
+      <h2 id="e5">As seis etapas</h2>
+      <div class="etapas">
+        <div class="et"><span class="et__n">1</span><h4>Diagnóstico</h4><p>Consultamos o DNS do domínio e apresentamos a situação real. Gratuito.</p></div>
+        <div class="et"><span class="et__n">2</span><h4>Proposta</h4><p>Escopo fechado em até 24 horas, com número de contas e valor mensal.</p></div>
+        <div class="et"><span class="et__n">3</span><h4>Ofício</h4><p>Entregamos o texto pronto. O Presidente assina e devolve digitalizado.</p></div>
+        <div class="et"><span class="et__n">4</span><h4>Chamado</h4><p>Abrimos no Interlegis e acompanhamos até a alteração ser executada.</p></div>
+        <div class="et"><span class="et__n">5</span><h4>Migração</h4><p>Caixas criadas, histórico copiado e conferido, em janela combinada.</p></div>
+        <div class="et"><span class="et__n">6</span><h4>Treinamento</h4><p>Configuração em cada aparelho e uma hora de treinamento na Casa.</p></div>
+      </div>
+
+      <h2 id="e6">Enquadramento jurídico</h2>
+      <p><b>Lei 12.527/2011, art. 8º.</b> A Câmara precisa divulgar um canal de contato oficial e mantê-lo
+        funcionando. Endereço que deixa de existir é canal que deixa de existir, e isso aparece na auditoria.</p>
+      <p><b>Lei 13.709/2018, art. 46.</b> A comunicação institucional trafega dado pessoal de cidadão.
+        Caixa em provedor gratuito, sem contrato e sem controle de acesso, é exposição desnecessária.</p>
+      <p><b>Lei 14.133/2021, art. 75.</b> O serviço se enquadra em dispensa por valor na maioria das câmaras
+        pequenas. Veja os três caminhos no fim desta página.</p>
+
+      <h2 id="e7">Quem já migrou</h2>
+      <p>Câmaras e órgãos que já operam e-mail ou portal na nossa infraestrutura:</p>
+      <div style="margin-top:1.5rem">
+        <div class="marquee nota" data-nota="brasões entram após autorização; no mockup, só o nome" id="mq">
+          <ul class="marquee__track">
+            <li class="mq__i"><b></b>Câmara de Jaguariúna</li>
+            <li class="mq__i"><b></b>Câmara de Capivari</li>
+            <li class="mq__i"><b></b>Câmara de Dolcinópolis</li>
+            <li class="mq__i"><b></b>Câmara de Orindiúva</li>
+            <li class="mq__i"><b></b>Câmara de General Salgado</li>
+            <li class="mq__i"><b></b>Câmara de Riolândia</li>
+            <li class="mq__i"><b></b>Câmara de Américo de Campos</li>
+            <li class="mq__i"><b></b>Câmara de Magda</li>
+            <li class="mq__i"><b></b>Prefeitura de Riolândia</li>
+            <li class="mq__i"><b></b>CONSISP</li>
+            <li class="mq__i"><b></b>SAE Ituiutaba</li>
+          </ul>
+          <ul class="marquee__track" aria-hidden="true">
+            <li class="mq__i"><b></b>Câmara de Jaguariúna</li>
+            <li class="mq__i"><b></b>Câmara de Capivari</li>
+            <li class="mq__i"><b></b>Câmara de Dolcinópolis</li>
+            <li class="mq__i"><b></b>Câmara de Orindiúva</li>
+            <li class="mq__i"><b></b>Câmara de General Salgado</li>
+            <li class="mq__i"><b></b>Câmara de Riolândia</li>
+            <li class="mq__i"><b></b>Câmara de Américo de Campos</li>
+            <li class="mq__i"><b></b>Câmara de Magda</li>
+            <li class="mq__i"><b></b>Prefeitura de Riolândia</li>
+            <li class="mq__i"><b></b>CONSISP</li>
+            <li class="mq__i"><b></b>SAE Ituiutaba</li>
+          </ul>
+        </div>
+        <button class="btn btn--s mq__pause" id="btPausa" aria-pressed="false">Pausar a faixa</button>
+      </div>
+
+      <h2 id="e8">Preço e limites</h2>
+      <p>O valor é formado por número de contas e pela existência ou não de migração de caixas.
+        A proposta sai fechada em até 24 horas depois do diagnóstico, sem cobrança por consulta.</p>
+      <p><b>Limites que assumimos por escrito:</b> o prazo do Interlegis não está sob o nosso controle;
+        a virada acontece em janela combinada; não recuperamos mensagens já apagadas na origem.</p>
+
+      <h2 id="e9">Como contratar</h2>
+      <p>Dispensa por valor, pregão eletrônico ou adesão a ata. Preparamos a documentação
+        para os três caminhos, incluindo a minuta do termo de referência.</p>
+      <div class="hero__ct" style="margin-top:1.75rem">
+        <a class="btn btn--p" href="#" data-ir="home">Consultar a situação da minha Câmara</a>
+        <a class="btn btn--s" href="#">Falar com o Luiz no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div><!-- /pg-email -->
+</main>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="rod">
+  <div class="wrap">
+    <div class="rod__g">
+      <div>
+        <h4>Intelecto Solutions</h4>
+        <p style="color:var(--mute);font-size:.88rem;max-width:34ch">
+          Tecnologia para câmaras municipais, prefeituras e autarquias.
+          Infraestrutura própria no Brasil, atendimento direto com o responsável técnico.</p>
+        <p class="mono nota" data-nota="confirmar endereço e telefone a publicar"
+           style="font-size:.76rem;color:var(--mute);margin-top:1rem;line-height:1.8">
+          CNPJ 12.286.292/0001-50<br>Riolândia e Campinas, SP<br>(19) 9XXXX-XXXX<br>contato@intelecto.solutions</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#" data-ir="email">E-mail <span class="mono">.leg.br</span></a></li>
+          <li><a href="#" data-ir="home">Portal da transparência</a></li>
+          <li><a href="#" data-ir="home">LGPD e Encarregado</a></li>
+          <li><a href="#" data-ir="home">Sistemas sob medida</a></li>
+          <li><a href="#" data-ir="home">Documentos para licitação</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Governança</h4>
+        <ul>
+          <li><a href="#" data-ir="home">Acessibilidade</a></li>
+          <li><a href="#" data-ir="home">Política de Privacidade</a></li>
+          <li><a href="#" data-ir="home">Encarregado de Dados</a></li>
+        </ul>
+        <h4 style="margin-top:1.5rem">Fontes</h4>
+        <ul>
+          <li><a href="https://www12.senado.leg.br/interlegis" target="_blank" rel="noopener">Interlegis</a></li>
+          <li><a href="#">Lei 14.133/2021</a></li>
+          <li><a href="#">Lei 13.709/2018</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rod__b">
+      <span>© 2026 Intelecto Solutions</span>
+      <span class="mono">ÚLTIMA ATUALIZAÇÃO: 21/08/2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= BARRA DE REVISÃO DO MOCKUP ================= -->
+<div class="rev">
+  <div class="wrap rev__in">
+    <span class="rev__tag">MOCKUP</span>
+    <span id="revPg">Home</span>
+    <div class="rev__sp">
+      <button class="rev__b" id="revHome" aria-pressed="true">Home</button>
+      <button class="rev__b" id="revEmail" aria-pressed="false">Página de serviço</button>
+      <button class="rev__b" id="revTema">Alternar tema</button>
+      <button class="rev__b" id="revNotas" aria-pressed="false">Mostrar pendências (7)</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var raiz=document.documentElement;
+
+  /* ---------- navegação entre as duas páginas ---------- */
+  var paginas={home:document.getElementById('pg-home'),email:document.getElementById('pg-email')};
+  var rotulos={home:'Home',email:'/email-leg-br'};
+  function ir(p){
+    for(var k in paginas){paginas[k].hidden=(k!==p)}
+    document.getElementById('revPg').textContent=rotulos[p];
+    document.getElementById('revHome').setAttribute('aria-pressed',String(p==='home'));
+    document.getElementById('revEmail').setAttribute('aria-pressed',String(p==='email'));
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-ir]'); if(!a)return;
+    e.preventDefault(); var d=a.dataset.ir;
+    ir(d==='email'?'email':'home');
+  });
+  document.getElementById('revHome').onclick=function(){ir('home')};
+  document.getElementById('revEmail').onclick=function(){ir('email')};
+
+  /* ---------- tema, três estados ---------- */
+  var btTema=document.getElementById('btTema');
+  function rotuloTema(){
+    var t=raiz.dataset.theme;
+    btTema.textContent='Tema: '+(t==='dark'?'escuro':t==='light'?'claro':'sistema');
+  }
+  function cicla(){
+    var t=raiz.dataset.theme;
+    var prox=t==='light'?'dark':t==='dark'?'':'light';
+    if(prox){raiz.dataset.theme=prox;try{localStorage.setItem('tema',prox)}catch(e){}}
+    else{delete raiz.dataset.theme;try{localStorage.removeItem('tema')}catch(e){}}
+    rotuloTema();
+  }
+  btTema.onclick=cicla;
+  document.getElementById('revTema').onclick=cicla;
+  rotuloTema();
+
+  /* ---------- tamanho da fonte ---------- */
+  function fonte(v){
+    if(v){raiz.style.setProperty('--step-0',v);try{localStorage.setItem('fonte',v)}catch(e){}}
+    else{raiz.style.removeProperty('--step-0');try{localStorage.removeItem('fonte')}catch(e){}}
+  }
+  document.getElementById('fMenos').onclick=function(){fonte('.88rem')};
+  document.getElementById('fNormal').onclick=function(){fonte(null)};
+  document.getElementById('fMais').onclick=function(){fonte('1.18rem')};
+
+  /* ---------- alto contraste ---------- */
+  var btC=document.getElementById('btContraste');
+  function pintaC(){var on=raiz.dataset.contraste==='alto';btC.setAttribute('aria-pressed',String(on))}
+  btC.onclick=function(){
+    var on=raiz.dataset.contraste==='alto';
+    if(on){delete raiz.dataset.contraste;try{localStorage.setItem('contraste','0')}catch(e){}}
+    else{raiz.dataset.contraste='alto';try{localStorage.setItem('contraste','1')}catch(e){}}
+    pintaC();
+  };
+  pintaC();
+
+  /* ---------- abas de clientes ---------- */
+  var abas=[].slice.call(document.querySelectorAll('.aba'));
+  var cels=[].slice.call(document.querySelectorAll('#gradeCli .cli'));
+  function filtra(f){
+    cels.forEach(function(c){c.hidden=(f!=='todos' && c.dataset.t!==f)});
+    abas.forEach(function(a){a.setAttribute('aria-selected',String(a.dataset.f===f))});
+  }
+  abas.forEach(function(a,i){
+    a.onclick=function(){filtra(a.dataset.f)};
+    a.onkeydown=function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(!d)return; e.preventDefault();
+      var n=abas[(i+d+abas.length)%abas.length]; n.focus(); n.click();
+    };
+  });
+
+  /* ---------- diagnóstico ---------- */
+  var base={
+    'jaguariuna':{t:'ok',d:'jaguariuna.sp.leg.br',v:'Domínio ativo, e-mail já em infraestrutura própria',
+      x:'Esta Câmara já é atendida pela Intelecto. O portal, a transparência e o e-mail estão no mesmo domínio oficial.'},
+    'luz':{t:'sem',d:'luz.mg.leg.br',v:'Domínio ativo, sem e-mail configurado',
+      x:'O portal Interlegis existe e responde, mas o domínio não tem registro MX. Na prática, a Câmara não tem e-mail institucional nenhum e provavelmente usa endereço pessoal para comunicação oficial.'},
+    'serrana':{t:'mx',d:'serrana.sp.leg.br',v:'E-mail Legislativo do Interlegis, com prazo até maio de 2027',
+      x:'O domínio tem MX apontando para a estrutura do Interlegis, que será desligada. É preciso migrar antes do prazo para não perder o canal oficial.'},
+    'pindorama':{t:'outro',d:'pindorama.sp.leg.br',v:'E-mail em provedor terceiro',
+      x:'O domínio tem MX de outro fornecedor. Vale conferir se SPF, DKIM e DMARC estão corretos, porque é a causa mais comum de mensagem da Câmara caindo no spam e de bloqueio por SPFBL.'}
+  };
+  function achata(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim()}
+  function consulta(){
+    var q=achata(document.getElementById('mun').value);
+    var r=document.getElementById('resDiag');
+    if(!q){r.innerHTML='<div class="ver ver--al"><p class="ver__t">Digite o nome do município</p><p>Precisamos do nome para consultar o domínio oficial dele.</p></div>';return}
+    var d=base[q];
+    if(!d){
+      r.innerHTML='<div class="ver ver--al"><p class="ver__t">Município não encontrado no radar</p>'+
+        '<p>Não localizamos domínio oficial ativo para este município. Isso pode significar que a Câmara ainda não tem domínio <span class="mono">.leg.br</span>, e nós intermediamos a solicitação junto ao Interlegis, sem custo de licença.</p>'+
+        '<span class="ver__d">Radar aferido em 19/08/2026 · <a href="#">esta informação está errada?</a></span></div>';
+    } else {
+      var cor=d.t==='ok'?'ver--ok':d.t==='mx'?'ver--al':'';
+      r.innerHTML='<div class="ver '+cor+'"><p class="ver__t">'+d.v+'</p>'+
+        '<p style="margin-bottom:.6rem"><span class="dns">'+d.d+'</span></p><p>'+d.x+'</p>'+
+        '<span class="ver__d">Radar aferido em 19/08/2026 · <a href="#">esta informação está errada?</a></span></div>';
+    }
+    r.querySelector('.ver').setAttribute('tabindex','-1');
+    r.querySelector('.ver').focus();
+  }
+  document.getElementById('btDiag').onclick=consulta;
+  document.getElementById('mun').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();consulta()}});
+
+  /* ---------- pausa do marquee ---------- */
+  var mq=document.getElementById('mq'), bp=document.getElementById('btPausa');
+  if(bp){bp.onclick=function(){
+    var on=mq.dataset.motion==='paused';
+    mq.dataset.motion=on?'':'paused';
+    bp.setAttribute('aria-pressed',String(!on));
+    bp.textContent=on?'Pausar a faixa':'Retomar a faixa';
+  }}
+
+  /* ---------- sumário ativo ---------- */
+  var alvos=[].slice.call(document.querySelectorAll('.doc h2'));
+  if(alvos.length && 'IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting)return;
+        document.querySelectorAll('.sum a').forEach(function(a){
+          a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+e.target.id));
+        });
+      });
+    },{rootMargin:'-110px 0px -70% 0px'});
+    alvos.forEach(function(t){obs.observe(t)});
+  }
+
+  /* ---------- notas de revisão ---------- */
+  var bn=document.getElementById('revNotas');
+  bn.onclick=function(){
+    var on=document.body.dataset.notas==='on';
+    document.body.dataset.notas=on?'':'on';
+    bn.setAttribute('aria-pressed',String(!on));
+    bn.textContent=on?'Mostrar pendências (7)':'Ocultar pendências';
+  };
+})();
+</script>

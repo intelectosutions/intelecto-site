@@ -1,0 +1,1745 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BANCADA</title>
+<meta name="color-scheme" content="light dark">
+
+<script>(function(){try{var t=localStorage.getItem("bancada-tema");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Geist+Mono:wght@300..600&family=Geist:wght@300..700&display=swap">
+
+<style>
+/* ============================================================
+   BANCADA  ·  Intelecto Solutions  ·  mockup de direcao de arte
+   Tema nativo: CLARO (osso quente). Escuro e o alternativo.
+   ============================================================ */
+
+/* ---------- 1. TOKENS: paleta nativa completa, em hex ---------- */
+:root{
+  /* superficies: o painel e MAIS CLARO que o chao. Essa inversao
+     e o que impede a pagina de ler como documento. */
+  --bg-000:#F2EEE4;
+  --bg-100:#F8F5ED;
+  --panel:#FDFBF6;
+  --panel-hi:#FFFEFA;
+
+  --line-100:#E7E1D3;
+  --line-200:#D9D2C1;
+  --line-300:#C3BAA4;
+  --line-btn:#8E8471;
+
+  --fg-ink:#1B1712;
+  --fg-body:#4A4238;
+  --fg-weak:#74695B;
+
+  --acc-fill:#E8A317;
+  --acc-ink:#1B1712;
+  --acc-text:#9A5B04;
+  --acc-hover-fill:#D18E08;
+  --acc-hover-text:#7E4903;
+  --acc-wash:#FAEBCF;
+  --acc-on-wash:#7E4903;
+
+  --ok:#0F7A54;
+  --warn:#9A5B04;
+  --warn-txt:#7E4903;
+  --crit:#B02A25;
+
+  --glow:rgba(232,163,23,.10);
+  --veil:rgba(27,23,18,.03);
+  --filete:rgba(232,163,23,.40);
+
+  --grain-op:.045;
+  --grain-blend:multiply;
+  --grain-tile:200px;
+
+  /* barra de mockup: fora da estetica do site, nao muda com o tema */
+  --mk-bg:#141210;
+  --mk-line:#2E2822;
+  --mk-ink:#F1EBE0;
+  --mk-weak:#9A9084;
+  --mk-acc:#E8A317;
+  --mk-acc-ink:#141210;
+  --mk-hover:#221E19;
+
+  /* contrato de movimento: cor sempre mais lenta que movimento */
+  --ease:cubic-bezier(.2,.65,.3,1);
+  --dur-mov:140ms;
+  --dur-cor:300ms;
+
+  --r-sm:10px;
+  --r-md:12px;
+  --r-lg:14px;
+  --painel-h:440px;
+}
+
+/* ---------- 2. TEMA ALTERNATIVO: escuro (so tokens) ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg-000:#100E0B;
+    --bg-100:#16130F;
+    --panel:#1D1915;
+    --panel-hi:#26211B;
+
+    --line-100:rgba(255,250,240,.07);
+    --line-200:rgba(255,250,240,.12);
+    --line-300:rgba(255,250,240,.20);
+    --line-btn:#6E6558;
+
+    --fg-ink:#EFE9DF;
+    --fg-body:#BDB3A5;
+    --fg-weak:#948A7D;
+
+    --acc-fill:#E8A317;
+    --acc-ink:#1B1712;
+    --acc-text:#F5B942;
+    --acc-hover-fill:#F0B438;
+    --acc-hover-text:#FFD27A;
+    --acc-wash:rgba(232,163,23,.10);
+    --acc-on-wash:#F5B942;
+
+    --ok:#3FBF8B;
+    --warn:#F5B942;
+    --warn-txt:#F5B942;
+    --crit:#F0837B;
+
+    --glow:rgba(232,163,23,.14);
+    --veil:rgba(255,255,255,.03);
+    --filete:rgba(232,163,23,.50);
+
+    --grain-op:.035;
+    --grain-blend:overlay;
+    --grain-tile:180px;
+  }
+}
+:root[data-theme="dark"]{
+  --bg-000:#100E0B;
+  --bg-100:#16130F;
+  --panel:#1D1915;
+  --panel-hi:#26211B;
+
+  --line-100:rgba(255,250,240,.07);
+  --line-200:rgba(255,250,240,.12);
+  --line-300:rgba(255,250,240,.20);
+  --line-btn:#6E6558;
+
+  --fg-ink:#EFE9DF;
+  --fg-body:#BDB3A5;
+  --fg-weak:#948A7D;
+
+  --acc-fill:#E8A317;
+  --acc-ink:#1B1712;
+  --acc-text:#F5B942;
+  --acc-hover-fill:#F0B438;
+  --acc-hover-text:#FFD27A;
+  --acc-wash:rgba(232,163,23,.10);
+  --acc-on-wash:#F5B942;
+
+  --ok:#3FBF8B;
+  --warn:#F5B942;
+  --warn-txt:#F5B942;
+  --crit:#F0837B;
+
+  --glow:rgba(232,163,23,.14);
+  --veil:rgba(255,255,255,.03);
+  --filete:rgba(232,163,23,.50);
+
+  --grain-op:.035;
+  --grain-blend:overlay;
+  --grain-tile:180px;
+}
+
+/* ---------- 3. BASE ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-bottom:88px;
+  background:var(--bg-100);
+  color:var(--fg-body);
+  font-family:"Geist",system-ui,"Segoe UI",sans-serif;
+  font-size:16.5px;
+  line-height:1.62;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+#site{overflow-x:clip}
+img,svg{max-width:100%}
+::selection{background:var(--acc-wash);color:var(--fg-ink)}
+
+/* grao: base das tres direcoes, com ladrilho e blend proprios daqui */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:60;
+  pointer-events:none;
+  opacity:var(--grain-op);
+  mix-blend-mode:var(--grain-blend);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:var(--grain-tile) var(--grain-tile);
+}
+
+h1,h2,h3{
+  font-family:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  color:var(--fg-ink);
+  margin:0;
+  text-wrap:balance;
+}
+h1{
+  font-variation-settings:"opsz" 96,"wdth" 86,"wght" 720;
+  font-size:clamp(2.6rem,6.2vw,5rem);
+  line-height:.94;
+  letter-spacing:-.035em;
+}
+h2{
+  font-variation-settings:"opsz" 40,"wdth" 90,"wght" 640;
+  font-size:clamp(1.85rem,3.5vw,2.75rem);
+  line-height:1.02;
+  letter-spacing:-.028em;
+}
+h3{
+  font-variation-settings:"opsz" 24,"wdth" 92,"wght" 620;
+  font-size:1.18rem;
+  line-height:1.18;
+  letter-spacing:-.018em;
+}
+p{margin:0}
+a{color:var(--acc-text);text-decoration:none}
+a:hover{color:var(--acc-hover-text)}
+
+.mono{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+}
+.rot{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--fg-weak);
+  font-weight:500;
+}
+.dado{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:12.5px;
+  font-variant-numeric:tabular-nums;
+  color:var(--fg-weak);
+}
+.lead{
+  font-size:19px;
+  line-height:1.5;
+  font-weight:380;
+  color:var(--fg-body);
+  max-width:46ch;
+}
+.corpo{max-width:66ch}
+
+:focus-visible{
+  outline:2px solid var(--acc-text);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;width:100%}
+
+.ponto{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--ok);
+  display:inline-block;flex:0 0 auto;
+}
+.ponto.warn{background:var(--warn)}
+.ponto.crit{background:var(--crit)}
+.ponto.off{background:var(--line-300)}
+
+/* botoes */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:46px;padding:0 20px;
+  border-radius:var(--r-sm);
+  font-family:"Geist",system-ui,sans-serif;
+  font-size:15px;font-weight:500;line-height:1;
+  border:0;cursor:pointer;
+  text-decoration:none;
+  transition:background-color var(--dur-cor) var(--ease),color var(--dur-cor) var(--ease),box-shadow var(--dur-cor) var(--ease),transform var(--dur-mov) var(--ease);
+}
+.btn-1{background:var(--acc-fill);color:var(--acc-ink)}
+.btn-1:hover{background:var(--acc-hover-fill);color:var(--acc-ink)}
+.btn-2{background:transparent;color:var(--fg-ink);box-shadow:inset 0 0 0 1px var(--line-btn)}
+.btn-2:hover{background:var(--acc-wash);color:var(--fg-ink)}
+.btn:active{transform:translateY(1px)}
+
+/* ---------- 4. HEADER ---------- */
+#topo-sentinela{height:1px}
+.cabeca{
+  position:sticky;top:0;z-index:40;
+  height:60px;
+  background:var(--bg-100);
+  transition:box-shadow var(--dur-cor) var(--ease);
+}
+.cabeca.grudou{box-shadow:0 1px 0 0 var(--line-200)}
+.cabeca .wrap{height:100%;display:flex;align-items:center;gap:28px}
+.marca{
+  display:flex;align-items:center;gap:9px;
+  font-family:"Bricolage Grotesque","Arial Narrow",sans-serif;
+  font-variation-settings:"opsz" 24,"wdth" 88,"wght" 700;
+  font-size:18px;letter-spacing:-.02em;color:var(--fg-ink);
+  text-decoration:none;flex:0 0 auto;
+}
+.marca svg{display:block}
+.nav{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav a{
+  display:inline-flex;align-items:center;min-height:44px;padding:0 11px;
+  font-size:14.5px;color:var(--fg-body);border-radius:8px;
+  transition:background-color var(--dur-cor) var(--ease),color var(--dur-cor) var(--ease);
+}
+.nav a:hover{background:var(--acc-wash);color:var(--fg-ink)}
+.tema-btn{
+  width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;border:0;border-radius:8px;cursor:pointer;color:var(--fg-body);
+  transition:background-color var(--dur-cor) var(--ease),color var(--dur-cor) var(--ease);
+}
+.tema-btn:hover{background:var(--acc-wash);color:var(--fg-ink)}
+.cabeca .btn{min-height:40px;padding:0 15px;font-size:14px;flex:0 0 auto}
+.cta-cabeca .rot-sm{display:none}
+
+/* ---------- 5. HEROI ---------- */
+.heroi{
+  min-height:92svh;
+  background:var(--bg-100);
+  padding:clamp(40px,7vh,84px) 0 clamp(56px,8vh,96px);
+  display:flex;align-items:center;
+}
+.heroi-grade{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:32px;
+  align-items:start;
+  width:100%;
+}
+.heroi-txt{grid-column:1 / span 6;display:flex;flex-direction:column;gap:26px}
+.kicker{display:flex;align-items:center;gap:9px}
+.h1-3{color:var(--fg-body)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+.heroi-dados{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.heroi-painel{grid-column:7 / span 6;position:relative;margin-top:-24px}
+
+/* ---------- 6. O PAINEL UNICO ---------- */
+.painel-luz{
+  position:absolute;inset:-6% -6% -12% -6%;
+  background:radial-gradient(58% 52% at 62% 34%,var(--glow),transparent 72%);
+  pointer-events:none;z-index:0;
+}
+.painel{
+  position:relative;z-index:1;
+  background:var(--panel);
+  border-radius:var(--r-lg);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  min-height:var(--painel-h);
+}
+/* filete de luz de 1px no topo */
+.painel > .filete{
+  position:absolute;top:0;left:0;right:0;height:1px;z-index:4;
+  background:linear-gradient(90deg,transparent,var(--filete) 22%,var(--filete) 78%,transparent);
+}
+/* grao interno proprio do painel */
+.painel::before{
+  content:"";position:absolute;inset:1px;z-index:3;pointer-events:none;
+  opacity:calc(var(--grain-op) * .8);
+  mix-blend-mode:var(--grain-blend);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n2)'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+}
+/* cromo do painel: nunca se move */
+.painel-barra{
+  position:relative;z-index:2;
+  display:flex;align-items:center;gap:10px;
+  height:38px;padding:0 12px;
+  border-bottom:1px solid var(--line-100);
+  background:var(--panel-hi);
+  flex:0 0 auto;
+}
+.painel-barra .luzes{display:flex;gap:5px;flex:0 0 auto}
+.painel-barra .luzes i{width:8px;height:8px;border-radius:50%;background:var(--line-300);display:block}
+.painel-url{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:11.5px;color:var(--fg-weak);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  transition:opacity var(--dur-cor) var(--ease);
+}
+.selo-demo{
+  margin-left:auto;flex:0 0 auto;
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc-on-wash);background:var(--acc-wash);
+  padding:3px 6px;border-radius:4px;
+}
+.painel-corpo{position:relative;z-index:2;flex:1 1 auto;overflow:hidden}
+.estado{
+  position:absolute;inset:0;
+  padding:14px 14px 12px;
+  display:flex;flex-direction:column;gap:10px;
+  opacity:0;transform:translateY(6px);
+  pointer-events:none;
+  transition:opacity 220ms var(--ease),transform 220ms var(--ease);
+}
+.estado.on{opacity:1;transform:none;pointer-events:auto}
+.painel-pe{
+  position:relative;z-index:2;flex:0 0 auto;
+  height:34px;display:flex;align-items:center;gap:10px;
+  padding:0 12px;border-top:1px solid var(--line-100);
+  background:var(--panel-hi);
+}
+.passos-ind{display:flex;gap:3px;margin-left:auto}
+.passos-ind i{
+  display:block;width:16px;height:3px;border-radius:2px;
+  background:var(--line-200);
+  transition:background-color var(--dur-cor) var(--ease);
+}
+.passos-ind i.on{background:var(--acc-fill)}
+
+/* borda conica animada: UM elemento na pagina inteira */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.painel.viva::after{
+  content:"";position:absolute;inset:0;z-index:5;
+  border-radius:var(--r-lg);
+  padding:1px;pointer-events:none;
+  background:conic-gradient(from var(--ang),transparent 0 58%,var(--acc-fill) 72%,transparent 84% 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  opacity:.85;
+}
+@media (prefers-reduced-motion:no-preference){
+  .painel.viva::after{animation:girar 7s linear infinite}
+}
+@keyframes girar{to{--ang:360deg}}
+
+/* miolos do painel */
+.menu-tr{display:flex;gap:2px;flex-wrap:wrap;flex:0 0 auto}
+.menu-tr span{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--fg-weak);padding:5px 7px;border-radius:6px;
+  white-space:nowrap;
+}
+.menu-tr span.at{background:var(--acc-wash);color:var(--acc-text)}
+
+.rolo-p{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;flex:0 0 auto}
+.tabela-p{width:100%;min-width:352px;border-collapse:collapse;font-size:12.5px}
+.tabela-p th{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--fg-weak);font-weight:500;text-align:left;
+  padding:0 8px 6px;border-bottom:1px solid var(--line-100);
+}
+.tabela-p th.n,.tabela-p td.n{text-align:right;font-variant-numeric:tabular-nums;
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace}
+.tabela-p td{
+  padding:7px 8px;border-bottom:1px solid var(--line-100);
+  color:var(--fg-body);
+}
+.tabela-p tr:last-child td{border-bottom:0}
+.tabela-p tbody tr{transition:background-color var(--dur-cor) var(--ease)}
+.tabela-p tbody tr:hover{background:var(--panel-hi)}
+.tabela-p td.ink{color:var(--fg-ink);font-weight:500}
+
+.selo-pntp{
+  margin-top:auto;display:flex;align-items:center;gap:9px;
+  padding:8px 10px;border-radius:8px;background:var(--bg-000);
+  box-shadow:inset 0 0 0 1px var(--line-100);
+}
+.selo-pntp b{color:var(--fg-ink);font-weight:600;font-size:12px}
+.selo-pntp .rot{font-size:10px}
+
+.lista-p{display:flex;flex-direction:column;gap:1px;overflow:hidden}
+.lin-p{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 8px;border-bottom:1px solid var(--line-100);
+  font-size:12.5px;color:var(--fg-body);
+  transition:background-color var(--dur-cor) var(--ease);
+}
+.lin-p:hover{background:var(--panel-hi)}
+.lin-p .tit{color:var(--fg-ink);font-weight:500;flex:1 1 auto;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lin-p .meta{flex:0 0 auto}
+.chip-est{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 6px;border-radius:4px;flex:0 0 auto;
+  background:var(--bg-000);color:var(--fg-weak);
+  box-shadow:inset 0 0 0 1px var(--line-100);
+}
+.chip-est.ok{color:var(--ok)}
+.chip-est.warn{color:var(--warn-txt)}
+.chip-est.crit{color:var(--crit)}
+
+.aviso-sis{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:9px 10px;border-radius:8px;
+  background:var(--acc-wash);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  flex:0 0 auto;
+}
+.aviso-sis .txt{font-size:12px;line-height:1.45;color:var(--fg-ink)}
+.aviso-sis .rot{font-size:9.5px;display:block;margin-bottom:2px;color:var(--acc-on-wash)}
+
+.esteira{display:flex;flex-direction:column;gap:6px}
+.esteira-item{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 9px;border-radius:8px;
+  background:var(--bg-000);
+  box-shadow:inset 0 0 0 1px var(--line-100);
+  font-size:12.5px;color:var(--fg-body);
+}
+.esteira-item .nome{flex:1 1 auto;color:var(--fg-ink);font-weight:500;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra-prog{height:4px;border-radius:3px;background:var(--line-100);overflow:hidden;flex:0 0 auto}
+.barra-prog i{display:block;height:100%;background:var(--acc-fill)}
+
+/* ---------- 7. FAIXA DE PRODUTOS EM PRODUCAO ---------- */
+.faixa-prod{background:var(--bg-000);border-block:1px solid var(--line-200);padding:22px 0}
+.faixa-cab{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.chip-prod{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 13px;border-radius:var(--r-md);
+  background:var(--panel);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  transition:box-shadow var(--dur-cor) var(--ease),background-color var(--dur-cor) var(--ease);
+}
+.chip-prod:hover{background:var(--panel-hi);box-shadow:inset 0 0 0 1px var(--line-300)}
+.chip-prod .nm{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-ink);
+  flex:0 0 auto;font-weight:500;
+}
+.chip-prod .vl{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:11.5px;color:var(--fg-weak);margin-left:auto;text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- 8. SCROLLYTELLING: A BANCADA ---------- */
+.bancada{
+  background:var(--bg-100);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,600px);
+  gap:64px;
+  max-width:1240px;margin:0 auto;padding:0 24px;
+  align-items:start;
+}
+.coluna-txt{padding:clamp(60px,9vh,110px) 0 clamp(60px,9vh,110px)}
+.coluna-painel{
+  position:sticky;
+  top:96px;
+  padding-top:clamp(60px,9vh,110px);
+}
+.coluna-painel .caixa{position:relative}
+
+.bloco{padding-bottom:clamp(56px,8vh,96px)}
+.bloco-cab{margin-bottom:34px;display:flex;flex-direction:column;gap:16px}
+.bloco-cab .rot{display:flex;align-items:center;gap:9px}
+.passo{
+  position:relative;
+  padding:22px 0 22px 62px;
+  border-top:1px solid var(--line-100);
+}
+.passo:last-child{border-bottom:1px solid var(--line-100)}
+.passo .num{
+  position:absolute;left:0;top:22px;
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:11px;letter-spacing:.1em;color:var(--fg-weak);
+  transition:color var(--dur-cor) var(--ease);
+}
+.passo::before{
+  content:"";position:absolute;left:38px;top:22px;bottom:22px;width:2px;
+  background:var(--line-200);border-radius:2px;
+  transition:background-color var(--dur-cor) var(--ease);
+}
+.passo h3{margin-bottom:9px;transition:color var(--dur-cor) var(--ease)}
+.passo p{color:var(--fg-body);max-width:56ch}
+.passo.at .num{color:var(--acc-text)}
+.passo.at::before{background:var(--acc-fill)}
+
+/* ---------- 9. BENTO + SPOTLIGHT DE BANCADA ---------- */
+.sec{padding:clamp(64px,10vh,120px) 0}
+.sec-000{background:var(--bg-000)}
+.sec-100{background:var(--bg-100)}
+.sec-cab{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;max-width:70ch}
+.sec-cab .rot{display:flex;align-items:center;gap:9px}
+
+.bento{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:180px;
+  grid-auto-flow:dense;
+  gap:12px;
+}
+.cel{
+  position:relative;overflow:hidden;
+  border-radius:var(--r-md);
+  background:var(--panel);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  padding:16px;
+  display:flex;flex-direction:column;gap:8px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 420ms var(--ease),transform 420ms var(--ease),box-shadow var(--dur-cor) var(--ease);
+  transition-delay:calc(var(--i) * 45ms);
+}
+.bento.entrou .cel{opacity:1;transform:none}
+.cel:hover{box-shadow:inset 0 0 0 1px var(--line-300)}
+.cel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),var(--acc-wash),transparent 68%);
+  opacity:0;transition:opacity var(--dur-cor) var(--ease);
+}
+.bento:hover .cel::before{opacity:1}
+.cel > *{position:relative}
+.cel h3{font-size:1.05rem}
+.cel p{font-size:14px;line-height:1.5;color:var(--fg-body)}
+.cel .pe{margin-top:auto;display:flex;align-items:center;gap:8px}
+@media (hover:none){
+  .cel::before{display:none}
+}
+
+/* ---------- 10. QUEM USA ---------- */
+.rolo{overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border-radius:var(--r-md);box-shadow:inset 0 0 0 1px var(--line-200);background:var(--panel)}
+.tab-cli{width:100%;border-collapse:collapse;font-size:14.5px;min-width:660px}
+.tab-cli th{
+  position:sticky;top:0;background:var(--panel-hi);
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-weak);
+  font-weight:500;text-align:left;padding:12px 16px;border-bottom:1px solid var(--line-200);
+}
+.tab-cli td{padding:11px 16px;border-bottom:1px solid var(--line-100);color:var(--fg-body);vertical-align:middle}
+.tab-cli tbody tr{transition:background-color var(--dur-cor) var(--ease)}
+.tab-cli tbody tr:hover{background:var(--panel-hi)}
+.tab-cli td.org{color:var(--fg-ink);font-weight:500}
+.tab-cli td.mn{font-family:"Geist Mono",ui-monospace,Consolas,monospace;font-size:12.5px;
+  font-variant-numeric:tabular-nums;color:var(--fg-weak);white-space:nowrap}
+.tab-cli tr.grupo td{
+  background:var(--bg-000);color:var(--fg-weak);
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;
+}
+.vazio{color:var(--fg-weak)}
+
+.citas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.cita{
+  border-radius:var(--r-md);background:var(--panel);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  padding:20px;display:flex;flex-direction:column;gap:14px;
+}
+.pendente{
+  align-self:flex-start;
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--crit);background:var(--bg-000);
+  padding:4px 7px;border-radius:4px;
+  box-shadow:inset 0 0 0 1px var(--line-200);
+}
+.cita .frase{font-size:17px;line-height:1.45;color:var(--fg-weak);font-weight:380}
+.cita .assin{display:flex;flex-direction:column;gap:2px;margin-top:auto}
+
+.brasoes{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:12px;
+}
+.brasao{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  padding:16px 8px;border-radius:var(--r-md);
+  background:var(--panel);box-shadow:inset 0 0 0 1px var(--line-100);
+  opacity:.38;filter:grayscale(1);
+  transition:opacity var(--dur-cor) var(--ease);
+}
+.brasao:hover{opacity:.92}
+.brasao svg{color:var(--fg-ink)}
+.brasao span{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-weak);
+  text-align:center;line-height:1.3;
+}
+
+/* ---------- 11. INFRA (faixa curta de duas linhas) ---------- */
+.specs{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--line-200);border-left:1px solid var(--line-200);
+  border-radius:var(--r-md);overflow:hidden;background:var(--panel);
+}
+.spec{
+  padding:20px;border-right:1px solid var(--line-200);border-bottom:1px solid var(--line-200);
+  display:flex;flex-direction:column;gap:7px;
+}
+.spec .vl{
+  font-family:"Bricolage Grotesque","Arial Narrow",sans-serif;
+  font-variation-settings:"opsz" 24,"wdth" 92,"wght" 620;
+  font-size:1.02rem;color:var(--fg-ink);line-height:1.2;letter-spacing:-.015em;
+}
+.spec p{font-size:13.5px;line-height:1.45;color:var(--fg-body)}
+
+/* ---------- 12. ATUALIZACOES ---------- */
+.log{border-top:1px solid var(--line-200)}
+.log-lin{
+  display:grid;grid-template-columns:112px 132px minmax(0,1fr);
+  gap:18px;align-items:baseline;
+  padding:16px 4px;border-bottom:1px solid var(--line-100);
+  transition:background-color var(--dur-cor) var(--ease);
+}
+.log-lin:hover{background:var(--panel)}
+.log-lin .prod{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-text);
+}
+.log-lin .txt{color:var(--fg-body);font-size:15px;line-height:1.5}
+.log-lin .txt b{color:var(--fg-ink);font-weight:600}
+
+/* ---------- 13. CONTATO ---------- */
+.dois{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.via{
+  border-radius:var(--r-lg);background:var(--panel);
+  box-shadow:inset 0 0 0 1px var(--line-200);
+  padding:28px;display:flex;flex-direction:column;gap:16px;
+  position:relative;overflow:hidden;
+}
+.via .filete{position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--filete) 22%,var(--filete) 78%,transparent)}
+.via p{color:var(--fg-body);font-size:15.5px;line-height:1.55}
+.via .acoes{margin-top:auto}
+
+/* ---------- 14. RODAPE ---------- */
+.rodape{background:var(--bg-000);border-top:1px solid var(--line-200);padding:40px 0 34px}
+.rodape-grade{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.rodape h4{
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-weak);
+  margin:0 0 12px;font-weight:500;
+}
+.rodape ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.rodape ul a{color:var(--fg-body);font-size:14.5px}
+.rodape ul a:hover{color:var(--acc-hover-text)}
+.rodape-fim{
+  border-top:1px solid var(--line-200);padding-top:18px;
+  display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;
+}
+.versao{display:flex;align-items:center;gap:8px;margin-left:auto}
+
+/* ---------- 15. REVELACAO (3 momentos na pagina) ---------- */
+@keyframes surgir{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    .surge{animation:surgir linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
+  }
+}
+
+/* ---------- 16. RESPONSIVO ---------- */
+@media (max-width:1100px){
+  .bancada{grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:40px}
+  .brasoes{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .rodape-grade{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .heroi-txt{grid-column:1 / -1}
+  .heroi-painel{grid-column:1 / -1;margin-top:8px}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dois,.citas{grid-template-columns:1fr}
+  .nav{display:none}
+  .bancada{grid-template-columns:minmax(0,1fr);gap:0}
+  .coluna-painel{
+    order:-1;position:sticky;top:60px;z-index:20;
+    padding:10px 0 14px;background:var(--bg-100);
+  }
+  .coluna-painel::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:14px;
+    background:linear-gradient(var(--bg-100),transparent);pointer-events:none;
+  }
+  /* painel travado no mobile: mesma moldura, miolo compacto */
+  .coluna-painel .painel{--painel-h:344px;min-height:344px}
+  .coluna-painel .estado{padding:11px 11px 9px;gap:8px}
+  .coluna-painel .tabela-p{font-size:11.5px}
+  .coluna-painel .tabela-p td{padding:5px 8px}
+  .coluna-painel .tabela-p th{padding:0 8px 5px}
+  .coluna-painel .lin-p{padding:6px 8px;font-size:11.5px}
+  .coluna-painel .esteira-item{padding:5px 9px;font-size:11.5px}
+  .coluna-painel .selo-pntp{padding:6px 9px}
+  .coluna-painel .aviso-sis{padding:7px 9px}
+  .coluna-painel .aviso-sis .txt{font-size:11.5px}
+  .coluna-painel .painel-corpo{
+    -webkit-mask-image:linear-gradient(#000 88%,transparent 100%);
+    mask-image:linear-gradient(#000 88%,transparent 100%);
+  }
+  .coluna-txt{padding-top:18px}
+  .log-lin{grid-template-columns:96px minmax(0,1fr);gap:6px 14px}
+  .log-lin .txt{grid-column:1 / -1}
+}
+@media (max-width:760px){
+  .nav{display:none}
+  .tema-btn{margin-left:auto}
+  .cabeca .wrap{gap:12px}
+  .cta-cabeca .rot-lg{display:none}
+  .cta-cabeca .rot-sm{display:inline}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  h1{font-size:clamp(2.15rem,9.4vw,5rem)}
+  .lead{font-size:18px}
+  .wrap{padding:0 18px}
+  .bancada{padding:0 18px}
+  .chips{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .cel{min-height:150px}
+  .specs{grid-template-columns:1fr}
+  .brasoes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rodape-grade{grid-template-columns:1fr}
+  .heroi-painel{margin-top:0}
+  .passo{padding-left:48px}
+  .passo::before{left:28px}
+  .menu-tr span{font-size:9.5px;padding:4px 5px}
+}
+
+/* ---------- 17. BARRA DE MOCKUP (fora da estetica do site) ---------- */
+.mockbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:var(--mk-bg);
+  border-top:2px solid var(--mk-acc);
+  color:var(--mk-ink);
+  display:flex;align-items:center;gap:12px;
+  padding:8px 14px;flex-wrap:wrap;
+  font-family:"Geist Mono",ui-monospace,Consolas,monospace;
+}
+.mockbar .tag{
+  background:var(--mk-acc);color:var(--mk-acc-ink);
+  font-size:10px;letter-spacing:.16em;font-weight:600;
+  padding:5px 8px;border-radius:4px;
+}
+.mockbar .nome{font-size:12px;letter-spacing:.1em;color:var(--mk-ink)}
+.mockbar .sub{font-size:11px;color:var(--mk-weak)}
+.mockbar .grp{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.mockbar button{
+  min-height:44px;padding:0 14px;
+  background:transparent;color:var(--mk-ink);
+  border:1px solid var(--mk-line);border-radius:8px;
+  font-family:inherit;font-size:12px;letter-spacing:.04em;cursor:pointer;
+  transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease;
+}
+.mockbar button:hover{background:var(--mk-hover);border-color:var(--mk-acc);color:var(--mk-acc)}
+.mockbar button[aria-pressed="true"]{background:var(--mk-acc);color:var(--mk-acc-ink);border-color:var(--mk-acc)}
+.mockbar button:focus-visible{outline:2px solid var(--mk-acc);outline-offset:2px}
+@media (max-width:560px){
+  .mockbar .sub{display:none}
+  body{padding-bottom:112px}
+}
+
+#site.modo-mobile{
+  max-width:390px;margin:0 auto;
+  box-shadow:0 0 0 1px var(--line-300);
+}
+#site.modo-mobile .wrap,#site.modo-mobile .bancada{padding-left:16px;padding-right:16px}
+
+/* ---------- 18. MOVIMENTO REDUZIDO ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .cel{opacity:1;transform:none}
+  .estado{transition:none}
+}
+
+/* alvo de toque minimo, WCAG 2.5.8 (AA): link em lista de navegacao */
+li > a{display:inline-block;min-height:24px;padding-block:3px}
+</style>
+
+<div id="site">
+
+<!-- =========================================================
+     1. HEADER
+     ========================================================= -->
+<div id="topo-sentinela"></div>
+<header class="cabeca" id="cabeca">
+  <div class="wrap">
+    <a class="marca" href="#topo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="17" height="17" rx="4" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M5.5 13.2V6.8M10 13.2V6.8M14.5 13.2V9.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      Intelecto
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#mirante">Mirante</a>
+      <a href="#email">E-mail .leg.br</a>
+      <a href="#conformis">Conformis</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#quem-usa">Quem usa</a>
+      <a href="#atualizacoes">Atualizações</a>
+    </nav>
+    <button class="tema-btn" type="button" id="tema-cabeca" aria-label="Alternar entre tema claro e escuro">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <circle cx="9" cy="9" r="3.6" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M9 1.4v1.9M9 14.7v1.9M16.6 9h-1.9M3.3 9H1.4M14.4 3.6l-1.4 1.4M5 13l-1.4 1.4M14.4 14.4L13 13M5 5L3.6 3.6"
+              stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <a class="btn btn-1 cta-cabeca" href="#contato"><span class="rot-lg">Falar com quem desenvolve</span><span class="rot-sm">Falar</span></a>
+  </div>
+</header>
+
+<!-- =========================================================
+     2. HEROI  ·  painel unico reconstruido em DOM
+     ========================================================= -->
+<section class="heroi" id="topo" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="heroi-grade">
+
+      <div class="heroi-txt">
+        <p class="kicker rot"><span class="ponto" aria-hidden="true"></span>Em produção agora · 22 organizações · 31 domínios</p>
+
+        <h1 id="h1">Quem escreve o sistema<br>é quem atende<br><span class="h1-3">o telefone.</span></h1>
+
+        <p class="lead">Portal de transparência, e-mail no domínio .leg.br e conformidade com a LGPD em plataformas que a Intelecto desenvolve e opera na própria máquina, em São Paulo. Sem revenda, sem intermediário, sem chamado que morre na fila.</p>
+
+        <div class="acoes">
+          <a class="btn btn-1" href="#contato">Falar com quem desenvolve</a>
+          <a class="btn btn-2" href="#mirante">Abrir um portal de exemplo</a>
+        </div>
+
+        <p class="heroi-dados dado">
+          <span>CNPJ 12.286.292/0001-50</span><span aria-hidden="true">·</span>
+          <span>Operação em Campinas/SP</span><span aria-hidden="true">·</span>
+          <span>16 anos, desde 2010</span>
+        </p>
+      </div>
+
+      <div class="heroi-painel">
+        <div class="painel-luz" aria-hidden="true"></div>
+        <div class="painel" id="painel-heroi">
+          <span class="filete" aria-hidden="true"></span>
+
+          <div class="painel-barra">
+            <span class="luzes" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="ponto" aria-hidden="true"></span>
+            <span class="painel-url">portal.exemplo.sp.leg.br/transparencia/despesas</span>
+            <span class="selo-demo">Demonstração</span>
+          </div>
+
+          <div class="painel-corpo">
+            <div class="estado on">
+              <nav class="menu-tr" aria-label="Menu de transparência do exemplo">
+                <span class="at">Despesas</span><span>Receitas</span><span>Licitações</span>
+                <span>Contratos</span><span>Servidores</span><span>e-SIC</span><span>Ouvidoria</span>
+              </nav>
+
+              <div class="rolo-p"><table class="tabela-p">
+                <caption class="rot" style="text-align:left;padding:0 8px 8px">Despesas por elemento · exercício corrente</caption>
+                <thead>
+                  <tr><th scope="col">Elemento</th><th scope="col" class="n">Empenhado</th><th scope="col" class="n">Liquidado</th><th scope="col" class="n">Pago</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="ink">Vencimentos e vantagens</td><td class="n">1.284.300,00</td><td class="n">1.284.300,00</td><td class="n">1.284.300,00</td></tr>
+                  <tr><td class="ink">Obrigações patronais</td><td class="n">311.940,00</td><td class="n">311.940,00</td><td class="n">298.115,40</td></tr>
+                  <tr><td class="ink">Diárias, civil</td><td class="n">42.800,00</td><td class="n">38.120,00</td><td class="n">38.120,00</td></tr>
+                  <tr><td class="ink">Material de consumo</td><td class="n">96.450,00</td><td class="n">74.209,80</td><td class="n">71.884,10</td></tr>
+                  <tr><td class="ink">Serviços de terceiros, PJ</td><td class="n">428.700,00</td><td class="n">390.244,00</td><td class="n">376.902,55</td></tr>
+                  <tr><td class="ink">Equipamentos e material</td><td class="n">154.200,00</td><td class="n">120.860,00</td><td class="n">120.860,00</td></tr>
+                </tbody>
+              </table></div>
+
+              <div class="selo-pntp">
+                <span class="ponto" aria-hidden="true"></span>
+                <span><b>Cartilha PNTP</b> <span class="rot" style="letter-spacing:.1em">estrutura aderente</span></span>
+                <span class="chip-est ok" style="margin-left:auto">Publicado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="painel-pe">
+            <span class="rot" style="font-size:10px">Mirante · multi-tenant</span>
+            <span class="dado" style="margin-left:auto;font-size:11px">7 portais no ar</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. FAIXA: EM PRODUCAO AGORA
+     ========================================================= -->
+<section class="faixa-prod" id="producao" aria-labelledby="t-producao">
+  <div class="wrap">
+    <div class="faixa-cab">
+      <span class="ponto" aria-hidden="true"></span>
+      <h2 id="t-producao" class="rot" style="font-family:'Geist Mono',ui-monospace,monospace;font-size:11px;font-variation-settings:normal;letter-spacing:.14em;color:var(--fg-weak)">Em produção agora</h2>
+      <span class="dado" style="margin-left:auto">Adoção real da carteira, não catálogo de serviço</span>
+    </div>
+    <div class="chips">
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">Mirante</span><span class="vl">7 portais no ar</span></div>
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">E-mail institucional</span><span class="vl">31 domínios com SPF, DKIM e DMARC</span></div>
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">Conformis</span><span class="vl">DPO as a service desde 2024</span></div>
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">Votação de plenário</span><span class="vl">em Orindiuva desde 2016</span></div>
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">Sistemas sob medida</span><span class="vl">9 na TRB Pharma</span></div>
+      <div class="chip-prod"><span class="ponto" aria-hidden="true"></span><span class="nm">Hospedagem gerenciada</span><span class="vl">22 organizações</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4, 5 e 6. A BANCADA: um painel so, travado, trocando de funcao
+     ========================================================= -->
+<div class="bancada" id="bancada">
+
+  <div class="coluna-txt">
+
+    <!-- 4. MIRANTE -->
+    <section class="bloco" id="mirante" aria-labelledby="t-mirante">
+      <div class="bloco-cab">
+        <p class="rot"><span class="ponto" aria-hidden="true"></span>Mirante · portal de transparência</p>
+        <h2 id="t-mirante">O portal de transparência que a gente escreve, hospeda e atualiza.</h2>
+        <p class="lead">Multi-tenant de verdade: sete portais em produção sobre a mesma base, cada um com o domínio, o brasão e a estrutura de menu da sua organização. Quando a cartilha do PNTP muda, a correção entra nos sete no mesmo deploy.</p>
+      </div>
+
+      <div class="passo" data-estado="mirante-despesas" data-passo="1" data-url="portal.exemplo.sp.leg.br/transparencia/despesas" data-pe="Mirante · despesas">
+        <span class="num">01</span>
+        <h3>Despesas</h3>
+        <p>Empenho, liquidação e pagamento na mesma linha, com número tabular alinhado e filtro por exercício. O cidadão não precisa entender contabilidade pública para achar um pagamento, e o controle interno não precisa abrir três telas para conferir um.</p>
+      </div>
+
+      <div class="passo" data-estado="mirante-licitacoes" data-passo="2" data-url="portal.exemplo.sp.leg.br/transparencia/licitacoes" data-pe="Mirante · licitações">
+        <span class="num">02</span>
+        <h3>Licitações e contratos</h3>
+        <p>Cada processo carrega edital, atas, resultado e contrato no mesmo endereço, e o endereço não muda depois. Link citado em ofício continua abrindo anos depois, que é exatamente o que um órgão de controle cobra quando pede a íntegra do processo.</p>
+      </div>
+
+      <div class="passo" data-estado="mirante-esic" data-passo="3" data-url="portal.exemplo.sp.leg.br/e-sic/pedidos" data-pe="Mirante · e-SIC">
+        <span class="num">03</span>
+        <h3>e-SIC e ouvidoria</h3>
+        <p>Pedido de informação com protocolo, prazo contado e resposta publicada. O que a Lei de Acesso exige em prazo o sistema exige da equipe, com aviso antes de vencer, não depois. A Câmara de Dolcinópolis leva o Selo Ouvidoria Cidadã com esse fluxo.</p>
+      </div>
+
+      <div class="passo" data-estado="mirante-pntp" data-passo="4" data-url="portal.exemplo.sp.leg.br/transparencia/pntp" data-pe="Mirante · checklist PNTP">
+        <span class="num">04</span>
+        <h3>Aderência ao PNTP</h3>
+        <p>A cartilha do Programa Nacional de Transparência Pública virou checklist dentro do produto. Dá para ver item por item o que está publicado e o que falta antes da avaliação, e não no relatório que chega depois dela.</p>
+      </div>
+    </section>
+
+    <!-- 5. E-MAIL NO .LEG.BR -->
+    <section class="bloco" id="email" aria-labelledby="t-email">
+      <div class="bloco-cab">
+        <p class="rot"><span class="ponto warn" aria-hidden="true"></span>E-mail no domínio .leg.br</p>
+        <h2 id="t-email">O mesmo painel, agora como caixa de e-mail. E sem derrubar o Portal Modelo.</h2>
+        <p class="lead">O Senado encerra o E-mail Legislativo do Interlegis em maio de 2027. Nossa varredura de DNS dos 5.571 municípios encontrou 3.138 domínios .leg.br ativos, e 482 câmaras perdem o e-mail nesse prazo.</p>
+      </div>
+
+      <div class="passo" data-estado="email-caixa" data-passo="5" data-url="webmail.exemplo.sp.leg.br/caixa-de-entrada" data-pe="E-mail · caixa institucional">
+        <span class="num">05</span>
+        <h3>A caixa continua no endereço que o cidadão já conhece</h3>
+        <p>Nada de migrar a câmara para um endereço de provedor gratuito porque o oficial parou. Caixa no domínio próprio, armazenamento sem cota apertada, filtro de spam, assinatura padronizada e webmail que abre no celular do vereador. O que muda é quem responde quando dá problema.</p>
+      </div>
+
+      <div class="passo" data-estado="email-dns" data-passo="6" data-url="dns · reapontamento de zona .leg.br" data-pe="E-mail · reapontamento de DNS">
+        <span class="num">06</span>
+        <h3>Reapontamento não é delegação</h3>
+        <p>Reapontamento altera MX, SPF, DKIM e DMARC, e só isso. Delegação troca o servidor de nomes inteiro e leva junto o Portal Modelo e o SAPL. Essa diferença de uma linha no ofício ao Interlegis é o que separa uma migração tranquila de uma câmara fora do ar na semana da sessão.</p>
+      </div>
+    </section>
+
+    <!-- 6. CONFORMIS (scrollytelling espelhado) -->
+    <section class="bloco espelho" id="conformis" aria-labelledby="t-conformis">
+      <div class="bloco-cab">
+        <p class="rot"><span class="ponto" aria-hidden="true"></span>Conformis · LGPD e DPO as a service</p>
+        <h2 id="t-conformis">A LGPD como esteira de trabalho, não como pasta na gaveta.</h2>
+        <p class="lead">Cada obrigação vira um item com responsável, evidência anexada e estado. O que está vermelho está vermelho na tela do cliente também, porque relatório que esconde pendência não protege ninguém em fiscalização.</p>
+      </div>
+
+      <div class="passo" data-estado="conformis-esteira" data-passo="7" data-url="conformis.intelecto.solutions/adequacao" data-pe="Conformis · esteira de adequação">
+        <span class="num">07</span>
+        <h3>Seis frentes, estado por frente</h3>
+        <p>Inventário de dados, base legal por operação, aviso de privacidade publicado, contrato com operador, plano de resposta a incidente e encarregado nomeado. Seis frentes na tela, com percentual e responsável, sem precisar de um relatório de oitenta páginas para descobrir o que falta.</p>
+      </div>
+
+      <div class="passo" data-estado="conformis-ropa" data-passo="8" data-url="conformis.intelecto.solutions/registro-de-operacoes" data-pe="Conformis · registro de operações">
+        <span class="num">08</span>
+        <h3>Registro de operações pronto para ser pedido</h3>
+        <p>O registro das operações de tratamento fica dentro do sistema, versionado, com finalidade, base legal, retenção e compartilhamento. Quando a ANPD, o Ministério Público ou o próprio titular pede, a resposta sai do produto, e não de uma semana garimpando e-mail antigo.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- O PAINEL UNICO -->
+  <div class="coluna-painel">
+    <div class="caixa">
+      <div class="painel-luz" aria-hidden="true"></div>
+
+      <div class="painel" id="painel-unico">
+        <span class="filete" aria-hidden="true"></span>
+
+        <div class="painel-barra">
+          <span class="luzes" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="ponto" aria-hidden="true"></span>
+          <span class="painel-url" id="painel-url">portal.exemplo.sp.leg.br/transparencia/despesas</span>
+          <span class="selo-demo">Demonstração</span>
+        </div>
+
+        <div class="painel-corpo" id="painel-corpo" aria-live="polite">
+
+          <!-- 01 despesas -->
+          <div class="estado on" data-estado="mirante-despesas">
+            <nav class="menu-tr" aria-label="Menu de transparência">
+              <span class="at">Despesas</span><span>Receitas</span><span>Licitações</span>
+              <span>Contratos</span><span>Servidores</span><span>e-SIC</span>
+            </nav>
+            <div class="rolo-p"><table class="tabela-p">
+              <thead><tr><th scope="col">Elemento</th><th scope="col" class="n">Empenhado</th><th scope="col" class="n">Liquidado</th><th scope="col" class="n">Pago</th></tr></thead>
+              <tbody>
+                <tr><td class="ink">Vencimentos e vantagens</td><td class="n">1.284.300,00</td><td class="n">1.284.300,00</td><td class="n">1.284.300,00</td></tr>
+                <tr><td class="ink">Obrigações patronais</td><td class="n">311.940,00</td><td class="n">311.940,00</td><td class="n">298.115,40</td></tr>
+                <tr><td class="ink">Diárias, civil</td><td class="n">42.800,00</td><td class="n">38.120,00</td><td class="n">38.120,00</td></tr>
+                <tr><td class="ink">Material de consumo</td><td class="n">96.450,00</td><td class="n">74.209,80</td><td class="n">71.884,10</td></tr>
+                <tr><td class="ink">Serviços de terceiros, PJ</td><td class="n">428.700,00</td><td class="n">390.244,00</td><td class="n">376.902,55</td></tr>
+                <tr><td class="ink">Equipamentos e material</td><td class="n">154.200,00</td><td class="n">120.860,00</td><td class="n">120.860,00</td></tr>
+              </tbody>
+            </table></div>
+            <div class="selo-pntp">
+              <span class="ponto" aria-hidden="true"></span>
+              <span><b>Cartilha PNTP</b> <span class="rot" style="letter-spacing:.1em">dimensão despesa</span></span>
+              <span class="chip-est ok" style="margin-left:auto">Publicado</span>
+            </div>
+          </div>
+
+          <!-- 02 licitacoes -->
+          <div class="estado" data-estado="mirante-licitacoes">
+            <nav class="menu-tr" aria-label="Menu de transparência">
+              <span>Despesas</span><span>Receitas</span><span class="at">Licitações</span>
+              <span>Contratos</span><span>Servidores</span><span>e-SIC</span>
+            </nav>
+            <div class="lista-p">
+              <div class="lin-p"><span class="tit">Pregão eletrônico 014/2026</span><span class="meta dado">14/08</span><span class="chip-est ok">Homologado</span></div>
+              <div class="lin-p"><span class="tit">Dispensa 041/2026, manutenção predial</span><span class="meta dado">07/08</span><span class="chip-est ok">Contratado</span></div>
+              <div class="lin-p"><span class="tit">Pregão eletrônico 013/2026</span><span class="meta dado">29/07</span><span class="chip-est warn">Em recurso</span></div>
+              <div class="lin-p"><span class="tit">Inexigibilidade 009/2026, capacitação</span><span class="meta dado">18/07</span><span class="chip-est ok">Publicado</span></div>
+              <div class="lin-p"><span class="tit">Pregão eletrônico 012/2026</span><span class="meta dado">02/07</span><span class="chip-est crit">Deserto</span></div>
+              <div class="lin-p"><span class="tit">Chamamento público 002/2026</span><span class="meta dado">21/06</span><span class="chip-est ok">Encerrado</span></div>
+            </div>
+            <div class="selo-pntp">
+              <span class="ponto" aria-hidden="true"></span>
+              <span><b>Cada processo</b> <span class="rot" style="letter-spacing:.1em">edital, atas, resultado e contrato no mesmo endereço</span></span>
+            </div>
+          </div>
+
+          <!-- 03 e-SIC -->
+          <div class="estado" data-estado="mirante-esic">
+            <nav class="menu-tr" aria-label="Menu de transparência">
+              <span>Despesas</span><span>Receitas</span><span>Licitações</span>
+              <span>Contratos</span><span>Servidores</span><span class="at">e-SIC</span>
+            </nav>
+            <div class="rolo-p"><table class="tabela-p">
+              <thead><tr><th scope="col">Protocolo</th><th scope="col">Assunto</th><th scope="col" class="n">Prazo</th><th scope="col">Situação</th></tr></thead>
+              <tbody>
+                <tr><td class="n ink">2026.0418</td><td>Folha de pagamento, julho</td><td class="n">12 dias</td><td><span class="chip-est ok">Respondido</span></td></tr>
+                <tr><td class="n ink">2026.0417</td><td>Diárias da Presidência</td><td class="n">06 dias</td><td><span class="chip-est ok">Respondido</span></td></tr>
+                <tr><td class="n ink">2026.0416</td><td>Contrato de limpeza</td><td class="n">02 dias</td><td><span class="chip-est warn">Em análise</span></td></tr>
+                <tr><td class="n ink">2026.0415</td><td>Atas das sessões de junho</td><td class="n">09 dias</td><td><span class="chip-est ok">Respondido</span></td></tr>
+                <tr><td class="n ink">2026.0414</td><td>Frota e abastecimento</td><td class="n">15 dias</td><td><span class="chip-est ok">Respondido</span></td></tr>
+              </tbody>
+            </table></div>
+            <div class="selo-pntp">
+              <span class="ponto warn" aria-hidden="true"></span>
+              <span><b>Aviso de prazo</b> <span class="rot" style="letter-spacing:.1em">um pedido vence em 2 dias</span></span>
+              <span class="chip-est warn" style="margin-left:auto">Notificar</span>
+            </div>
+          </div>
+
+          <!-- 04 PNTP -->
+          <div class="estado" data-estado="mirante-pntp">
+            <nav class="menu-tr" aria-label="Menu de transparência">
+              <span>Despesas</span><span>Receitas</span><span>Licitações</span>
+              <span>Contratos</span><span>Servidores</span><span class="at">PNTP</span>
+            </nav>
+            <div class="lista-p">
+              <div class="lin-p"><span class="tit">Dimensão 1, informações institucionais</span><span class="chip-est ok">14/14</span></div>
+              <div class="lin-p"><span class="tit">Dimensão 2, receitas e despesas</span><span class="chip-est ok">22/22</span></div>
+              <div class="lin-p"><span class="tit">Dimensão 3, licitações e contratos</span><span class="chip-est ok">18/18</span></div>
+              <div class="lin-p"><span class="tit">Dimensão 4, servidores e remuneração</span><span class="chip-est warn">11/13</span></div>
+              <div class="lin-p"><span class="tit">Dimensão 5, ouvidoria e e-SIC</span><span class="chip-est ok">09/09</span></div>
+              <div class="lin-p"><span class="tit">Dimensão 6, dados abertos e acessibilidade</span><span class="chip-est ok">07/07</span></div>
+            </div>
+            <div class="selo-pntp">
+              <span class="ponto" aria-hidden="true"></span>
+              <span><b>81 de 83 itens</b> <span class="rot" style="letter-spacing:.1em">o que falta aparece antes da avaliação</span></span>
+            </div>
+          </div>
+
+          <!-- 05 caixa de e-mail -->
+          <div class="estado" data-estado="email-caixa">
+            <nav class="menu-tr" aria-label="Pastas da caixa">
+              <span class="at">Entrada</span><span>Enviados</span><span>Arquivo</span>
+              <span>Presidência</span><span>Secretaria</span><span>Contabilidade</span>
+            </nav>
+            <div class="aviso-sis">
+              <span class="ponto warn" aria-hidden="true" style="margin-top:5px"></span>
+              <span class="txt">
+                <span class="rot">Aviso do sistema</span>
+                O E-mail Legislativo do Interlegis será encerrado em maio de 2027. Esta caixa já está no domínio oficial da instituição, em servidor próprio, com SPF, DKIM e DMARC publicados.
+              </span>
+            </div>
+            <div class="lista-p">
+              <div class="lin-p"><span class="chip-est">SEC</span><span class="tit">Convocação da 18ª sessão ordinária</span><span class="meta dado">09:42</span></div>
+              <div class="lin-p"><span class="chip-est">CTB</span><span class="tit">Balancete de julho para publicação</span><span class="meta dado">08:15</span></div>
+              <div class="lin-p"><span class="chip-est">JUR</span><span class="tit">Parecer sobre o Projeto de Lei 24/2026</span><span class="meta dado">ontem</span></div>
+              <div class="lin-p"><span class="chip-est">TI</span><span class="tit">Relatório de entrega, 30 dias, 100 por cento</span><span class="meta dado">ontem</span></div>
+            </div>
+            <div class="selo-pntp">
+              <span class="ponto" aria-hidden="true"></span>
+              <span><b>presidencia@exemplo.sp.leg.br</b> <span class="rot" style="letter-spacing:.1em">domínio oficial, servidor próprio</span></span>
+            </div>
+          </div>
+
+          <!-- 06 DNS -->
+          <div class="estado" data-estado="email-dns">
+            <nav class="menu-tr" aria-label="Zona de DNS">
+              <span class="at">Zona</span><span>Registros</span><span>Propagação</span><span>Ofício ao Interlegis</span>
+            </nav>
+            <div class="rolo-p"><table class="tabela-p">
+              <thead><tr><th scope="col">Tipo</th><th scope="col">Valor</th><th scope="col">Ação</th></tr></thead>
+              <tbody>
+                <tr><td class="n ink">MX</td><td>mail.intelecto.solutions</td><td><span class="chip-est warn">Altera</span></td></tr>
+                <tr><td class="n ink">TXT SPF</td><td>v=spf1 a mx include:... ~all</td><td><span class="chip-est warn">Altera</span></td></tr>
+                <tr><td class="n ink">TXT DKIM</td><td>selector._domainkey</td><td><span class="chip-est warn">Altera</span></td></tr>
+                <tr><td class="n ink">TXT DMARC</td><td>p=quarantine; rua=...</td><td><span class="chip-est warn">Altera</span></td></tr>
+                <tr><td class="n ink">NS</td><td>infra.leg.br</td><td><span class="chip-est ok">Mantém</span></td></tr>
+                <tr><td class="n ink">A</td><td>Portal Modelo e SAPL</td><td><span class="chip-est ok">Mantém</span></td></tr>
+              </tbody>
+            </table></div>
+            <div class="aviso-sis">
+              <span class="ponto crit" aria-hidden="true" style="margin-top:5px"></span>
+              <span class="txt">
+                <span class="rot">Nota técnica</span>
+                Pedir delegação de NS em vez de reapontamento tira do ar o Portal Modelo e o SAPL. O ofício assinado pelo Presidente precisa dizer reapontamento, com os registros em texto.
+              </span>
+            </div>
+          </div>
+
+          <!-- 07 Conformis esteira -->
+          <div class="estado" data-estado="conformis-esteira">
+            <nav class="menu-tr" aria-label="Módulos do Conformis">
+              <span class="at">Adequação</span><span>Operações</span><span>Incidentes</span>
+              <span>Titulares</span><span>Evidências</span>
+            </nav>
+            <div class="esteira">
+              <div class="esteira-item"><span class="ponto" aria-hidden="true"></span><span class="nome">Inventário de dados</span><span class="dado" style="font-size:11px">100%</span><span class="barra-prog" style="width:60px"><i style="width:100%"></i></span></div>
+              <div class="esteira-item"><span class="ponto" aria-hidden="true"></span><span class="nome">Base legal por operação</span><span class="dado" style="font-size:11px">100%</span><span class="barra-prog" style="width:60px"><i style="width:100%"></i></span></div>
+              <div class="esteira-item"><span class="ponto" aria-hidden="true"></span><span class="nome">Aviso de privacidade publicado</span><span class="dado" style="font-size:11px">100%</span><span class="barra-prog" style="width:60px"><i style="width:100%"></i></span></div>
+              <div class="esteira-item"><span class="ponto crit" aria-hidden="true"></span><span class="nome">Contrato com operadores</span><span class="dado" style="font-size:11px">40%</span><span class="barra-prog" style="width:60px"><i style="width:40%"></i></span></div>
+              <div class="esteira-item"><span class="ponto warn" aria-hidden="true"></span><span class="nome">Plano de resposta a incidente</span><span class="dado" style="font-size:11px">70%</span><span class="barra-prog" style="width:60px"><i style="width:70%"></i></span></div>
+              <div class="esteira-item"><span class="ponto" aria-hidden="true"></span><span class="nome">Encarregado nomeado e publicado</span><span class="dado" style="font-size:11px">100%</span><span class="barra-prog" style="width:60px"><i style="width:100%"></i></span></div>
+            </div>
+            <div class="selo-pntp">
+              <span class="ponto crit" aria-hidden="true"></span>
+              <span><b>Uma frente em vermelho</b> <span class="rot" style="letter-spacing:.1em">aparece igual na tela do cliente</span></span>
+            </div>
+          </div>
+
+          <!-- 08 Conformis ROPA -->
+          <div class="estado" data-estado="conformis-ropa">
+            <nav class="menu-tr" aria-label="Módulos do Conformis">
+              <span>Adequação</span><span class="at">Operações</span><span>Incidentes</span>
+              <span>Titulares</span><span>Evidências</span>
+            </nav>
+            <div class="rolo-p"><table class="tabela-p">
+              <thead><tr><th scope="col">Operação</th><th scope="col">Base legal</th><th scope="col" class="n">Retenção</th></tr></thead>
+              <tbody>
+                <tr><td class="ink">Folha de pagamento</td><td>Obrigação legal</td><td class="n">20 anos</td></tr>
+                <tr><td class="ink">Cadastro de fornecedores</td><td>Execução de contrato</td><td class="n">05 anos</td></tr>
+                <tr><td class="ink">Pedidos de e-SIC</td><td>Obrigação legal</td><td class="n">05 anos</td></tr>
+                <tr><td class="ink">Ouvidoria, denúncia anônima</td><td>Interesse público</td><td class="n">05 anos</td></tr>
+                <tr><td class="ink">Vídeo das sessões</td><td>Interesse público</td><td class="n">Permanente</td></tr>
+                <tr><td class="ink">Newsletter institucional</td><td>Consentimento</td><td class="n">Até revogar</td></tr>
+              </tbody>
+            </table></div>
+            <div class="selo-pntp">
+              <span class="ponto" aria-hidden="true"></span>
+              <span><b>Versionado</b> <span class="rot" style="letter-spacing:.1em">com data, autor e evidência anexada</span></span>
+              <span class="chip-est ok" style="margin-left:auto">Exportável</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="painel-pe">
+          <span class="rot" id="painel-pe" style="font-size:10px">Mirante · despesas</span>
+          <span class="passos-ind" id="passos-ind" aria-hidden="true">
+            <i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     7. BENTO: os demais produtos
+     ========================================================= -->
+<section class="sec sec-000" id="produtos" aria-labelledby="t-produtos">
+  <div class="wrap">
+    <div class="sec-cab surge">
+      <p class="rot"><span class="ponto" aria-hidden="true"></span>O resto da bancada</p>
+      <h2 id="t-produtos">Oito sistemas que já rodam para alguém hoje.</h2>
+      <p class="corpo">Nenhum destes é slide de portfólio. Cada um está em produção para uma organização com nome, endereço e telefone, e é mantido pela mesma pessoa que escreveu o código.</p>
+    </div>
+
+    <div class="bento" id="bento">
+      <article class="cel" style="--i:0">
+        <h3>Votação eletrônica de plenário</h3>
+        <p>Pauta, chamada, votação nominal e resultado projetado no telão, com ata saindo pronta.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">Orindiuva, desde 2016</span></span>
+      </article>
+      <article class="cel" style="--i:1">
+        <h3>e-SIC</h3>
+        <p>Pedido de informação com protocolo, contagem de prazo, resposta pública e relatório anual.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">Integrado ao Mirante</span></span>
+      </article>
+      <article class="cel" style="--i:2">
+        <h3>Ouvidoria</h3>
+        <p>Canal com identificação opcional, triagem por assunto e prazo de retorno auditável.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">Selo Ouvidoria Cidadã, Dolcinópolis</span></span>
+      </article>
+      <article class="cel" style="--i:3">
+        <h3>ITSM</h3>
+        <p>Central de chamados com catálogo de serviço, fila por equipe e acordo de nível de atendimento.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">TRB Pharma</span></span>
+      </article>
+      <article class="cel" style="--i:4">
+        <h3>BI sobre Protheus</h3>
+        <p>Indicadores lidos direto da base do ERP, sem planilha intermediária e sem exportação manual.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">TRB Pharma</span></span>
+      </article>
+      <article class="cel" style="--i:5">
+        <h3>LMS</h3>
+        <p>Trilha de treinamento com registro de conclusão, o que em indústria regulada é evidência, não enfeite.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">TRB Pharma</span></span>
+      </article>
+      <article class="cel" style="--i:6">
+        <h3>Intranet</h3>
+        <p>Área interna com documento, comunicado e formulário do dia a dia da autarquia.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">SAE Ituiutaba</span></span>
+      </article>
+      <article class="cel" style="--i:7">
+        <h3>Hospedagem gerenciada</h3>
+        <p>Servidor dedicado ou compartilhado na nossa máquina, com backup diário e TLS renovado sozinho.</p>
+        <span class="pe"><span class="ponto" aria-hidden="true"></span><span class="dado">31 domínios</span></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     8. QUEM USA
+     ========================================================= -->
+<section class="sec sec-100" id="quem-usa" aria-labelledby="t-quem">
+  <div class="wrap">
+    <div class="sec-cab surge">
+      <p class="rot"><span class="ponto" aria-hidden="true"></span>Quem usa</p>
+      <h2 id="t-quem">22 organizações, por produto e não por segmento.</h2>
+      <p class="corpo">A pergunta que todo prospecto faz é se alguém como ele já usa isto. A lista responde direto: nome, cidade, ano de início e qual produto. Campo em branco significa dado que a organização ainda não autorizou publicar, e não número inflado.</p>
+    </div>
+
+    <div class="rolo">
+      <table class="tab-cli">
+        <thead>
+          <tr><th scope="col">Organização</th><th scope="col">Cidade</th><th scope="col">Desde</th><th scope="col">Produto em uso</th></tr>
+        </thead>
+        <tbody>
+          <tr class="grupo"><td colspan="4">Câmaras municipais · 8</td></tr>
+          <tr><td class="org">Câmara Municipal de Jaguariúna</td><td>Jaguariúna/SP</td><td class="mn">2018</td><td>Mirante, e-mail, hospedagem</td></tr>
+          <tr><td class="org">Câmara Municipal de Capivari</td><td>Capivari/SP</td><td class="mn">2021</td><td>Mirante, e-mail, hospedagem</td></tr>
+          <tr><td class="org">Câmara Municipal de General Salgado</td><td>General Salgado/SP</td><td class="mn">2020</td><td>Mirante, e-mail, hospedagem</td></tr>
+          <tr><td class="org">Câmara Municipal de Orindiuva</td><td>Orindiuva/SP</td><td class="mn">2016</td><td>Votação de plenário, Mirante, e-mail</td></tr>
+          <tr><td class="org">Câmara Municipal de Dolcinópolis</td><td>Dolcinópolis/SP</td><td class="mn vazio">·</td><td>Mirante, ouvidoria, e-SIC</td></tr>
+          <tr><td class="org">Câmara Municipal de Américo de Campos</td><td>Américo de Campos/SP</td><td class="mn vazio">·</td><td>Mirante, e-mail, hospedagem</td></tr>
+          <tr><td class="org">Câmara Municipal de Magda</td><td>Magda/SP</td><td class="mn vazio">·</td><td>Portal, e-mail, hospedagem</td></tr>
+          <tr><td class="org">Câmara Municipal de Riolândia</td><td>Riolândia/SP</td><td class="mn vazio">·</td><td>Portal, e-mail, hospedagem</td></tr>
+
+          <tr class="grupo"><td colspan="4">Prefeituras · 2</td></tr>
+          <tr><td class="org">Prefeitura de Riolândia</td><td>Riolândia/SP</td><td class="mn vazio">·</td><td>Portal, e-SUS, serviços, transparência, ouvidoria</td></tr>
+          <tr><td class="org">Prefeitura de Orindiuva</td><td>Orindiuva/SP</td><td class="mn vazio">·</td><td>Portal, transparência, hospedagem</td></tr>
+
+          <tr class="grupo"><td colspan="4">Consórcio intermunicipal · 1</td></tr>
+          <tr><td class="org">CONSISP</td><td class="vazio">·</td><td class="mn vazio">·</td><td>Portal, e-mail, hospedagem</td></tr>
+
+          <tr class="grupo"><td colspan="4">Autarquias de saneamento · 3</td></tr>
+          <tr><td class="org">SAE Ituiutaba</td><td>Ituiutaba/MG</td><td class="mn vazio">·</td><td>Portal, intranet, 3 domínios</td></tr>
+          <tr><td class="org">SAAE Pedreira</td><td>Pedreira/SP</td><td class="mn vazio">·</td><td>Portal, transparência, hospedagem</td></tr>
+          <tr><td class="org">DMAAE Ouro Fino</td><td>Ouro Fino/MG</td><td class="mn vazio">·</td><td>Portal, transparência, hospedagem</td></tr>
+
+          <tr class="grupo"><td colspan="4">Instituto de previdência · 1</td></tr>
+          <tr><td class="org">CAPIVARIPREV</td><td>Capivari/SP</td><td class="mn vazio">·</td><td>Portal, transparência, hospedagem</td></tr>
+
+          <tr class="grupo"><td colspan="4">Empresas privadas · 7</td></tr>
+          <tr><td class="org">TRB Pharma</td><td class="vazio">·</td><td class="mn vazio">·</td><td>9 sistemas sob medida, ITSM, LMS, BI sobre Protheus</td></tr>
+          <tr><td class="org">Del Arco</td><td class="vazio">·</td><td class="mn vazio">·</td><td>Servidor dedicado, hospedagem gerenciada</td></tr>
+          <tr><td class="org">Fracttal</td><td class="vazio">·</td><td class="mn vazio">·</td><td>Hospedagem gerenciada, e-mail</td></tr>
+          <tr><td class="org">OniMusic</td><td>Ribeirão Preto/SP</td><td class="mn vazio">·</td><td>Hospedagem gerenciada, e-mail</td></tr>
+          <tr><td class="org">LOGCARD</td><td class="vazio">·</td><td class="mn">2024</td><td>Conformis, DPO as a service</td></tr>
+          <tr><td class="org">Zambianco</td><td>Tietê/SP</td><td class="mn vazio">·</td><td>Hospedagem gerenciada, e-mail</td></tr>
+          <tr><td class="org">Pieralisi</td><td>Valinhos/SP</td><td class="mn vazio">·</td><td>Hospedagem gerenciada, e-mail</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="citas">
+      <blockquote class="cita">
+        <span class="pendente">Pendente · depoimento não autorizado</span>
+        <p class="frase">Espaço reservado para a citação de um cliente do setor público, com uma métrica única dele, do tipo portal no ar desde 2018 sem troca de endereço.</p>
+        <span class="assin">
+          <span class="rot">Nome, cargo e órgão a confirmar</span>
+          <span class="dado">Autorização por escrito pendente</span>
+        </span>
+      </blockquote>
+      <blockquote class="cita">
+        <span class="pendente">Pendente · depoimento não autorizado</span>
+        <p class="frase">Espaço reservado para a citação de um cliente privado, com uma métrica única dele, do tipo migração de caixas de e-mail concluída sem indisponibilidade.</p>
+        <span class="assin">
+          <span class="rot">Nome, cargo e empresa a confirmar</span>
+          <span class="dado">Autorização por escrito pendente</span>
+        </span>
+      </blockquote>
+    </div>
+
+    <p class="rot" style="margin:34px 0 0">Marcas vetoriais · pendentes de autorização e de arquivo em vetor</p>
+    <div class="brasoes" aria-label="Grade de marcas, versões vetoriais pendentes">
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2 3 6v7c0 6 4.4 9.4 10 11 5.6-1.6 10-5 10-11V6L13 2Z" stroke="currentColor" stroke-width="1.3"/><path d="M9 13h8M13 9v8" stroke="currentColor" stroke-width="1.3"/></svg><span>Jaguariúna</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M13 3v20M3 13h20" stroke="currentColor" stroke-width="1.3"/></svg><span>Capivari</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="19" height="19" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M8 17l5-9 5 9" stroke="currentColor" stroke-width="1.3"/></svg><span>General Salgado</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3l9 5v10l-9 5-9-5V8l9-5Z" stroke="currentColor" stroke-width="1.3"/><circle cx="13" cy="13" r="3.4" stroke="currentColor" stroke-width="1.3"/></svg><span>Orindiuva</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="1.3"/><path d="M6 16c4-5 10-5 14 0" stroke="currentColor" stroke-width="1.3"/></svg><span>Dolcinópolis</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M4 21V9l9-6 9 6v12" stroke="currentColor" stroke-width="1.3"/><path d="M10 21v-6h6v6" stroke="currentColor" stroke-width="1.3"/></svg><span>Riolândia</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M3 18c3-6 6-9 10-9s7 3 10 9" stroke="currentColor" stroke-width="1.3"/><circle cx="13" cy="6" r="2.6" stroke="currentColor" stroke-width="1.3"/></svg><span>SAE Ituiutaba</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="4" y="4" width="18" height="18" rx="9" stroke="currentColor" stroke-width="1.3"/><path d="M9 13h8" stroke="currentColor" stroke-width="1.3"/></svg><span>SAAE Pedreira</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3l3.4 6.6L23 11l-5 4.8 1.2 7L13 19.5 6.8 22.8 8 15.8 3 11l6.6-1.4L13 3Z" stroke="currentColor" stroke-width="1.2"/></svg><span>DMAAE Ouro Fino</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="3.5" y="6" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 11h19" stroke="currentColor" stroke-width="1.3"/></svg><span>CAPIVARIPREV</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M6 20V7h6a4 4 0 0 1 0 8H6" stroke="currentColor" stroke-width="1.4"/><path d="M14 15l6 5" stroke="currentColor" stroke-width="1.4"/></svg><span>TRB Pharma</span></div>
+      <div class="brasao"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M4 20c4-10 14-10 18 0" stroke="currentColor" stroke-width="1.3"/><path d="M13 20V6" stroke="currentColor" stroke-width="1.3"/></svg><span>Del Arco</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     9. POR BAIXO DE TUDO ISSO
+     ========================================================= -->
+<section class="sec sec-000" id="infra" aria-labelledby="t-infra">
+  <div class="wrap">
+    <div class="sec-cab surge">
+      <p class="rot"><span class="ponto" aria-hidden="true"></span>Por baixo de tudo isso</p>
+      <h2 id="t-infra">A máquina é o rodapé do argumento, não a manchete.</h2>
+      <p class="corpo">Você não compra um portal por causa do hipervisor. Mas quando o portal cai na véspera de uma sessão, quem opera o hipervisor passa a ser a única coisa que importa. Então fica registrado, em seis linhas.</p>
+    </div>
+
+    <div class="specs">
+      <div class="spec"><span class="rot">Máquina</span><span class="vl">Bare metal próprio</span><p>Servidor dedicado em datacenter no Brasil. Não é revenda de painel nem conta compartilhada de terceiro.</p></div>
+      <div class="spec"><span class="rot">Virtualização</span><span class="vl">Proxmox</span><p>Máquinas virtuais separadas por finalidade, com isolamento entre a operação pública e a privada.</p></div>
+      <div class="spec"><span class="rot">Orquestração</span><span class="vl">Coolify, em contêiner</span><p>Cada aplicação sobe em contêiner versionado, com deploy reproduzível e retorno à versão anterior.</p></div>
+      <div class="spec"><span class="rot">Backup</span><span class="vl">Diário, fora da máquina</span><p>Cópia diária em object storage separado do servidor de produção, para o caso em que o servidor é o problema.</p></div>
+      <div class="spec"><span class="rot">Correio</span><span class="vl">SPF, DKIM e DMARC</span><p>Autenticação publicada por domínio, um a um, que é o que mantém o e-mail da câmara fora da caixa de spam alheia.</p></div>
+      <div class="spec"><span class="rot">Acesso</span><span class="vl">Só por chave SSH</span><p>Senha desligada, fail2ban ativo, TLS renovado automaticamente e sonda própria medindo disponibilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     10. ATUALIZACOES
+     ========================================================= -->
+<section class="sec sec-100" id="atualizacoes" aria-labelledby="t-atual">
+  <div class="wrap">
+    <div class="sec-cab">
+      <p class="rot"><span class="ponto" aria-hidden="true"></span>Atualizações</p>
+      <h2 id="t-atual">O que mudou nos produtos, com data.</h2>
+      <p class="corpo">Fornecedor que não publica changelog está pedindo para você acreditar. Estas são entradas reais da operação. As datas exatas de cada versão entram quando o registro público dos produtos for consolidado.</p>
+      <span class="pendente">Pendente · datas de versão a consolidar</span>
+    </div>
+
+    <div class="log">
+      <div class="log-lin"><span class="mn dado">2026-08</span><span class="prod">Prospecção</span><span class="txt"><b>Varredura de DNS dos 5.571 municípios brasileiros concluída.</b> 3.138 domínios .leg.br ativos mapeados, com 482 câmaras identificadas como atingidas pelo fim do E-mail Legislativo em maio de 2027.</span></div>
+      <div class="log-lin"><span class="mn dado">2026-08</span><span class="prod">E-mail</span><span class="txt"><b>Correção de SPF em seis domínios da carteira.</b> Domínios que não tinham registro de autenticação passaram a publicar SPF, e os que já tinham receberam o provedor de envio sem perder o que existia.</span></div>
+      <div class="log-lin"><span class="mn dado">2026-06</span><span class="prod">Infraestrutura</span><span class="txt"><b>Operação migrada para bare metal próprio.</b> Virtualização em Proxmox e orquestração em Coolify, com backup diário em object storage separado do servidor de produção.</span></div>
+      <div class="log-lin"><span class="mn dado">2026</span><span class="prod">Mirante</span><span class="txt"><b>Sétimo portal em produção sobre a mesma base.</b> A estrutura de menu de cada tenant passou a ser declarada em arquivo próprio, o que permite ajustar a cartilha PNTP de um portal sem tocar nos outros seis.</span></div>
+      <div class="log-lin"><span class="mn dado">2024</span><span class="prod">Conformis</span><span class="txt"><b>Primeiro cliente privado no programa de DPO.</b> A LOGCARD entra na esteira de adequação, com registro de operações de tratamento mantido dentro do sistema.</span></div>
+      <div class="log-lin"><span class="mn dado">2016</span><span class="prod">Plenário</span><span class="txt"><b>Votação eletrônica em uso na Câmara de Orindiuva.</b> Pauta, chamada, votação nominal e resultado projetado, com ata gerada ao fim da sessão. Dez anos de sessões sem voltar para o papel.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     11. CONTATO
+     ========================================================= -->
+<section class="sec sec-000" id="contato" aria-labelledby="t-contato">
+  <div class="wrap">
+    <div class="sec-cab">
+      <p class="rot"><span class="ponto" aria-hidden="true"></span>Contato</p>
+      <h2 id="t-contato">Dois caminhos, e nenhum deles é um formulário que ninguém lê.</h2>
+    </div>
+
+    <div class="dois">
+      <div class="via">
+        <span class="filete" aria-hidden="true"></span>
+        <span class="rot">Caminho 1</span>
+        <h3 style="font-size:1.5rem">Falar com quem desenvolve</h3>
+        <p>Do outro lado está Luiz Aguiar, responsável técnico. Não existe camada de triagem, nem atendente lendo roteiro, nem chamado que muda de dono três vezes. Traga o problema com o nome do domínio e a data, que a conversa começa no ponto certo.</p>
+        <div class="acoes">
+          <a class="btn btn-1" href="#contato">Abrir conversa</a>
+        </div>
+      </div>
+
+      <div class="via">
+        <span class="filete" aria-hidden="true"></span>
+        <span class="rot">Caminho 2</span>
+        <h3 style="font-size:1.5rem">Abrir um portal de exemplo</h3>
+        <p>Se você prefere ver antes de falar, é o mais rápido. Portal de demonstração com despesa, licitação, e-SIC e o checklist do PNTP preenchido, exatamente a estrutura que a sua organização recebe. Sem cadastro e sem agenda de reunião.</p>
+        <div class="acoes">
+          <a class="btn btn-2" href="#mirante">Ver o portal de exemplo</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="dado" style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px 14px">
+      <span>Intelecto Solutions</span><span aria-hidden="true">·</span>
+      <span>CNPJ 12.286.292/0001-50</span><span aria-hidden="true">·</span>
+      <span>Operação em Campinas/SP</span><span aria-hidden="true">·</span>
+      <span>Sede fiscal em Riolândia/SP</span>
+    </p>
+  </div>
+</section>
+
+<!-- =========================================================
+     12. RODAPE
+     ========================================================= -->
+<footer class="rodape" aria-label="Rodapé">
+  <div class="wrap">
+    <div class="rodape-grade">
+      <div>
+        <a class="marca" href="#topo" style="margin-bottom:12px">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="17" height="17" rx="4" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M5.5 13.2V6.8M10 13.2V6.8M14.5 13.2V9.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Intelecto
+        </a>
+        <p style="max-width:38ch;font-size:14.5px;color:var(--fg-body)">Tecnologia para organização pública e privada que não pode sair do ar. Mais de dez anos, máquina própria no Brasil, atendimento direto com o responsável técnico.</p>
+      </div>
+      <div>
+        <h4>Produtos</h4>
+        <ul>
+          <li><a href="#mirante">Mirante, transparência</a></li>
+          <li><a href="#email">E-mail no .leg.br</a></li>
+          <li><a href="#conformis">Conformis, LGPD e DPO</a></li>
+          <li><a href="#produtos">Votação de plenário</a></li>
+          <li><a href="#produtos">ITSM, LMS e BI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>A empresa</h4>
+        <ul>
+          <li><a href="#quem-usa">Quem usa</a></li>
+          <li><a href="#infra">Infraestrutura</a></li>
+          <li><a href="#atualizacoes">Atualizações</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape-fim">
+      <span class="dado">© 2026 Intelecto Solutions · CNPJ 12.286.292/0001-50</span>
+      <span class="versao">
+        <span class="ponto" aria-hidden="true"></span>
+        <span class="dado">v2026.08.22.0940 · a1c9f37 · operacional</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /#site -->
+
+<!-- =========================================================
+     BARRA DE MOCKUP
+     ========================================================= -->
+<div class="mockbar" role="region" aria-label="Barra de controle do mockup">
+  <span class="tag">MOCKUP</span>
+  <span class="nome">BANCADA</span>
+  <span class="sub">Direção do produto · tema nativo claro · acento âmbar</span>
+  <span class="grp">
+    <button type="button" id="mk-tema">Alternar tema</button>
+    <button type="button" id="mk-mobile" aria-pressed="false">Ver em mobile</button>
+  </span>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var raiz = document.documentElement;
+
+  /* ---------- tema ---------- */
+  function temaAtual(){
+    var t = raiz.getAttribute("data-theme");
+    if(t) return t;
+    try{
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }catch(e){ return "light"; }
+  }
+  function alternarTema(){
+    var novo = temaAtual() === "dark" ? "light" : "dark";
+    raiz.setAttribute("data-theme", novo);
+    try{ localStorage.setItem("bancada-tema", novo); }catch(e){}
+  }
+  var bt1 = document.getElementById("tema-cabeca");
+  var bt2 = document.getElementById("mk-tema");
+  if(bt1) bt1.addEventListener("click", alternarTema);
+  if(bt2) bt2.addEventListener("click", alternarTema);
+
+  /* ---------- ver em mobile ---------- */
+  var site = document.getElementById("site");
+  var btm = document.getElementById("mk-mobile");
+  if(btm && site){
+    btm.addEventListener("click", function(){
+      var ligado = site.classList.toggle("modo-mobile");
+      btm.setAttribute("aria-pressed", ligado ? "true" : "false");
+      btm.textContent = ligado ? "Voltar ao desktop" : "Ver em mobile";
+    });
+  }
+
+  /* ---------- header que gruda ---------- */
+  var cabeca = document.getElementById("cabeca");
+  var sent = document.getElementById("topo-sentinela");
+  if(cabeca && sent && "IntersectionObserver" in window){
+    new IntersectionObserver(function(ents){
+      cabeca.classList.toggle("grudou", !ents[0].isIntersecting);
+    }, {threshold: 0}).observe(sent);
+  }
+
+  /* ---------- painel unico: troca de aba por IntersectionObserver ---------- */
+  var passos = Array.prototype.slice.call(document.querySelectorAll(".passo[data-estado]"));
+  var estados = Array.prototype.slice.call(document.querySelectorAll("#painel-corpo .estado"));
+  var url = document.getElementById("painel-url");
+  var pe  = document.getElementById("painel-pe");
+  var ind = document.getElementById("passos-ind");
+  var inds = ind ? Array.prototype.slice.call(ind.querySelectorAll("i")) : [];
+  var atualNome = null;
+
+  function mostrar(passo){
+    var nome = passo.getAttribute("data-estado");
+    if(nome === atualNome) return;
+    atualNome = nome;
+
+    for(var i = 0; i < estados.length; i++){
+      estados[i].classList.toggle("on", estados[i].getAttribute("data-estado") === nome);
+    }
+    for(var j = 0; j < passos.length; j++){
+      passos[j].classList.toggle("at", passos[j] === passo);
+    }
+    var n = parseInt(passo.getAttribute("data-passo"), 10) || 1;
+    for(var k = 0; k < inds.length; k++){
+      inds[k].classList.toggle("on", k === (n - 1));
+    }
+    if(url) url.textContent = passo.getAttribute("data-url") || "";
+    if(pe)  pe.textContent  = passo.getAttribute("data-pe")  || "";
+  }
+
+  if(passos.length && "IntersectionObserver" in window){
+    var visiveis = [];
+    var obs = new IntersectionObserver(function(ents){
+      for(var i = 0; i < ents.length; i++){
+        var el = ents[i].target;
+        var pos = visiveis.indexOf(el);
+        if(ents[i].isIntersecting){ if(pos < 0) visiveis.push(el); }
+        else if(pos >= 0){ visiveis.splice(pos, 1); }
+      }
+      if(!visiveis.length) return;
+      visiveis.sort(function(a, b){
+        return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      });
+      mostrar(visiveis[0]);
+    }, {rootMargin: "-30% 0px -45% 0px", threshold: 0});
+    for(var p = 0; p < passos.length; p++){ obs.observe(passos[p]); }
+    passos[0].classList.add("at");
+  } else {
+    if(passos.length) passos[0].classList.add("at");
+  }
+
+  /* ---------- borda conica: so enquanto o painel esta travado ---------- */
+  var bancada = document.getElementById("bancada");
+  var painel = document.getElementById("painel-unico");
+  if(bancada && painel && "IntersectionObserver" in window){
+    new IntersectionObserver(function(ents){
+      painel.classList.toggle("viva", ents[0].isIntersecting);
+    }, {threshold: 0, rootMargin: "-15% 0px -15% 0px"}).observe(bancada);
+  }
+
+  /* ---------- bento: cascata de entrada ---------- */
+  var bento = document.getElementById("bento");
+  if(bento){
+    if("IntersectionObserver" in window){
+      var ob2 = new IntersectionObserver(function(ents, o){
+        if(ents[0].isIntersecting){ bento.classList.add("entrou"); o.unobserve(bento); }
+      }, {threshold: .12});
+      ob2.observe(bento);
+    } else {
+      bento.classList.add("entrou");
+    }
+
+    /* ---------- spotlight de bancada, coalescido por rAF ---------- */
+    var fino = false;
+    try{ fino = window.matchMedia && window.matchMedia("(hover: hover)").matches; }catch(e){ fino = false; }
+    var suave = true;
+    try{ suave = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }catch(e){ suave = true; }
+
+    if(fino && suave){
+      var pend = false, ultimo = null;
+      bento.addEventListener("pointermove", function(ev){
+        ultimo = ev;
+        if(pend) return;
+        pend = true;
+        window.requestAnimationFrame(function(){
+          pend = false;
+          if(!ultimo) return;
+          var cels = bento.getElementsByClassName("cel");
+          for(var i = 0; i < cels.length; i++){
+            var r = cels[i].getBoundingClientRect();
+            cels[i].style.setProperty("--mx", (ultimo.clientX - r.left) + "px");
+            cels[i].style.setProperty("--my", (ultimo.clientY - r.top) + "px");
+          }
+        });
+      });
+    }
+  }
+
+  /* ---------- rolagem suave nas ancoras internas ---------- */
+  document.addEventListener("click", function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute("href");
+    if(!id || id.length < 2) return;
+    var alvo = document.querySelector(id);
+    if(!alvo) return;
+    ev.preventDefault();
+    var reduz = false;
+    try{ reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+    try{
+      alvo.scrollIntoView({behavior: reduz ? "auto" : "smooth", block: "start"});
+    }catch(e){
+      alvo.scrollIntoView();
+    }
+  });
+
+})();
+</script>

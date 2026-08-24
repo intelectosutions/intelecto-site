@@ -1,0 +1,2153 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SALA DE MÁQUINAS</title>
+<meta name="color-scheme" content="light dark">
+
+<script>
+/* antiflash: aplica o tema salvo antes da primeira pintura */
+(function () {
+  try {
+    var t = localStorage.getItem("intelecto-sala-tema");
+    if (t === "light" || t === "dark") {
+      document.documentElement.setAttribute("data-theme", t);
+    }
+  } catch (e) { /* localStorage indisponível: segue no tema nativo */ }
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   SALA DE MÁQUINAS
+   Tema nativo: ESCURO (grafite azulado). Claro é o alternativo.
+   Acento único: ciano #3FE0F2. Estados só em ponto de 7px,
+   barra de 3px e rótulo mono.
+   ============================================================ */
+
+:root {
+  /* fundos */
+  --bg-000: #080C0E;
+  --bg-100: #0D1316;
+  --bg-200: #12191D;
+  --bg-300: #182126;
+
+  /* traço */
+  --grid-line: #C6E8EE10;
+  --line-100: #182328;
+  --line-200: #222E35;
+  --line-300: #314047;
+  --line-ui:  #6B7C83;
+
+  /* tinta */
+  --fg-weak: #8B9AA1;
+  --fg-body: #B9C6CB;
+  --fg-ink:  #ECF3F5;
+
+  /* acento único */
+  --acc:       #3FE0F2;
+  --acc-dim:   #1B7F8C;
+  --acc-fill:  #2ACBDE;
+  --acc-ink:   #04141A;
+  --acc-hover: #6BE9F7;
+  --acc-glow:  #3FE0F21A;
+  --acc-soft:  #3FE0F20F;
+  --acc-line:  #3FE0F259;
+
+  /* estados */
+  --st-ok:   #47E39B;
+  --st-warn: #FFC44D;
+  --st-err:  #FF7A7A;
+
+  /* superfície e luz */
+  --panel:      #12191D;
+  --panel-2:    #182126;
+  --led-halo:   0 0 7px 0 currentColor;
+  --plate-emboss: inset 0 1px 0 #C6E8EE0F;
+  --grain-op: .035;
+  --grain-blend: overlay;
+  --focus: #3FE0F2;
+
+  /* métrica */
+  --u: clamp(12px, calc((100vh - 108px) / 42), 26px);
+  --rail-w: 56px;
+  --step: 32px;
+  --maxw: 1240px;
+  --ease: cubic-bezier(.33, 1, .68, 1);
+  --dur: 180ms;
+  --dur-cor: 420ms;
+}
+
+/* tema alternativo: CLARO. Deixa de ser rack aceso e vira planta técnica. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg-000: #E9EEEF;
+    --bg-100: #F1F5F5;
+    --bg-200: #F8FBFB;
+    --bg-300: #FCFEFE;
+    --grid-line: #0B283014;
+    --line-100: #DCE5E7;
+    --line-200: #C2D0D3;
+    --line-300: #A3B4B9;
+    --line-ui:  #6E8288;
+    --fg-weak: #5C6D73;
+    --fg-body: #3E4E54;
+    --fg-ink:  #0C1417;
+    --acc:       #0B6E7C;
+    --acc-dim:   #4E8C96;
+    --acc-fill:  #0E9AAE;
+    --acc-ink:   #04141A;
+    --acc-hover: #08525C;
+    --acc-glow:  #0B6E7C14;
+    --acc-soft:  #0B6E7C0D;
+    --acc-line:  #0B6E7C4D;
+    --st-ok:   #0F7A54;
+    --st-warn: #736600;
+    --st-err:  #B02A25;
+    --panel:   #F8FBFB;
+    --panel-2: #FCFEFE;
+    --led-halo: 0 0 0 0 currentColor;
+    --plate-emboss: inset 0 1px 0 #FFFFFF;
+    --grain-op: .022;
+    --grain-blend: multiply;
+    --focus: #0B6E7C;
+  }
+}
+:root[data-theme="light"] {
+  --bg-000: #E9EEEF;
+  --bg-100: #F1F5F5;
+  --bg-200: #F8FBFB;
+  --bg-300: #FCFEFE;
+  --grid-line: #0B283014;
+  --line-100: #DCE5E7;
+  --line-200: #C2D0D3;
+  --line-300: #A3B4B9;
+  --line-ui:  #6E8288;
+  --fg-weak: #5C6D73;
+  --fg-body: #3E4E54;
+  --fg-ink:  #0C1417;
+  --acc:       #0B6E7C;
+  --acc-dim:   #4E8C96;
+  --acc-fill:  #0E9AAE;
+  --acc-ink:   #04141A;
+  --acc-hover: #08525C;
+  --acc-glow:  #0B6E7C14;
+  --acc-soft:  #0B6E7C0D;
+  --acc-line:  #0B6E7C4D;
+  --st-ok:   #0F7A54;
+  --st-warn: #736600;
+  --st-err:  #B02A25;
+  --panel:   #F8FBFB;
+  --panel-2: #FCFEFE;
+  --led-halo: 0 0 0 0 currentColor;
+  --plate-emboss: inset 0 1px 0 #FFFFFF;
+  --grain-op: .022;
+  --grain-blend: multiply;
+  --focus: #0B6E7C;
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg-100);
+  color: var(--fg-body);
+  font-family: "Archivo", system-ui, "Segoe UI", sans-serif;
+  font-variation-settings: "wdth" 100, "wght" 400;
+  font-size: 17px;
+  line-height: 1.6;
+  padding-bottom: 84px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: var(--grain-op);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+img, svg { max-width: 100%; }
+a { color: var(--acc); text-decoration: none; }
+a:hover { color: var(--acc-hover); }
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 { color: var(--fg-ink); margin: 0; text-wrap: balance; }
+h1 {
+  font-variation-settings: "wdth" 88, "wght" 700;
+  font-size: clamp(2.9rem, 6.4vw, 5.6rem);
+  line-height: .94;
+  letter-spacing: -.032em;
+}
+h2 {
+  font-variation-settings: "wdth" 92, "wght" 650;
+  font-size: clamp(1.85rem, 3.4vw, 2.9rem);
+  line-height: 1.02;
+  letter-spacing: -.022em;
+}
+h3 {
+  font-variation-settings: "wdth" 95, "wght" 600;
+  font-size: 1.06rem;
+  line-height: 1.25;
+  letter-spacing: -.008em;
+}
+p { margin: 0 0 1rem; max-width: 66ch; }
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+.lbl {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--fg-weak);
+  font-weight: 500;
+}
+.serif {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+
+/* ---------- régua de rack (assinatura) ---------- */
+.rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--rail-w);
+  z-index: 60;
+  background: var(--bg-000);
+  border-right: 1px solid var(--line-100);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 8px 0 6px;
+  user-select: none;
+  overflow: hidden;
+}
+.rail-head, .rail-foot {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-align: center;
+  color: var(--fg-weak);
+  height: 16px;
+  line-height: 16px;
+}
+.rail-foot { color: var(--acc); }
+.rail-inner {
+  position: relative;
+  flex: 1 1 auto;
+  margin: 6px 0;
+  height: calc(var(--u) * 42);
+}
+.rail-ticks {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(to bottom, var(--line-ui) 0 1px, transparent 1px calc(var(--u) * 5)),
+    repeating-linear-gradient(to bottom, var(--line-300) 0 1px, transparent 1px var(--u));
+  background-position: 0 0, 0 0;
+  background-size: 20px 100%, 12px 100%;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}
+.rail-ticks::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--line-200);
+}
+.rail-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  background: var(--acc-soft);
+  border-left: 1px solid var(--acc-line);
+  transition: top var(--dur-cor) var(--ease), height var(--dur-cor) var(--ease);
+}
+.rail-car {
+  position: absolute;
+  left: 0;
+  right: 6px;
+  top: 0;
+  height: var(--u);
+  background: linear-gradient(90deg, var(--acc) 0 2px, var(--acc-glow) 2px 100%);
+  box-shadow: 0 0 10px 0 var(--acc-glow);
+  transition: top 90ms linear;
+}
+.rail-nums {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.rail-nums span {
+  position: absolute;
+  right: 4px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1;
+  color: var(--fg-weak);
+  opacity: .30;
+  transform: translateY(-.5px);
+}
+.rail-nums span.n5 { opacity: .95; color: var(--fg-body); }
+
+.page { margin-left: var(--rail-w); }
+
+/* trilho de 3px abaixo de 1180px */
+@media (max-width: 1179px) {
+  .rail { width: 3px; padding: 0; border-right: 0; background: var(--line-100); }
+  .rail-head, .rail-foot, .rail-nums, .rail-ticks { display: none; }
+  .rail-inner { height: 100%; margin: 0; }
+  .rail-band { display: none; }
+  .rail-car { left: 0; right: 0; height: 44px; border-radius: 0; }
+  .page { margin-left: 0; }
+}
+
+/* ---------- estrutura de seção ---------- */
+.section {
+  position: relative;
+  border-bottom: 1px solid var(--line-100);
+  background: var(--bg-100);
+  overflow: hidden;
+}
+.section.alt { background: var(--bg-000); }
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 100%),
+    linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px 100%);
+  background-size: var(--step) var(--step);
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 0%, #0000 78%);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 0%, #0000 78%);
+}
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 96px 32px;
+}
+@media (max-width: 640px) { .wrap { padding: 64px 20px; } }
+
+.addr {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.addr .u {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--acc);
+  border: 1px solid var(--line-200);
+  border-radius: 4px;
+  padding: 3px 7px;
+  background: var(--bg-200);
+}
+.addr .t { color: var(--fg-weak); }
+.sec-lead { color: var(--fg-body); font-size: 1.06rem; margin-top: 14px; }
+
+/* ---------- console (U00) ---------- */
+.console {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-000);
+  border-bottom: 1px solid var(--line-100);
+}
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  @media (min-width: 900px) {
+    .console { background: color-mix(in srgb, var(--bg-000) 82%, transparent); backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); }
+  }
+}
+.console.stuck { box-shadow: 0 1px 0 0 var(--line-200); }
+.console-in {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) { .console-in { padding: 8px 20px; gap: 12px; } }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  color: var(--fg-ink);
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.brand b { font-weight: 700; }
+.console-meta {
+  display: flex;
+  gap: 18px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  color: var(--fg-weak);
+  letter-spacing: .06em;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.console-meta i { font-style: normal; color: var(--fg-body); }
+.console-nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.console-nav a {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-weak);
+  padding: 12px 8px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+}
+.console-nav a:hover { color: var(--acc); background: var(--acc-soft); }
+@media (max-width: 1023px) { .console-nav { display: none; } }
+@media (max-width: 880px) { .console-meta .hide-sm { display: none; } }
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+  background: currentColor;
+  box-shadow: var(--led-halo);
+}
+.dot.ok { color: var(--st-ok); }
+.dot.warn { color: var(--st-warn); }
+.dot.err { color: var(--st-err); }
+.dot.acc { color: var(--acc); }
+
+/* ---------- botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 4px;
+  border: 0;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-variation-settings: "wdth" 94, "wght" 550;
+  font-size: 15px;
+  cursor: pointer;
+  background: var(--acc-fill);
+  color: var(--acc-ink);
+  transition: background var(--dur-cor) var(--ease), transform var(--dur) var(--ease);
+}
+.btn:hover { background: var(--acc-hover); color: var(--acc-ink); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost {
+  background: transparent;
+  color: var(--fg-ink);
+  box-shadow: inset 0 0 0 1px var(--line-ui);
+}
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--acc-line); color: var(--acc); background: var(--acc-soft); }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 20px; }
+
+/* ---------- painel ---------- */
+.panel {
+  position: relative;
+  background: var(--panel);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line-200);
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  left: 1px; right: 1px; top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--acc) 22%, var(--acc) 58%, transparent 100%);
+  opacity: .5;
+}
+.panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line-100);
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  color: var(--fg-weak);
+}
+.panel-head b { color: var(--fg-ink); font-weight: 500; }
+
+/* chanfro: exatamente duas peças na página */
+.chamfer-tr { clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+.chamfer-tr .chamfer-edge {
+  position: absolute;
+  top: 7px;
+  right: -1.5px;
+  width: 17px;
+  height: 1px;
+  background: var(--acc-line);
+  transform: rotate(45deg);
+}
+.chamfer-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+.chamfer-bl .chamfer-edge {
+  position: absolute;
+  bottom: 7px;
+  left: -1.5px;
+  width: 17px;
+  height: 1px;
+  background: var(--acc-line);
+  transform: rotate(45deg);
+}
+
+/* ---------- herói ---------- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.hero-left { grid-column: 1 / span 6; }
+.hero-right { grid-column: 7 / span 6; margin-top: -24px; }
+@media (max-width: 1023px) {
+  .hero-left, .hero-right { grid-column: 1 / -1; }
+  .hero-right { margin-top: 8px; }
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.kicker .rule { width: 24px; height: 1px; background: var(--acc); flex: none; }
+.kicker .txt {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: var(--acc);
+}
+.hero-sub { font-size: 1.06rem; max-width: 46ch; color: var(--fg-body); margin-top: 20px; }
+.cred {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  color: var(--fg-weak);
+  letter-spacing: .03em;
+  border-top: 1px solid var(--line-100);
+  padding-top: 14px;
+  line-height: 1.9;
+}
+h1 .serif { font-size: .96em; color: var(--acc); font-variation-settings: normal; letter-spacing: 0; }
+
+/* elevação e leds */
+.elev { display: block; width: 100%; height: auto; }
+.led { animation: blink 2s steps(1, end) infinite; }
+@keyframes blink {
+  0%, 44% { opacity: .18; }
+  45%, 100% { opacity: 1; }
+}
+.log {
+  border-top: 1px solid var(--line-100);
+  padding: 12px 14px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11.5px;
+  line-height: 1.85;
+  color: var(--fg-weak);
+  overflow-x: auto;
+}
+.log b { color: var(--fg-body); font-weight: 400; }
+.log .ts { color: var(--acc-dim); }
+:root[data-theme="light"] .log .ts { color: var(--acc); }
+.kv-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-100);
+}
+.kv-strip div {
+  padding: 12px 14px;
+  border-right: 1px solid var(--line-100);
+}
+.kv-strip div:last-child { border-right: 0; }
+.kv-strip .k {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-weak);
+  display: block;
+}
+.kv-strip .v {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  color: var(--fg-ink);
+  display: block;
+  margin-top: 3px;
+}
+@media (max-width: 520px) {
+  .kv-strip { grid-template-columns: repeat(2, 1fr); }
+  .kv-strip div:nth-child(2) { border-right: 0; }
+  .kv-strip div:nth-child(-n+2) { border-bottom: 1px solid var(--line-100); }
+}
+
+/* ---------- faixa de operação ---------- */
+.ops {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line-100);
+  border: 1px solid var(--line-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ops > div { background: var(--bg-200); padding: 24px 22px; }
+.ops .num {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1;
+  color: var(--fg-ink);
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.ops .cap { margin-top: 10px; color: var(--fg-weak); font-size: 13.5px; line-height: 1.4; }
+@media (max-width: 860px) { .ops { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- ficha técnica ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 980px) { .two-col { grid-template-columns: 1fr; gap: 36px; } }
+.spec {
+  border-top: 1px solid var(--line-200);
+}
+.spec div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-100);
+}
+.spec .k {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 13px;
+  color: var(--fg-weak);
+  letter-spacing: .02em;
+}
+.spec .v { color: var(--fg-ink); font-size: 15.5px; }
+.spec .v em { font-style: normal; color: var(--acc); }
+@media (max-width: 620px) {
+  .spec div { grid-template-columns: 1fr; gap: 3px; }
+}
+
+.ph {
+  border: 1px dashed var(--line-ui);
+  border-radius: 4px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: repeating-linear-gradient(135deg, var(--bg-200) 0 10px, var(--bg-100) 10px 20px);
+  color: var(--fg-weak);
+}
+.ph .tag {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: var(--st-warn);
+  border: 1px solid var(--st-warn);
+  border-radius: 4px;
+  padding: 3px 6px;
+  flex: none;
+}
+.ph p { margin: 0; font-size: 13.5px; }
+
+/* ---------- camadas ---------- */
+.layers { display: flex; flex-direction: column-reverse; gap: 8px; }
+.layer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 68px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  background: var(--bg-200);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line-200);
+  padding: 16px 20px;
+  transition: box-shadow var(--dur-cor) var(--ease), background var(--dur-cor) var(--ease);
+}
+.layer:hover { box-shadow: inset 0 0 0 1px var(--acc-line); background: var(--bg-300); }
+.layer .lv {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  color: var(--acc);
+  letter-spacing: .1em;
+}
+.layer .nm { color: var(--fg-ink); font-variation-settings: "wdth" 95, "wght" 600; }
+.layer .ds { color: var(--fg-weak); font-size: 14px; margin-top: 2px; }
+.layer .rt {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  color: var(--fg-weak);
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .layer { grid-template-columns: 56px 1fr; }
+  .layer .rt { grid-column: 2; }
+}
+.layer-note {
+  margin-top: 18px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11.5px;
+  color: var(--fg-weak);
+  letter-spacing: .04em;
+}
+
+/* ---------- produtos ---------- */
+.prods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line-100);
+  border: 1px solid var(--line-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.prod {
+  background: var(--bg-200);
+  padding: 22px 20px 24px;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background var(--dur-cor) var(--ease);
+}
+.prod:hover { background: var(--bg-300); }
+.prod .key {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  color: var(--acc);
+  letter-spacing: .06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.prod p { font-size: 14.5px; color: var(--fg-weak); margin: 0; line-height: 1.55; }
+.prod .foot {
+  margin-top: auto;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-weak);
+  border-top: 1px solid var(--line-100);
+  padding-top: 10px;
+}
+@media (max-width: 1100px) { .prods { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .prods { grid-template-columns: 1fr; } }
+
+/* ---------- cross-connect ---------- */
+.xc {
+  position: relative;
+  display: grid;
+  grid-template-columns: 260px 1fr 1.35fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 1080px) { .xc { grid-template-columns: 1fr; } }
+.xc-cable {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+.inv { border-top: 1px solid var(--line-200); }
+.inv-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 11px 8px 11px 0;
+  border-bottom: 1px solid var(--line-100);
+  cursor: default;
+  transition: background var(--dur) var(--ease);
+}
+.inv-row:hover, .inv-row.on { background: var(--acc-soft); }
+.inv-row .n {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 22px;
+  color: var(--fg-ink);
+  min-width: 40px;
+  font-weight: 300;
+}
+.inv-row.on .n { color: var(--acc); }
+.inv-row .l { font-size: 14px; color: var(--fg-weak); }
+
+.ports {
+  display: grid;
+  grid-template-columns: repeat(8, 12px);
+  gap: 7px;
+  padding: 18px;
+  background: var(--bg-200);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line-200);
+  justify-content: center;
+}
+.port {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--bg-300);
+  box-shadow: inset 0 0 0 1px var(--line-ui);
+  transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.port.on {
+  background: var(--acc);
+  box-shadow: inset 0 0 0 1px var(--acc), 0 0 8px 0 var(--acc-glow);
+}
+.ports-cap {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  color: var(--fg-weak);
+}
+
+.wall-count {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--fg-ink);
+  font-weight: 300;
+  line-height: 1;
+}
+.wall {
+  columns: 3;
+  column-gap: 22px;
+  margin-top: 16px;
+}
+@media (max-width: 700px) { .wall { columns: 2; } }
+@media (max-width: 420px) { .wall { columns: 1; } }
+.city {
+  display: block;
+  break-inside: avoid;
+  padding: 5px 6px 5px 0;
+  font-variation-settings: "wdth" 96, "wght" 500;
+  font-size: 15px;
+  color: var(--fg-body);
+  cursor: default;
+  transition: color var(--dur) var(--ease);
+}
+.city sup {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 9px;
+  letter-spacing: .08em;
+  color: var(--fg-weak);
+  margin-left: 5px;
+  vertical-align: super;
+}
+.city:hover, .city.on { color: var(--acc); }
+.city.on sup { color: var(--acc); }
+
+.quotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 52px;
+}
+@media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
+.quote {
+  border-left: 1px solid var(--line-300);
+  padding: 4px 0 4px 22px;
+}
+.quote .q {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.32;
+  color: var(--fg-ink);
+}
+.quote .at {
+  margin-top: 14px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--fg-weak);
+  text-transform: uppercase;
+}
+
+/* ---------- prazo 2027 ---------- */
+.deadline {
+  position: relative;
+  background: var(--bg-200);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line-200);
+  padding: 34px 34px 34px 31px;
+}
+.deadline::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--st-warn);
+}
+.countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 6px 0 18px;
+}
+.countdown .big {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1;
+  color: var(--fg-ink);
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.countdown .unit {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--st-warn);
+}
+.tbl-scroll { overflow-x: auto; margin-top: 26px; }
+table.cmp {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 620px;
+  font-size: 14.5px;
+}
+table.cmp th, table.cmp td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line-100);
+  vertical-align: top;
+}
+table.cmp thead th {
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--fg-weak);
+  border-bottom: 1px solid var(--line-200);
+  font-weight: 500;
+}
+table.cmp td:first-child { color: var(--fg-ink); }
+table.cmp .yes { color: var(--st-ok); }
+table.cmp .no { color: var(--st-err); }
+.stat-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+/* ---------- suporte ---------- */
+.support {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) { .support { grid-template-columns: 1fr; gap: 34px; } }
+.card-contato {
+  background: var(--bg-200);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line-200);
+  padding: 26px;
+}
+.contato-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line-100);
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 12.5px;
+}
+.contato-row span:first-child { color: var(--fg-weak); letter-spacing: .08em; text-transform: uppercase; font-size: 10.5px; padding-top: 2px; }
+.contato-row span:last-child { color: var(--fg-ink); text-align: right; }
+
+/* ---------- rodapé placa ---------- */
+.plate {
+  background: var(--bg-000);
+  border-top: 1px solid var(--line-200);
+  box-shadow: var(--plate-emboss);
+}
+.plate-in {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 40px 32px 52px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 32px;
+}
+@media (max-width: 860px) { .plate-in { grid-template-columns: 1fr; } }
+.plate .mono { font-size: 12px; color: var(--fg-weak); line-height: 2; letter-spacing: .04em; }
+.plate .mono b { color: var(--fg-body); font-weight: 400; }
+.plate-bottom {
+  border-top: 1px solid var(--line-100);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 16px 32px 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  color: var(--fg-weak);
+  letter-spacing: .08em;
+}
+
+/* ---------- revelação ---------- */
+.rv { opacity: 1; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rv {
+      animation: rvin linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+    @keyframes rvin {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+}
+
+/* ---------- barra de mockup ---------- */
+.mockbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 100;
+  background: #101317;
+  border-top: 2px solid #F5C518;
+  color: #E8EDF2;
+  font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  font-size: 11.5px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  flex-wrap: wrap;
+}
+.mockbar .tagm {
+  background: #F5C518;
+  color: #101317;
+  font-weight: 700;
+  letter-spacing: .16em;
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+.mockbar .dirn { color: #F5C518; letter-spacing: .14em; }
+.mockbar .sep { color: #4A545E; }
+.mockbar .grow { margin-left: auto; }
+.mockbar button {
+  background: #1B2129;
+  color: #E8EDF2;
+  border: 1px solid #3A444F;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  min-height: 44px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+.mockbar button:hover { border-color: #F5C518; color: #F5C518; }
+.mockbar button[aria-pressed="true"] { background: #F5C518; color: #101317; border-color: #F5C518; }
+@media (max-width: 620px) { .mockbar .hide-xs { display: none; } }
+
+/* simulação de mobile */
+body.mobile-sim .rail { display: none; }
+body.mobile-sim .page { margin-left: 0; max-width: 390px; margin-inline: auto; box-shadow: 0 0 0 1px var(--line-300); }
+body.mobile-sim .wrap, body.mobile-sim .console-in, body.mobile-sim .plate-in, body.mobile-sim .plate-bottom { padding-left: 18px; padding-right: 18px; }
+body.mobile-sim .hero-left, body.mobile-sim .hero-right { grid-column: 1 / -1; }
+body.mobile-sim .ops, body.mobile-sim .prods { grid-template-columns: 1fr; }
+body.mobile-sim .two-col, body.mobile-sim .xc, body.mobile-sim .support, body.mobile-sim .quotes, body.mobile-sim .plate-in { grid-template-columns: 1fr; }
+body.mobile-sim .wall { columns: 1; }
+body.mobile-sim .console-nav { display: none; }
+
+.sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- movimento reduzido: sempre no fim ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .led { opacity: 1 !important; }
+}
+
+/* alvo de toque minimo, WCAG 2.5.8 (AA): link em lista de navegacao */
+li > a{display:inline-block;min-height:24px;padding-block:3px}
+
+/* correcao de contraste: tinta explicita em tabela e carimbo de tempo (AA nos dois temas) */
+table.cmp, table.cmp th, table.cmp td { color: var(--fg-body); }
+table.cmp thead th { color: var(--fg-weak); }
+table.cmp td:first-child { color: var(--fg-ink); }
+.log .ts { color: var(--fg-weak); }
+</style>
+
+<aside class="rail" id="rail" aria-hidden="true">
+  <div class="rail-head" id="railHead">R01</div>
+  <div class="rail-inner">
+    <div class="rail-ticks"></div>
+    <div class="rail-band" id="railBand"></div>
+    <div class="rail-car" id="railCar"></div>
+    <div class="rail-nums" id="railNums"></div>
+  </div>
+  <div class="rail-foot" id="railFoot">U00</div>
+</aside>
+
+<div class="page" id="page">
+
+  <!-- ================= U00 BARRA DE CONSOLE ================= -->
+  <header class="console" id="console">
+    <div class="console-in">
+      <div class="brand">
+        <span class="dot ok" aria-hidden="true"></span>
+        <span><b>intelecto</b>.solutions</span>
+      </div>
+      <nav class="console-nav" aria-label="Seções">
+        <a href="#maquina">A máquina</a>
+        <a href="#camadas">As camadas</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#crossconnect">Cross-connect</a>
+        <a href="#prazo">Maio de 2027</a>
+        <a href="#suporte">Suporte</a>
+      </nav>
+      <div class="console-meta">
+        <span class="hide-sm">host <i>sp1-sd-01</i></span>
+        <span>domínios <i>31</i></span>
+        <span class="hide-sm">orgs <i>22</i></span>
+        <span class="hide-sm">build <i>2026.08.22.0914</i></span>
+        <span><i id="statusTxt">operando</i></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= U03 a U14 HERÓI ================= -->
+  <section class="section" id="topo" data-rack="1" data-u="3-14">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <div class="hero-left">
+          <div class="kicker">
+            <span class="rule" aria-hidden="true"></span>
+            <span class="txt mono">./infra-propria</span>
+          </div>
+
+          <h1>A máquina é <span class="serif">nossa.</span><br>O domínio é seu.</h1>
+
+          <p class="hero-sub">Bare metal próprio em São Paulo, Proxmox e Coolify, 31 domínios em produção. O portal, o e-mail e os sistemas da sua organização rodam em ferro que a gente administra, não em revenda de nuvem estrangeira nem em conta compartilhada que ninguém sabe quem controla.</p>
+
+          <div class="btn-row">
+            <a class="btn" href="#maquina">Ver a ficha da máquina</a>
+            <a class="btn ghost" href="#suporte">Falar com o responsável técnico</a>
+          </div>
+
+          <div class="cred mono">
+            Intelecto Solutions · CNPJ 12.286.292/0001-50<br>
+            Operação em Campinas/SP · sede fiscal em Riolândia/SP · 16 anos, desde 2010<br>
+            Responsável técnico: Luiz Aguiar
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="panel chamfer-tr" id="heroPanel">
+            <span class="chamfer-edge" aria-hidden="true"></span>
+
+            <div class="panel-head">
+              <span class="dot ok" id="heroLed" aria-hidden="true"></span>
+              <span><b>rack a12</b> / elevação frontal</span>
+              <span style="margin-left:auto">42U · 4 sleds</span>
+            </div>
+
+            <div style="padding:18px 18px 6px">
+              <!-- ELEVAÇÃO FRONTAL DO RACK EM SVG INLINE -->
+              <svg class="elev" viewBox="0 0 520 330" role="img" aria-labelledby="elevTit elevDesc">
+                <title id="elevTit">Elevação frontal do rack</title>
+                <desc id="elevDesc">Desenho técnico de quatro sleds montados em um rack, com o servidor da Intelecto destacado e um cabo saindo para o comutador.</desc>
+
+                <defs>
+                  <pattern id="vent" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1" opacity=".5"></line>
+                  </pattern>
+                </defs>
+
+                <g stroke="var(--line-300)" stroke-width="1.25" fill="none">
+                  <!-- montantes -->
+                  <rect x="30" y="14" width="14" height="286"></rect>
+                  <rect x="300" y="14" width="14" height="286"></rect>
+                  <!-- furação -->
+                  <g stroke="var(--line-200)">
+                    <line x1="37" y1="26" x2="37" y2="290" stroke-dasharray="1 11"></line>
+                    <line x1="307" y1="26" x2="307" y2="290" stroke-dasharray="1 11"></line>
+                  </g>
+                </g>
+
+                <!-- sled 1 -->
+                <g>
+                  <rect x="44" y="30" width="256" height="52" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25" rx="2"></rect>
+                  <rect x="44" y="30" width="14" height="52" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <rect x="286" y="30" width="14" height="52" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <g color="var(--line-300)"><rect x="66" y="40" width="120" height="32" fill="url(#vent)" stroke="var(--line-200)"></rect></g>
+                  <text x="200" y="60" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="10">U38 storage</text>
+                  <g class="ledcol" data-base="30"></g>
+                </g>
+
+                <!-- sled 2: HOST destacado -->
+                <g>
+                  <rect x="44" y="92" width="256" height="66" fill="var(--bg-200)" stroke="var(--acc)" stroke-width="1.25" rx="2"></rect>
+                  <rect x="44" y="92" width="14" height="66" fill="none" stroke="var(--acc)" stroke-width="1.25"></rect>
+                  <rect x="286" y="92" width="14" height="66" fill="none" stroke="var(--acc)" stroke-width="1.25"></rect>
+                  <g color="var(--acc-dim)"><rect x="66" y="104" width="120" height="42" fill="url(#vent)" stroke="var(--acc-dim)"></rect></g>
+                  <text x="200" y="120" fill="var(--acc)" font-family="JetBrains Mono, monospace" font-size="10">U30 host</text>
+                  <text x="200" y="136" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">proxmox ve</text>
+                  <text x="200" y="150" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">16 vcpu · 24 gb</text>
+                  <g class="ledcol" data-base="96"></g>
+                </g>
+
+                <!-- sled 3 -->
+                <g>
+                  <rect x="44" y="168" width="256" height="52" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25" rx="2"></rect>
+                  <rect x="44" y="168" width="14" height="52" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <rect x="286" y="168" width="14" height="52" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <g color="var(--line-300)"><rect x="66" y="178" width="120" height="32" fill="url(#vent)" stroke="var(--line-200)"></rect></g>
+                  <text x="200" y="198" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="10">U24 aplicação</text>
+                  <g class="ledcol" data-base="168"></g>
+                </g>
+
+                <!-- sled 4 -->
+                <g>
+                  <rect x="44" y="230" width="256" height="60" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25" rx="2"></rect>
+                  <rect x="44" y="230" width="14" height="60" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <rect x="286" y="230" width="14" height="60" fill="none" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <g color="var(--line-300)"><rect x="66" y="242" width="120" height="36" fill="url(#vent)" stroke="var(--line-200)"></rect></g>
+                  <text x="200" y="258" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="10">U18 comutador</text>
+                  <text x="200" y="272" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">uplink 1g</text>
+                  <g class="ledcol" data-base="232"></g>
+                </g>
+
+                <!-- cabo do host até o comutador, dois cotovelos de 90 graus -->
+                <path id="caboHero" d="M300 125 L370 125 L370 262 L300 262"
+                      fill="none" stroke="var(--acc-dim)" stroke-width="1" stroke-dasharray="4 4"></path>
+                <circle cx="300" cy="125" r="2.5" fill="var(--acc)"></circle>
+                <circle cx="300" cy="262" r="2.5" fill="var(--acc)"></circle>
+                <g class="pacote" transform="translate(300 125)"><circle r="3" fill="var(--acc)"></circle></g>
+
+                <text x="386" y="120" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">eth0</text>
+                <text x="386" y="196" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">cross</text>
+                <text x="386" y="208" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9">connect</text>
+
+                <!-- cota de altura -->
+                <g stroke="var(--line-200)" stroke-width="1" fill="none">
+                  <line x1="470" y1="20" x2="470" y2="294"></line>
+                  <line x1="466" y1="20" x2="474" y2="20"></line>
+                  <line x1="466" y1="294" x2="474" y2="294"></line>
+                </g>
+                <text x="452" y="160" fill="var(--fg-weak)" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" transform="rotate(-90 452 160)">42U</text>
+              </svg>
+            </div>
+
+            <div class="kv-strip">
+              <div><span class="k">Hipervisor</span><span class="v">Proxmox</span></div>
+              <div><span class="k">Orquestração</span><span class="v">Coolify</span></div>
+              <div><span class="k">Backup</span><span class="v">diário</span></div>
+              <div><span class="k">Acesso</span><span class="v">chave SSH</span></div>
+            </div>
+
+            <div class="log mono" aria-label="Últimos eventos registrados">
+              <div><span class="ts">2026-08-20</span> &nbsp;<b>dns</b> &nbsp;SPF e DKIM revisados em 8 domínios da carteira</div>
+              <div><span class="ts">2026-08-19</span> &nbsp;<b>scan</b> &nbsp;varredura nacional: 3.138 domínios .leg.br ativos</div>
+              <div><span class="ts">2026-08-16</span> &nbsp;<b>ssh</b> &nbsp;chave dedicada registrada, senha desligada no host</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= U15 a U18 FAIXA DE OPERAÇÃO ================= -->
+  <section class="section alt" data-rack="1" data-u="15-18">
+    <div class="wrap" style="padding-top:56px;padding-bottom:56px">
+      <div class="addr">
+        <span class="u mono">U15</span>
+        <span class="t lbl">Em operação</span>
+      </div>
+      <div class="ops rv">
+        <div>
+          <div class="num mono" data-count="22">22</div>
+          <div class="cap">organizações atendidas, públicas e privadas</div>
+        </div>
+        <div>
+          <div class="num mono" data-count="31">31</div>
+          <div class="cap">domínios em produção nesta máquina</div>
+        </div>
+        <div>
+          <div class="num mono" data-count="7">7</div>
+          <div class="cap">portais de transparência rodando no Mirante</div>
+        </div>
+        <div>
+          <div class="num mono" data-count="9">9</div>
+          <div class="cap">sistemas sob medida em uso na TRB Pharma</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= U19 a U30 A MÁQUINA ================= -->
+  <section class="section" id="maquina" data-rack="1" data-u="19-30">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">U19</span>
+        <span class="t lbl">A máquina</span>
+      </div>
+      <h2>Não é revenda de painel.<br>É um servidor com endereço.</h2>
+      <p class="sec-lead">Quase todo fornecedor deste nicho revende hospedagem de terceiro e chama isso de nuvem. Aqui o ferro é dedicado, fica em datacenter no Brasil e é administrado por quem escreve o software que roda dentro dele. Quando algo cai, ninguém abre chamado para outra empresa.</p>
+
+      <div class="two-col" style="margin-top:48px">
+        <div class="rv">
+          <div class="spec">
+            <div><span class="k">localizacao</span><span class="v">Datacenter no Brasil, região de São Paulo</span></div>
+            <div><span class="k">maquina</span><span class="v">Bare metal dedicado, <em>não compartilhado</em></span></div>
+            <div><span class="k">virtualizacao</span><span class="v">Proxmox, uma VM por domínio de risco</span></div>
+            <div><span class="k">orquestracao</span><span class="v">Coolify, containers com deploy versionado</span></div>
+            <div><span class="k">backup</span><span class="v">Diário, em object storage de provedor separado</span></div>
+            <div><span class="k">acesso</span><span class="v">Somente chave SSH, com fail2ban e porta não padrão</span></div>
+            <div><span class="k">tls</span><span class="v">Emissão e renovação automáticas por domínio</span></div>
+            <div><span class="k">e-mail</span><span class="v">SPF, DKIM e DMARC configurados por domínio</span></div>
+            <div><span class="k">monitoramento</span><span class="v">Sonda própria de disponibilidade, fora do host</span></div>
+            <div><span class="k">revenda</span><span class="v">Nenhuma. Sem painel de terceiro no meio</span></div>
+          </div>
+
+          <div class="ph" style="margin-top:26px">
+            <span class="tag mono">PENDENTE</span>
+            <p>Espaço reservado para a fotografia real do rack em operação. Enquanto a foto não for produzida no datacenter, este bloco permanece marcado como pendente: a página não usa imagem genérica de servidor.</p>
+          </div>
+        </div>
+
+        <div class="rv">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="dot acc" aria-hidden="true"></span>
+              <span><b>topologia</b> / do ferro ao domínio</span>
+            </div>
+            <div style="padding:20px">
+              <!-- DIAGRAMA DE CABEAMENTO -->
+              <svg viewBox="0 0 460 300" role="img" aria-labelledby="topTit topDesc" style="width:100%;height:auto">
+                <title id="topTit">Topologia da infraestrutura</title>
+                <desc id="topDesc">Do servidor bare metal saem caminhos para o hipervisor, os containers, o armazenamento de backup e a entrega dos domínios.</desc>
+
+                <g font-family="JetBrains Mono, monospace" font-size="10" fill="var(--fg-weak)">
+                  <rect x="18" y="126" width="112" height="46" rx="3" fill="var(--bg-300)" stroke="var(--acc)" stroke-width="1.25"></rect>
+                  <text x="30" y="146" fill="var(--acc)">bare metal</text>
+                  <text x="30" y="160">sp1 · dedicado</text>
+
+                  <rect x="180" y="30" width="112" height="42" rx="3" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <text x="192" y="48" fill="var(--fg-body)">proxmox</text>
+                  <text x="192" y="62">vm por risco</text>
+
+                  <rect x="180" y="126" width="112" height="46" rx="3" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <text x="192" y="146" fill="var(--fg-body)">coolify</text>
+                  <text x="192" y="160">containers</text>
+
+                  <rect x="180" y="226" width="112" height="42" rx="3" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <text x="192" y="244" fill="var(--fg-body)">object storage</text>
+                  <text x="192" y="258">backup diário</text>
+
+                  <rect x="330" y="78" width="112" height="42" rx="3" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <text x="342" y="96" fill="var(--fg-body)">tls + dns</text>
+                  <text x="342" y="110">31 domínios</text>
+
+                  <rect x="330" y="178" width="112" height="42" rx="3" fill="var(--bg-300)" stroke="var(--line-300)" stroke-width="1.25"></rect>
+                  <text x="342" y="196" fill="var(--fg-body)">spf/dkim/dmarc</text>
+                  <text x="342" y="210">e-mail da casa</text>
+                </g>
+
+                <g fill="none" stroke="var(--acc-dim)" stroke-width="1" stroke-dasharray="4 4" class="cabo">
+                  <path d="M130 140 L155 140 L155 51 L180 51"></path>
+                  <path d="M130 149 L180 149"></path>
+                  <path d="M130 158 L155 158 L155 247 L180 247"></path>
+                  <path d="M292 51 L312 51 L312 99 L330 99"></path>
+                  <path d="M292 149 L312 149 L312 99 L330 99"></path>
+                  <path d="M292 149 L312 149 L312 199 L330 199"></path>
+                </g>
+                <g fill="var(--acc)">
+                  <circle cx="130" cy="140" r="2.2"></circle>
+                  <circle cx="130" cy="149" r="2.2"></circle>
+                  <circle cx="130" cy="158" r="2.2"></circle>
+                  <circle cx="330" cy="99" r="2.2"></circle>
+                  <circle cx="330" cy="199" r="2.2"></circle>
+                </g>
+              </svg>
+            </div>
+            <div class="log mono">
+              <div><span class="ts">nota</span> &nbsp;<b>a mesma máquina</b> hospeda portal, e-mail e sistema. Um fornecedor, um responsável, um telefone.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= U31 a U38 AS CAMADAS ================= -->
+  <section class="section alt" id="camadas" data-rack="1" data-u="31-38">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">U31</span>
+        <span class="t lbl">As camadas</span>
+      </div>
+      <h2>O menu de serviços é a arquitetura,<br>lida de baixo para cima.</h2>
+      <p class="sec-lead">Cada camada só existe porque a de baixo é nossa. É por isso que o prazo de resposta não depende de terceiro: da fonte de energia ao atendimento, a pilha inteira tem o mesmo dono.</p>
+
+      <div class="layers rv" style="margin-top:44px">
+        <div class="layer">
+          <span class="lv mono">L0</span>
+          <span>
+            <span class="nm">Ferro</span>
+            <span class="ds">Servidor bare metal dedicado em datacenter no Brasil, com energia, refrigeração e link do datacenter.</span>
+          </span>
+          <span class="rt mono">próprio</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L1</span>
+          <span>
+            <span class="nm">Virtualização</span>
+            <span class="ds">Proxmox separando ambientes por risco, com snapshot antes de qualquer intervenção grande.</span>
+          </span>
+          <span class="rt mono">proxmox</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L2</span>
+          <span>
+            <span class="nm">Orquestração</span>
+            <span class="ds">Coolify, containers com deploy versionado, rollback e variáveis de ambiente sob controle.</span>
+          </span>
+          <span class="rt mono">coolify</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L3</span>
+          <span>
+            <span class="nm">Dados</span>
+            <span class="ds">Banco por aplicação e cópia diária enviada para object storage de outro provedor, fora do host.</span>
+          </span>
+          <span class="rt mono">backup diário</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L4</span>
+          <span>
+            <span class="nm">Entrega</span>
+            <span class="ds">DNS, TLS renovado automaticamente e autenticação de e-mail com SPF, DKIM e DMARC por domínio.</span>
+          </span>
+          <span class="rt mono">31 domínios</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L5</span>
+          <span>
+            <span class="nm">Produtos</span>
+            <span class="ds">Mirante, Conformis, votação eletrônica de plenário, e-SIC, ouvidoria, ITSM, LMS e BI.</span>
+          </span>
+          <span class="rt mono">software próprio</span>
+        </div>
+        <div class="layer">
+          <span class="lv mono">L6</span>
+          <span>
+            <span class="nm">Operação</span>
+            <span class="ds">Luiz Aguiar responde pelo conjunto. Sem camada de triagem, sem transferência para outro setor.</span>
+          </span>
+          <span class="rt mono">atendimento direto</span>
+        </div>
+      </div>
+
+      <div class="layer-note">L0 a L6 · a pilha inteira sob o mesmo CNPJ · nenhuma camada terceirizada exceto energia e link do datacenter</div>
+    </div>
+  </section>
+
+  <!-- ============ A RÉGUA ZERA: SEGUNDO RACK ============ -->
+
+  <!-- ================= R02 U01 a U16 PRODUTOS ================= -->
+  <section class="section" id="produtos" data-rack="2" data-u="1-16">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">R02 · U01</span>
+        <span class="t lbl">O que roda aqui</span>
+      </div>
+      <h2>Oito coisas em produção,<br>todas na mesma máquina.</h2>
+      <p class="sec-lead">Nada nesta lista é catálogo de intenção. Tudo abaixo está no ar agora, com organização usando em horário de expediente.</p>
+
+      <div class="prods rv" style="margin-top:44px">
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/mirante</span>
+          <h3>Mirante</h3>
+          <p>Portal de transparência multi-tenant, construído sobre a cartilha do PNTP. Menu, despesas, licitações, contratos, e-SIC e ouvidoria em um lugar só.</p>
+          <span class="foot">7 tenants em produção</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/conformis</span>
+          <h3>Conformis</h3>
+          <p>LGPD e DPO as a service. Inventário de tratamento, políticas, atendimento ao titular e trilha de evidência para auditoria.</p>
+          <span class="foot">DPO ativo desde 2024 na LOGCARD</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot warn" aria-hidden="true"></span>svc/mail-leg</span>
+          <h3>E-mail no .leg.br</h3>
+          <p>Caixas no domínio oficial da casa legislativa, com migração sem interrupção e reapontamento que preserva Portal Modelo e SAPL.</p>
+          <span class="foot">Prazo do Interlegis: maio de 2027</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/plenario</span>
+          <h3>Votação eletrônica</h3>
+          <p>Painel de plenário, registro de presença, votação nominal e ata gerada ao fim da sessão.</p>
+          <span class="foot">Orindiúva, em produção desde 2016</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/esic</span>
+          <h3>e-SIC e ouvidoria</h3>
+          <p>Protocolo, prazo, recurso e resposta com registro público. Fluxo alinhado à Lei de Acesso à Informação.</p>
+          <span class="foot">Dolcinópolis tem Selo Ouvidoria Cidadã</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/itsm-lms</span>
+          <h3>ITSM e LMS</h3>
+          <p>Central de chamados e trilha de treinamento sob medida, integradas ao cadastro interno do cliente.</p>
+          <span class="foot">TRB Pharma</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/bi</span>
+          <h3>BI sobre Protheus</h3>
+          <p>Indicadores lidos direto do ERP, sem digitação paralela e sem planilha intermediária.</p>
+          <span class="foot">TRB Pharma, 9 sistemas sob medida</span>
+        </article>
+
+        <article class="prod">
+          <span class="key mono"><span class="dot ok" aria-hidden="true"></span>svc/host</span>
+          <h3>Hospedagem gerenciada</h3>
+          <p>Container ou servidor dedicado, TLS automático, backup diário e sonda de disponibilidade externa ao host.</p>
+          <span class="foot">Del Arco em servidor dedicado</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R02 U17 a U26 CROSS-CONNECT ================= -->
+  <section class="section alt" id="crossconnect" data-rack="2" data-u="17-26">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">R02 · U17</span>
+        <span class="t lbl">Cross-connect</span>
+      </div>
+      <h2>Quem mais está nesta máquina.</h2>
+      <p class="sec-lead">Passe o ponteiro sobre uma linha do inventário ou sobre um município: a porta correspondente acende no painel de patch. São 31 portas ocupadas, uma por domínio em produção.</p>
+
+      <div class="xc rv" id="xc" style="margin-top:44px">
+        <svg class="xc-cable" id="xcCable" aria-hidden="true"></svg>
+
+        <div>
+          <div class="lbl" style="margin-bottom:10px">Inventário da carteira</div>
+          <div class="inv">
+            <div class="inv-row" data-ports="0,1,2,3,4,5,6,7"><span class="n mono">08</span><span class="l">câmaras municipais</span></div>
+            <div class="inv-row" data-ports="8,9"><span class="n mono">02</span><span class="l">prefeituras</span></div>
+            <div class="inv-row" data-ports="10"><span class="n mono">01</span><span class="l">consórcio intermunicipal</span></div>
+            <div class="inv-row" data-ports="11,12,13,14,15"><span class="n mono">03</span><span class="l">autarquias de saneamento</span></div>
+            <div class="inv-row" data-ports="16"><span class="n mono">01</span><span class="l">instituto de previdência</span></div>
+            <div class="inv-row" data-ports="17,18,19,20,21,22,23"><span class="n mono">07</span><span class="l">empresas privadas</span></div>
+            <div class="inv-row" data-ports="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30"><span class="n mono">31</span><span class="l">domínios em produção</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="lbl" style="margin-bottom:10px">Painel de patch</div>
+          <div class="ports" id="ports">
+            <span class="port" data-i="0"></span>
+            <span class="port" data-i="1"></span>
+            <span class="port" data-i="2"></span>
+            <span class="port" data-i="3"></span>
+            <span class="port" data-i="4"></span>
+            <span class="port" data-i="5"></span>
+            <span class="port" data-i="6"></span>
+            <span class="port" data-i="7"></span>
+            <span class="port" data-i="8"></span>
+            <span class="port" data-i="9"></span>
+            <span class="port" data-i="10"></span>
+            <span class="port" data-i="11"></span>
+            <span class="port" data-i="12"></span>
+            <span class="port" data-i="13"></span>
+            <span class="port" data-i="14"></span>
+            <span class="port" data-i="15"></span>
+            <span class="port" data-i="16"></span>
+            <span class="port" data-i="17"></span>
+            <span class="port" data-i="18"></span>
+            <span class="port" data-i="19"></span>
+            <span class="port" data-i="20"></span>
+            <span class="port" data-i="21"></span>
+            <span class="port" data-i="22"></span>
+            <span class="port" data-i="23"></span>
+            <span class="port" data-i="24"></span>
+            <span class="port" data-i="25"></span>
+            <span class="port" data-i="26"></span>
+            <span class="port" data-i="27"></span>
+            <span class="port" data-i="28"></span>
+            <span class="port" data-i="29"></span>
+            <span class="port" data-i="30"></span>
+          </div>
+          <div class="ports-cap mono">31/42 portas ocupadas</div>
+        </div>
+
+        <div>
+          <div class="lbl" style="margin-bottom:6px">Municípios com sistema no ar</div>
+          <div class="wall-count mono" data-count="14">14</div>
+          <div class="wall" id="wall">
+            <span class="city" data-ports="0">Jaguariúna<sup>SP</sup></span>
+            <span class="city" data-ports="1">Capivari<sup>SP</sup></span>
+            <span class="city" data-ports="2">Américo de Campos<sup>SP</sup></span>
+            <span class="city" data-ports="3">Dolcinópolis<sup>SP</sup></span>
+            <span class="city" data-ports="4">General Salgado<sup>SP</sup></span>
+            <span class="city" data-ports="5">Magda<sup>SP</sup></span>
+            <span class="city" data-ports="6,9">Orindiúva<sup>SP</sup></span>
+            <span class="city" data-ports="7,8">Riolândia<sup>SP</sup></span>
+            <span class="city" data-ports="11,12,13">Ituiutaba<sup>MG</sup></span>
+            <span class="city" data-ports="14">Pedreira<sup>SP</sup></span>
+            <span class="city" data-ports="15">Ouro Fino<sup>MG</sup></span>
+            <span class="city" data-ports="19">Ribeirão Preto<sup>SP</sup></span>
+            <span class="city" data-ports="22">Tietê<sup>SP</sup></span>
+            <span class="city" data-ports="23">Valinhos<sup>SP</sup></span>
+          </div>
+          <div class="mono" style="font-size:11px;color:var(--fg-weak);letter-spacing:.06em;margin-top:14px">
+            8 câmaras · 2 prefeituras · 1 consórcio · 3 autarquias de saneamento · 1 instituto de previdência · 7 empresas
+          </div>
+        </div>
+      </div>
+
+      <div class="quotes">
+        <figure class="quote" style="margin:0">
+          <div class="q">Espaço reservado para a citação do cliente âncora do setor público, com nome, cargo e órgão.</div>
+          <figcaption class="at mono">
+            <span class="dot warn" aria-hidden="true" style="margin-right:6px"></span>
+            depoimento pendente de autorização por escrito
+          </figcaption>
+        </figure>
+        <figure class="quote" style="margin:0">
+          <div class="q">Espaço reservado para a citação do cliente âncora do setor privado, acompanhada de uma métrica única da operação dele.</div>
+          <figcaption class="at mono">
+            <span class="dot warn" aria-hidden="true" style="margin-right:6px"></span>
+            depoimento pendente de autorização por escrito
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R02 U27 a U32 PRAZO 2027 ================= -->
+  <section class="section" id="prazo" data-rack="2" data-u="27-32">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">R02 · U27</span>
+        <span class="t lbl">Maio de 2027</span>
+      </div>
+
+      <div class="deadline chamfer-bl rv">
+        <span class="chamfer-edge" aria-hidden="true"></span>
+        <div class="stat-line"><span class="dot warn" aria-hidden="true"></span><span style="color:var(--st-warn)">AVISO DE SISTEMA · E-MAIL LEGISLATIVO DO INTERLEGIS</span></div>
+
+        <div class="countdown">
+          <span class="big mono" id="cd" data-count="252">252</span>
+          <span class="unit">dias até maio de 2027</span>
+        </div>
+
+        <h2 style="max-width:22ch">O Senado encerra o e-mail do Interlegis. O domínio continua sendo da Câmara.</h2>
+        <p style="margin-top:16px">Nossa varredura de DNS nos 5.571 municípios brasileiros encontrou 3.138 domínios <span class="mono">.leg.br</span> ativos. Desses, 482 câmaras usam hoje o E-mail Legislativo e perdem a caixa no prazo. A migração é simples quando feita da forma certa, e desastrosa quando feita da forma errada.</p>
+
+        <div class="tbl-scroll">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Caminho</th>
+                <th>O que muda no DNS</th>
+                <th>Portal Modelo</th>
+                <th>SAPL</th>
+                <th>E-mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Reapontamento <span class="mono" style="color:var(--st-ok)">recomendado</span></td>
+                <td class="mono" style="font-size:13px">MX, SPF, DKIM e DMARC</td>
+                <td class="yes">continua no ar</td>
+                <td class="yes">continua no ar</td>
+                <td class="yes">passa para a Intelecto</td>
+              </tr>
+              <tr>
+                <td>Delegação de NS <span class="mono" style="color:var(--st-err)">evitar</span></td>
+                <td class="mono" style="font-size:13px">servidores de nome inteiros</td>
+                <td class="no">sai do ar</td>
+                <td class="no">sai do ar</td>
+                <td class="yes">passa para a Intelecto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:22px">O Interlegis mantém o DNS do domínio e altera apenas os registros de e-mail quando recebe ofício assinado pelo Presidente da Casa. É essa distinção que separa uma migração de dois dias de uma queda de portal e de processo legislativo. Nós preparamos o ofício, acompanhamos o chamado e ficamos com o prazo do Interlegis dentro do cronograma, não fora dele.</p>
+
+        <div class="btn-row" style="margin-bottom:0">
+          <a class="btn" href="#suporte">Simular a migração da minha Câmara</a>
+          <a class="btn ghost" href="#suporte">Receber o modelo de ofício</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= R02 U33 a U38 SUPORTE ================= -->
+  <section class="section alt" id="suporte" data-rack="2" data-u="33-38">
+    <div class="wrap">
+      <div class="addr">
+        <span class="u mono">R02 · U33</span>
+        <span class="t lbl">Suporte com nome</span>
+      </div>
+
+      <div class="support">
+        <div>
+          <h2>Quem escreve o software<br>é quem atende o telefone.</h2>
+          <p class="sec-lead">Não existe primeiro nível, fila de triagem nem robô pedindo número de protocolo. Você fala com o responsável técnico, que conhece o servidor, o banco e o código do sistema que a sua organização usa. É a vantagem estrutural de uma operação pequena que decidiu não crescer virando revenda.</p>
+
+          <div class="quote" style="margin-top:30px">
+            <div class="q">A infraestrutura não é um detalhe do contrato. É o contrato.</div>
+            <div class="at mono">Luiz Aguiar · responsável técnico · Intelecto Solutions</div>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn" href="mailto:contato@intelecto.solutions">Escrever para o responsável técnico</a>
+            <a class="btn ghost" href="#maquina">Rever a ficha da máquina</a>
+          </div>
+        </div>
+
+        <div class="card-contato">
+          <div class="panel-head" style="border:0;padding:0 0 14px">
+            <span class="dot ok" aria-hidden="true"></span>
+            <span><b>canal direto</b> / sem intermediário</span>
+          </div>
+          <div class="contato-row"><span>Responsável</span><span>Luiz Aguiar</span></div>
+          <div class="contato-row"><span>E-mail</span><span>contato@intelecto.solutions</span></div>
+          <div class="contato-row"><span>Operação</span><span>Campinas/SP</span></div>
+          <div class="contato-row"><span>Sede fiscal</span><span>Riolândia/SP</span></div>
+          <div class="contato-row"><span>CNPJ</span><span>12.286.292/0001-50</span></div>
+          <div class="contato-row" style="border-bottom:0"><span>Atuação</span><span>16 anos, desde 2010</span></div>
+
+          <div class="ph" style="margin-top:20px">
+            <span class="tag mono">PENDENTE</span>
+            <p>Retrato do responsável técnico a ser produzido. Nenhuma foto de banco de imagens entra nesta página.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RODAPÉ: PLACA DE IDENTIFICAÇÃO ================= -->
+  <footer class="plate">
+    <div class="plate-in">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="dot ok" aria-hidden="true"></span>
+          <span><b>intelecto</b>.solutions</span>
+        </div>
+        <div class="mono">
+          <b>INTELECTO SOLUTIONS</b><br>
+          CNPJ 12.286.292/0001-50<br>
+          Operação: Campinas/SP<br>
+          Sede fiscal: Riolândia/SP
+        </div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:10px">Equipamento</div>
+        <div class="mono">
+          host <b>sp1-sd-01</b><br>
+          hipervisor <b>Proxmox</b><br>
+          orquestração <b>Coolify</b><br>
+          domínios <b>31</b><br>
+          organizações <b>22</b>
+        </div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:10px">Serviços</div>
+        <div class="mono">
+          <b>Mirante</b> portal de transparência<br>
+          <b>Conformis</b> LGPD e DPO<br>
+          <b>E-mail</b> no domínio .leg.br<br>
+          <b>Plenário</b> votação eletrônica<br>
+          <b>Hospedagem</b> gerenciada
+        </div>
+      </div>
+    </div>
+    <div class="plate-bottom">
+      <span>v2026.08.22.0914 · 7a1c3d9 · main</span>
+      <span><span class="dot ok" aria-hidden="true" style="margin-right:6px"></span>todos os serviços operando</span>
+      <span>© 2026 Intelecto Solutions</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ================= BARRA DE MOCKUP ================= -->
+<div class="mockbar" role="region" aria-label="Barra de mockup">
+  <span class="tagm">MOCKUP</span>
+  <span class="dirn">SALA DE MÁQUINAS</span>
+  <span class="sep hide-xs">|</span>
+  <span class="hide-xs">tema nativo escuro · acento ciano · régua de rack</span>
+  <span class="grow"></span>
+  <button type="button" id="btnTema" aria-pressed="false">Alternar tema</button>
+  <button type="button" id="btnMobile" aria-pressed="false">Ver em mobile</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduz = false;
+  try {
+    reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch (e) { reduz = false; }
+
+  /* ---------- tema ---------- */
+  function temaAtual() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t) return t;
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
+    } catch (e) {}
+    return "dark";
+  }
+  var btnTema = document.getElementById("btnTema");
+  if (btnTema) {
+    btnTema.addEventListener("click", function () {
+      var novo = temaAtual() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", novo);
+      btnTema.setAttribute("aria-pressed", novo === "light" ? "true" : "false");
+      try { localStorage.setItem("intelecto-sala-tema", novo); } catch (e) {}
+    });
+    btnTema.setAttribute("aria-pressed", temaAtual() === "light" ? "true" : "false");
+  }
+
+  /* ---------- simulação de mobile ---------- */
+  var btnMobile = document.getElementById("btnMobile");
+  if (btnMobile) {
+    btnMobile.addEventListener("click", function () {
+      var on = document.body.classList.toggle("mobile-sim");
+      btnMobile.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  /* ---------- régua de rack ---------- */
+  var rail = document.getElementById("rail");
+  var railNums = document.getElementById("railNums");
+  var railBand = document.getElementById("railBand");
+  var railCar = document.getElementById("railCar");
+  var railHead = document.getElementById("railHead");
+  var railFoot = document.getElementById("railFoot");
+
+  function unidade() {
+    var v = getComputedStyle(document.documentElement).getPropertyValue("--u");
+    var n = parseFloat(v);
+    return isNaN(n) ? 20 : n;
+  }
+
+  if (railNums) {
+    var u = unidade();
+    var frag = document.createDocumentFragment();
+    for (var i = 1; i <= 42; i++) {
+      var s = document.createElement("span");
+      s.textContent = "U" + (i < 10 ? "0" + i : i);
+      s.style.top = ((i - 1) * u + 1) + "px";
+      if (i % 5 === 0 || i === 1) s.className = "n5";
+      frag.appendChild(s);
+    }
+    railNums.appendChild(frag);
+  }
+
+  var secoes = [].slice.call(document.querySelectorAll("section[data-u]"));
+  var dados = secoes.map(function (el) {
+    var p = (el.getAttribute("data-u") || "1-1").split("-");
+    return {
+      el: el,
+      rack: el.getAttribute("data-rack") || "1",
+      ini: parseInt(p[0], 10) || 1,
+      fim: parseInt(p[1], 10) || 1
+    };
+  });
+
+  var pedido = false;
+  function atualizaRegua() {
+    pedido = false;
+    if (!rail || !dados.length) return;
+    var u = unidade();
+    var marca = window.innerHeight * 0.42;
+    var atual = dados[0];
+    var prog = 0;
+    for (var i = 0; i < dados.length; i++) {
+      var r = dados[i].el.getBoundingClientRect();
+      if (r.top <= marca && r.bottom > marca) {
+        atual = dados[i];
+        prog = (marca - r.top) / Math.max(1, r.height);
+        break;
+      }
+      if (r.top > marca) { atual = dados[i]; prog = 0; break; }
+      atual = dados[i]; prog = 1;
+    }
+    var alturaU = (atual.fim - atual.ini + 1);
+    if (railBand) {
+      railBand.style.top = ((atual.ini - 1) * u) + "px";
+      railBand.style.height = (alturaU * u) + "px";
+    }
+    if (railCar) {
+      var y = (atual.ini - 1 + Math.min(1, Math.max(0, prog)) * (alturaU - 1)) * u;
+      railCar.style.top = y + "px";
+      railCar.style.height = u + "px";
+    }
+    var uAtual = Math.round(atual.ini + Math.min(1, Math.max(0, prog)) * (alturaU - 1));
+    if (railFoot) railFoot.textContent = "U" + (uAtual < 10 ? "0" + uAtual : uAtual);
+    if (railHead) railHead.textContent = "R0" + atual.rack;
+  }
+  function pedeAtualizacao() {
+    if (pedido) return;
+    pedido = true;
+    window.requestAnimationFrame(atualizaRegua);
+  }
+  window.addEventListener("scroll", pedeAtualizacao, { passive: true });
+  window.addEventListener("resize", function () {
+    if (railNums) {
+      var u2 = unidade();
+      var spans = railNums.children;
+      for (var i = 0; i < spans.length; i++) spans[i].style.top = (i * u2 + 1) + "px";
+    }
+    pedeAtualizacao();
+  });
+  atualizaRegua();
+
+  /* ---------- console que cola ---------- */
+  var consoleEl = document.getElementById("console");
+  if (consoleEl) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 8) consoleEl.classList.add("stuck");
+      else consoleEl.classList.remove("stuck");
+    }, { passive: true });
+  }
+
+  /* ---------- LEDs fora de sincronia ---------- */
+  var primos = [1.3, 1.7, 2.3, 2.9, 3.1, 3.7];
+  var cols = document.querySelectorAll(".ledcol");
+  for (var c = 0; c < cols.length; c++) {
+    var base = parseFloat(cols[c].getAttribute("data-base")) || 0;
+    for (var k = 0; k < 6; k++) {
+      var r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      r.setAttribute("x", String(232 + (k % 3) * 9));
+      r.setAttribute("y", String(base + 8 + Math.floor(k / 3) * 9));
+      r.setAttribute("width", "5");
+      r.setAttribute("height", "5");
+      r.setAttribute("rx", "1");
+      r.setAttribute("fill", k === 0 ? "var(--st-ok)" : (k === 4 ? "var(--acc)" : "var(--acc-dim)"));
+      r.setAttribute("class", "led");
+      if (!reduz) {
+        r.style.animationDuration = primos[(k + c) % primos.length] + "s";
+        r.style.animationDelay = (-((k * 0.37 + c * 0.61) % 2.5)) + "s";
+      }
+      cols[c].appendChild(r);
+    }
+  }
+
+  /* ---------- pacote percorrendo o cabo ---------- */
+  var cabo = "M300 125 L370 125 L370 262 L300 262";
+  var suportaOffset = false;
+  try { suportaOffset = window.CSS && CSS.supports && CSS.supports("offset-path", 'path("M 0 0 L 1 1")'); } catch (e) {}
+  var pacotes = document.querySelectorAll(".pacote");
+  for (var p = 0; p < pacotes.length; p++) {
+    if (!suportaOffset || reduz) { continue; }
+    pacotes[p].removeAttribute("transform");
+    pacotes[p].style.offsetPath = 'path("' + cabo + '")';
+    pacotes[p].style.transformBox = "view-box";
+    pacotes[p].style.animation = "andaCabo 3.4s linear infinite";
+  }
+  if (suportaOffset && !reduz) {
+    var st = document.createElement("style");
+    st.textContent = "@keyframes andaCabo{from{offset-distance:0%}to{offset-distance:100%}}";
+    document.head.appendChild(st);
+  }
+
+  /* ---------- contagem regressiva até maio de 2027 ---------- */
+  var cd = document.getElementById("cd");
+  if (cd) {
+    var alvo = new Date(2027, 4, 1).getTime();
+    var dias = Math.max(0, Math.ceil((alvo - Date.now()) / 86400000));
+    cd.setAttribute("data-count", String(dias));
+    cd.textContent = String(dias);
+  }
+
+  /* ---------- contadores que sobem uma vez ---------- */
+  var alvos = [].slice.call(document.querySelectorAll("[data-count]"));
+  function sobe(el) {
+    var fim = parseFloat(el.getAttribute("data-count")) || 0;
+    if (reduz) { el.textContent = String(fim); return; }
+    var t0 = null;
+    var dur = 900;
+    function passo(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = String(Math.round(fim * e));
+      if (k < 1) window.requestAnimationFrame(passo);
+      else el.textContent = String(fim);
+    }
+    window.requestAnimationFrame(passo);
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (ent) {
+      for (var i = 0; i < ent.length; i++) {
+        if (ent[i].isIntersecting) {
+          sobe(ent[i].target);
+          io.unobserve(ent[i].target);
+        }
+      }
+    }, { threshold: 0.4 });
+    alvos.forEach(function (el) { io.observe(el); });
+  } else {
+    alvos.forEach(function (el) { el.textContent = el.getAttribute("data-count"); });
+  }
+
+  /* ---------- cross-connect: portas e cabos ---------- */
+  var portsEl = document.getElementById("ports");
+  if (portsEl && !portsEl.querySelector(".port")) {
+    for (var q = 0; q < 31; q++) {
+      var d = document.createElement("span");
+      d.className = "port";
+      d.setAttribute("data-i", String(q));
+      portsEl.appendChild(d);
+    }
+  }
+  var xc = document.getElementById("xc");
+  var svgCabo = document.getElementById("xcCable");
+
+  function limpa() {
+    if (svgCabo) while (svgCabo.firstChild) svgCabo.removeChild(svgCabo.firstChild);
+    var on = document.querySelectorAll(".port.on, .inv-row.on, .city.on");
+    for (var i = 0; i < on.length; i++) on[i].classList.remove("on");
+  }
+
+  function acende(origem) {
+    limpa();
+    var lista = (origem.getAttribute("data-ports") || "").split(",");
+    origem.classList.add("on");
+    if (!svgCabo || !xc) return;
+    var base = xc.getBoundingClientRect();
+    svgCabo.setAttribute("viewBox", "0 0 " + base.width + " " + base.height);
+    svgCabo.setAttribute("width", base.width);
+    svgCabo.setAttribute("height", base.height);
+    var ro = origem.getBoundingClientRect();
+    var ox = (ro.left + ro.width / 2) - base.left;
+    var oy = (ro.top + ro.height / 2) - base.top;
+    var desenhou = 0;
+    for (var i = 0; i < lista.length; i++) {
+      var idx = parseInt(lista[i], 10);
+      if (isNaN(idx)) continue;
+      var porta = document.querySelector('.port[data-i="' + idx + '"]');
+      if (!porta) continue;
+      porta.classList.add("on");
+      if (desenhou > 8) continue;
+      var rp = porta.getBoundingClientRect();
+      var px = (rp.left + rp.width / 2) - base.left;
+      var py = (rp.top + rp.height / 2) - base.top;
+      var meio = (ox + px) / 2;
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", "M" + ox + " " + oy + " L" + meio + " " + oy + " L" + meio + " " + py + " L" + px + " " + py);
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke", "var(--acc)");
+      path.setAttribute("stroke-width", "1");
+      path.setAttribute("stroke-dasharray", "3 3");
+      if (!reduz) {
+        var comp = 0;
+        try { comp = path.getTotalLength ? path.getTotalLength() : 0; } catch (e) { comp = 0; }
+        if (comp) {
+          path.style.strokeDashoffset = comp;
+          path.style.transition = "stroke-dashoffset 260ms cubic-bezier(.33,1,.68,1)";
+          svgCabo.appendChild(path);
+          void path.getBoundingClientRect();
+          path.style.strokeDashoffset = "0";
+          desenhou++;
+          continue;
+        }
+      }
+      svgCabo.appendChild(path);
+      desenhou++;
+    }
+  }
+
+  if (xc) {
+    xc.addEventListener("mouseover", function (ev) {
+      var alvo2 = ev.target.closest ? ev.target.closest("[data-ports]") : null;
+      if (alvo2) acende(alvo2);
+    });
+    xc.addEventListener("mouseleave", limpa);
+    xc.addEventListener("click", function (ev) {
+      var alvo3 = ev.target.closest ? ev.target.closest("[data-ports]") : null;
+      if (alvo3) acende(alvo3);
+    });
+    window.addEventListener("resize", limpa);
+  }
+
+})();
+</script>

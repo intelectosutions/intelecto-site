@@ -174,7 +174,7 @@ footer a{color:var(--azure)}
   <div class="sec-h"><h2>Propostas na rua</h2></div>
   <div class="tabela">
     <table>
-      <thead><tr><th>Cliente</th><th>Oferta</th><th>Enviada</th><th>Situação</th><th style="text-align:right">12 meses</th></tr></thead>
+      <thead><tr><th>Cliente</th><th>Oferta</th><th>Situação</th><th>Próxima ação</th><th style="text-align:right">12 meses</th></tr></thead>
       <tbody id="pipeline"></tbody>
     </table>
   </div>
@@ -308,9 +308,16 @@ function desenhar(d){
   var tp = document.getElementById("pipeline");
   d.pipeline.forEach(function(p){
     var tr = document.createElement("tr");
-    tr.innerHTML = "<td><strong>" + p.cliente + "</strong></td><td>" + p.oferta +
-      "</td><td class='mono'>" + p.enviada + "</td><td><span class='chip aguarda'>" +
-      p.status + "</span></td><td class='num'>" + brl(p.valor) + "</td>";
+    var venceu = p.prazo && p.prazo < new Date().toISOString().slice(0, 10);
+    tr.innerHTML = "<td><strong>" + p.cliente + "</strong>" +
+      (p.contato ? "<br><span class='label' style='text-transform:none;letter-spacing:0'>" +
+        p.contato + " · " + p.canal + "</span>" : "") +
+      "</td><td>" + p.oferta + (p.enviada ? "<br><span class='label'>" + p.enviada + "</span>" : "") +
+      "</td><td><span class='chip " + (venceu ? "aguarda" : "feito") + "'>" + p.status +
+      "</span></td><td style='font-size:13.5px'>" + (p.proxima_acao || "") +
+      (p.prazo ? "<br><span class='label' style='color:" + (venceu ? "var(--amber)" : "var(--muted)") +
+        "'>" + p.prazo.split("-").reverse().join("/") + (venceu ? " · vencido" : "") + "</span>" : "") +
+      "</td><td class='num'>" + (p.valor ? brl(p.valor) : "—") + "</td>";
     tp.appendChild(tr);
   });
 
