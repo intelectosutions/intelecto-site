@@ -3345,7 +3345,9 @@
  ],
  "envios_sendgrid": {
   "ENVIADO": 391,
-  "BLOQUEADO": 2
+  "BLOQUEADO": 2,
+  "RESPONDEU": 2,
+  "RECUSOU": 1
  },
  "funil": {
   "quentes": 482,
@@ -4311,6 +4313,72 @@
    "prazo": "2026-08-25",
    "contato": "",
    "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Barra do Ribeiro/RS",
+   "oferta": "25 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Orçamento solicitado por e-mail",
+   "proxima_acao": "Gerar proposta (25 contas, migração, mínimo 4 GB atendido pelos 50 GB); Luiz responde o e-mail",
+   "prazo": "2026-08-25",
+   "contato": "José Igor Rutkoski (TI) (51) 99768-0544",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Imbaú/PR",
+   "oferta": "11 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Orçamento solicitado por e-mail",
+   "proxima_acao": "Gerar proposta (11 contas, migração) e responder valor de conta adicional (mesma faixa até 20)",
+   "prazo": "2026-08-25",
+   "contato": "Secretaria (e-mail oficial)",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Nova Guarita/MT",
+   "oferta": "15 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Orçamento prometido para hoje",
+   "proxima_acao": "Gerar proposta (15 contas, migração) e enviar no WhatsApp",
+   "prazo": "2026-08-24",
+   "contato": "Rosângela (66) 9699-9172",
+   "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Dário Meira/BA",
+   "oferta": "5 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Orçamento prometido para hoje",
+   "proxima_acao": "Gerar proposta (5 contas, migração) e enviar no WhatsApp",
+   "prazo": "2026-08-24",
+   "contato": "Izac Brito",
+   "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Nova Mamoré/RO",
+   "oferta": "a definir",
+   "valor": 0,
+   "enviada": "",
+   "status": "Aguardando nº de contas",
+   "proxima_acao": "Cobrar quantas contas a Câmara precisa",
+   "prazo": "2026-08-25",
+   "contato": "Klaiton Santos",
+   "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de João Pinheiro/MG",
+   "oferta": "6 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Orçamento a montar (2 domínios)",
+   "proxima_acao": "Montar proposta: 5 contas no domínio atual + 1 conta e suporte à criação do domínio novo camaradejoaopinheiro.mg.leg.br",
+   "prazo": "2026-08-25",
+   "contato": "Ivan",
+   "canal": "WhatsApp"
   }
  ],
  "agenda": [
@@ -4321,6 +4389,14 @@
   {
    "data": "24/08 (seg) · hoje",
    "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Nova Guarita/MT: Gerar proposta (15 contas, migração) e enviar no WhatsApp"
+  },
+  {
+   "data": "24/08 (seg) · hoje",
+   "acao": "Dário Meira/BA: Gerar proposta (5 contas, migração) e enviar no WhatsApp"
   },
   {
    "data": "25/08 (ter)",
@@ -4339,28 +4415,20 @@
    "acao": "Varginha/MG: Ligar: maior cidade que engajou e não respondeu"
   },
   {
-   "data": "26/08 (qua)",
-   "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
+   "data": "25/08 (ter)",
+   "acao": "Barra do Ribeiro/RS: Gerar proposta (25 contas, migração, mínimo 4 GB atendido pelos 50 GB); Luiz responde o e-mail"
   },
   {
-   "data": "26/08 (qua)",
-   "acao": "Pradópolis/SP: Follow-up D+3"
+   "data": "25/08 (ter)",
+   "acao": "Imbaú/PR: Gerar proposta (11 contas, migração) e responder valor de conta adicional (mesma faixa até 20)"
   },
   {
-   "data": "26/08 (qua)",
-   "acao": "Serrana/SP: Follow-up D+3"
+   "data": "25/08 (ter)",
+   "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
   },
   {
-   "data": "26/08 (qua)",
-   "acao": "Salmourão/SP: Follow-up D+3"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Santa Margarida/MG: Follow-up D+3"
+   "data": "25/08 (ter)",
+   "acao": "João Pinheiro/MG: Montar proposta: 5 contas no domínio atual + 1 conta e suporte à criação do domínio novo camaradejoaopinheiro.mg.leg.br"
   }
  ]
 }
