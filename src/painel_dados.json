@@ -1,5 +1,5 @@
 {
- "atualizado": "24/08/2026",
+ "atualizado": "25/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -4407,32 +4407,47 @@
    "prazo": "2026-08-25",
    "contato": "Angelita",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Visconde do Rio Branco/MG",
+   "oferta": "50 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Proposta gerada (R$ 14.700), falta enviar",
+   "proxima_acao": "Enviar rascunho do Gmail (contato@ + cc informatica@) com o PDF; prometido em 10 min",
+   "prazo": "2026-08-25",
+   "contato": "João Iasbik",
+   "canal": "E-mail"
   }
  ],
  "agenda": [
   {
-   "data": "24/08 (seg) · hoje",
+   "data": "24/08 (seg) · VENCIDO",
    "acao": "Conceição do Coité/BA: Cobrar por WhatsApp (75) 99969-3000"
   },
   {
-   "data": "24/08 (seg) · hoje",
+   "data": "24/08 (seg) · VENCIDO",
    "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
   },
   {
-   "data": "25/08 (ter)",
+   "data": "25/08 (ter) · hoje",
    "acao": "Heliodora/MG: Prazo do TCEMG correndo: confirmar recebimento"
   },
   {
-   "data": "25/08 (ter)",
+   "data": "25/08 (ter) · hoje",
    "acao": "Varginha/MG: Ligar: maior cidade que engajou e não respondeu"
   },
   {
-   "data": "25/08 (ter)",
+   "data": "25/08 (ter) · hoje",
    "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
   },
   {
-   "data": "25/08 (ter)",
+   "data": "25/08 (ter) · hoje",
    "acao": "Monte Carlo/SC: Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08"
+  },
+  {
+   "data": "25/08 (ter) · hoje",
+   "acao": "Visconde do Rio Branco/MG: Enviar rascunho do Gmail (contato@ + cc informatica@) com o PDF; prometido em 10 min"
   },
   {
    "data": "26/08 (qua)",
@@ -4453,10 +4468,6 @@
   {
    "data": "26/08 (qua)",
    "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Santa Margarida/MG: Follow-up D+3"
   }
  ]
 }
