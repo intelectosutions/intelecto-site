@@ -3353,14 +3353,16 @@
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 19,
-  "valor": 183500
+  "propostas": 22,
+  "valor": 234200
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
+  "Conselheiro Lafaiete",
   "Carambeí",
   "Esteio",
   "Matias Barbosa",
+  "Visconde do Rio Branco",
   "Pradópolis",
   "Conceição do Coité",
   "Barra do Ribeiro",
@@ -3370,6 +3372,7 @@
   "Santa Margarida",
   "Imbaú",
   "Nova Guarita",
+  "Manhumirim",
   "Ipanema",
   "Ribeirão Grande",
   "Igrejinha",
@@ -4156,6 +4159,17 @@
  },
  "pipeline": [
   {
+   "cliente": "Câmara de Conselheiro Lafaiete/MG",
+   "oferta": "100 contas",
+   "valor": 26700,
+   "enviada": "25/08",
+   "status": "Proposta enviada (maior da operação)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-28",
+   "contato": "Daniella Barros (Informática)",
+   "canal": "E-mail"
+  },
+  {
    "cliente": "Câmara de Carambeí/PR",
    "oferta": "50 contas",
    "valor": 14700,
@@ -4186,6 +4200,17 @@
    "proxima_acao": "Follow-up D+3",
    "prazo": "2026-08-27",
    "contato": "Rafael (32) 8814-5634",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Visconde do Rio Branco/MG",
+   "oferta": "50 contas",
+   "valor": 14700,
+   "enviada": "25/08",
+   "status": "Proposta enviada (domínio novo camaravrb.mg.gov.br)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-28",
+   "contato": "João Iasbik",
    "canal": "E-mail"
   },
   {
@@ -4285,6 +4310,17 @@
    "proxima_acao": "Avisar no WhatsApp + follow-up D+3",
    "prazo": "2026-08-27",
    "contato": "Rosângela (66) 9699-9172",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Manhumirim/MG",
+   "oferta": "18 contas",
+   "valor": 9300,
+   "enviada": "25/08",
+   "status": "Proposta enviada (tcemg@ de cortesia)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-28",
+   "contato": "Marilac (Licitação)",
    "canal": "E-mail"
   },
   {
@@ -4407,39 +4443,6 @@
    "prazo": "2026-08-25",
    "contato": "Angelita",
    "canal": "WhatsApp"
-  },
-  {
-   "cliente": "Câmara de Visconde do Rio Branco/MG",
-   "oferta": "50 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 14.700), falta enviar",
-   "proxima_acao": "Enviar rascunho do Gmail (contato@ + cc informatica@) com o PDF; prometido em 10 min",
-   "prazo": "2026-08-25",
-   "contato": "João Iasbik",
-   "canal": "E-mail"
-  },
-  {
-   "cliente": "Câmara de Manhumirim/MG",
-   "oferta": "18 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 9.300), falta enviar",
-   "proxima_acao": "Enviar rascunho do Gmail para compras@ com o PDF; tcemg@ de cortesia no domínio atual",
-   "prazo": "2026-08-25",
-   "contato": "Marilac (Licitação)",
-   "canal": "E-mail"
-  },
-  {
-   "cliente": "Câmara de Conselheiro Lafaiete/MG",
-   "oferta": "100 contas",
-   "valor": 0,
-   "enviada": "",
-   "status": "Proposta gerada (R$ 26.700; a maior da operação), falta enviar",
-   "proxima_acao": "Enviar rascunho do Gmail para informatica@ com o PDF; 50 GB supera os 10 GB pedidos",
-   "prazo": "2026-08-25",
-   "contato": "Daniella Barros (Informática)",
-   "canal": "E-mail"
   }
  ],
  "agenda": [
@@ -4468,18 +4471,6 @@
    "acao": "Monte Carlo/SC: Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08"
   },
   {
-   "data": "25/08 (ter) · hoje",
-   "acao": "Visconde do Rio Branco/MG: Enviar rascunho do Gmail (contato@ + cc informatica@) com o PDF; prometido em 10 min"
-  },
-  {
-   "data": "25/08 (ter) · hoje",
-   "acao": "Manhumirim/MG: Enviar rascunho do Gmail para compras@ com o PDF; tcemg@ de cortesia no domínio atual"
-  },
-  {
-   "data": "25/08 (ter) · hoje",
-   "acao": "Conselheiro Lafaiete/MG: Enviar rascunho do Gmail para informatica@ com o PDF; 50 GB supera os 10 GB pedidos"
-  },
-  {
    "data": "26/08 (qua)",
    "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
   },
@@ -4490,6 +4481,18 @@
   {
    "data": "26/08 (qua)",
    "acao": "Serrana/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Salmourão/SP: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
+  },
+  {
+   "data": "26/08 (qua)",
+   "acao": "Santa Margarida/MG: Follow-up D+3"
   }
  ]
 }
