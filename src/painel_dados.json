@@ -4418,6 +4418,28 @@
    "prazo": "2026-08-25",
    "contato": "João Iasbik",
    "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Manhumirim/MG",
+   "oferta": "18 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Proposta gerada (R$ 9.300), falta enviar",
+   "proxima_acao": "Enviar rascunho do Gmail para compras@ com o PDF; tcemg@ de cortesia no domínio atual",
+   "prazo": "2026-08-25",
+   "contato": "Marilac (Licitação)",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Conselheiro Lafaiete/MG",
+   "oferta": "100 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Proposta gerada (R$ 26.700; a maior da operação), falta enviar",
+   "proxima_acao": "Enviar rascunho do Gmail para informatica@ com o PDF; 50 GB supera os 10 GB pedidos",
+   "prazo": "2026-08-25",
+   "contato": "Daniella Barros (Informática)",
+   "canal": "E-mail"
   }
  ],
  "agenda": [
@@ -4450,6 +4472,14 @@
    "acao": "Visconde do Rio Branco/MG: Enviar rascunho do Gmail (contato@ + cc informatica@) com o PDF; prometido em 10 min"
   },
   {
+   "data": "25/08 (ter) · hoje",
+   "acao": "Manhumirim/MG: Enviar rascunho do Gmail para compras@ com o PDF; tcemg@ de cortesia no domínio atual"
+  },
+  {
+   "data": "25/08 (ter) · hoje",
+   "acao": "Conselheiro Lafaiete/MG: Enviar rascunho do Gmail para informatica@ com o PDF; 50 GB supera os 10 GB pedidos"
+  },
+  {
    "data": "26/08 (qua)",
    "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
   },
@@ -4460,14 +4490,6 @@
   {
    "data": "26/08 (qua)",
    "acao": "Serrana/SP: Follow-up D+3"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Salmourão/SP: Follow-up D+3"
-  },
-  {
-   "data": "26/08 (qua)",
-   "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   }
  ]
 }
