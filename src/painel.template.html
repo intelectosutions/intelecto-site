@@ -414,14 +414,28 @@ function desenhar(d){
   }
   txt("envios-estado", "ao vivo");
   var r = sg.resumo;
-  var taxa = function(n){ return r.enviados ? Math.round(n / r.enviados * 100) + "%" : "0%"; };
-  [["enviados", r.enviados, ""], ["abriram", r.abriram, taxa(r.abriram)],
-   ["clicaram", r.clicaram, taxa(r.clicaram)], ["falharam", r.falharam, taxa(r.falharam)]]
-   .forEach(function(k, i){
+  var cards;
+  if (!r.enviados && d.envios_sendgrid && d.envios_sendgrid.ENVIADO) {
+    // A Email Activity API do SendGrid retem so ~3 dias de mensagens; passado
+    // o disparo, o detalhe some. Mostramos entao o total enviado (controle da
+    // operacao) e os agregados dos ultimos 14 dias, que a Stats API mantem.
+    var tot = {ab: 0, cl: 0, bc: 0};
+    (sg.series || []).forEach(function(s){
+      tot.ab += s.aberturas || 0; tot.cl += s.cliques || 0; tot.bc += s.bounces || 0;
+    });
+    cards = [["Enviados (total)", d.envios_sendgrid.ENVIADO, ""],
+             ["Aberturas (14d)", tot.ab, ""],
+             ["Cliques (14d)", tot.cl, ""],
+             ["Bounces (14d)", tot.bc, ""]];
+  } else {
+    var taxa = function(n){ return r.enviados ? Math.round(n / r.enviados * 100) + "%" : "0%"; };
+    cards = [["Enviados", r.enviados, ""], ["Abriram", r.abriram, taxa(r.abriram)],
+             ["Clicaram", r.clicaram, taxa(r.clicaram)], ["Falharam", r.falharam, taxa(r.falharam)]];
+  }
+  cards.forEach(function(k, i){
     var el = document.createElement("div");
     el.className = "kpi" + (i === 1 ? " ok" : (i === 3 && k[1] > 0 ? " destaque" : ""));
-    el.innerHTML = "<span class='n'>" + k[1] + "</span><span class='t'>" +
-      k[0].charAt(0).toUpperCase() + k[0].slice(1) +
+    el.innerHTML = "<span class='n'>" + k[1] + "</span><span class='t'>" + k[0] +
       (k[2] ? " <span class='mono'>(" + k[2] + ")</span>" : "") + "</span>";
     kp.appendChild(el);
   });
@@ -458,7 +472,11 @@ function desenhar(d){
         "do WhatsApp não são contados, porque o rastreio está desligado nele para o " +
         "link abrir a conversa direto. Boa parte das respostas veio por lá.");
   } else {
-    txt("envios-nota", "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
+    txt("envios-nota", (d.envios_sendgrid && d.envios_sendgrid.ENVIADO)
+      ? "O detalhe por destinatario expira em 3 dias na API do SendGrid. Os totais " +
+        "acima vem do controle da operacao (enviados) e dos ultimos 14 dias " +
+        "(aberturas, cliques e bounces)."
+      : "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
         "sairam pelo Gmail e por isso nao aparecem aqui.");
   }
 
