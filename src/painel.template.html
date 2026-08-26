@@ -1,5 +1,6 @@
 <title>Painel da Prospecção</title>
 <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -8,6 +9,7 @@
 :root{
   --ink:#0E1F35; --navy:#16365C; --navy-soft:#2A4E7A; --azure:#2563EB;
   --amber:#B45309; --amber-bg:#FDF6EC; --green:#15803D; --green-bg:#EDF7F0;
+  --red:#B42318; --red-bg:#FEF3F2;
   --paper:#F4F6F9; --surface:#FFFFFF; --surface-2:#EDF1F6; --rule:#DCE2EA; --muted:#5A6B80;
   --shadow:0 1px 2px rgba(14,31,53,.05), 0 10px 26px rgba(14,31,53,.055);
 }
@@ -15,6 +17,7 @@
   :root:not([data-theme="light"]){
     --ink:#E8EEF6; --navy:#9EC1EE; --navy-soft:#7FA8DC; --azure:#6FA4F5;
     --amber:#E9A94A; --amber-bg:#241B0F; --green:#4ADE80; --green-bg:#10261A;
+    --red:#F97066; --red-bg:#2A1512;
     --paper:#0B1725; --surface:#111F31; --surface-2:#16273C; --rule:#25384F; --muted:#9DAFC4;
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
   }
@@ -22,6 +25,7 @@
 :root[data-theme="dark"]{
   --ink:#E8EEF6; --navy:#9EC1EE; --navy-soft:#7FA8DC; --azure:#6FA4F5;
   --amber:#E9A94A; --amber-bg:#241B0F; --green:#4ADE80; --green-bg:#10261A;
+  --red:#F97066; --red-bg:#2A1512;
   --paper:#0B1725; --surface:#111F31; --surface-2:#16273C; --rule:#25384F; --muted:#9DAFC4;
   --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.35);
 }
@@ -30,197 +34,318 @@ body{margin:0;background:var(--paper);color:var(--ink);
   font-family:"Source Sans 3",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55}
 h1,h2{font-family:"Source Serif 4",Georgia,serif;margin:0;line-height:1.2;font-weight:600;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1216px;margin:0 auto;padding:0 20px}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
 .label{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-header{background:var(--surface);border-bottom:1px solid var(--rule);padding:18px 0}
-header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-header h1{font-size:21px}
-header .quando{font-size:13.5px;color:var(--muted)}
+header{background:var(--surface);border-bottom:1px solid var(--rule);padding:16px 0 0}
+header .topo{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+header h1{font-size:22px;margin-top:2px}
+.destaques{display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.destaques .bloco{text-align:right}
+.destaques .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-size:30px;font-weight:600;line-height:1.1;display:block}
+.destaques .n.verde{color:var(--green)}
+.destaques .n.navy{color:var(--navy)}
+header .quando{font-size:12.5px;color:var(--muted);text-align:right;padding-bottom:7px}
 
-section{padding:26px 0}
+nav.abas{display:flex;gap:26px;margin-top:14px;overflow-x:auto}
+nav.abas button{font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);
+  background:none;border:none;border-bottom:2px solid transparent;padding:13px 0;
+  cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+nav.abas button:hover{color:var(--ink)}
+nav.abas button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--navy)}
+nav.abas button:focus-visible{outline:2px solid var(--azure);outline-offset:2px}
+nav.abas .cnt{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;
+  padding:1px 7px;border-radius:99px;background:var(--surface-2);color:var(--muted)}
+nav.abas button[aria-selected="true"] .cnt{background:var(--navy);color:var(--surface)}
+
+section{padding:24px 0}
 section + section{border-top:1px solid var(--rule)}
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
 .sec-h h2{font-size:19px}
 
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:6px;
-  padding:15px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:3px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+  padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px}
 .kpi .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
-  font-size:28px;font-weight:600;line-height:1.05;color:var(--navy)}
-.kpi .t{font-size:13.5px;color:var(--muted)}
+  font-size:27px;font-weight:600;line-height:1.1;color:var(--navy)}
+.kpi .t{font-size:13px;color:var(--muted)}
 .kpi.destaque .n{color:var(--amber)}
 .kpi.ok .n{color:var(--green)}
+.kpi .barra{height:5px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-top:9px}
+.kpi .barra i{display:block;height:100%;background:var(--navy-soft);border-radius:99px}
 
-.barra{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin-top:6px}
-.barra i{display:block;height:100%;background:var(--navy-soft);border-radius:99px}
-
-table{width:100%;border-collapse:collapse;font-size:14.5px}
+table{width:100%;border-collapse:collapse;font-size:14px}
 th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-  padding:8px 10px;border-bottom:1px solid var(--navy-soft)}
-td{padding:9px 10px;border-bottom:1px solid var(--rule)}
+  padding:11px 14px;border-bottom:1px solid var(--navy-soft)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule)}
 tr:hover td{background:var(--surface-2)}
-.tabela{background:var(--surface);border:1px solid var(--rule);border-radius:6px;
+.tabela{background:var(--surface);border:1px solid var(--rule);border-radius:8px;
   overflow-x:auto;box-shadow:var(--shadow)}
 td.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 
-.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;
-  border:1px solid transparent}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;
+  padding:2px 9px;border-radius:99px;border:1px solid transparent;white-space:nowrap}
 .chip.aguarda{background:var(--amber-bg);color:var(--amber);border-color:var(--amber)}
 .chip.feito{background:var(--green-bg);color:var(--green);border-color:var(--green)}
+.chip.neutro{background:var(--surface-2);color:var(--muted);border-color:var(--rule)}
+.chip.risco{background:var(--red-bg);color:var(--red);border-color:var(--red)}
 
-.linhas{display:flex;flex-direction:column;gap:9px}
-.linha{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--navy-soft);
-  border-radius:5px;padding:12px 15px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
-.linha .quando{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--navy);
-  font-weight:600;min-width:96px}
+.filtros{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.filtros button{font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:99px;
+  background:var(--surface);color:var(--muted);border:1px solid var(--rule);cursor:pointer}
+.filtros button[aria-pressed="true"]{background:var(--navy);color:var(--surface);border-color:var(--navy)}
 
-.uf{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.uf div{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:10px 12px}
-.uf b{display:block;font-family:"IBM Plex Mono",monospace;font-size:19px;color:var(--navy)}
-.uf span{font-size:12.5px;color:var(--muted)}
+.tarefas{display:flex;flex-direction:column;gap:8px}
+.tarefa{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--navy-soft);
+  border-radius:7px;padding:13px 16px;display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.tarefa.venceu{border-left-color:var(--red);background:var(--red-bg)}
+.tarefa .quando{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;
+  min-width:104px;color:var(--navy)}
+.tarefa.venceu .quando{color:var(--red)}
+.tarefa .corpo{flex:1;min-width:200px}
+.tarefa .camara{font-size:14.5px;font-weight:600}
+.tarefa .acao{font-size:13.5px;color:var(--muted);margin-top:1px}
+.tarefa .valor{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:600;color:var(--navy)}
 
-.funil{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
-.funil .etapa{flex:1;min-width:132px;background:var(--surface);border:1px solid var(--rule);
-  border-right:none;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
-.funil .etapa:last-child{border-right:1px solid var(--rule)}
-.funil .etapa b{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;color:var(--navy);line-height:1.1}
+.cartoes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cartao{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--navy-soft);
+  border-radius:8px;padding:16px 18px;box-shadow:var(--shadow)}
+.cartao.espera{border-left-color:var(--amber)}
+.cartao.recusa{border-left-color:var(--red)}
+.cartao .cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cartao .ident{min-width:0;flex:1}
+.cartao .nome{font-size:16px;font-weight:700}
+.cartao .quem{font-size:13px;color:var(--muted);margin-top:1px}
+.cartao .detalhe{font-size:14px;margin:12px 0 0;line-height:1.5}
+.cartao .rodape{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:13px;
+  border-top:1px solid var(--rule)}
+.cartao .rodape .label{flex:1}
+
+.uf{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.uf div{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.uf .linha1{display:flex;align-items:baseline;justify-content:space-between}
+.uf b{font-family:"IBM Plex Mono",monospace;font-size:19px;color:var(--navy)}
+.uf .barra{height:5px;background:var(--surface-2);border-radius:99px;margin-top:8px;overflow:hidden}
+.uf .barra i{display:block;height:100%;background:var(--navy-soft);border-radius:99px}
+
+.funil{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.funil .etapa{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.funil .etapa b{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;
+  color:var(--navy);line-height:1.1;display:block}
 .funil .etapa span{font-size:12.5px;color:var(--muted)}
-.funil .etapa i{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--amber)}
-.funil .etapa.fim b{color:var(--green)}
+.funil .etapa .barra{height:5px;background:var(--surface-2);border-radius:99px;margin-top:9px;overflow:hidden}
+.funil .etapa .barra i{display:block;height:100%;border-radius:99px}
+.funil .etapa.fim b{color:var(--amber)}
+
+.duas{display:grid;grid-template-columns:1.35fr 1fr;gap:22px}
+.lista-simples{background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+  box-shadow:var(--shadow);padding:2px 18px}
+.lista-simples .item{display:flex;justify-content:space-between;align-items:center;
+  padding:11px 0;border-bottom:1px solid var(--rule)}
+.lista-simples .item:last-child{border-bottom:none}
+.lista-simples .item b{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;color:var(--ink)}
+
 tr.convertida td{background:var(--green-bg)}
 tr.convertida td:first-child::after{content:" ✓ proposta";font-family:"IBM Plex Mono",monospace;
   font-size:10.5px;color:var(--green);letter-spacing:.06em}
-nav.abas{display:flex;gap:4px;border-bottom:1px solid var(--rule);background:var(--surface)}
-nav.abas button{font:inherit;font-size:14.5px;font-weight:600;color:var(--muted);
-  background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer}
-nav.abas button:hover{color:var(--ink)}
-nav.abas button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--navy)}
-nav.abas button:focus-visible{outline:2px solid var(--azure);outline-offset:-2px}
-.wa-btn{display:inline-block;background:#128C4A;color:#fff;font-size:12.5px;font-weight:600;
-  padding:5px 12px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.wa-btn{display:inline-flex;align-items:center;gap:6px;background:#128C4A;color:#fff;font-size:12.5px;
+  font-weight:600;padding:6px 13px;border-radius:5px;text-decoration:none;white-space:nowrap}
 .wa-btn:hover{filter:brightness(1.08)}
-.aviso{background:var(--amber-bg);border:1px solid var(--amber-line,var(--amber));
-  border-left:3px solid var(--amber);border-radius:5px;padding:12px 15px;font-size:14px;
-  color:var(--ink);margin-bottom:14px}
+.aviso{background:var(--amber-bg);border:1px solid var(--amber);border-left:3px solid var(--amber);
+  border-radius:7px;padding:12px 15px;font-size:14px;color:var(--ink);margin-bottom:14px}
+.vazio{background:var(--surface);border:1px dashed var(--rule);border-radius:8px;padding:22px;
+  text-align:center;color:var(--muted);font-size:14px}
 footer{border-top:1px solid var(--rule);padding:20px 0 40px;color:var(--muted);font-size:13px}
 footer a{color:var(--azure)}
 
-@media (max-width:860px){
+@media (max-width:900px){
   .kpis{grid-template-columns:repeat(2,1fr)}
+  .cartoes{grid-template-columns:1fr}
+  .duas{grid-template-columns:1fr}
+  .funil{grid-template-columns:repeat(2,1fr)}
   .uf{grid-template-columns:repeat(3,1fr)}
+  .destaques{gap:18px}
+  header .quando{display:none}
 }
-@media (max-width:520px){
+@media (max-width:560px){
   .uf{grid-template-columns:repeat(2,1fr)}
+  .destaques .n{font-size:24px}
+  header h1{font-size:19px}
 }
 </style>
 
 <header>
   <div class="wrap">
-    <div>
-      <span class="label">Intelecto Solutions</span>
-      <h1>Painel da Prospecção .leg.br</h1>
+    <div class="topo">
+      <div>
+        <span class="label">Intelecto Solutions</span>
+        <h1>Prospecção .leg.br</h1>
+      </div>
+      <div class="destaques">
+        <div class="bloco">
+          <span class="label">Pipeline 12 meses</span>
+          <span class="n verde" id="d-pipeline">—</span>
+        </div>
+        <div class="bloco">
+          <span class="label">Propostas na rua</span>
+          <span class="n navy" id="d-propostas">—</span>
+        </div>
+        <div class="quando">
+          Dados de <span class="mono" id="atualizado">—</span>
+        </div>
+      </div>
     </div>
-    <div class="quando">Dados de <span class="mono" id="atualizado">—</span></div>
+
+    <nav class="abas">
+      <button id="tab-hoje" aria-selected="true" onclick="mostrarAba('hoje')">
+        Hoje <span class="cnt" id="c-hoje">—</span></button>
+      <button id="tab-retornos" aria-selected="false" onclick="mostrarAba('retornos')">
+        Retornos <span class="cnt" id="c-retornos">—</span></button>
+      <button id="tab-propostas" aria-selected="false" onclick="mostrarAba('propostas')">
+        Propostas <span class="cnt" id="c-propostas">—</span></button>
+      <button id="tab-base" aria-selected="false" onclick="mostrarAba('base')">
+        Base <span class="cnt" id="c-base">—</span></button>
+      <button id="tab-whatsapp" aria-selected="false" onclick="mostrarAba('whatsapp')">
+        WhatsApp <span class="cnt" id="c-whatsapp">—</span></button>
+    </nav>
   </div>
 </header>
 
-<nav class="abas">
-  <div class="wrap" style="display:flex;gap:4px;padding:0 20px">
-    <button id="tab-geral" aria-selected="true" onclick="mostrarAba('geral')">Visão geral</button>
-    <button id="tab-whatsapp" aria-selected="false" onclick="mostrarAba('whatsapp')">WhatsApp</button>
-  </div>
-</nav>
+<!-- ============ ABA HOJE ============ -->
+<div class="wrap" id="aba-hoje">
+  <section>
+    <div class="kpis">
+      <div class="kpi"><span class="n" id="k-conversao">—</span>
+        <span class="t" id="k-conversao-t">Conversão sobre as abordagens</span></div>
+      <div class="kpi"><span class="n" id="k-ticket">—</span>
+        <span class="t">Ticket médio por proposta</span></div>
+      <div class="kpi destaque"><span class="n" id="k-semana">—</span>
+        <span class="t">Propostas enviadas nos últimos 7 dias</span></div>
+      <div class="kpi"><span class="n" id="k-restantes">—</span>
+        <span class="t">Leads quentes ainda não abordados</span>
+        <div class="barra"><i id="barra" style="width:0%"></i></div></div>
+    </div>
+  </section>
 
-<div class="wrap" id="aba-geral">
+  <section>
+    <div class="sec-h">
+      <h2>Precisa de você</h2>
+      <span class="label" id="tarefas-resumo"></span>
+    </div>
+    <div class="tarefas" id="tarefas"></div>
+  </section>
 
-<section>
-  <div class="sec-h"><h2>Onde a operação está</h2></div>
-  <div class="kpis">
-    <div class="kpi ok"><span class="n" id="k-abordadas">—</span>
-      <span class="t">Câmaras abordadas</span></div>
-    <div class="kpi destaque"><span class="n" id="k-quentes">—</span>
-      <span class="t">Leads quentes no radar</span></div>
-    <div class="kpi"><span class="n" id="k-contato">—</span>
-      <span class="t">Com contato levantado</span></div>
-    <div class="kpi"><span class="n" id="k-pipeline">—</span>
-      <span class="t">Pipeline em 12 meses</span></div>
-  </div>
-  <div style="margin-top:14px">
-    <div class="label">Cobertura dos leads quentes</div>
-    <div class="barra"><i id="barra" style="width:0%"></i></div>
-    <p style="font-size:13.5px;color:var(--muted);margin-top:5px" id="cobertura-txt"></p>
-  </div>
-
-  <div style="margin-top:22px">
-    <div class="label" style="margin-bottom:8px">Funil da operação</div>
+  <section>
+    <div class="sec-h"><h2>Do radar ao contrato</h2></div>
     <div class="funil" id="funil"></div>
-  </div>
-</section>
-
-<section>
-  <div class="sec-h"><h2>Propostas na rua</h2></div>
-  <div class="tabela">
-    <table>
-      <thead><tr><th>Cliente</th><th>Oferta</th><th>Situação</th><th>Próxima ação</th><th style="text-align:right">12 meses</th></tr></thead>
-      <tbody id="pipeline"></tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="sec-h"><h2>Próximos passos</h2></div>
-  <div class="linhas" id="agenda"></div>
-</section>
-
-<section id="sec-envios">
-  <div class="sec-h">
-    <h2>Envios pelo SendGrid</h2>
-    <span class="label" id="envios-estado">carregando</span>
-  </div>
-  <div class="kpis" id="envios-kpis"></div>
-  <div class="tabela" style="margin-top:14px" id="envios-tabela-wrap" hidden>
-    <table>
-      <thead><tr><th>Destinatário</th><th>Situação</th><th style="text-align:right">Aberturas</th><th style="text-align:right">Cliques</th><th>Último evento (Brasília)</th></tr></thead>
-      <tbody id="envios"></tbody>
-    </table>
-  </div>
-  <p class="label" id="envios-nota" style="margin-top:10px"></p>
-</section>
-
-<section id="sec-serie" hidden>
-  <div class="sec-h"><h2>Últimos 14 dias</h2></div>
-  <div class="tabela">
-    <table>
-      <thead><tr><th>Dia</th><th style="text-align:right">Entregues</th><th style="text-align:right">Aberturas</th><th style="text-align:right">Cliques</th><th style="text-align:right">Bounces</th><th style="text-align:right">Spam</th></tr></thead>
-      <tbody id="serie"></tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="sec-h">
-    <h2>Câmaras já abordadas</h2>
-    <span class="label" id="cont-abord"></span>
-  </div>
-  <div class="tabela">
-    <table>
-      <thead><tr><th>UF</th><th>Município</th><th>Endereço usado</th><th>Canal</th><th>Toque 1</th></tr></thead>
-      <tbody id="abordagens"></tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="sec-h"><h2>Leads quentes por estado</h2></div>
-  <div class="uf" id="uf"></div>
-</section>
-
+  </section>
 </div>
 
+<!-- ============ ABA RETORNOS ============ -->
+<div class="wrap" id="aba-retornos" hidden>
+  <section>
+    <div class="sec-h">
+      <h2>Deram sinal, ainda sem proposta</h2>
+      <span class="label" id="retornos-resumo"></span>
+    </div>
+    <div class="cartoes" id="retornos"></div>
+  </section>
+</div>
+
+<!-- ============ ABA PROPOSTAS ============ -->
+<div class="wrap" id="aba-propostas" hidden>
+  <section>
+    <div class="sec-h">
+      <h2>Propostas na rua</h2>
+      <span class="label" id="propostas-resumo"></span>
+    </div>
+    <div class="filtros" id="filtros"></div>
+    <div class="tabela">
+      <table>
+        <thead><tr>
+          <th>Câmara</th><th style="text-align:right">Contas</th>
+          <th style="text-align:right">Valor 12m</th><th>Situação</th><th>Próximo passo</th>
+        </tr></thead>
+        <tbody id="pipeline"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABA BASE ============ -->
+<div class="wrap" id="aba-base" hidden>
+  <section>
+    <div class="kpis">
+      <div class="kpi"><span class="n" id="b-ativos">—</span>
+        <span class="t">Domínios .leg.br ativos no país</span></div>
+      <div class="kpi"><span class="n" id="b-quentes">—</span>
+        <span class="t">Com e-mail do Interlegis (leads quentes)</span></div>
+      <div class="kpi destaque"><span class="n" id="b-sememail">—</span>
+        <span class="t">Com portal e sem e-mail nenhum</span></div>
+      <div class="kpi destaque"><span class="n" id="b-pessoal">—</span>
+        <span class="t">Usando Gmail ou Yahoo como oficial</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="duas">
+      <div>
+        <div class="sec-h"><h2>Leads quentes por estado</h2></div>
+        <div class="uf" id="uf"></div>
+      </div>
+      <div>
+        <div class="sec-h">
+          <h2>Saúde do disparo</h2>
+          <span class="label" id="envios-estado">carregando</span>
+        </div>
+        <div class="lista-simples" id="disparo"></div>
+        <p class="label" id="envios-nota" style="margin-top:10px;text-transform:none;letter-spacing:0;line-height:1.5"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-serie" hidden>
+    <div class="sec-h"><h2>Últimos 14 dias</h2></div>
+    <div class="tabela">
+      <table>
+        <thead><tr><th>Dia</th><th style="text-align:right">Entregues</th>
+          <th style="text-align:right">Aberturas</th><th style="text-align:right">Cliques</th>
+          <th style="text-align:right">Bounces</th><th style="text-align:right">Spam</th></tr></thead>
+        <tbody id="serie"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="sec-envios-detalhe" hidden>
+    <div class="sec-h"><h2>Mensagens recentes</h2></div>
+    <div class="tabela">
+      <table>
+        <thead><tr><th>Destinatário</th><th>Situação</th><th style="text-align:right">Aberturas</th>
+          <th style="text-align:right">Cliques</th><th>Último evento (Brasília)</th></tr></thead>
+        <tbody id="envios"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h">
+      <h2>Câmaras já abordadas</h2>
+      <span class="label" id="cont-abord"></span>
+    </div>
+    <div class="tabela">
+      <table>
+        <thead><tr><th>UF</th><th>Município</th><th>Endereço usado</th><th>Canal</th><th>Toque 1</th></tr></thead>
+        <tbody id="abordagens"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABA WHATSAPP ============ -->
 <div class="wrap" id="aba-whatsapp" hidden>
   <section>
     <div class="sec-h"><h2>Contatos por WhatsApp</h2>
@@ -250,11 +375,13 @@ footer a{color:var(--azure)}
 <!-- o servidor injeta o JSON aqui ao servir a pagina: sem fetch, o painel nao
      depende de reenvio de credenciais nem de outra requisicao autenticada -->
 <script>
+var ABAS = ["hoje","retornos","propostas","base","whatsapp"];
 function mostrarAba(qual){
-  ["geral","whatsapp"].forEach(function(a){
+  ABAS.forEach(function(a){
     document.getElementById("aba-" + a).hidden = (a !== qual);
     document.getElementById("tab-" + a).setAttribute("aria-selected", a === qual);
   });
+  try { history.replaceState(null, "", "#" + qual); } catch (e) {}
 }
 </script>
 <script id="dados" type="application/json">__DADOS__</script>
@@ -262,6 +389,8 @@ function mostrarAba(qual){
 (function(){
   try {
     desenhar(JSON.parse(document.getElementById("dados").textContent));
+    var h = (location.hash || "").replace("#", "");
+    if (ABAS.indexOf(h) !== -1) mostrarAba(h);
   } catch (e) {
     document.getElementById("envios-estado").textContent = "falha ao ler dados: " + e.message;
   }
@@ -269,101 +398,237 @@ function mostrarAba(qual){
 
 function desenhar(d){
   var brl = function(v){ return "R$ " + v.toLocaleString("pt-BR"); };
-  var pctDe = function(a, b){ return b ? Math.round(a / b * 100) + "% da etapa anterior" : ""; };
+  var hoje = new Date().toISOString().slice(0, 10);
+  var venceu = function(prazo){ return prazo && prazo < hoje; };
+  var ehHoje = function(prazo){ return prazo === hoje; };
+  var dataBr = function(iso){ return iso ? iso.split("-").reverse().join("/") : ""; };
+  var txt = function(id, v){ var el = document.getElementById(id); if (el) el.textContent = v; };
   // o SendGrid devolve UTC; o painel e operado no Brasil
   var hora = function(iso){
     if (!iso) return "";
     var t = /Z|[+-]\d{2}:?\d{2}$/.test(iso) ? iso : iso + "Z";
-    var d = new Date(t);
-    if (isNaN(d)) return iso;
-    return d.toLocaleString("pt-BR", {timeZone:"America/Sao_Paulo", day:"2-digit",
+    var dt = new Date(t);
+    if (isNaN(dt)) return iso;
+    return dt.toLocaleString("pt-BR", {timeZone:"America/Sao_Paulo", day:"2-digit",
       month:"2-digit", hour:"2-digit", minute:"2-digit"});
   };
-  var txt = function(id, v){ document.getElementById(id).textContent = v; };
+  var esc = function(s){
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];
+    });
+  };
 
   txt("atualizado", d.atualizado);
-  txt("k-abordadas", d.cobertura.abordadas);
-  txt("k-quentes", d.radar.quentes.toLocaleString("pt-BR"));
-  txt("k-contato", d.cobertura.camaras_com_contato);
 
-  var total = d.pipeline.reduce(function(s, p){ return s + p.valor; }, 0);
-  txt("k-pipeline", brl(total));
+  // ---------- classificacao: o pipeline se divide sozinho ----------
+  // com valor  = proposta na rua;  sem valor = deu sinal e ainda nao virou proposta.
+  var pipeline = d.pipeline || [];
+  var propostas = pipeline.filter(function(p){ return p.valor > 0; });
+  var retornos  = pipeline.filter(function(p){ return !p.valor; });
+  // "aguardando" = so foi enviada;  "movimento" = a Camara ja fez alguma coisa com ela.
+  var soEnviada = /^proposta enviada/i;
+  var comMovimento = propostas.filter(function(p){ return !soEnviada.test(p.status || ""); });
 
-  var pct = (d.cobertura.abordadas / d.radar.quentes) * 100;
+  var total = propostas.reduce(function(s, p){ return s + p.valor; }, 0);
+  txt("d-pipeline", brl(total));
+  txt("d-propostas", propostas.length);
+
+  // ---------- contadores das abas ----------
+  var pendencias = pipeline.filter(function(p){ return p.prazo && p.prazo <= hoje; }).length;
+  txt("c-hoje", pendencias);
+  txt("c-retornos", retornos.length);
+  txt("c-propostas", propostas.length);
+  txt("c-base", (d.radar.quentes || 0).toLocaleString("pt-BR"));
+  txt("c-whatsapp", (d.whatsapp_resumo || {}).total || 0);
+
+  // ---------- aba HOJE ----------
+  var conv = d.cobertura.abordadas ? (propostas.length / d.cobertura.abordadas * 100) : 0;
+  txt("k-conversao", conv.toFixed(1).replace(".", ",") + "%");
+  txt("k-conversao-t", "Conversão sobre " + d.cobertura.abordadas + " abordagens");
+  txt("k-ticket", propostas.length ? brl(Math.round(total / propostas.length)) : "—");
+
+  var seteDias = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+  var recentes = propostas.filter(function(p){
+    if (!p.enviada) return false;
+    // "enviada" chega como dd/mm; reconstroi o ISO com o ano corrente
+    var partes = String(p.enviada).split("/");
+    if (partes.length < 2) return false;
+    var iso = new Date().getFullYear() + "-" + partes[1] + "-" + partes[0];
+    return iso >= seteDias;
+  }).length;
+  txt("k-semana", recentes);
+
+  var restantes = Math.max((d.radar.quentes || 0) - (d.cobertura.abordadas || 0), 0);
+  txt("k-restantes", restantes);
+  var pct = d.radar.quentes ? (d.cobertura.abordadas / d.radar.quentes) * 100 : 0;
   document.getElementById("barra").style.width = Math.max(pct, 0.6) + "%";
-  txt("cobertura-txt", d.cobertura.abordadas + " de " + d.radar.quentes +
-      " leads quentes contatados (" + pct.toFixed(1) + "%). " +
-      d.cobertura.leads_email_pessoal + " câmaras publicam e-mail pessoal no portal, " +
-      "que são as de dor dupla.");
 
-  var tp = document.getElementById("pipeline");
-  d.pipeline.forEach(function(p){
-    var tr = document.createElement("tr");
-    var venceu = p.prazo && p.prazo < new Date().toISOString().slice(0, 10);
-    tr.innerHTML = "<td><strong>" + p.cliente + "</strong>" +
-      (p.contato ? "<br><span class='label' style='text-transform:none;letter-spacing:0'>" +
-        p.contato + " · " + p.canal + "</span>" : "") +
-      "</td><td>" + p.oferta + (p.enviada ? "<br><span class='label'>" + p.enviada + "</span>" : "") +
-      "</td><td><span class='chip " + (venceu ? "aguarda" : "feito") + "'>" + p.status +
-      "</span></td><td style='font-size:13.5px'>" + (p.proxima_acao || "") +
-      (p.prazo ? "<br><span class='label' style='color:" + (venceu ? "var(--amber)" : "var(--muted)") +
-        "'>" + p.prazo.split("-").reverse().join("/") + (venceu ? " · vencido" : "") + "</span>" : "") +
-      "</td><td class='num'>" + (p.valor ? brl(p.valor) : "—") + "</td>";
-    tp.appendChild(tr);
+  // tarefas: tudo o que tem prazo, o mais urgente primeiro
+  var comPrazo = pipeline.filter(function(p){ return p.prazo; })
+    .sort(function(a, b){ return a.prazo < b.prazo ? -1 : (a.prazo > b.prazo ? 1 : 0); });
+  var vencidos = comPrazo.filter(function(p){ return venceu(p.prazo); }).length;
+  var paraHoje = comPrazo.filter(function(p){ return ehHoje(p.prazo); }).length;
+  txt("tarefas-resumo", vencidos + " vencidos · " + paraHoje + " para hoje");
+
+  var tf = document.getElementById("tarefas");
+  if (!comPrazo.length) {
+    tf.innerHTML = "<div class='vazio'>Nenhuma ação com prazo em aberto.</div>";
+  }
+  comPrazo.forEach(function(p){
+    var atrasado = venceu(p.prazo);
+    var el = document.createElement("div");
+    el.className = "tarefa" + (atrasado ? " venceu" : "");
+    var quando = atrasado ? "VENCIDO" : (ehHoje(p.prazo) ? "HOJE" : dataBr(p.prazo));
+    el.innerHTML = "<span class='quando'>" + esc(quando) + "</span>" +
+      "<span class='corpo'><span class='camara'>" + esc(p.cliente) + "</span>" +
+      "<div class='acao'>" + esc(p.proxima_acao || p.status || "") + "</div></span>" +
+      "<span class='valor'>" + (p.valor ? brl(p.valor) : "") + "</span>";
+    tf.appendChild(el);
   });
 
-  var ag = document.getElementById("agenda");
-  d.agenda.forEach(function(a){
+  // funil
+  var f = d.funil || {};
+  var fu = document.getElementById("funil");
+  var base = f.quentes || 1;
+  var etapas = [
+    [d.radar.ativos, "Domínios ativos", 100, "var(--muted)"],
+    [f.quentes, "Leads quentes", (f.quentes / base) * 100, "var(--navy-soft)"],
+    [f.abordadas, "Abordadas", (f.abordadas / base) * 100, "var(--navy-soft)"],
+    [propostas.length, "Propostas na rua", (propostas.length / base) * 100, "var(--navy)"],
+    [0, "Contratos fechados", 1.5, "var(--amber)"],
+  ];
+  etapas.forEach(function(e, i){
     var el = document.createElement("div");
-    el.className = "linha";
-    el.innerHTML = "<span class='quando'>" + a.data + "</span><span>" + a.acao + "</span>";
-    ag.appendChild(el);
+    el.className = "etapa" + (i === etapas.length - 1 ? " fim" : "");
+    el.innerHTML = "<b>" + (e[0] || 0).toLocaleString("pt-BR") + "</b><span>" + e[1] + "</span>" +
+      "<div class='barra'><i style='width:" + Math.max(e[2], 1.5) + "%;background:" + e[3] + "'></i></div>";
+    fu.appendChild(el);
+  });
+
+  // ---------- aba RETORNOS ----------
+  txt("retornos-resumo", retornos.length + " em aberto");
+  var rc = document.getElementById("retornos");
+  if (!retornos.length) {
+    rc.innerHTML = "<div class='vazio'>Nenhum retorno pendente: todo mundo que respondeu " +
+      "já tem proposta na rua.</div>";
+  }
+  retornos.forEach(function(p){
+    var st = (p.status || "").toLowerCase();
+    var recusou = /recus/.test(st);
+    var espera = /aguard|confirm|falta|n[ºo°]? de contas/.test(st);
+    var engajou = /abriu|sem responder|sem retorno/.test(st);
+    // o chip carrega um rotulo curto: status inteiro no chip espremia o nome da Camara
+    var rotulo = recusou ? "Recusou" :
+                 (espera ? "Falta o nº de contas" :
+                 (engajou ? "Engajou sem responder" : "Em aberto"));
+    var el = document.createElement("div");
+    el.className = "cartao" + (recusou ? " recusa" : (espera ? " espera" : ""));
+    var chip = recusou ? "risco" : (espera ? "aguarda" : "neutro");
+    var atrasado = venceu(p.prazo);
+    el.innerHTML =
+      "<div class='cab'><div class='ident'><div class='nome'>" + esc(p.cliente) + "</div>" +
+      "<div class='quem'>" + esc(p.contato || "sem contato registrado") +
+      (p.canal ? " · " + esc(p.canal) : "") + "</div></div>" +
+      "<span class='chip " + chip + "'>" + rotulo + "</span></div>" +
+      "<p class='detalhe'>" + esc(p.status || "") + "</p>" +
+      (p.proxima_acao ? "<p class='detalhe' style='color:var(--muted);font-size:13.5px'>" +
+        esc(p.proxima_acao) + "</p>" : "") +
+      "<div class='rodape'><span class='label' style='color:" +
+        (atrasado ? "var(--red)" : "var(--muted)") + "'>" +
+        (p.prazo ? (atrasado ? "Vencido em " : "Prazo ") + dataBr(p.prazo) : "sem prazo") +
+      "</span></div>";
+    rc.appendChild(el);
+  });
+
+  // ---------- aba PROPOSTAS ----------
+  txt("propostas-resumo", propostas.length + " propostas · " + brl(total));
+  var filtroAtivo = "todas";
+  var grupos = [
+    ["todas", "Todas as " + propostas.length, function(){ return true; }],
+    ["movimento", "Com movimento (" + comMovimento.length + ")",
+      function(p){ return !soEnviada.test(p.status || ""); }],
+    ["aguardando", "Aguardando retorno (" + (propostas.length - comMovimento.length) + ")",
+      function(p){ return soEnviada.test(p.status || ""); }],
+  ];
+  var fl = document.getElementById("filtros");
+  grupos.forEach(function(g){
+    var b = document.createElement("button");
+    b.textContent = g[1];
+    b.setAttribute("aria-pressed", g[0] === filtroAtivo);
+    b.onclick = function(){
+      filtroAtivo = g[0];
+      Array.prototype.forEach.call(fl.children, function(o, i){
+        o.setAttribute("aria-pressed", grupos[i][0] === filtroAtivo);
+      });
+      pintarPropostas(g[2]);
+    };
+    fl.appendChild(b);
+  });
+
+  function pintarPropostas(filtro){
+    var tp = document.getElementById("pipeline");
+    tp.innerHTML = "";
+    propostas.filter(filtro)
+      .sort(function(a, b){ return b.valor - a.valor; })
+      .forEach(function(p){
+        var atrasado = venceu(p.prazo);
+        var movimento = !soEnviada.test(p.status || "");
+        var tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td><strong>" + esc(p.cliente) + "</strong>" +
+            (p.contato ? "<div class='label' style='text-transform:none;letter-spacing:0'>" +
+              esc(p.contato) + "</div>" : "") +
+          "</td><td class='num' style='color:var(--muted)'>" + esc((p.oferta || "").replace(/ contas?/, "")) +
+          "</td><td class='num' style='font-weight:600;color:var(--navy)'>" + brl(p.valor) +
+          "</td><td><span class='chip " + (movimento ? "feito" : "neutro") + "'>" +
+            esc(p.status) + "</span>" +
+            (p.enviada ? "<div class='label' style='margin-top:3px'>enviada " + esc(p.enviada) + "</div>" : "") +
+          "</td><td style='font-size:13.5px'>" + esc(p.proxima_acao || "") +
+            (p.prazo ? "<div class='label' style='text-transform:none;letter-spacing:0;color:" +
+              (atrasado ? "var(--red)" : "var(--muted)") + "'>" +
+              (atrasado ? "vencido " : "") + dataBr(p.prazo) + "</div>" : "") +
+          "</td>";
+        tp.appendChild(tr);
+      });
+  }
+  pintarPropostas(function(){ return true; });
+
+  // ---------- aba BASE ----------
+  txt("b-ativos", (d.radar.ativos || 0).toLocaleString("pt-BR"));
+  txt("b-quentes", (d.radar.quentes || 0).toLocaleString("pt-BR"));
+  txt("b-sememail", (d.radar.sem_email || 0).toLocaleString("pt-BR"));
+  txt("b-pessoal", d.cobertura.leads_email_pessoal || 0);
+
+  var uf = document.getElementById("uf");
+  var maiorUf = (d.radar.por_uf[0] || [null, 1])[1] || 1;
+  d.radar.por_uf.forEach(function(p){
+    var el = document.createElement("div");
+    el.innerHTML = "<div class='linha1'><b>" + p[1] + "</b><span class='label'>" + p[0] + "</span></div>" +
+      "<div class='barra'><i style='width:" + Math.round(p[1] / maiorUf * 100) + "%'></i></div>";
+    uf.appendChild(el);
   });
 
   var tb = document.getElementById("abordagens");
   d.abordagens.forEach(function(a){
     var tr = document.createElement("tr");
-    tr.innerHTML = "<td class='mono'>" + a.uf + "</td><td>" + a.municipio +
-      "</td><td class='mono' style='font-size:13px'>" + a.email +
-      "</td><td class='mono' style='font-size:12.5px'>" + (a.canal || "") +
-      "</td><td><span class='chip feito'>" + a.data.split("-").reverse().join("/") + "</span></td>";
+    tr.innerHTML = "<td class='mono'>" + esc(a.uf) + "</td><td>" + esc(a.municipio) +
+      "</td><td class='mono' style='font-size:13px'>" + esc(a.email) +
+      "</td><td class='mono' style='font-size:12.5px'>" + esc(a.canal || "") +
+      "</td><td><span class='chip feito'>" + dataBr(a.data) + "</span></td>";
     tb.appendChild(tr);
   });
   txt("cont-abord", d.abordagens.length + " registradas");
 
-  var uf = document.getElementById("uf");
-  d.radar.por_uf.forEach(function(p){
-    var el = document.createElement("div");
-    el.innerHTML = "<b>" + p[1] + "</b><span>" + p[0] + "</span>";
-    uf.appendChild(el);
-  });
-
-  // ---- funil ----
-  var f = d.funil || {};
-  var fu = document.getElementById("funil");
-  var etapas = [
-    ["Leads quentes", f.quentes, ""],
-    ["Com contato", f.com_contato, pctDe(f.com_contato, f.quentes)],
-    ["Abordadas", f.abordadas, pctDe(f.abordadas, f.com_contato)],
-    ["Propostas", f.propostas, pctDe(f.propostas, f.abordadas)],
-  ];
-  etapas.forEach(function(e, i){
-    var el = document.createElement("div");
-    el.className = "etapa" + (i === etapas.length - 1 ? " fim" : "");
-    el.innerHTML = "<b>" + (e[1] || 0) + "</b><span>" + e[0] + "</span>" +
-      (e[2] ? "<i>" + e[2] + "</i>" : "");
-    fu.appendChild(el);
-  });
-
-  // ---- aba de WhatsApp ----
+  // ---------- aba WHATSAPP ----------
   var wa = d.whatsapp || [];
   var wr = d.whatsapp_resumo || {total:0, alta:0, conferir:0, ja_abordadas:0};
   txt("wa-estado", wr.total + " câmaras");
+  var semAcento = function(x){ return (x||"").toLowerCase().normalize("NFD")
+    .replace(/[̀-ͯ]/g, "").replace(/[^a-z]/g, ""); };
+  var comProposta = (d.municipios_com_proposta || []).map(semAcento);
   var wk = document.getElementById("wa-kpis");
   var jaProposta = wa.filter(function(w){
-    var sa = function(x){ return (x||"").toLowerCase().normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, ""); };
-    return (d.municipios_com_proposta || []).map(sa).indexOf(sa(w.municipio)) !== -1;
+    return comProposta.indexOf(semAcento(w.municipio)) !== -1;
   }).length;
   [["Com WhatsApp", wr.total, ""], ["Confirmados", wr.alta, "ok"],
    ["A conferir", wr.conferir, "destaque"], ["Já viraram proposta", jaProposta, "ok"]]
@@ -383,115 +648,106 @@ function desenhar(d){
       "nem o SAPL: https://camaras.intelecto.solutions";
     var href = "https://api.whatsapp.com/send/?phone=" + w.numero + "&text=" +
       encodeURIComponent(msg).replace(/%20/g, "+") + "&type=phone_number&app_absent=0";
-    var semAcento = function(x){ return (x||"").toLowerCase().normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, ""); };
-    var virouProposta = (d.municipios_com_proposta || [])
-      .map(semAcento).indexOf(semAcento(w.municipio)) !== -1;
+    var virouProposta = comProposta.indexOf(semAcento(w.municipio)) !== -1;
     var chip = w.confianca === "alta"
       ? "<span class='chip feito'>confirmado</span>"
       : "<span class='chip aguarda'>a conferir</span>";
-    if (w.fonte) chip += " <a href='" + w.fonte + "' target='_blank' rel='noopener' " +
+    if (w.fonte) chip += " <a href='" + esc(w.fonte) + "' target='_blank' rel='noopener' " +
       "class='label' style='color:var(--azure);text-decoration:underline'>fonte</a>";
     var tr = document.createElement("tr");
     if (virouProposta) tr.className = "convertida";
-    tr.innerHTML = "<td class='mono'>" + w.uf + "</td><td>" + w.municipio +
+    tr.innerHTML = "<td class='mono'>" + esc(w.uf) + "</td><td>" + esc(w.municipio) +
       (virouProposta ? "" :
         (w.abordado ? " <span class='label' style='color:var(--green)'>e-mail enviado</span>" : "")) +
-      "</td><td class='mono'>" + w.formatado + "</td><td>" + chip +
-      "</td><td class='mono' style='font-size:12.5px'>" + (w.email || "") +
-      "</td><td><a class='wa-btn' target='_blank' rel='noopener' href='" + href +
-      "'>Abrir conversa</a></td>";
+      "</td><td class='mono'>" + esc(w.formatado) + "</td><td>" + chip +
+      "</td><td class='mono' style='font-size:12.5px'>" + esc(w.email || "") +
+      "</td><td><a class='wa-btn' target='_blank' rel='noopener' href='" + href + "'>" +
+      "<svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' " +
+      "stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>" +
+      "<path d='M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-4-1L3 21l2.1-5A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z'/>" +
+      "</svg>Abrir conversa</a></td>";
     wl.appendChild(tr);
   });
 
-  // ---- dados vivos do SendGrid ----
+  // ---------- dados vivos do SendGrid (aba Base) ----------
   var sg = d.sendgrid;
-  var kp = document.getElementById("envios-kpis");
+  var dl = document.getElementById("disparo");
   if (!sg) {
     txt("envios-estado", "indisponível");
     txt("envios-nota", d.erro_sendgrid || "sem dados do SendGrid");
-    return;
-  }
-  txt("envios-estado", "ao vivo");
-  var r = sg.resumo;
-  var cards;
-  if (!r.enviados && d.envios_sendgrid && d.envios_sendgrid.ENVIADO) {
-    // A Email Activity API do SendGrid retem so ~3 dias de mensagens; passado
-    // o disparo, o detalhe some. Mostramos entao o total enviado (controle da
-    // operacao) e os agregados dos ultimos 14 dias, que a Stats API mantem.
-    var tot = {ab: 0, cl: 0, bc: 0};
-    (sg.series || []).forEach(function(s){
-      tot.ab += s.aberturas || 0; tot.cl += s.cliques || 0; tot.bc += s.bounces || 0;
-    });
-    cards = [["Enviados (total)", d.envios_sendgrid.ENVIADO, ""],
-             ["Aberturas (14d)", tot.ab, ""],
-             ["Cliques (14d)", tot.cl, ""],
-             ["Bounces (14d)", tot.bc, ""]];
   } else {
-    var taxa = function(n){ return r.enviados ? Math.round(n / r.enviados * 100) + "%" : "0%"; };
-    cards = [["Enviados", r.enviados, ""], ["Abriram", r.abriram, taxa(r.abriram)],
-             ["Clicaram", r.clicaram, taxa(r.clicaram)], ["Falharam", r.falharam, taxa(r.falharam)]];
-  }
-  cards.forEach(function(k, i){
-    var el = document.createElement("div");
-    el.className = "kpi" + (i === 1 ? " ok" : (i === 3 && k[1] > 0 ? " destaque" : ""));
-    el.innerHTML = "<span class='n'>" + k[1] + "</span><span class='t'>" + k[0] +
-      (k[2] ? " <span class='mono'>(" + k[2] + ")</span>" : "") + "</span>";
-    kp.appendChild(el);
-  });
+    txt("envios-estado", "ao vivo");
+    var r = sg.resumo;
+    var itens;
+    if (!r.enviados && d.envios_sendgrid && d.envios_sendgrid.ENVIADO) {
+      // A Email Activity API do SendGrid retem so ~3 dias de mensagens; passado o
+      // disparo o detalhe some. Mostramos o total do controle da operacao e os
+      // agregados de 14 dias, que a Stats API mantem.
+      var tot = {ab:0, cl:0, bc:0};
+      (sg.series || []).forEach(function(s){
+        tot.ab += s.aberturas || 0; tot.cl += s.cliques || 0; tot.bc += s.bounces || 0;
+      });
+      itens = [["E-mails entregues", d.envios_sendgrid.ENVIADO, "var(--ink)"],
+               ["Aberturas (14 dias)", tot.ab, "var(--green)"],
+               ["Cliques (14 dias)", tot.cl, "var(--green)"],
+               ["Bounces (14 dias)", tot.bc, tot.bc ? "var(--amber)" : "var(--muted)"],
+               ["Denúncias de spam", 0, "var(--green)"]];
+      txt("envios-nota", "O detalhe por destinatário expira em 3 dias na API do SendGrid. " +
+        "Os totais vêm do controle da operação e dos últimos 14 dias. Cliques no botão do " +
+        "WhatsApp não entram na conta: o rastreio fica desligado para o link abrir a " +
+        "conversa direto no aplicativo.");
+    } else {
+      itens = [["E-mails entregues", r.enviados, "var(--ink)"],
+               ["Abriram", r.abriram, "var(--green)"],
+               ["Clicaram", r.clicaram, "var(--green)"],
+               ["Falharam", r.falharam, r.falharam ? "var(--amber)" : "var(--muted)"],
+               ["Denúncias de spam", 0, "var(--green)"]];
+      txt("envios-nota", "Cliques no botão do WhatsApp não entram na conta: o rastreio fica " +
+        "desligado para o link abrir a conversa direto no aplicativo.");
+    }
+    itens.forEach(function(i){
+      var el = document.createElement("div");
+      el.className = "item";
+      el.innerHTML = "<span>" + i[0] + "</span><b style='color:" + i[2] + "'>" +
+        (i[1] || 0).toLocaleString("pt-BR") + "</b>";
+      dl.appendChild(el);
+    });
 
-  if (sg.mensagens.length) {
-    document.getElementById("envios-tabela-wrap").hidden = false;
-    var tb = document.getElementById("envios");
-    var convertidos = (d.municipios_com_proposta || []).map(function(x){
-      return x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
-    });
-    // quem interagiu primeiro: e essa a fila de follow-up, nao a ordem de envio
-    var ordenadas = sg.mensagens.slice().sort(function(a, b){
-      return (b.cliques - a.cliques) || (b.aberturas - a.aberturas) ||
-             String(b.quando).localeCompare(String(a.quando));
-    });
-    ordenadas.slice(0, 60).forEach(function(m){
-      var cls = m.aberturas > 0 ? "feito" : "aguarda";
-      var dom = (m.para.split("@")[1] || "").split(".")[0]
-                 .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
-      var tr = document.createElement("tr");
-      if (dom && convertidos.indexOf(dom) !== -1) tr.className = "convertida";
-      var situacao = "<span class='chip " + cls + "'>" + m.status + "</span>";
-      if (m.motivo) situacao += "<br><span class='label' style='color:var(--amber);" +
-        "text-transform:none;letter-spacing:0'>" + m.motivo + "</span>";
-      tr.innerHTML = "<td class='mono' style='font-size:13px'>" + m.para +
-        "</td><td>" + situacao +
-        "</td><td class='num'>" + m.aberturas + "</td><td class='num'>" + m.cliques +
-        "</td><td class='mono' style='font-size:12.5px'>" + hora(m.quando) + "</td>";
-      tb.appendChild(tr);
-    });
-    txt("envios-nota", "Ordenado por engajamento: quem clicou aparece primeiro, depois quem abriu. " +
-        "Mostrando " + Math.min(sg.mensagens.length, 60) + " de " + sg.mensagens.length +
-        " mensagens. Linhas em verde já viraram proposta. Atenção: cliques no botão " +
-        "do WhatsApp não são contados, porque o rastreio está desligado nele para o " +
-        "link abrir a conversa direto. Boa parte das respostas veio por lá.");
-  } else {
-    txt("envios-nota", (d.envios_sendgrid && d.envios_sendgrid.ENVIADO)
-      ? "O detalhe por destinatario expira em 3 dias na API do SendGrid. Os totais " +
-        "acima vem do controle da operacao (enviados) e dos ultimos 14 dias " +
-        "(aberturas, cliques e bounces)."
-      : "Nenhum envio pelo SendGrid ainda. Os 20 primeiros contatos " +
-        "sairam pelo Gmail e por isso nao aparecem aqui.");
-  }
+    if (sg.mensagens && sg.mensagens.length) {
+      document.getElementById("sec-envios-detalhe").hidden = false;
+      var tbe = document.getElementById("envios");
+      sg.mensagens.slice().sort(function(a, b){
+        return (b.cliques - a.cliques) || (b.aberturas - a.aberturas) ||
+               String(b.quando).localeCompare(String(a.quando));
+      }).slice(0, 60).forEach(function(m){
+        var cls = m.aberturas > 0 ? "feito" : "aguarda";
+        var dom = (m.para.split("@")[1] || "").split(".")[0];
+        var tr = document.createElement("tr");
+        if (dom && comProposta.indexOf(semAcento(dom)) !== -1) tr.className = "convertida";
+        var situacao = "<span class='chip " + cls + "'>" + esc(m.status) + "</span>";
+        if (m.motivo) situacao += "<div class='label' style='color:var(--amber);" +
+          "text-transform:none;letter-spacing:0'>" + esc(m.motivo) + "</div>";
+        tr.innerHTML = "<td class='mono' style='font-size:13px'>" + esc(m.para) +
+          "</td><td>" + situacao + "</td><td class='num'>" + m.aberturas +
+          "</td><td class='num'>" + m.cliques +
+          "</td><td class='mono' style='font-size:12.5px'>" + hora(m.quando) + "</td>";
+        tbe.appendChild(tr);
+      });
+    }
 
-  if (sg.series && sg.series.length) {
-    document.getElementById("sec-serie").hidden = false;
-    var ts = document.getElementById("serie");
-    sg.series.slice().reverse().forEach(function(s){
-      if (!s.entregues && !s.aberturas && !s.bounces) return;
-      var tr = document.createElement("tr");
-      tr.innerHTML = "<td class='mono'>" + s.data.split("-").reverse().join("/") +
-        "</td><td class='num'>" + s.entregues + "</td><td class='num'>" + s.aberturas +
-        "</td><td class='num'>" + s.cliques + "</td><td class='num'>" + s.bounces +
-        "</td><td class='num'>" + s.spam + "</td>";
-      ts.appendChild(tr);
-    });
+    if (sg.series && sg.series.length) {
+      document.getElementById("sec-serie").hidden = false;
+      var ts = document.getElementById("serie");
+      sg.series.slice().reverse().forEach(function(s){
+        if (!s.entregues && !s.aberturas && !s.bounces) return;
+        var tr = document.createElement("tr");
+        tr.innerHTML = "<td class='mono'>" + dataBr(s.data) +
+          "</td><td class='num'>" + s.entregues + "</td><td class='num'>" + s.aberturas +
+          "</td><td class='num'>" + s.cliques + "</td><td class='num'>" + s.bounces +
+          "</td><td class='num'>" + s.spam + "</td>";
+        ts.appendChild(tr);
+      });
+    }
   }
 }
 </script>

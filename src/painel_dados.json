@@ -4469,6 +4469,17 @@
    "prazo": "2026-08-25",
    "contato": "Angelita",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Esperantina/PI",
+   "oferta": "a definir",
+   "valor": 0,
+   "enviada": "",
+   "status": "Recusou: já tem contrato com outra empresa",
+   "proxima_acao": "Revisitar em 90 dias: o MX ainda é do Interlegis, a migração deles não aconteceu",
+   "prazo": "2026-11-24",
+   "contato": "Genilson de Castro (Secretário Geral)",
+   "canal": "E-mail"
   }
  ],
  "agenda": [
