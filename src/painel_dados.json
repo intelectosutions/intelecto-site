@@ -1,5 +1,5 @@
 {
- "atualizado": "25/08/2026",
+ "atualizado": "26/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -3347,14 +3347,15 @@
   "ENVIADO": 391,
   "BLOQUEADO": 2,
   "RESPONDEU": 2,
-  "RECUSOU": 1
+  "RECUSOU": 1,
+  "BOUNCE": 1
  },
  "funil": {
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 22,
-  "valor": 234200
+  "propostas": 24,
+  "valor": 251000
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3373,11 +3374,13 @@
   "Imbaú",
   "Nova Guarita",
   "Manhumirim",
+  "Taguaí",
   "Ipanema",
   "Ribeirão Grande",
   "Igrejinha",
   "Dário Meira",
   "João Pinheiro",
+  "Senador José Bento",
   "Luz",
   "Heliodora"
  ],
@@ -4226,13 +4229,13 @@
   },
   {
    "cliente": "Câmara de Conceição do Coité/BA",
-   "oferta": "30 contas",
+   "oferta": "5 ou 30 contas",
    "valor": 11700,
-   "enviada": "19/08",
-   "status": "Sem retorno",
-   "proxima_acao": "Cobrar por WhatsApp (75) 99969-3000",
-   "prazo": "2026-08-24",
-   "contato": "Ednézio Santiago",
+   "enviada": "26/08",
+   "status": "Proposta enviada em 2 opções (5 e 30 contas)",
+   "proxima_acao": "Follow-up D+3; confirmar qual dimensionamento a Câmara adotou",
+   "prazo": "2026-08-31",
+   "contato": "Setor de Administração",
    "canal": "WhatsApp"
   },
   {
@@ -4324,6 +4327,17 @@
    "canal": "E-mail"
   },
   {
+   "cliente": "Câmara de Taguaí/SP",
+   "oferta": "20 contas",
+   "valor": 9300,
+   "enviada": "26/08",
+   "status": "Proposta enviada (TI, tecnologia.informacao@)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-31",
+   "contato": "Lucas (TI) (14) 99866-7114",
+   "canal": "E-mail"
+  },
+  {
    "cliente": "Câmara de Ipanema/MG",
    "oferta": "10 contas",
    "valor": 7500,
@@ -4376,6 +4390,17 @@
    "proxima_acao": "Avisar no WhatsApp + follow-up D+3",
    "prazo": "2026-08-27",
    "contato": "Ivan",
+   "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Senador José Bento/MG",
+   "oferta": "5 contas",
+   "valor": 7500,
+   "enviada": "26/08",
+   "status": "Proposta enviada pelo e-mail alternativo (caixa camara@ lotada)",
+   "proxima_acao": "Follow-up D+3; se não responder, ligar (35) 3426-1330",
+   "prazo": "2026-08-31",
+   "contato": "Joel (35) 3426-1330",
    "canal": "E-mail"
   },
   {
@@ -4448,51 +4473,51 @@
  "agenda": [
   {
    "data": "24/08 (seg) · VENCIDO",
-   "acao": "Conceição do Coité/BA: Cobrar por WhatsApp (75) 99969-3000"
-  },
-  {
-   "data": "24/08 (seg) · VENCIDO",
    "acao": "Luz/MG: Cobrar por WhatsApp; ofício de reapontamento já pronto"
   },
   {
-   "data": "25/08 (ter) · hoje",
+   "data": "25/08 (ter) · VENCIDO",
    "acao": "Heliodora/MG: Prazo do TCEMG correndo: confirmar recebimento"
   },
   {
-   "data": "25/08 (ter) · hoje",
+   "data": "25/08 (ter) · VENCIDO",
    "acao": "Varginha/MG: Ligar: maior cidade que engajou e não respondeu"
   },
   {
-   "data": "25/08 (ter) · hoje",
+   "data": "25/08 (ter) · VENCIDO",
    "acao": "Nova Mamoré/RO: Cobrar quantas contas a Câmara precisa"
   },
   {
-   "data": "25/08 (ter) · hoje",
+   "data": "25/08 (ter) · VENCIDO",
    "acao": "Monte Carlo/SC: Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Pradópolis/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Serrana/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Salmourão/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   },
   {
-   "data": "26/08 (qua)",
+   "data": "26/08 (qua) · hoje",
    "acao": "Santa Margarida/MG: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua) · hoje",
+   "acao": "Ipanema/MG: Follow-up D+3"
   }
  ]
 }
