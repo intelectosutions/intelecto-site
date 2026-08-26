@@ -3354,8 +3354,8 @@
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 24,
-  "valor": 251000
+  "propostas": 25,
+  "valor": 262700
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3366,6 +3366,7 @@
   "Visconde do Rio Branco",
   "Pradópolis",
   "Conceição do Coité",
+  "Tamarana",
   "Barra do Ribeiro",
   "Serrana",
   "Salmourão",
@@ -4239,6 +4240,17 @@
    "canal": "WhatsApp"
   },
   {
+   "cliente": "Câmara de Tamarana/PR",
+   "oferta": "25 contas",
+   "valor": 11700,
+   "enviada": "26/08",
+   "status": "Proposta enviada (cmtamarana@gmail.com; até 30 caixas sem alterar o mensal)",
+   "proxima_acao": "Follow-up D+3",
+   "prazo": "2026-08-31",
+   "contato": "Thayla (43) 99908-6596; antes Elayne; Câmara (43) 3398-1133",
+   "canal": "WhatsApp"
+  },
+  {
    "cliente": "Câmara de Barra do Ribeiro/RS",
    "oferta": "25 contas",
    "valor": 11700,
@@ -4423,17 +4435,6 @@
    "proxima_acao": "Prazo do TCEMG correndo: confirmar recebimento",
    "prazo": "2026-08-25",
    "contato": "Claudia",
-   "canal": "WhatsApp"
-  },
-  {
-   "cliente": "Câmara de Tamarana/PR",
-   "oferta": "a definir",
-   "valor": 0,
-   "enviada": "",
-   "status": "Aguardando nº de contas (cobrada 2x: 21/08 e 24/08 14h55)",
-   "proxima_acao": "Se não responder: ligar para a Câmara",
-   "prazo": "2026-08-26",
-   "contato": "Elayne",
    "canal": "WhatsApp"
   },
   {
