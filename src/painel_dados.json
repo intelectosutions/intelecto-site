@@ -1,5 +1,5 @@
 {
- "atualizado": "26/08/2026",
+ "atualizado": "27/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -4167,10 +4167,10 @@
    "oferta": "100 contas",
    "valor": 26700,
    "enviada": "25/08",
-   "status": "Proposta enviada (maior da operação)",
-   "proxima_acao": "Follow-up D+3",
+   "status": "Recebimento confirmado em 27/08: 'qualquer dúvida entro em contato'",
+   "proxima_acao": "Follow-up ATÉ 12h30 (Câmara funciona 6h30 às 12h30, 2ª a 6ª); puxar decisão, não esperar",
    "prazo": "2026-08-28",
-   "contato": "Daniella Barros (Informática)",
+   "contato": "Daniella Inácio de Barros (Analista de Sistemas) (31) 3769-8103 / WhatsApp (31) 98806-6455",
    "canal": "E-mail"
   },
   {
@@ -4504,31 +4504,31 @@
    "acao": "Monte Carlo/SC: Gerar proposta assim que ela confirmar; cobrar só se não vier até 26/08"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Pradópolis/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Serrana/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Salmourão/SP: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Careaçu/MG: Follow-up D+3; ofereceu-se documentação"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Santa Margarida/MG: Follow-up D+3"
   },
   {
-   "data": "26/08 (qua) · hoje",
+   "data": "26/08 (qua) · VENCIDO",
    "acao": "Ipanema/MG: Follow-up D+3"
   }
  ]
