@@ -3348,7 +3348,8 @@
   "BLOQUEADO": 2,
   "RESPONDEU": 2,
   "RECUSOU": 1,
-  "BOUNCE": 1
+  "BOUNCE": 1,
+  "SEM_EFEITO": 1
  },
  "funil": {
   "quentes": 482,
@@ -4409,11 +4410,11 @@
    "oferta": "5 contas",
    "valor": 7500,
    "enviada": "26/08",
-   "status": "Proposta enviada pelo e-mail alternativo (caixa camara@ lotada)",
-   "proxima_acao": "Follow-up D+3; se não responder, ligar (35) 3426-1330",
-   "prazo": "2026-08-31",
-   "contato": "Joel (35) 3426-1330",
-   "canal": "E-mail"
+   "status": "Proposta enviada 26/08 pelo Yahoo NÃO chegou: Joel pediu de novo pelo WhatsApp em 27/08",
+   "proxima_acao": "Reenviar o PDF pelo WhatsApp, que é o canal que funciona com ele",
+   "prazo": "2026-08-27",
+   "contato": "Joel (35) 9938-8805 (WhatsApp direto); Câmara (35) 3426-1330",
+   "canal": "WhatsApp"
   },
   {
    "cliente": "Câmara de Luz/MG",
