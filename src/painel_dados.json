@@ -4189,10 +4189,10 @@
    "oferta": "35 contas",
    "valor": 14700,
    "enviada": "21/08",
-   "status": "Em tramitação interna",
-   "proxima_acao": "Perguntar se o setor de compras precisa de documentação",
-   "prazo": "2026-08-26",
-   "contato": "Natália Ostjen (Tesouraria)",
+   "status": "Referências, atestado de Jaguariúna e levantamento PNCP enviados em 27/08",
+   "proxima_acao": "Follow-up com a Natália: o setor conseguiu concluir a formação de preço?",
+   "prazo": "2026-09-01",
+   "contato": "Natália Ostjen (Tesouraria) (51) 3458-5026 / geral (51) 3458-5000 r.026",
    "canal": "E-mail"
   },
   {
@@ -4505,10 +4505,6 @@
   },
   {
    "data": "26/08 (qua) · VENCIDO",
-   "acao": "Esteio/RS: Perguntar se o setor de compras precisa de documentação"
-  },
-  {
-   "data": "26/08 (qua) · VENCIDO",
    "acao": "Pradópolis/SP: Follow-up D+3"
   },
   {
@@ -4530,6 +4526,10 @@
   {
    "data": "26/08 (qua) · VENCIDO",
    "acao": "Ipanema/MG: Follow-up D+3"
+  },
+  {
+   "data": "26/08 (qua) · VENCIDO",
+   "acao": "Ribeirão Grande/SP: Follow-up D+3"
   }
  ]
 }
