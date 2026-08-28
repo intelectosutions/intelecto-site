@@ -1,5 +1,5 @@
 {
- "atualizado": "27/08/2026",
+ "atualizado": "28/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -4481,6 +4481,17 @@
    "prazo": "2026-11-24",
    "contato": "Genilson de Castro (Secretário Geral)",
    "canal": "E-mail"
+  },
+  {
+   "cliente": "Câmara de Cachoeira/BA",
+   "oferta": "25 contas",
+   "valor": 0,
+   "enviada": "",
+   "status": "Proposta gerada (R$ 11.700), falta enviar",
+   "proxima_acao": "Enviar rascunho para dumdesign@hotmail.com; confirmar o vínculo dele com a Câmara",
+   "prazo": "2026-08-28",
+   "contato": "Abimael (Dum Design) (75) 99945-9447",
+   "canal": "WhatsApp"
   }
  ],
  "agenda": [
