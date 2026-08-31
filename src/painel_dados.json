@@ -3356,7 +3356,7 @@
   "com_contato": 416,
   "abordadas": 411,
   "propostas": 26,
-  "valor": 270200
+  "valor": 268700
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3383,8 +3383,8 @@
   "Dário Meira",
   "João Pinheiro",
   "Senador José Bento",
-  "Minas Novas",
   "Luz",
+  "Minas Novas",
   "Heliodora"
  ],
  "whatsapp": [
@@ -4418,17 +4418,6 @@
    "canal": "WhatsApp"
   },
   {
-   "cliente": "Câmara de Minas Novas/MG",
-   "oferta": "5 contas",
-   "valor": 7500,
-   "enviada": "31/08",
-   "status": "Proposta enviada (indicação do Jorge Ortiz, de Jaguariúna)",
-   "proxima_acao": "Follow-up D+3; avisar o João no WhatsApp que saiu",
-   "prazo": "2026-09-03",
-   "contato": "João (33) 99955-1661",
-   "canal": "Indicação"
-  },
-  {
    "cliente": "Câmara de Luz/MG",
    "oferta": "10 contas",
    "valor": 6900,
@@ -4438,6 +4427,17 @@
    "prazo": "2026-08-24",
    "contato": "Adriana",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Minas Novas/MG",
+   "oferta": "5 contas",
+   "valor": 6000,
+   "enviada": "31/08",
+   "status": "Achou 6x caro; revisada 2x: sem migração e com implantação de cortesia (R$ 6.000)",
+   "proxima_acao": "Enviar a versão v3; abaixo disso não há o que cortar sem mexer no mensal",
+   "prazo": "2026-09-03",
+   "contato": "João (33) 99955-1661",
+   "canal": "Indicação"
   },
   {
    "cliente": "Câmara de Heliodora/MG",
