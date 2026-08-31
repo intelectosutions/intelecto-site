@@ -1,5 +1,5 @@
 {
- "atualizado": "28/08/2026",
+ "atualizado": "31/08/2026",
  "radar": {
   "ativos": 3138,
   "quentes": 482,
@@ -3355,8 +3355,8 @@
   "quentes": 482,
   "com_contato": 416,
   "abordadas": 411,
-  "propostas": 25,
-  "valor": 262700
+  "propostas": 26,
+  "valor": 270200
  },
  "sem_contato": 66,
  "municipios_com_proposta": [
@@ -3383,6 +3383,7 @@
   "Dário Meira",
   "João Pinheiro",
   "Senador José Bento",
+  "Minas Novas",
   "Luz",
   "Heliodora"
  ],
@@ -4415,6 +4416,17 @@
    "prazo": "2026-08-27",
    "contato": "Joel (35) 9938-8805 (WhatsApp direto); Câmara (35) 3426-1330",
    "canal": "WhatsApp"
+  },
+  {
+   "cliente": "Câmara de Minas Novas/MG",
+   "oferta": "5 contas",
+   "valor": 7500,
+   "enviada": "31/08",
+   "status": "Proposta enviada (indicação do Jorge Ortiz, de Jaguariúna)",
+   "proxima_acao": "Follow-up D+3; avisar o João no WhatsApp que saiu",
+   "prazo": "2026-09-03",
+   "contato": "João (33) 99955-1661",
+   "canal": "Indicação"
   },
   {
    "cliente": "Câmara de Luz/MG",
